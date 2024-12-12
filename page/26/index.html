@@ -88,7 +88,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">326</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">137</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">461</span></a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">326</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">137</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">462</span></a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -153,7 +153,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">461</span>
+          <span class="site-state-item-count">462</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -196,6 +196,590 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://www.ligoudan.cn/pages/002159/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/ligoudan.png">
+      <meta itemprop="name" content="李狗蛋">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LIGOUDAN">
+      <meta itemprop="description" content="天气不错哇，你看这大冰雹下得">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | LIGOUDAN">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/pages/002159/" class="post-title-link" itemprop="url">Elastic 技术栈之 Kibana</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-06-16 07:10:44" itemprop="dateCreated datePublished" datetime="2020-06-16T07:10:44+08:00">2020-06-16</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-12-12 10:02:52" itemprop="dateModified" datetime="2024-12-12T10:02:52+08:00">2024-12-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E6%95%B0%E6%8D%AE%E5%BA%93/" itemprop="url" rel="index"><span itemprop="name">搜索引擎数据库</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E6%95%B0%E6%8D%AE%E5%BA%93/Elastic/" itemprop="url" rel="index"><span itemprop="name">Elastic</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>4k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>4 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="Elastic-技术栈之-Kibana"><a href="#Elastic-技术栈之-Kibana" class="headerlink" title="Elastic 技术栈之 Kibana"></a>Elastic 技术栈之 Kibana</h1><h2 id="Discover"><a href="#Discover" class="headerlink" title="Discover"></a>Discover</h2><p>单击侧面导航栏中的 <code>Discover</code> ，可以显示 <code>Kibana</code> 的数据查询功能功能。</p>
+<p><img src="https://www.elastic.co/guide/en/kibana/current/images/tutorial-discover.png" alt="img"></p>
+<p>在搜索栏中，您可以输入 Elasticsearch 查询条件来搜索您的数据。您可以在 <code>Discover</code> 页面中浏览结果并在 <code>Visualize</code> 页面中创建已保存搜索条件的可视化。</p>
+<p>当前索引模式显示在查询栏下方。索引模式确定提交查询时搜索哪些索引。要搜索一组不同的索引，请从下拉菜单中选择不同的模式。要添加索引模式（index pattern），请转至 <code>Management/Kibana/Index Patterns</code> 并单击 <code>Add New</code>。</p>
+<p>您可以使用字段名称和您感兴趣的值构建搜索。对于数字字段，可以使用比较运算符，如大于（&gt;），小于（&lt;）或等于（&#x3D;）。您可以将元素与逻辑运算符 <code>AND</code>，<code>OR</code> 和 <code>NOT</code> 链接，全部使用大写。</p>
+<p>默认情况下，每个匹配文档都显示所有字段。要选择要显示的文档字段，请将鼠标悬停在“可用字段”列表上，然后单击要包含的每个字段旁边的添加按钮。例如，如果只添加 account_number，则显示将更改为包含五个帐号的简单列表：</p>
+<p><img src="https://www.elastic.co/guide/en/kibana/6.1/images/tutorial-discover-3.png" alt="img"></p>
+<h3 id="查询语义"><a href="#查询语义" class="headerlink" title="查询语义"></a>查询语义</h3><p>kibana 的搜索栏遵循 <a target="_blank" rel="noopener" href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-query-string-query.html#query-string-syntax">query-string-syntax</a> 文档中所说明的查询语义。</p>
+<p>这里说明一些最基本的查询语义。</p>
+<p>查询字符串会被解析为一系列的术语和运算符。一个术语可以是一个单词（如：quick、brown）或用双引号包围的短语（如”quick brown”）。</p>
+<p>查询操作允许您自定义搜索 - 下面介绍了可用的选项。</p>
+<h4 id="字段名称"><a href="#字段名称" class="headerlink" title="字段名称"></a>字段名称</h4><p>正如查询字符串查询中所述，将在搜索条件中搜索 default_field，但可以在查询语法中指定其他字段：</p>
+<p>例如：</p>
+<ul>
+<li>查询 <code>status</code> 字段中包含 <code>active</code> 关键字</li>
+</ul>
+<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">status:</span>active</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>title</code> 字段包含 <code>quick</code> 或 <code>brown</code> 关键字。如果您省略 <code>OR</code> 运算符，则将使用默认运算符</li>
+</ul>
+<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">title:</span>(quick <span class="keyword">OR</span> brown)</span><br><span class="line"><span class="symbol">title:</span>(quick brown)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>author 字段查找精确的短语 “john smith”，即精确查找。</li>
+</ul>
+<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">author:</span><span class="string">&quot;John Smith&quot;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>任意字段 <code>book.title</code>，<code>book.content</code> 或 <code>book.date</code> 都包含 <code>quick</code> 或 <code>brown</code>（注意我们需要如何使用 <code>\*</code> 表示通配符）</li>
+</ul>
+<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">book.\*:(quick brown)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>title 字段包含任意非 null 值</li>
+</ul>
+<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="emphasis">_exists_</span>:title</span><br></pre></td></tr></table></figure>
+
+<h4 id="通配符"><a href="#通配符" class="headerlink" title="通配符"></a>通配符</h4><p>ELK 提供了 ? 和 * 两个通配符。</p>
+<ul>
+<li><code>?</code> 表示任意单个字符；</li>
+<li><code>*</code> 表示任意零个或多个字符。</li>
+</ul>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">qu</span>?ck <span class="keyword">bro</span>*</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>注意：通配符查询会使用大量的内存并且执行性能较为糟糕，所以请慎用。</strong> &gt; <strong>提示</strong>：纯通配符 <code>*</code> 被写入 <a target="_blank" rel="noopener" href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-exists-query.html">exsits</a> 查询，从而提高了查询效率。因此，通配符 <code>field：*</code> 将匹配包含空值的文档，如：<code>&#123;“field”：“”&#125;</code>，但是如果字段丢失或显示将值置为 null 则不匹配，如：<code>“field”：null&#125;</code> &gt; <strong>提示</strong>：在一个单词的开头（例如：<code>*ing</code>）使用通配符这种方式的查询量特别大，因为索引中的所有术语都需要检查，以防万一匹配。通过将 <code>allow_leading_wildcard</code> 设置为 <code>false</code>，可以禁用。</p>
+</blockquote>
+<h4 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h4><p>可以通过 <code>/</code> 将正则表达式包裹在查询字符串中进行查询</p>
+<p>例：</p>
+<figure class="highlight excel"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">na</span><span class="symbol">me:</span>/joh?<span class="built_in">n</span>(<span class="comment">ath[oa]n</span>)/</span><br></pre></td></tr></table></figure>
+
+<p>支持的正则表达式语义可以参考：<a target="_blank" rel="noopener" href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-regexp-query.html#regexp-syntax">Regular expression syntax</a></p>
+<h4 id="模糊查询"><a href="#模糊查询" class="headerlink" title="模糊查询"></a>模糊查询</h4><p>我们可以使用 <code>~</code> 运算符来进行模糊查询。</p>
+<p>例：</p>
+<p>假设我们实际想查询</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">quick brown forks</span></span><br></pre></td></tr></table></figure>
+
+<p>但是，由于拼写错误，我们的查询关键字变成如下情况，依然可以查到想要的结果。</p>
+<figure class="highlight livescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">quikc<span class="string">\~</span> brwn<span class="string">\~</span> foks<span class="string">\~</span></span><br></pre></td></tr></table></figure>
+
+<p>这种模糊查询使用 Damerau-Levenshtein 距离来查找所有匹配最多两个更改的项。所谓的更改是指单个字符的插入，删除或替换，或者两个相邻字符的换位。</p>
+<p>默认编辑距离为 <code>2</code>，但编辑距离为 <code>1</code> 应足以捕捉所有人类拼写错误的 80％。它可以被指定为：</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">quikc</span>\~<span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="近似检索"><a href="#近似检索" class="headerlink" title="近似检索"></a>近似检索</h4><p>尽管短语查询（例如，<code>john smith</code>）期望所有的词条都是完全相同的顺序，但是近似查询允许指定的单词进一步分开或以不同的顺序排列。与模糊查询可以为单词中的字符指定最大编辑距离一样，近似搜索也允许我们指定短语中单词的最大编辑距离：</p>
+<p>例</p>
+<figure class="highlight livescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;fox quick&quot;</span><span class="string">\~5</span></span><br></pre></td></tr></table></figure>
+
+<p>字段中的文本越接近查询字符串中指定的原始顺序，该文档就越被认为是相关的。当与上面的示例查询相比时，短语 <code>&quot;quick fox&quot;</code> 将被认为比 <code>&quot;quick brown fox&quot;</code> 更近似查询条件。</p>
+<h4 id="范围"><a href="#范围" class="headerlink" title="范围"></a>范围</h4><p>可以为日期，数字或字符串字段指定范围。闭区间范围用方括号 <code>[min TO max]</code> 和开区间范围用花括号 <code>&#123;min TO max&#125;</code> 来指定。</p>
+<p>我们不妨来看一些示例。</p>
+<ul>
+<li>2012 年的所有日子</li>
+</ul>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">date</span>:[<span class="number">2012</span>-<span class="number">01</span>-<span class="number">01</span> TO <span class="number">2012</span>-<span class="number">12</span>-<span class="number">31</span>]</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>数字 1 到 5</li>
+</ul>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">count</span>:[<span class="number">1</span> TO <span class="number">5</span>]</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>在 <code>alpha</code> 和 <code>omega</code> 之间的标签，不包括 <code>alpha</code> 和 <code>omega</code></li>
+</ul>
+<figure class="highlight subunit"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">tags:</span>&#123;alpha TO omega&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>10 以上的数字</li>
+</ul>
+<figure class="highlight sqf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">count</span>:[<span class="number">10</span> <span class="keyword">TO</span> *]</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>2012 年以前的所有日期</li>
+</ul>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">date</span>:&#123;* TO <span class="number">2012</span>-<span class="number">01</span>-<span class="number">01</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<p>此外，开区间和闭区间也可以组合使用</p>
+<ul>
+<li>数组 1 到 5，但不包括 5</li>
+</ul>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">count</span>:[<span class="number">1</span> TO <span class="number">5</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<p>一边无界的范围也可以使用以下语法：</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">age</span>:&gt;<span class="number">10</span></span><br><span class="line"><span class="attribute">age</span>:&gt;=<span class="number">10</span></span><br><span class="line"><span class="attribute">age</span>:&lt;<span class="number">10</span></span><br><span class="line"><span class="attribute">age</span>:&lt;=<span class="number">10</span></span><br></pre></td></tr></table></figure>
+
+<p>当然，你也可以使用 AND 运算符来得到连个查询结果的交集</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">age</span>:(&gt;=<span class="number">10</span> AND &lt;<span class="number">20</span>)</span><br><span class="line"><span class="attribute">age</span>:(+&gt;=<span class="number">10</span> +&lt;<span class="number">20</span>)</span><br></pre></td></tr></table></figure>
+
+<h4 id="Boosting"><a href="#Boosting" class="headerlink" title="Boosting"></a>Boosting</h4><p>使用操作符 <code>^</code> 使一个术语比另一个术语更相关。例如，如果我们想查找所有有关狐狸的文档，但我们对狐狸特别感兴趣：</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">quick</span>^<span class="number">2</span> fox</span><br></pre></td></tr></table></figure>
+
+<p>默认提升值是 1，但可以是任何正浮点数。 0 到 1 之间的提升减少了相关性。</p>
+<p>增强也可以应用于短语或组：</p>
+<figure class="highlight gcode"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;john smith&quot;</span>^<span class="number">2</span>   <span class="comment">(foo bar)</span>^<span class="number">4</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="布尔操作"><a href="#布尔操作" class="headerlink" title="布尔操作"></a>布尔操作</h4><p>默认情况下，只要一个词匹配，所有词都是可选的。搜索 <code>foo bar baz</code> 将查找包含 <code>foo</code> 或 <code>bar</code> 或 <code>baz</code> 中的一个或多个的任何文档。我们已经讨论了上面的<code>default_operator</code>，它允许你强制要求所有的项，但也有布尔运算符可以在查询字符串本身中使用，以提供更多的控制。</p>
+<p>首选的操作符是 <code>+</code>（此术语必须存在）和 <code>-</code> （此术语不得存在）。所有其他条款是可选的。例如，这个查询：</p>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">quick <span class="keyword">brown </span>+fox -news</span><br></pre></td></tr></table></figure>
+
+<p>这条查询意味着：</p>
+<ul>
+<li>fox 必须存在</li>
+<li>news 必须不存在</li>
+<li>quick 和 brown 是可有可无的</li>
+</ul>
+<p>熟悉的运算符 <code>AND</code>，<code>OR</code> 和 <code>NOT</code>（也写成 <code>&amp;&amp;</code>，<code>||</code> 和 <code>!</code>）也被支持。然而，这些操作符有一定的优先级：<code>NOT</code> 优先于 <code>AND</code>，<code>AND</code> 优先于 <code>OR</code>。虽然 <code>+</code> 和 <code>-</code> 仅影响运算符右侧的术语，但 <code>AND</code> 和 <code>OR</code> 会影响左侧和右侧的术语。</p>
+<h4 id="分组"><a href="#分组" class="headerlink" title="分组"></a>分组</h4><p>多个术语或子句可以用圆括号组合在一起，形成子查询</p>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(quick <span class="keyword">OR </span><span class="keyword">brown) </span><span class="keyword">AND </span>fox</span><br></pre></td></tr></table></figure>
+
+<p>可以使用组来定位特定的字段，或者增强子查询的结果：</p>
+<figure class="highlight excel"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">stat<span class="symbol">us:</span>(active <span class="built_in">OR</span> pending) tit<span class="symbol">le:</span>(full <span class="built_in">text</span> <span class="built_in">search</span>)^<span class="number">2</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="保留字"><a href="#保留字" class="headerlink" title="保留字"></a>保留字</h4><p>如果你需要使用任何在你的查询本身中作为操作符的字符（而不是作为操作符），那么你应该用一个反斜杠来转义它们。例如，要搜索（1 + 1）&#x3D; 2，您需要将查询写为 <code>\(1\+1\)\=2</code></p>
+<p>保留字符是：<code>+ - = &amp;&amp; || &gt; &lt; ! ( ) &#123; &#125; [ ] ^ &quot; ~ * ? : \ /</code></p>
+<p>无法正确地转义这些特殊字符可能会导致语法错误，从而阻止您的查询运行。</p>
+<h4 id="空查询"><a href="#空查询" class="headerlink" title="空查询"></a>空查询</h4><p>如果查询字符串为空或仅包含空格，则查询将生成一个空的结果集。</p>
+<h2 id="Visualize"><a href="#Visualize" class="headerlink" title="Visualize"></a>Visualize</h2><p>要想使用可视化的方式展示您的数据，请单击侧面导航栏中的 <code>Visualize</code>。</p>
+<p>Visualize 工具使您能够以多种方式（如饼图、柱状图、曲线图、分布图等）查看数据。要开始使用，请点击蓝色的 <code>Create a visualization</code> 或 <code>+</code> 按钮。</p>
+<p><img src="https://www.elastic.co/guide/en/kibana/6.1/images/tutorial-visualize-landing.png" alt="https://www.elastic.co/guide/en/kibana/6.1/images/tutorial-visualize-landing.png"></p>
+<p>有许多可视化类型可供选择。</p>
+<p><img src="https://www.elastic.co/guide/en/kibana/6.1/images/tutorial-visualize-wizard-step-1.png" alt="https://www.elastic.co/guide/en/kibana/6.1/images/tutorial-visualize-wizard-step-1.png"></p>
+<p>下面，我们来看创建几个图标示例：</p>
+<h3 id="Pie"><a href="#Pie" class="headerlink" title="Pie"></a>Pie</h3><p>您可以从保存的搜索中构建可视化文件，也可以输入新的搜索条件。要输入新的搜索条件，首先需要选择一个索引模式来指定要搜索的索引。</p>
+<p>默认搜索匹配所有文档。最初，一个“切片”包含整个饼图：</p>
+<p><img src="https://www.elastic.co/guide/en/kibana/6.1/images/tutorial-visualize-pie-1.png" alt="https://www.elastic.co/guide/en/kibana/6.1/images/tutorial-visualize-pie-1.png"></p>
+<p>要指定在图表中展示哪些数据，请使用 Elasticsearch 存储桶聚合。分组汇总只是将与您的搜索条件相匹配的文档分类到不同的分类中，也称为分组。</p>
+<p>为每个范围定义一个存储桶：</p>
+<ol>
+<li>单击 <code>Split Slices</code>。</li>
+<li>在 <code>Aggregation</code> 列表中选择 <code>Terms</code>。_注意：这里的 Terms 是 Elk 采集数据时定义好的字段或标签_。</li>
+<li>在 <code>Field</code> 列表中选择 <code>level.keyword</code>。</li>
+<li>点击 <img src="https://www.elastic.co/guide/en/kibana/6.1/images/apply-changes-button.png" alt="images/apply-changes-button.png"> 按钮来更新图表。</li>
+</ol>
+<p><img src="https://upload-images.jianshu.io/upload_images/3101171-7fb2042dc6d59520.png" alt="image.png"></p>
+<p>完成后，如果想要保存这个图表，可以点击页面最上方一栏中的 <code>Save</code> 按钮。</p>
+<h3 id="Vertical-Bar"><a href="#Vertical-Bar" class="headerlink" title="Vertical Bar"></a>Vertical Bar</h3><p>我们在展示一下如何创建柱状图。</p>
+<ol>
+<li>点击蓝色的 <code>Create a visualization</code> 或 <code>+</code> 按钮。选择 <code>Vertical Bar</code></li>
+<li>选择索引模式。由于您尚未定义任何 bucket ，因此您会看到一个大栏，显示与默认通配符查询匹配的文档总数。</li>
+<li>指定 Y 轴所代表的字段</li>
+<li>指定 X 轴所代表的字段</li>
+<li>点击 <img src="https://www.elastic.co/guide/en/kibana/6.1/images/apply-changes-button.png" alt="images/apply-changes-button.png"> 按钮来更新图表。</li>
+</ol>
+<p><img src="https://upload-images.jianshu.io/upload_images/3101171-5aa7627284c19a56.png" alt="image.png"></p>
+<p>完成后，如果想要保存这个图表，可以点击页面最上方一栏中的 <code>Save</code> 按钮。</p>
+<h2 id="Dashboard"><a href="#Dashboard" class="headerlink" title="Dashboard"></a>Dashboard</h2><p><code>Dashboard</code> 可以整合和共享 <code>Visualize</code> 集合。</p>
+<ol>
+<li>点击侧面导航栏中的 Dashboard。</li>
+<li>点击添加显示保存的可视化列表。</li>
+<li>点击之前保存的 <code>Visualize</code>，然后点击列表底部的小向上箭头关闭可视化列表。</li>
+<li>将鼠标悬停在可视化对象上会显示允许您编辑，移动，删除和调整可视化对象大小的容器控件。</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://www.ligoudan.cn/pages/fc47af/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/ligoudan.png">
+      <meta itemprop="name" content="李狗蛋">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LIGOUDAN">
+      <meta itemprop="description" content="天气不错哇，你看这大冰雹下得">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | LIGOUDAN">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/pages/fc47af/" class="post-title-link" itemprop="url">Kibana 运维</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-06-16 07:10:44" itemprop="dateCreated datePublished" datetime="2020-06-16T07:10:44+08:00">2020-06-16</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-12-12 10:02:52" itemprop="dateModified" datetime="2024-12-12T10:02:52+08:00">2024-12-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E6%95%B0%E6%8D%AE%E5%BA%93/" itemprop="url" rel="index"><span itemprop="name">搜索引擎数据库</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E6%95%B0%E6%8D%AE%E5%BA%93/Elastic/" itemprop="url" rel="index"><span itemprop="name">Elastic</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>4.7k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>4 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="Kibana-运维"><a href="#Kibana-运维" class="headerlink" title="Kibana 运维"></a>Kibana 运维</h1><blockquote>
+<p>通过 Kibana，您可以对自己的 Elasticsearch 进行可视化，还可以在 Elastic Stack 中进行导航，这样您便可以进行各种操作了，从跟踪查询负载，到理解请求如何流经您的整个应用，都能轻松完成。</p>
+</blockquote>
+<h2 id="1-安装"><a href="#1-安装" class="headerlink" title="1. 安装"></a>1. 安装</h2><h3 id="1-1-环境要求"><a href="#1-1-环境要求" class="headerlink" title="1.1. 环境要求"></a>1.1. 环境要求</h3><blockquote>
+<p>版本：Elastic Stack 7.4</p>
+</blockquote>
+<h3 id="1-2-安装步骤"><a href="#1-2-安装步骤" class="headerlink" title="1.2. 安装步骤"></a>1.2. 安装步骤</h3><p>安装步骤如下：</p>
+<ol>
+<li>在 <a target="_blank" rel="noopener" href="https://www.elastic.co/downloads/kibana">kibana 官方下载地址</a>下载所需版本包并解压到本地。</li>
+<li>修改 <code>config/kibana.yml</code> 配置文件，设置 <code>elasticsearch.url</code> 指向 Elasticsearch 实例。</li>
+<li>运行 <code>bin/kibana</code> （Windows 上运行 <code>bin\kibana.bat</code>）</li>
+<li>在浏览器上访问 <a target="_blank" rel="noopener" href="http://localhost:5601/">http://localhost:5601</a></li>
+</ol>
+<h2 id="2-使用"><a href="#2-使用" class="headerlink" title="2. 使用"></a>2. 使用</h2><h3 id="2-1-检索"><a href="#2-1-检索" class="headerlink" title="2.1. 检索"></a>2.1. 检索</h3><p>单击侧面导航栏中的 <code>检索（Discover）</code> ，可以显示 <code>Kibana</code> 的数据查询功能功能。</p>
+<p><img src="https://www.elastic.co/guide/en/kibana/current/images/tutorial-discover.png" alt="img"></p>
+<p>在搜索栏中，您可以输入 Elasticsearch 查询条件来搜索您的数据。您可以在 <code>Discover</code> 页面中浏览结果并在 <code>Visualize</code> 页面中创建已保存搜索条件的可视化。</p>
+<p>当前索引模式显示在查询栏下方。索引模式确定提交查询时搜索哪些索引。要搜索一组不同的索引，请从下拉菜单中选择不同的模式。要添加索引模式（index pattern），请转至 <code>Management/Kibana/Index Patterns</code> 并单击 <code>Add New</code>。</p>
+<p>您可以使用字段名称和您感兴趣的值构建搜索。对于数字字段，可以使用比较运算符，如大于（&gt;），小于（&lt;）或等于（&#x3D;）。您可以将元素与逻辑运算符 <code>AND</code>，<code>OR</code> 和 <code>NOT</code> 链接，全部使用大写。</p>
+<p>默认情况下，每个匹配文档都显示所有字段。要选择要显示的文档字段，请将鼠标悬停在“可用字段”列表上，然后单击要包含的每个字段旁边的添加按钮。例如，如果只添加 account_number，则显示将更改为包含五个帐号的简单列表：</p>
+<p><img src="https://www.elastic.co/guide/en/kibana/6.1/images/tutorial-discover-3.png" alt="img"></p>
+<p>kibana 的搜索栏遵循 <a target="_blank" rel="noopener" href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-query-string-query.html#query-string-syntax">query-string-syntax</a> 文档中所说明的查询语义。</p>
+<p>这里说明一些最基本的查询语义。</p>
+<p>查询字符串会被解析为一系列的术语和运算符。一个术语可以是一个单词（如：quick、brown）或用双引号包围的短语（如”quick brown”）。</p>
+<p>查询操作允许您自定义搜索 - 下面介绍了可用的选项。</p>
+<h4 id="2-1-1-字段名称"><a href="#2-1-1-字段名称" class="headerlink" title="2.1.1. 字段名称"></a>2.1.1. 字段名称</h4><p>正如查询字符串查询中所述，将在搜索条件中搜索 default_field，但可以在查询语法中指定其他字段：</p>
+<p>例如：</p>
+<ul>
+<li>查询 <code>status</code> 字段中包含 <code>active</code> 关键字</li>
+</ul>
+<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">status:</span>active</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>title</code> 字段包含 <code>quick</code> 或 <code>brown</code> 关键字。如果您省略 <code>OR</code> 运算符，则将使用默认运算符</li>
+</ul>
+<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">title:</span>(quick <span class="keyword">OR</span> brown)</span><br><span class="line"><span class="symbol">title:</span>(quick brown)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>author 字段查找精确的短语 “john smith”，即精确查找。</li>
+</ul>
+<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">author:</span><span class="string">&quot;John Smith&quot;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>任意字段 <code>book.title</code>，<code>book.content</code> 或 <code>book.date</code> 都包含 <code>quick</code> 或 <code>brown</code>（注意我们需要如何使用 <code>\*</code> 表示通配符）</li>
+</ul>
+<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">book.\*:(quick brown)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>title 字段包含任意非 null 值</li>
+</ul>
+<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="emphasis">_exists_</span>:title</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-1-2-通配符"><a href="#2-1-2-通配符" class="headerlink" title="2.1.2. 通配符"></a>2.1.2. 通配符</h4><p>ELK 提供了 ? 和 * 两个通配符。</p>
+<ul>
+<li><code>?</code> 表示任意单个字符；</li>
+<li><code>*</code> 表示任意零个或多个字符。</li>
+</ul>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">qu</span>?ck <span class="keyword">bro</span>*</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>注意：通配符查询会使用大量的内存并且执行性能较为糟糕，所以请慎用。</strong> &gt; <strong>提示</strong>：纯通配符 * 被写入 <a target="_blank" rel="noopener" href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-exists-query.html">exsits</a> 查询，从而提高了查询效率。因此，通配符 <code>field：*</code> 将匹配包含空值的文档，如：<code>&#123;“field”：“”&#125;</code>，但是如果字段丢失或显示将值置为 null 则不匹配，如：<code>“field”：null&#125;</code> &gt; <strong>提示</strong>：在一个单词的开头（例如：<code>*ing</code>）使用通配符这种方式的查询量特别大，因为索引中的所有术语都需要检查，以防万一匹配。通过将 <code>allow_leading_wildcard</code> 设置为 <code>false</code>，可以禁用。</p>
+</blockquote>
+<h4 id="2-1-3-正则表达式"><a href="#2-1-3-正则表达式" class="headerlink" title="2.1.3. 正则表达式"></a>2.1.3. 正则表达式</h4><p>可以通过 <code>/</code> 将正则表达式包裹在查询字符串中进行查询</p>
+<p>例：</p>
+<figure class="highlight excel"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">na</span><span class="symbol">me:</span>/joh?<span class="built_in">n</span>(<span class="comment">ath[oa]n</span>)/</span><br></pre></td></tr></table></figure>
+
+<p>支持的正则表达式语义可以参考：<a target="_blank" rel="noopener" href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-regexp-query.html#regexp-syntax">Regular expression syntax</a></p>
+<h4 id="2-1-4-模糊查询"><a href="#2-1-4-模糊查询" class="headerlink" title="2.1.4. 模糊查询"></a>2.1.4. 模糊查询</h4><p>我们可以使用 <code>~</code> 运算符来进行模糊查询。</p>
+<p>例：</p>
+<p>假设我们实际想查询</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">quick brown forks</span></span><br></pre></td></tr></table></figure>
+
+<p>但是，由于拼写错误，我们的查询关键字变成如下情况，依然可以查到想要的结果。</p>
+<figure class="highlight livescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">quikc<span class="string">\~</span> brwn<span class="string">\~</span> foks<span class="string">\~</span></span><br></pre></td></tr></table></figure>
+
+<p>这种模糊查询使用 Damerau-Levenshtein 距离来查找所有匹配最多两个更改的项。所谓的更改是指单个字符的插入，删除或替换，或者两个相邻字符的换位。</p>
+<p>默认编辑距离为 <code>2</code>，但编辑距离为 <code>1</code> 应足以捕捉所有人类拼写错误的 80％。它可以被指定为：</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">quikc</span>\~<span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="2-1-5-近似检索"><a href="#2-1-5-近似检索" class="headerlink" title="2.1.5. 近似检索"></a>2.1.5. 近似检索</h4><p>尽管短语查询（例如，<code>john smith</code>）期望所有的词条都是完全相同的顺序，但是近似查询允许指定的单词进一步分开或以不同的顺序排列。与模糊查询可以为单词中的字符指定最大编辑距离一样，近似搜索也允许我们指定短语中单词的最大编辑距离：</p>
+<p>例</p>
+<figure class="highlight livescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;fox quick&quot;</span><span class="string">\~5</span></span><br></pre></td></tr></table></figure>
+
+<p>字段中的文本越接近查询字符串中指定的原始顺序，该文档就越被认为是相关的。当与上面的示例查询相比时，短语 <code>&quot;quick fox&quot;</code> 将被认为比 <code>&quot;quick brown fox&quot;</code> 更近似查询条件。</p>
+<h4 id="2-1-6-范围"><a href="#2-1-6-范围" class="headerlink" title="2.1.6. 范围"></a>2.1.6. 范围</h4><p>可以为日期，数字或字符串字段指定范围。闭区间范围用方括号 <code>[min TO max]</code> 和开区间范围用花括号 <code>&#123;min TO max&#125;</code> 来指定。</p>
+<p>我们不妨来看一些示例。</p>
+<ul>
+<li>2012 年的所有日子</li>
+</ul>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">date</span>:[<span class="number">2012</span>-<span class="number">01</span>-<span class="number">01</span> TO <span class="number">2012</span>-<span class="number">12</span>-<span class="number">31</span>]</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>数字 1 到 5</li>
+</ul>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">count</span>:[<span class="number">1</span> TO <span class="number">5</span>]</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>在 <code>alpha</code> 和 <code>omega</code> 之间的标签，不包括 <code>alpha</code> 和 <code>omega</code></li>
+</ul>
+<figure class="highlight subunit"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">tags:</span>&#123;alpha TO omega&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>10 以上的数字</li>
+</ul>
+<figure class="highlight sqf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">count</span>:[<span class="number">10</span> <span class="keyword">TO</span> *]</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>2012 年以前的所有日期</li>
+</ul>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">date</span>:&#123;* TO <span class="number">2012</span>-<span class="number">01</span>-<span class="number">01</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<p>此外，开区间和闭区间也可以组合使用</p>
+<ul>
+<li>数组 1 到 5，但不包括 5</li>
+</ul>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">count</span>:[<span class="number">1</span> TO <span class="number">5</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<p>一边无界的范围也可以使用以下语法：</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">age</span>:&gt;<span class="number">10</span></span><br><span class="line"><span class="attribute">age</span>:&gt;=<span class="number">10</span></span><br><span class="line"><span class="attribute">age</span>:&lt;<span class="number">10</span></span><br><span class="line"><span class="attribute">age</span>:&lt;=<span class="number">10</span></span><br></pre></td></tr></table></figure>
+
+<p>当然，你也可以使用 AND 运算符来得到连个查询结果的交集</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">age</span>:(&gt;=<span class="number">10</span> AND &lt;<span class="number">20</span>)</span><br><span class="line"><span class="attribute">age</span>:(+&gt;=<span class="number">10</span> +&lt;<span class="number">20</span>)</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-1-7-Boosting"><a href="#2-1-7-Boosting" class="headerlink" title="2.1.7. Boosting"></a>2.1.7. Boosting</h4><p>使用操作符 <code>^</code> 使一个术语比另一个术语更相关。例如，如果我们想查找所有有关狐狸的文档，但我们对狐狸特别感兴趣：</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">quick</span>^<span class="number">2</span> fox</span><br></pre></td></tr></table></figure>
+
+<p>默认提升值是 1，但可以是任何正浮点数。 0 到 1 之间的提升减少了相关性。</p>
+<p>增强也可以应用于短语或组：</p>
+<figure class="highlight gcode"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;john smith&quot;</span>^<span class="number">2</span>   <span class="comment">(foo bar)</span>^<span class="number">4</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="2-1-8-布尔操作"><a href="#2-1-8-布尔操作" class="headerlink" title="2.1.8. 布尔操作"></a>2.1.8. 布尔操作</h4><p>默认情况下，只要一个词匹配，所有词都是可选的。搜索 <code>foo bar baz</code> 将查找包含 <code>foo</code> 或 <code>bar</code> 或 <code>baz</code> 中的一个或多个的任何文档。我们已经讨论了上面的<code>default_operator</code>，它允许你强制要求所有的项，但也有布尔运算符可以在查询字符串本身中使用，以提供更多的控制。</p>
+<p>首选的操作符是 <code>+</code>（此术语必须存在）和 <code>-</code> （此术语不得存在）。所有其他条款是可选的。例如，这个查询：</p>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">quick <span class="keyword">brown </span>+fox -news</span><br></pre></td></tr></table></figure>
+
+<p>这条查询意味着：</p>
+<ul>
+<li>fox 必须存在</li>
+<li>news 必须不存在</li>
+<li>quick 和 brown 是可有可无的</li>
+</ul>
+<p>熟悉的运算符 <code>AND</code>，<code>OR</code> 和 <code>NOT</code>（也写成 <code>&amp;&amp;</code>，<code>||</code> 和 <code>!</code>）也被支持。然而，这些操作符有一定的优先级：<code>NOT</code> 优先于 <code>AND</code>，<code>AND</code> 优先于 <code>OR</code>。虽然 <code>+</code> 和 <code>-</code> 仅影响运算符右侧的术语，但 <code>AND</code> 和 <code>OR</code> 会影响左侧和右侧的术语。</p>
+<h4 id="2-1-9-分组"><a href="#2-1-9-分组" class="headerlink" title="2.1.9. 分组"></a>2.1.9. 分组</h4><p>多个术语或子句可以用圆括号组合在一起，形成子查询</p>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(quick <span class="keyword">OR </span><span class="keyword">brown) </span><span class="keyword">AND </span>fox</span><br></pre></td></tr></table></figure>
+
+<p>可以使用组来定位特定的字段，或者增强子查询的结果：</p>
+<figure class="highlight excel"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">stat<span class="symbol">us:</span>(active <span class="built_in">OR</span> pending) tit<span class="symbol">le:</span>(full <span class="built_in">text</span> <span class="built_in">search</span>)^<span class="number">2</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="2-1-10-保留字"><a href="#2-1-10-保留字" class="headerlink" title="2.1.10. 保留字"></a>2.1.10. 保留字</h4><p>如果你需要使用任何在你的查询本身中作为操作符的字符（而不是作为操作符），那么你应该用一个反斜杠来转义它们。例如，要搜索（1 + 1）&#x3D; 2，您需要将查询写为 <code>\(1\+1\)\=2</code></p>
+<p>保留字符是：<code>+ - = &amp;&amp; || &gt; &lt; ! ( ) &#123; &#125; [ ] ^ &quot; ~ * ? : \ /</code></p>
+<p>无法正确地转义这些特殊字符可能会导致语法错误，从而阻止您的查询运行。</p>
+<h4 id="2-1-11-空查询"><a href="#2-1-11-空查询" class="headerlink" title="2.1.11. 空查询"></a>2.1.11. 空查询</h4><p>如果查询字符串为空或仅包含空格，则查询将生成一个空的结果集。</p>
+<h3 id="2-2-可视化"><a href="#2-2-可视化" class="headerlink" title="2.2. 可视化"></a>2.2. 可视化</h3><p>要想使用可视化的方式展示您的数据，请单击侧面导航栏中的 <code>可视化（Visualize）</code>。</p>
+<p>Visualize 工具使您能够以多种方式（如饼图、柱状图、曲线图、分布图等）查看数据。要开始使用，请点击蓝色的 <code>Create a visualization</code> 或 <code>+</code> 按钮。</p>
+<p><img src="https://www.elastic.co/guide/en/kibana/6.1/images/tutorial-visualize-landing.png" alt="https://www.elastic.co/guide/en/kibana/6.1/images/tutorial-visualize-landing.png"></p>
+<p>有许多可视化类型可供选择。</p>
+<p><img src="https://www.elastic.co/guide/en/kibana/6.1/images/tutorial-visualize-wizard-step-1.png" alt="https://www.elastic.co/guide/en/kibana/6.1/images/tutorial-visualize-wizard-step-1.png"></p>
+<p>下面，我们来看创建几个图标示例：</p>
+<h4 id="2-2-1-Pie"><a href="#2-2-1-Pie" class="headerlink" title="2.2.1. Pie"></a>2.2.1. Pie</h4><p>您可以从保存的搜索中构建可视化文件，也可以输入新的搜索条件。要输入新的搜索条件，首先需要选择一个索引模式来指定要搜索的索引。</p>
+<p>默认搜索匹配所有文档。最初，一个“切片”包含整个饼图：</p>
+<p><img src="https://www.elastic.co/guide/en/kibana/6.1/images/tutorial-visualize-pie-1.png" alt="https://www.elastic.co/guide/en/kibana/6.1/images/tutorial-visualize-pie-1.png"></p>
+<p>要指定在图表中展示哪些数据，请使用 Elasticsearch 存储桶聚合。分组汇总只是将与您的搜索条件相匹配的文档分类到不同的分类中，也称为分组。</p>
+<p>为每个范围定义一个存储桶：</p>
+<ol>
+<li>单击 <code>Split Slices</code>。</li>
+<li>在 <code>Aggregation</code> 列表中选择 <code>Terms</code>。_注意：这里的 Terms 是 Elk 采集数据时定义好的字段或标签_。</li>
+<li>在 <code>Field</code> 列表中选择 <code>level.keyword</code>。</li>
+<li>点击 <img src="https://www.elastic.co/guide/en/kibana/6.1/images/apply-changes-button.png" alt="images/apply-changes-button.png"> 按钮来更新图表。</li>
+</ol>
+<p><img src="https://upload-images.jianshu.io/upload_images/3101171-7fb2042dc6d59520.png" alt="image.png"></p>
+<p>完成后，如果想要保存这个图表，可以点击页面最上方一栏中的 <code>Save</code> 按钮。</p>
+<h4 id="2-2-2-Vertical-Bar"><a href="#2-2-2-Vertical-Bar" class="headerlink" title="2.2.2. Vertical Bar"></a>2.2.2. Vertical Bar</h4><p>我们在展示一下如何创建柱状图。</p>
+<ol>
+<li>点击蓝色的 <code>Create a visualization</code> 或 <code>+</code> 按钮。选择 <code>Vertical Bar</code></li>
+<li>选择索引模式。由于您尚未定义任何 bucket ，因此您会看到一个大栏，显示与默认通配符查询匹配的文档总数。</li>
+<li>指定 Y 轴所代表的字段</li>
+<li>指定 X 轴所代表的字段</li>
+<li>点击 <img src="https://www.elastic.co/guide/en/kibana/6.1/images/apply-changes-button.png" alt="images/apply-changes-button.png"> 按钮来更新图表。</li>
+</ol>
+<p><img src="https://upload-images.jianshu.io/upload_images/3101171-5aa7627284c19a56.png" alt="image.png"></p>
+<p>完成后，如果想要保存这个图表，可以点击页面最上方一栏中的 <code>Save</code> 按钮。</p>
+<h3 id="2-3-报表"><a href="#2-3-报表" class="headerlink" title="2.3. 报表"></a>2.3. 报表</h3><p><code>报表（Dashboard）</code> 可以整合和共享 <code>Visualize</code> 集合。</p>
+<ol>
+<li>点击侧面导航栏中的 Dashboard。</li>
+<li>点击添加显示保存的可视化列表。</li>
+<li>点击之前保存的 <code>Visualize</code>，然后点击列表底部的小向上箭头关闭可视化列表。</li>
+<li>将鼠标悬停在可视化对象上会显示允许您编辑，移动，删除和调整可视化对象大小的容器控件。</li>
+</ol>
+<h2 id="3-FAQ"><a href="#3-FAQ" class="headerlink" title="3. FAQ"></a>3. FAQ</h2><h3 id="3-1-Kibana-No-Default-Index-Pattern-Warning"><a href="#3-1-Kibana-No-Default-Index-Pattern-Warning" class="headerlink" title="3.1. Kibana No Default Index Pattern Warning"></a>3.1. Kibana No Default Index Pattern Warning</h3><p><strong>问题：</strong>安装 ELK 后，访问 kibana 页面时，提示以下错误信息：</p>
+<figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Warning No default <span class="keyword">index</span> pattern. You must <span class="keyword">select</span> <span class="keyword">or</span> <span class="keyword">create</span> one <span class="keyword">to</span> <span class="keyword">continue</span>.</span><br><span class="line">...</span><br><span class="line">Unable <span class="keyword">to</span> <span class="keyword">fetch</span> <span class="keyword">mapping</span>. <span class="keyword">Do</span> you have indices matching the pattern?</span><br></pre></td></tr></table></figure>
+
+<p>这就说明 logstash 没有把日志写入到 elasticsearch。</p>
+<p><strong>解决方法：</strong></p>
+<p>检查 logstash 与 elasticsearch 之间的通讯是否有问题，一般问题就出在这。</p>
+<h2 id="4-参考资料"><a href="#4-参考资料" class="headerlink" title="4. 参考资料"></a>4. 参考资料</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://www.elastic.co/cn/products/kibana">Kibana 官网</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/elastic/kibana">Kibana Github</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.elastic.co/guide/en/kibana/current/index.html">Kibana 官方文档</a></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -618,310 +1202,6 @@
 <h2 id="推荐阅读"><a href="#推荐阅读" class="headerlink" title="推荐阅读"></a>推荐阅读</h2><ul>
 <li><a target="_blank" rel="noopener" href="https://github.com/dunwu/JavaStack/blob/master/docs/javatool/elastic/README.md">Elastic 技术栈</a></li>
 <li><a target="_blank" rel="noopener" href="https://github.com/dunwu/JavaStack">JavaStack</a></li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.ligoudan.cn/pages/fc47af/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/ligoudan.png">
-      <meta itemprop="name" content="李狗蛋">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="LIGOUDAN">
-      <meta itemprop="description" content="天气不错哇，你看这大冰雹下得">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | LIGOUDAN">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/pages/fc47af/" class="post-title-link" itemprop="url">Kibana 运维</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2020-06-16 07:10:44" itemprop="dateCreated datePublished" datetime="2020-06-16T07:10:44+08:00">2020-06-16</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-12 10:02:52" itemprop="dateModified" datetime="2024-12-12T10:02:52+08:00">2024-12-12</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E6%95%B0%E6%8D%AE%E5%BA%93/" itemprop="url" rel="index"><span itemprop="name">搜索引擎数据库</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E6%95%B0%E6%8D%AE%E5%BA%93/Elastic/" itemprop="url" rel="index"><span itemprop="name">Elastic</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>4.7k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>4 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="Kibana-运维"><a href="#Kibana-运维" class="headerlink" title="Kibana 运维"></a>Kibana 运维</h1><blockquote>
-<p>通过 Kibana，您可以对自己的 Elasticsearch 进行可视化，还可以在 Elastic Stack 中进行导航，这样您便可以进行各种操作了，从跟踪查询负载，到理解请求如何流经您的整个应用，都能轻松完成。</p>
-</blockquote>
-<h2 id="1-安装"><a href="#1-安装" class="headerlink" title="1. 安装"></a>1. 安装</h2><h3 id="1-1-环境要求"><a href="#1-1-环境要求" class="headerlink" title="1.1. 环境要求"></a>1.1. 环境要求</h3><blockquote>
-<p>版本：Elastic Stack 7.4</p>
-</blockquote>
-<h3 id="1-2-安装步骤"><a href="#1-2-安装步骤" class="headerlink" title="1.2. 安装步骤"></a>1.2. 安装步骤</h3><p>安装步骤如下：</p>
-<ol>
-<li>在 <a target="_blank" rel="noopener" href="https://www.elastic.co/downloads/kibana">kibana 官方下载地址</a>下载所需版本包并解压到本地。</li>
-<li>修改 <code>config/kibana.yml</code> 配置文件，设置 <code>elasticsearch.url</code> 指向 Elasticsearch 实例。</li>
-<li>运行 <code>bin/kibana</code> （Windows 上运行 <code>bin\kibana.bat</code>）</li>
-<li>在浏览器上访问 <a target="_blank" rel="noopener" href="http://localhost:5601/">http://localhost:5601</a></li>
-</ol>
-<h2 id="2-使用"><a href="#2-使用" class="headerlink" title="2. 使用"></a>2. 使用</h2><h3 id="2-1-检索"><a href="#2-1-检索" class="headerlink" title="2.1. 检索"></a>2.1. 检索</h3><p>单击侧面导航栏中的 <code>检索（Discover）</code> ，可以显示 <code>Kibana</code> 的数据查询功能功能。</p>
-<p><img src="https://www.elastic.co/guide/en/kibana/current/images/tutorial-discover.png" alt="img"></p>
-<p>在搜索栏中，您可以输入 Elasticsearch 查询条件来搜索您的数据。您可以在 <code>Discover</code> 页面中浏览结果并在 <code>Visualize</code> 页面中创建已保存搜索条件的可视化。</p>
-<p>当前索引模式显示在查询栏下方。索引模式确定提交查询时搜索哪些索引。要搜索一组不同的索引，请从下拉菜单中选择不同的模式。要添加索引模式（index pattern），请转至 <code>Management/Kibana/Index Patterns</code> 并单击 <code>Add New</code>。</p>
-<p>您可以使用字段名称和您感兴趣的值构建搜索。对于数字字段，可以使用比较运算符，如大于（&gt;），小于（&lt;）或等于（&#x3D;）。您可以将元素与逻辑运算符 <code>AND</code>，<code>OR</code> 和 <code>NOT</code> 链接，全部使用大写。</p>
-<p>默认情况下，每个匹配文档都显示所有字段。要选择要显示的文档字段，请将鼠标悬停在“可用字段”列表上，然后单击要包含的每个字段旁边的添加按钮。例如，如果只添加 account_number，则显示将更改为包含五个帐号的简单列表：</p>
-<p><img src="https://www.elastic.co/guide/en/kibana/6.1/images/tutorial-discover-3.png" alt="img"></p>
-<p>kibana 的搜索栏遵循 <a target="_blank" rel="noopener" href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-query-string-query.html#query-string-syntax">query-string-syntax</a> 文档中所说明的查询语义。</p>
-<p>这里说明一些最基本的查询语义。</p>
-<p>查询字符串会被解析为一系列的术语和运算符。一个术语可以是一个单词（如：quick、brown）或用双引号包围的短语（如”quick brown”）。</p>
-<p>查询操作允许您自定义搜索 - 下面介绍了可用的选项。</p>
-<h4 id="2-1-1-字段名称"><a href="#2-1-1-字段名称" class="headerlink" title="2.1.1. 字段名称"></a>2.1.1. 字段名称</h4><p>正如查询字符串查询中所述，将在搜索条件中搜索 default_field，但可以在查询语法中指定其他字段：</p>
-<p>例如：</p>
-<ul>
-<li>查询 <code>status</code> 字段中包含 <code>active</code> 关键字</li>
-</ul>
-<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">status:</span>active</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><code>title</code> 字段包含 <code>quick</code> 或 <code>brown</code> 关键字。如果您省略 <code>OR</code> 运算符，则将使用默认运算符</li>
-</ul>
-<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">title:</span>(quick <span class="keyword">OR</span> brown)</span><br><span class="line"><span class="symbol">title:</span>(quick brown)</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>author 字段查找精确的短语 “john smith”，即精确查找。</li>
-</ul>
-<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">author:</span><span class="string">&quot;John Smith&quot;</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>任意字段 <code>book.title</code>，<code>book.content</code> 或 <code>book.date</code> 都包含 <code>quick</code> 或 <code>brown</code>（注意我们需要如何使用 <code>\*</code> 表示通配符）</li>
-</ul>
-<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">book.\*:(quick brown)</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>title 字段包含任意非 null 值</li>
-</ul>
-<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="emphasis">_exists_</span>:title</span><br></pre></td></tr></table></figure>
-
-<h4 id="2-1-2-通配符"><a href="#2-1-2-通配符" class="headerlink" title="2.1.2. 通配符"></a>2.1.2. 通配符</h4><p>ELK 提供了 ? 和 * 两个通配符。</p>
-<ul>
-<li><code>?</code> 表示任意单个字符；</li>
-<li><code>*</code> 表示任意零个或多个字符。</li>
-</ul>
-<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">qu</span>?ck <span class="keyword">bro</span>*</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p><strong>注意：通配符查询会使用大量的内存并且执行性能较为糟糕，所以请慎用。</strong> &gt; <strong>提示</strong>：纯通配符 * 被写入 <a target="_blank" rel="noopener" href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-exists-query.html">exsits</a> 查询，从而提高了查询效率。因此，通配符 <code>field：*</code> 将匹配包含空值的文档，如：<code>&#123;“field”：“”&#125;</code>，但是如果字段丢失或显示将值置为 null 则不匹配，如：<code>“field”：null&#125;</code> &gt; <strong>提示</strong>：在一个单词的开头（例如：<code>*ing</code>）使用通配符这种方式的查询量特别大，因为索引中的所有术语都需要检查，以防万一匹配。通过将 <code>allow_leading_wildcard</code> 设置为 <code>false</code>，可以禁用。</p>
-</blockquote>
-<h4 id="2-1-3-正则表达式"><a href="#2-1-3-正则表达式" class="headerlink" title="2.1.3. 正则表达式"></a>2.1.3. 正则表达式</h4><p>可以通过 <code>/</code> 将正则表达式包裹在查询字符串中进行查询</p>
-<p>例：</p>
-<figure class="highlight excel"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">na</span><span class="symbol">me:</span>/joh?<span class="built_in">n</span>(<span class="comment">ath[oa]n</span>)/</span><br></pre></td></tr></table></figure>
-
-<p>支持的正则表达式语义可以参考：<a target="_blank" rel="noopener" href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-regexp-query.html#regexp-syntax">Regular expression syntax</a></p>
-<h4 id="2-1-4-模糊查询"><a href="#2-1-4-模糊查询" class="headerlink" title="2.1.4. 模糊查询"></a>2.1.4. 模糊查询</h4><p>我们可以使用 <code>~</code> 运算符来进行模糊查询。</p>
-<p>例：</p>
-<p>假设我们实际想查询</p>
-<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">quick brown forks</span></span><br></pre></td></tr></table></figure>
-
-<p>但是，由于拼写错误，我们的查询关键字变成如下情况，依然可以查到想要的结果。</p>
-<figure class="highlight livescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">quikc<span class="string">\~</span> brwn<span class="string">\~</span> foks<span class="string">\~</span></span><br></pre></td></tr></table></figure>
-
-<p>这种模糊查询使用 Damerau-Levenshtein 距离来查找所有匹配最多两个更改的项。所谓的更改是指单个字符的插入，删除或替换，或者两个相邻字符的换位。</p>
-<p>默认编辑距离为 <code>2</code>，但编辑距离为 <code>1</code> 应足以捕捉所有人类拼写错误的 80％。它可以被指定为：</p>
-<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">quikc</span>\~<span class="number">1</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="2-1-5-近似检索"><a href="#2-1-5-近似检索" class="headerlink" title="2.1.5. 近似检索"></a>2.1.5. 近似检索</h4><p>尽管短语查询（例如，<code>john smith</code>）期望所有的词条都是完全相同的顺序，但是近似查询允许指定的单词进一步分开或以不同的顺序排列。与模糊查询可以为单词中的字符指定最大编辑距离一样，近似搜索也允许我们指定短语中单词的最大编辑距离：</p>
-<p>例</p>
-<figure class="highlight livescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;fox quick&quot;</span><span class="string">\~5</span></span><br></pre></td></tr></table></figure>
-
-<p>字段中的文本越接近查询字符串中指定的原始顺序，该文档就越被认为是相关的。当与上面的示例查询相比时，短语 <code>&quot;quick fox&quot;</code> 将被认为比 <code>&quot;quick brown fox&quot;</code> 更近似查询条件。</p>
-<h4 id="2-1-6-范围"><a href="#2-1-6-范围" class="headerlink" title="2.1.6. 范围"></a>2.1.6. 范围</h4><p>可以为日期，数字或字符串字段指定范围。闭区间范围用方括号 <code>[min TO max]</code> 和开区间范围用花括号 <code>&#123;min TO max&#125;</code> 来指定。</p>
-<p>我们不妨来看一些示例。</p>
-<ul>
-<li>2012 年的所有日子</li>
-</ul>
-<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">date</span>:[<span class="number">2012</span>-<span class="number">01</span>-<span class="number">01</span> TO <span class="number">2012</span>-<span class="number">12</span>-<span class="number">31</span>]</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>数字 1 到 5</li>
-</ul>
-<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">count</span>:[<span class="number">1</span> TO <span class="number">5</span>]</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>在 <code>alpha</code> 和 <code>omega</code> 之间的标签，不包括 <code>alpha</code> 和 <code>omega</code></li>
-</ul>
-<figure class="highlight subunit"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">tags:</span>&#123;alpha TO omega&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>10 以上的数字</li>
-</ul>
-<figure class="highlight sqf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">count</span>:[<span class="number">10</span> <span class="keyword">TO</span> *]</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>2012 年以前的所有日期</li>
-</ul>
-<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">date</span>:&#123;* TO <span class="number">2012</span>-<span class="number">01</span>-<span class="number">01</span>&#125;</span><br></pre></td></tr></table></figure>
-
-<p>此外，开区间和闭区间也可以组合使用</p>
-<ul>
-<li>数组 1 到 5，但不包括 5</li>
-</ul>
-<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">count</span>:[<span class="number">1</span> TO <span class="number">5</span>&#125;</span><br></pre></td></tr></table></figure>
-
-<p>一边无界的范围也可以使用以下语法：</p>
-<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">age</span>:&gt;<span class="number">10</span></span><br><span class="line"><span class="attribute">age</span>:&gt;=<span class="number">10</span></span><br><span class="line"><span class="attribute">age</span>:&lt;<span class="number">10</span></span><br><span class="line"><span class="attribute">age</span>:&lt;=<span class="number">10</span></span><br></pre></td></tr></table></figure>
-
-<p>当然，你也可以使用 AND 运算符来得到连个查询结果的交集</p>
-<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">age</span>:(&gt;=<span class="number">10</span> AND &lt;<span class="number">20</span>)</span><br><span class="line"><span class="attribute">age</span>:(+&gt;=<span class="number">10</span> +&lt;<span class="number">20</span>)</span><br></pre></td></tr></table></figure>
-
-<h4 id="2-1-7-Boosting"><a href="#2-1-7-Boosting" class="headerlink" title="2.1.7. Boosting"></a>2.1.7. Boosting</h4><p>使用操作符 <code>^</code> 使一个术语比另一个术语更相关。例如，如果我们想查找所有有关狐狸的文档，但我们对狐狸特别感兴趣：</p>
-<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">quick</span>^<span class="number">2</span> fox</span><br></pre></td></tr></table></figure>
-
-<p>默认提升值是 1，但可以是任何正浮点数。 0 到 1 之间的提升减少了相关性。</p>
-<p>增强也可以应用于短语或组：</p>
-<figure class="highlight gcode"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;john smith&quot;</span>^<span class="number">2</span>   <span class="comment">(foo bar)</span>^<span class="number">4</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="2-1-8-布尔操作"><a href="#2-1-8-布尔操作" class="headerlink" title="2.1.8. 布尔操作"></a>2.1.8. 布尔操作</h4><p>默认情况下，只要一个词匹配，所有词都是可选的。搜索 <code>foo bar baz</code> 将查找包含 <code>foo</code> 或 <code>bar</code> 或 <code>baz</code> 中的一个或多个的任何文档。我们已经讨论了上面的<code>default_operator</code>，它允许你强制要求所有的项，但也有布尔运算符可以在查询字符串本身中使用，以提供更多的控制。</p>
-<p>首选的操作符是 <code>+</code>（此术语必须存在）和 <code>-</code> （此术语不得存在）。所有其他条款是可选的。例如，这个查询：</p>
-<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">quick <span class="keyword">brown </span>+fox -news</span><br></pre></td></tr></table></figure>
-
-<p>这条查询意味着：</p>
-<ul>
-<li>fox 必须存在</li>
-<li>news 必须不存在</li>
-<li>quick 和 brown 是可有可无的</li>
-</ul>
-<p>熟悉的运算符 <code>AND</code>，<code>OR</code> 和 <code>NOT</code>（也写成 <code>&amp;&amp;</code>，<code>||</code> 和 <code>!</code>）也被支持。然而，这些操作符有一定的优先级：<code>NOT</code> 优先于 <code>AND</code>，<code>AND</code> 优先于 <code>OR</code>。虽然 <code>+</code> 和 <code>-</code> 仅影响运算符右侧的术语，但 <code>AND</code> 和 <code>OR</code> 会影响左侧和右侧的术语。</p>
-<h4 id="2-1-9-分组"><a href="#2-1-9-分组" class="headerlink" title="2.1.9. 分组"></a>2.1.9. 分组</h4><p>多个术语或子句可以用圆括号组合在一起，形成子查询</p>
-<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(quick <span class="keyword">OR </span><span class="keyword">brown) </span><span class="keyword">AND </span>fox</span><br></pre></td></tr></table></figure>
-
-<p>可以使用组来定位特定的字段，或者增强子查询的结果：</p>
-<figure class="highlight excel"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">stat<span class="symbol">us:</span>(active <span class="built_in">OR</span> pending) tit<span class="symbol">le:</span>(full <span class="built_in">text</span> <span class="built_in">search</span>)^<span class="number">2</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="2-1-10-保留字"><a href="#2-1-10-保留字" class="headerlink" title="2.1.10. 保留字"></a>2.1.10. 保留字</h4><p>如果你需要使用任何在你的查询本身中作为操作符的字符（而不是作为操作符），那么你应该用一个反斜杠来转义它们。例如，要搜索（1 + 1）&#x3D; 2，您需要将查询写为 <code>\(1\+1\)\=2</code></p>
-<p>保留字符是：<code>+ - = &amp;&amp; || &gt; &lt; ! ( ) &#123; &#125; [ ] ^ &quot; ~ * ? : \ /</code></p>
-<p>无法正确地转义这些特殊字符可能会导致语法错误，从而阻止您的查询运行。</p>
-<h4 id="2-1-11-空查询"><a href="#2-1-11-空查询" class="headerlink" title="2.1.11. 空查询"></a>2.1.11. 空查询</h4><p>如果查询字符串为空或仅包含空格，则查询将生成一个空的结果集。</p>
-<h3 id="2-2-可视化"><a href="#2-2-可视化" class="headerlink" title="2.2. 可视化"></a>2.2. 可视化</h3><p>要想使用可视化的方式展示您的数据，请单击侧面导航栏中的 <code>可视化（Visualize）</code>。</p>
-<p>Visualize 工具使您能够以多种方式（如饼图、柱状图、曲线图、分布图等）查看数据。要开始使用，请点击蓝色的 <code>Create a visualization</code> 或 <code>+</code> 按钮。</p>
-<p><img src="https://www.elastic.co/guide/en/kibana/6.1/images/tutorial-visualize-landing.png" alt="https://www.elastic.co/guide/en/kibana/6.1/images/tutorial-visualize-landing.png"></p>
-<p>有许多可视化类型可供选择。</p>
-<p><img src="https://www.elastic.co/guide/en/kibana/6.1/images/tutorial-visualize-wizard-step-1.png" alt="https://www.elastic.co/guide/en/kibana/6.1/images/tutorial-visualize-wizard-step-1.png"></p>
-<p>下面，我们来看创建几个图标示例：</p>
-<h4 id="2-2-1-Pie"><a href="#2-2-1-Pie" class="headerlink" title="2.2.1. Pie"></a>2.2.1. Pie</h4><p>您可以从保存的搜索中构建可视化文件，也可以输入新的搜索条件。要输入新的搜索条件，首先需要选择一个索引模式来指定要搜索的索引。</p>
-<p>默认搜索匹配所有文档。最初，一个“切片”包含整个饼图：</p>
-<p><img src="https://www.elastic.co/guide/en/kibana/6.1/images/tutorial-visualize-pie-1.png" alt="https://www.elastic.co/guide/en/kibana/6.1/images/tutorial-visualize-pie-1.png"></p>
-<p>要指定在图表中展示哪些数据，请使用 Elasticsearch 存储桶聚合。分组汇总只是将与您的搜索条件相匹配的文档分类到不同的分类中，也称为分组。</p>
-<p>为每个范围定义一个存储桶：</p>
-<ol>
-<li>单击 <code>Split Slices</code>。</li>
-<li>在 <code>Aggregation</code> 列表中选择 <code>Terms</code>。_注意：这里的 Terms 是 Elk 采集数据时定义好的字段或标签_。</li>
-<li>在 <code>Field</code> 列表中选择 <code>level.keyword</code>。</li>
-<li>点击 <img src="https://www.elastic.co/guide/en/kibana/6.1/images/apply-changes-button.png" alt="images/apply-changes-button.png"> 按钮来更新图表。</li>
-</ol>
-<p><img src="https://upload-images.jianshu.io/upload_images/3101171-7fb2042dc6d59520.png" alt="image.png"></p>
-<p>完成后，如果想要保存这个图表，可以点击页面最上方一栏中的 <code>Save</code> 按钮。</p>
-<h4 id="2-2-2-Vertical-Bar"><a href="#2-2-2-Vertical-Bar" class="headerlink" title="2.2.2. Vertical Bar"></a>2.2.2. Vertical Bar</h4><p>我们在展示一下如何创建柱状图。</p>
-<ol>
-<li>点击蓝色的 <code>Create a visualization</code> 或 <code>+</code> 按钮。选择 <code>Vertical Bar</code></li>
-<li>选择索引模式。由于您尚未定义任何 bucket ，因此您会看到一个大栏，显示与默认通配符查询匹配的文档总数。</li>
-<li>指定 Y 轴所代表的字段</li>
-<li>指定 X 轴所代表的字段</li>
-<li>点击 <img src="https://www.elastic.co/guide/en/kibana/6.1/images/apply-changes-button.png" alt="images/apply-changes-button.png"> 按钮来更新图表。</li>
-</ol>
-<p><img src="https://upload-images.jianshu.io/upload_images/3101171-5aa7627284c19a56.png" alt="image.png"></p>
-<p>完成后，如果想要保存这个图表，可以点击页面最上方一栏中的 <code>Save</code> 按钮。</p>
-<h3 id="2-3-报表"><a href="#2-3-报表" class="headerlink" title="2.3. 报表"></a>2.3. 报表</h3><p><code>报表（Dashboard）</code> 可以整合和共享 <code>Visualize</code> 集合。</p>
-<ol>
-<li>点击侧面导航栏中的 Dashboard。</li>
-<li>点击添加显示保存的可视化列表。</li>
-<li>点击之前保存的 <code>Visualize</code>，然后点击列表底部的小向上箭头关闭可视化列表。</li>
-<li>将鼠标悬停在可视化对象上会显示允许您编辑，移动，删除和调整可视化对象大小的容器控件。</li>
-</ol>
-<h2 id="3-FAQ"><a href="#3-FAQ" class="headerlink" title="3. FAQ"></a>3. FAQ</h2><h3 id="3-1-Kibana-No-Default-Index-Pattern-Warning"><a href="#3-1-Kibana-No-Default-Index-Pattern-Warning" class="headerlink" title="3.1. Kibana No Default Index Pattern Warning"></a>3.1. Kibana No Default Index Pattern Warning</h3><p><strong>问题：</strong>安装 ELK 后，访问 kibana 页面时，提示以下错误信息：</p>
-<figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Warning No default <span class="keyword">index</span> pattern. You must <span class="keyword">select</span> <span class="keyword">or</span> <span class="keyword">create</span> one <span class="keyword">to</span> <span class="keyword">continue</span>.</span><br><span class="line">...</span><br><span class="line">Unable <span class="keyword">to</span> <span class="keyword">fetch</span> <span class="keyword">mapping</span>. <span class="keyword">Do</span> you have indices matching the pattern?</span><br></pre></td></tr></table></figure>
-
-<p>这就说明 logstash 没有把日志写入到 elasticsearch。</p>
-<p><strong>解决方法：</strong></p>
-<p>检查 logstash 与 elasticsearch 之间的通讯是否有问题，一般问题就出在这。</p>
-<h2 id="4-参考资料"><a href="#4-参考资料" class="headerlink" title="4. 参考资料"></a>4. 参考资料</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://www.elastic.co/cn/products/kibana">Kibana 官网</a></li>
-<li><a target="_blank" rel="noopener" href="https://github.com/elastic/kibana">Kibana Github</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.elastic.co/guide/en/kibana/current/index.html">Kibana 官方文档</a></li>
 </ul>
 
       
@@ -4224,337 +4504,6 @@
 <h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
 <li><a target="_blank" rel="noopener" href="https://book.douban.com/subject/23008813/">《高性能 MySQL》</a></li>
 <li><a target="_blank" rel="noopener" href="https://time.geekbang.org/column/intro/139">MySQL 实战 45 讲</a></li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.ligoudan.cn/pages/a697a6/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/ligoudan.png">
-      <meta itemprop="name" content="李狗蛋">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="LIGOUDAN">
-      <meta itemprop="description" content="天气不错哇，你看这大冰雹下得">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | LIGOUDAN">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/pages/a697a6/" class="post-title-link" itemprop="url">Kafka 快速入门</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2020-06-03 09:55:35" itemprop="dateCreated datePublished" datetime="2020-06-03T09:55:35+08:00">2020-06-03</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-12 10:02:53" itemprop="dateModified" datetime="2024-12-12T10:02:53+08:00">2024-12-12</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%88%86%E5%B8%83%E5%BC%8F/" itemprop="url" rel="index"><span itemprop="name">分布式</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%88%86%E5%B8%83%E5%BC%8F/%E5%88%86%E5%B8%83%E5%BC%8F%E9%80%9A%E4%BF%A1/" itemprop="url" rel="index"><span itemprop="name">分布式通信</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%88%86%E5%B8%83%E5%BC%8F/%E5%88%86%E5%B8%83%E5%BC%8F%E9%80%9A%E4%BF%A1/MQ/" itemprop="url" rel="index"><span itemprop="name">MQ</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%88%86%E5%B8%83%E5%BC%8F/%E5%88%86%E5%B8%83%E5%BC%8F%E9%80%9A%E4%BF%A1/MQ/Kafka/" itemprop="url" rel="index"><span itemprop="name">Kafka</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>11k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>10 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="Kafka-快速入门"><a href="#Kafka-快速入门" class="headerlink" title="Kafka 快速入门"></a>Kafka 快速入门</h1><blockquote>
-<p><strong>Apache Kafka 是一款开源的消息引擎系统，也是一个分布式流计算平台，此外，还可以作为数据存储</strong>。</p>
-</blockquote>
-<h2 id="Kafka-简介"><a href="#Kafka-简介" class="headerlink" title="Kafka 简介"></a>Kafka 简介</h2><blockquote>
-<p><strong>Apache Kafka 是一款开源的消息引擎系统，也是一个分布式流计算平台，此外，还可以作为数据存储</strong>。</p>
-</blockquote>
-<p><img src="https://raw.githubusercontent.com/dunwu/images/master/cs/java/javaweb/distributed/mq/kafka/kafka-event-system.png" alt="img"></p>
-<h3 id="Kafka-的功能"><a href="#Kafka-的功能" class="headerlink" title="Kafka 的功能"></a>Kafka 的功能</h3><p>Kafka 的核心功能如下：</p>
-<ul>
-<li><strong>消息引擎</strong> - Kafka 可以作为一个消息引擎系统。</li>
-<li><strong>流处理</strong> - Kafka 可以作为一个分布式流处理平台。</li>
-<li><strong>存储</strong> - Kafka 可以作为一个安全的分布式存储。</li>
-</ul>
-<h3 id="Kafka-的特性"><a href="#Kafka-的特性" class="headerlink" title="Kafka 的特性"></a>Kafka 的特性</h3><p>Kafka 的设计目标：</p>
-<ul>
-<li><strong>高性能</strong><ul>
-<li><strong>分区、分段、索引</strong>：基于分区机制提供并发处理能力。分段、索引提升了数据读写的查询效率。</li>
-<li><strong>顺序读写</strong>：使用顺序读写提升磁盘 IO 性能。</li>
-<li><strong>零拷贝</strong>：利用零拷贝技术，提升网络 I&#x2F;O 效率。</li>
-<li><strong>页缓存</strong>：利用操作系统的 PageCache 来缓存数据（典型的利用空间换时间）</li>
-<li><strong>批量读写</strong>：批量读写可以有效提升网络 I&#x2F;O 效率。</li>
-<li><strong>数据压缩</strong>：Kafka 支持数据压缩，可以有效提升网络 I&#x2F;O 效率。</li>
-<li><strong>pull 模式</strong>：Kafka 架构基于 pull 模式，可以自主控制消费策略，提升传输效率。</li>
-</ul>
-</li>
-<li><strong>高可用</strong><ul>
-<li><strong>持久化</strong>：Kafka 所有的消息都存储在磁盘，天然支持持久化。</li>
-<li><strong>副本机制</strong>：Kafka 的 Broker 集群支持副本机制，可以通过冗余，来保证其整体的可用性。</li>
-<li><strong>选举 Leader</strong>：Kafka 基于 ZooKeeper 支持选举 Leader，实现了故障转移能力。</li>
-</ul>
-</li>
-<li><strong>伸缩性</strong><ul>
-<li><strong>分区</strong>：Kafka 的分区机制使得其具有良好的伸缩性。</li>
-</ul>
-</li>
-</ul>
-<h3 id="Kafka-术语"><a href="#Kafka-术语" class="headerlink" title="Kafka 术语"></a>Kafka 术语</h3><ul>
-<li><strong>消息</strong>：Kafka 的数据单元被称为消息。消息由字节数组组成。</li>
-<li><strong>批次</strong>：批次就是一组消息，这些消息属于同一个主题和分区。</li>
-<li><strong>主题（Topic）</strong>：Kafka 消息通过主题进行分类。主题就类似数据库的表。<ul>
-<li>不同主题的消息是物理隔离的；</li>
-<li>同一个主题的消息保存在一个或多个 Broker 上。但用户只需指定消息的 Topic 即可生产或消费数据而不必关心数据存于何处。</li>
-<li>主题有一个或多个分区。</li>
-</ul>
-</li>
-<li><strong>分区（Partition）</strong>：分区是一个有序不变的消息序列，消息以追加的方式写入分区，然后以先入先出的顺序读取。Kafka 通过分区来实现数据冗余和伸缩性。</li>
-<li><strong>消息偏移量（Offset）</strong>：表示分区中每条消息的位置信息，是一个单调递增且不变的值。</li>
-<li><strong>生产者（Producer）</strong>：生产者是向主题发布新消息的 Kafka 客户端。生产者可以将数据发布到所选择的主题中。生产者负责将记录分配到主题中的哪一个分区中。</li>
-<li><strong>消费者（Consumer）</strong>：消费者是从主题订阅新消息的 Kafka 客户端。消费者通过检查消息的偏移量来区分消息是否已读。</li>
-<li><strong>消费者群组（Consumer Group）</strong>：多个消费者共同构成的一个群组，同时消费多个分区以实现高并发。<ul>
-<li>每个消费者属于一个特定的消费者群组（可以为每个消费者指定消费者群组，若不指定，则属于默认的群组）。</li>
-<li>群组中，一个消费者可以消费多个分区</li>
-<li>群组中，每个分区只能被指定给一个消费</li>
-</ul>
-</li>
-<li><strong>再均衡（Rebalance）</strong>：消费者组内某个消费者实例挂掉后，其他消费者实例自动重新分配订阅主题分区的过程。分区再均衡是 Kafka 消费者端实现高可用的重要手段。</li>
-<li><strong>Broker</strong> - 一个独立的 Kafka 服务器被称为 Broker。Broker 接受来自生产者的消息，为消息设置偏移量，并提交消息到磁盘保存；消费者向 Broker 请求消息，Broker 负责返回已提交的消息。</li>
-<li><strong>副本（Replica）</strong>：Kafka 中同一条消息能够被拷贝到多个地方以提供数据冗余，这些地方就是所谓的副本。副本还分为领导者副本和追随者副本，各自有不同的角色划分。副本是在分区层级下的，即每个分区可配置多个副本实现高可用。</li>
-</ul>
-<h3 id="Kafka-发行版本"><a href="#Kafka-发行版本" class="headerlink" title="Kafka 发行版本"></a>Kafka 发行版本</h3><p>Kafka 主要有以下发行版本：</p>
-<ul>
-<li><strong>Apache Kafka</strong>：也称社区版 Kafka。优势在于迭代速度快，社区响应度高，使用它可以让你有更高的把控度；缺陷在于仅提供基础核心组件，缺失一些高级的特性。</li>
-<li><strong>Confluent Kafka</strong>：Confluent 公司提供的 Kafka。优势在于集成了很多高级特性且由 Kafka 原班人马打造，质量上有保证；缺陷在于相关文档资料不全，普及率较低，没有太多可供参考的范例。</li>
-<li><strong>CDH&#x2F;HDP Kafka</strong>：大数据云公司提供的 Kafka，内嵌 Apache Kafka。优势在于操作简单，节省运维成本；缺陷在于把控度低，演进速度较慢。</li>
-</ul>
-<h3 id="Kafka-重大版本"><a href="#Kafka-重大版本" class="headerlink" title="Kafka 重大版本"></a>Kafka 重大版本</h3><p>Kafka 有以下重大版本：</p>
-<ul>
-<li>0.8<ul>
-<li>正式引入了副本机制</li>
-<li>至少升级到 0.8.2.2</li>
-</ul>
-</li>
-<li>0.9<ul>
-<li>增加了基础的安全认证 &#x2F; 权限功能</li>
-<li>新版本 Producer API 在这个版本中算比较稳定</li>
-</ul>
-</li>
-<li>0.10<ul>
-<li>引入了 Kafka Streams</li>
-<li>至少升级到 0.10.2.2</li>
-<li>修复了一个可能导致 Producer 性能降低的 Bug</li>
-<li>使用新版本 Consumer API</li>
-</ul>
-</li>
-<li>0.11<ul>
-<li>提供幂等性 Producer API 以及事务</li>
-<li>对 Kafka 消息格式做了重构</li>
-<li>至少升级到 0.11.0.3</li>
-</ul>
-</li>
-<li>1.0 和 2.0<ul>
-<li>Kafka Streams 的改进</li>
-</ul>
-</li>
-</ul>
-<h2 id="Kafka-服务端使用入门"><a href="#Kafka-服务端使用入门" class="headerlink" title="Kafka 服务端使用入门"></a>Kafka 服务端使用入门</h2><h3 id="步骤一、获取-Kafka"><a href="#步骤一、获取-Kafka" class="headerlink" title="步骤一、获取 Kafka"></a>步骤一、获取 Kafka</h3><p>下载最新的 Kafka 版本并解压到本地。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ tar -xzf kafka_2.13-2.7.0.tgz</span><br><span class="line">$ <span class="built_in">cd</span> kafka_2.13-2.7.0</span><br></pre></td></tr></table></figure>
-
-<h3 id="步骤二、启动-Kafka-环境"><a href="#步骤二、启动-Kafka-环境" class="headerlink" title="步骤二、启动 Kafka 环境"></a>步骤二、启动 Kafka 环境</h3><blockquote>
-<p>注意：本地必须已安装 Java8</p>
-</blockquote>
-<p>执行以下指令，保证所有服务按照正确的顺序启动：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Start the ZooKeeper service</span></span><br><span class="line"><span class="comment"># Note: Soon, ZooKeeper will no longer be required by Apache Kafka.</span></span><br><span class="line">$ bin/zookeeper-server-start.sh config/zookeeper.properties</span><br></pre></td></tr></table></figure>
-
-<p>打开另一个终端会话，并执行：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Start the Kafka broker service</span></span><br><span class="line">$ bin/kafka-server-start.sh config/server.properties</span><br></pre></td></tr></table></figure>
-
-<p>一旦所有服务成功启动，您就已经成功运行了一个基本的 kafka 环境。</p>
-<h3 id="步骤三、创建一个-TOPIC-并存储您的事件"><a href="#步骤三、创建一个-TOPIC-并存储您的事件" class="headerlink" title="步骤三、创建一个 TOPIC 并存储您的事件"></a>步骤三、创建一个 TOPIC 并存储您的事件</h3><p>Kafka 是一个分布式事件流处理平台，它可以让您通过各种机制读、写、存储并处理事件（<a target="_blank" rel="noopener" href="https://kafka.apache.org/documentation/#messages"><em>events</em></a>，也被称为记录或消息）</p>
-<p>示例事件包括付款交易，手机的地理位置更新，运输订单，物联网设备或医疗设备的传感器测量等等。 这些事件被组织并存储在主题中（<a target="_blank" rel="noopener" href="https://kafka.apache.org/documentation/#intro_concepts_and_terms"><em>topics</em></a>）。 简单来说，主题类似于文件系统中的文件夹，而事件是该文件夹中的文件。</p>
-<p>因此，在您写入第一个事件之前，您必须先创建一个 Topic。执行以下指令：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ bin/kafka-topics.sh --create --topic quickstart-events --bootstrap-server localhost:9092</span><br></pre></td></tr></table></figure>
-
-<p>所有的 Kafka 命令行工具都有附加可选项：不加任何参数，运行 <code>kafka-topics.sh</code> 命令会显示使用信息。例如，会显示新 Topic 的分区数等细节。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ bin/kafka-topics.sh --describe --topic quickstart-events --bootstrap-server localhost:9092</span><br><span class="line">Topic:quickstart-events  PartitionCount:1    ReplicationFactor:1 Configs:</span><br><span class="line">    Topic: quickstart-events Partition: 0    Leader: 0   Replicas: 0 Isr: 0</span><br></pre></td></tr></table></figure>
-
-<h3 id="步骤四、向-Topic-写入-Event"><a href="#步骤四、向-Topic-写入-Event" class="headerlink" title="步骤四、向 Topic 写入 Event"></a>步骤四、向 Topic 写入 Event</h3><p>Kafka 客户端和 Kafka Broker 的通信是通过网络读写 Event。一旦收到信息，Broker 会将其以您需要的时间（甚至永久化）、容错化的方式存储。</p>
-<p>执行 <code>kafka-console-producer.sh</code> 命令将 Event 写入 Topic。默认，您输入的任意行会作为独立 Event 写入 Topic：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ bin/kafka-console-producer.sh --topic quickstart-events --bootstrap-server localhost:9092</span><br><span class="line">This is my first event</span><br><span class="line">This is my second event</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>您可以通过 <code>Ctrl-C</code> 在任何时候中断 <code>kafka-console-producer.sh</code></p>
-</blockquote>
-<h3 id="步骤五、读-Event"><a href="#步骤五、读-Event" class="headerlink" title="步骤五、读 Event"></a>步骤五、读 Event</h3><p>执行 kafka-console-consumer.sh 以读取写入 Topic 中的 Event</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ bin/kafka-console-consumer.sh --topic quickstart-events --from-beginning --bootstrap-server localhost:9092</span><br><span class="line">This is my first event</span><br><span class="line">This is my second event</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>您可以通过 <code>Ctrl-C</code> 在任何时候中断 <code>kafka-console-consumer.sh</code></p>
-</blockquote>
-<p>由于 Event 被持久化存储在 Kafka 中，因此您可以根据需要任意多次地读取它们。 您可以通过打开另一个终端会话并再次重新运行上一个命令来轻松地验证这一点。</p>
-<h3 id="步骤六、通过-KAFKA-CONNECT-将数据作为事件流导入-导出"><a href="#步骤六、通过-KAFKA-CONNECT-将数据作为事件流导入-导出" class="headerlink" title="步骤六、通过 KAFKA CONNECT 将数据作为事件流导入&#x2F;导出"></a>步骤六、通过 KAFKA CONNECT 将数据作为事件流导入&#x2F;导出</h3><p>您可能有大量数据，存储在传统的关系数据库或消息队列系统中，并且有许多使用这些系统的应用程序。 通过 <a target="_blank" rel="noopener" href="https://kafka.apache.org/documentation/#connect">Kafka Connect</a>，您可以将来自外部系统的数据持续地导入到 Kafka 中，反之亦然。 因此，将已有系统与 Kafka 集成非常容易。为了使此过程更加容易，有数百种此类连接器可供使用。</p>
-<p>需要了解有关如何将数据导入和导出 Kafka 的更多信息，可以参考：<a target="_blank" rel="noopener" href="https://kafka.apache.org/documentation/#connect">Kafka Connect section</a> 章节。</p>
-<h3 id="步骤七、使用-Kafka-Streams-处理事件"><a href="#步骤七、使用-Kafka-Streams-处理事件" class="headerlink" title="步骤七、使用 Kafka Streams 处理事件"></a>步骤七、使用 Kafka Streams 处理事件</h3><p>一旦将数据作为 Event 存储在 Kafka 中，就可以使用 <a target="_blank" rel="noopener" href="https://kafka.apache.org/documentation/streams">Kafka Streams</a> 的 Java &#x2F; Scala 客户端。它允许您实现关键任务的实时应用程序和微服务，其中输入（和&#x2F;或）输出数据存储在 Kafka Topic 中。</p>
-<p>Kafka Streams 结合了 Kafka 客户端编写和部署标准 Java 和 Scala 应用程序的简便性，以及 Kafka 服务器集群技术的优势，使这些应用程序具有高度的可伸缩性、弹性、容错性和分布式。该库支持一次性处理，有状态的操作，以及聚合、窗口化化操作、join、基于事件时间的处理等等。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">KStream&lt;String, String&gt; textLines = builder.stream(<span class="string">&quot;quickstart-events&quot;</span>);</span><br><span class="line"></span><br><span class="line">KTable&lt;String, Long&gt; wordCounts = textLines</span><br><span class="line">            .flatMapValues(line -&gt; Arrays.asList(line.toLowerCase().split(<span class="string">&quot; &quot;</span>)))</span><br><span class="line">            .groupBy((keyIgnored, word) -&gt; word)</span><br><span class="line">            .count();</span><br><span class="line"></span><br><span class="line">wordCounts.toStream().to(<span class="string">&quot;output-topic&quot;</span>), Produced.with(Serdes.String(), Serdes.Long()));</span><br></pre></td></tr></table></figure>
-
-<p><a target="_blank" rel="noopener" href="https://kafka.apache.org/25/documentation/streams/quickstart">Kafka Streams demo</a> 和 <a target="_blank" rel="noopener" href="https://kafka.apache.org/25/documentation/streams/tutorial">app development tutorial</a> 展示了如何从头到尾的编码并运行一个流式应用。</p>
-<h3 id="步骤八、终止-Kafka-环境"><a href="#步骤八、终止-Kafka-环境" class="headerlink" title="步骤八、终止 Kafka 环境"></a>步骤八、终止 Kafka 环境</h3><ol>
-<li>如果尚未停止，请使用 <code>Ctrl-C</code> 停止生产者和消费者客户端。</li>
-<li>使用 <code>Ctrl-C</code> 停止 Kafka 代理。</li>
-<li>最后，使用 <code>Ctrl-C</code> 停止 ZooKeeper 服务器。</li>
-</ol>
-<p>如果您还想删除本地 Kafka 环境的所有数据，包括您在此过程中创建的所有事件，请执行以下命令：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">rm</span> -rf /tmp/kafka-logs /tmp/zookeeper</span><br></pre></td></tr></table></figure>
-
-<h2 id="Kafka-Java-客户端使用入门"><a href="#Kafka-Java-客户端使用入门" class="headerlink" title="Kafka Java 客户端使用入门"></a>Kafka Java 客户端使用入门</h2><h3 id="引入-maven-依赖"><a href="#引入-maven-依赖" class="headerlink" title="引入 maven 依赖"></a>引入 maven 依赖</h3><p>Stream API 的 maven 依赖：</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.kafka<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>kafka-streams<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.1.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>其他 API 的 maven 依赖：</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.kafka<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>kafka-clients<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.1.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="Kafka-核心-API"><a href="#Kafka-核心-API" class="headerlink" title="Kafka 核心 API"></a>Kafka 核心 API</h3><p>Kafka 有 5 个核心 API</p>
-<ul>
-<li><a target="_blank" rel="noopener" href="https://kafka.apache.org/documentation.html#producerapi">Producer API</a> - 允许一个应用程序发布一串流式数据到一个或者多个 Kafka Topic。</li>
-<li><a target="_blank" rel="noopener" href="https://kafka.apache.org/documentation.html#consumerapi">Consumer API</a> - 允许一个应用程序订阅一个或多个 Kafka Topic，并且对发布给他们的流式数据进行处理。</li>
-<li><a target="_blank" rel="noopener" href="https://kafka.apache.org/documentation/streams">Streams API</a> - 允许一个应用程序作为一个流处理器，消费一个或者多个 Kafka Topic 产生的输入流，然后生产一个输出流到一个或多个 Kafka Topic 中去，在输入输出流中进行有效的转换。</li>
-<li><a target="_blank" rel="noopener" href="https://kafka.apache.org/documentation.html#connect">Connector API</a> - 允许构建并运行可重用的生产者或者消费者，将 Kafka Topic 连接到已存在的应用程序或数据库。例如，连接到一个关系型数据库，捕捉表的所有变更内容。</li>
-<li><a target="_blank" rel="noopener" href="https://kafka.apache.org/documentation/#adminapi">Admin API</a> - 支持管理和检查 Topic，Broker，ACL 和其他 Kafka 对象。</li>
-</ul>
-<h3 id="发送消息"><a href="#发送消息" class="headerlink" title="发送消息"></a>发送消息</h3><h4 id="发送并忽略返回"><a href="#发送并忽略返回" class="headerlink" title="发送并忽略返回"></a>发送并忽略返回</h4><p>代码如下，直接通过 <code>send</code> 方法来发送</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ProducerRecord&lt;String, String&gt; record =</span><br><span class="line">            <span class="keyword">new</span> <span class="title class_">ProducerRecord</span>&lt;&gt;(<span class="string">&quot;CustomerCountry&quot;</span>, <span class="string">&quot;Precision Products&quot;</span>, <span class="string">&quot;France&quot;</span>);</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">            producer.send(record);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="同步发送"><a href="#同步发送" class="headerlink" title="同步发送"></a>同步发送</h4><p>代码如下，与“发送并忘记”的方式区别在于多了一个 <code>get</code> 方法，会一直阻塞等待 <code>Broker</code> 返回结果：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ProducerRecord&lt;String, String&gt; record =</span><br><span class="line">            <span class="keyword">new</span> <span class="title class_">ProducerRecord</span>&lt;&gt;(<span class="string">&quot;CustomerCountry&quot;</span>, <span class="string">&quot;Precision Products&quot;</span>, <span class="string">&quot;France&quot;</span>);</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">            producer.send(record).get();</span><br><span class="line">    &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="异步发送"><a href="#异步发送" class="headerlink" title="异步发送"></a>异步发送</h4><p>代码如下，异步方式相对于“发送并忽略返回”的方式的不同在于：在异步返回时可以执行一些操作，如记录错误或者成功日志。</p>
-<p>首先，定义一个 callback</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">class</span> <span class="title class_">DemoProducerCallback</span> <span class="keyword">implements</span> <span class="title class_">Callback</span> &#123;</span><br><span class="line">      <span class="meta">@Override</span></span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onCompletion</span><span class="params">(RecordMetadata recordMetadata, Exception e)</span> &#123;</span><br><span class="line">           <span class="keyword">if</span> (e != <span class="literal">null</span>) &#123;</span><br><span class="line">               e.printStackTrace();</span><br><span class="line">             &#125;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>然后，使用这个 callback</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ProducerRecord&lt;String, String&gt; record =</span><br><span class="line">            <span class="keyword">new</span> <span class="title class_">ProducerRecord</span>&lt;&gt;(<span class="string">&quot;CustomerCountry&quot;</span>, <span class="string">&quot;Biomedical Materials&quot;</span>, <span class="string">&quot;USA&quot;</span>);</span><br><span class="line">producer.send(record, <span class="keyword">new</span> <span class="title class_">DemoProducerCallback</span>());</span><br></pre></td></tr></table></figure>
-
-<h4 id="发送消息示例"><a href="#发送消息示例" class="headerlink" title="发送消息示例"></a>发送消息示例</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Properties;</span><br><span class="line"><span class="keyword">import</span> org.apache.kafka.clients.producer.KafkaProducer;</span><br><span class="line"><span class="keyword">import</span> org.apache.kafka.clients.producer.Producer;</span><br><span class="line"><span class="keyword">import</span> org.apache.kafka.clients.producer.ProducerConfig;</span><br><span class="line"><span class="keyword">import</span> org.apache.kafka.clients.producer.ProducerRecord;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Kafka 生产者生产消息示例 生产者配置参考：https://kafka.apache.org/documentation/#producerconfigs</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ProducerDemo</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">String</span> <span class="variable">HOST</span> <span class="operator">=</span> <span class="string">&quot;localhost:9092&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="comment">// 1. 指定生产者的配置</span></span><br><span class="line">        <span class="type">Properties</span> <span class="variable">properties</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Properties</span>();</span><br><span class="line">        properties.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, HOST);</span><br><span class="line">        properties.put(ProducerConfig.ACKS_CONFIG, <span class="string">&quot;all&quot;</span>);</span><br><span class="line">        properties.put(ProducerConfig.RETRIES_CONFIG, <span class="number">0</span>);</span><br><span class="line">        properties.put(ProducerConfig.BATCH_SIZE_CONFIG, <span class="number">16384</span>);</span><br><span class="line">        properties.put(ProducerConfig.LINGER_MS_CONFIG, <span class="number">1</span>);</span><br><span class="line">        properties.put(ProducerConfig.BUFFER_MEMORY_CONFIG, <span class="number">33554432</span>);</span><br><span class="line">        properties.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG,</span><br><span class="line">            <span class="string">&quot;org.apache.kafka.common.serialization.StringSerializer&quot;</span>);</span><br><span class="line">        properties.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG,</span><br><span class="line">            <span class="string">&quot;org.apache.kafka.common.serialization.StringSerializer&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 2. 使用配置初始化 Kafka 生产者</span></span><br><span class="line">        Producer&lt;String, String&gt; producer = <span class="keyword">new</span> <span class="title class_">KafkaProducer</span>&lt;&gt;(properties);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">// 3. 使用 send 方法发送异步消息</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; <span class="number">100</span>; i++) &#123;</span><br><span class="line">                <span class="type">String</span> <span class="variable">msg</span> <span class="operator">=</span> <span class="string">&quot;Message &quot;</span> + i;</span><br><span class="line">                producer.send(<span class="keyword">new</span> <span class="title class_">ProducerRecord</span>&lt;&gt;(<span class="string">&quot;HelloWorld&quot;</span>, msg));</span><br><span class="line">                System.out.println(<span class="string">&quot;Sent:&quot;</span> + msg);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">            <span class="comment">// 4. 关闭生产者</span></span><br><span class="line">            producer.close();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="消费消息流程"><a href="#消费消息流程" class="headerlink" title="消费消息流程"></a>消费消息流程</h3><h4 id="消费流程"><a href="#消费流程" class="headerlink" title="消费流程"></a>消费流程</h4><p>具体步骤如下：</p>
-<ol>
-<li>创建消费者。</li>
-<li>订阅主题。除了订阅主题方式外还有使用指定分组的模式，但是常用方式都是订阅主题方式</li>
-<li>轮询消息。通过 poll 方法轮询。</li>
-<li>关闭消费者。在不用消费者之后，会执行 close 操作。close 操作会关闭 socket，并触发当前消费者群组的再均衡。</li>
-</ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1.构建KafkaCustomer</span></span><br><span class="line"><span class="type">Consumer</span> <span class="variable">consumer</span> <span class="operator">=</span> buildCustomer();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 2.设置主题</span></span><br><span class="line">consumer.subscribe(Arrays.asList(topic));</span><br><span class="line"></span><br><span class="line"><span class="comment">// 3.接受消息</span></span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">        ConsumerRecords&lt;String, String&gt; records = consumer.poll(<span class="number">500</span>);</span><br><span class="line">        System.out.println(<span class="string">&quot;customer Message---&quot;</span>);</span><br><span class="line">        <span class="keyword">for</span> (ConsumerRecord&lt;String, String&gt; record : records)</span><br><span class="line"></span><br><span class="line">            <span class="comment">// print the offset,key and value for the consumer records.</span></span><br><span class="line">            System.out.printf(<span class="string">&quot;offset = %d, key = %s, value = %s\n&quot;</span>,</span><br><span class="line">                    record.offset(), record.key(), record.value());</span><br><span class="line">    &#125;</span><br><span class="line">&#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">    <span class="comment">// 4.关闭消息</span></span><br><span class="line">        consumer.close();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>创建消费者的代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> Consumer <span class="title function_">buildCustomer</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">Properties</span> <span class="variable">props</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Properties</span>();</span><br><span class="line">    <span class="comment">// bootstrap.servers是Kafka集群的IP地址。多个时,使用逗号隔开</span></span><br><span class="line">    props.put(<span class="string">&quot;bootstrap.servers&quot;</span>, <span class="string">&quot;localhost:9092&quot;</span>);</span><br><span class="line">    <span class="comment">// 消费者群组</span></span><br><span class="line">    props.put(<span class="string">&quot;group.id&quot;</span>, <span class="string">&quot;test&quot;</span>);</span><br><span class="line">    props.put(<span class="string">&quot;enable.auto.commit&quot;</span>, <span class="string">&quot;true&quot;</span>);</span><br><span class="line">    props.put(<span class="string">&quot;auto.commit.interval.ms&quot;</span>, <span class="string">&quot;1000&quot;</span>);</span><br><span class="line">    props.put(<span class="string">&quot;session.timeout.ms&quot;</span>, <span class="string">&quot;30000&quot;</span>);</span><br><span class="line">    props.put(<span class="string">&quot;key.deserializer&quot;</span>,</span><br><span class="line">            <span class="string">&quot;org.apache.kafka.common.serialization.StringDeserializer&quot;</span>);</span><br><span class="line">    props.put(<span class="string">&quot;value.deserializer&quot;</span>,</span><br><span class="line">            <span class="string">&quot;org.apache.kafka.common.serialization.StringDeserializer&quot;</span>);</span><br><span class="line">    KafkaConsumer&lt;String, String&gt; consumer = <span class="keyword">new</span> <span class="title class_">KafkaConsumer</span></span><br><span class="line">            &lt;String, String&gt;(props);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> consumer;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="消费消息方式"><a href="#消费消息方式" class="headerlink" title="消费消息方式"></a>消费消息方式</h4><p>分为订阅主题和指定分组两种方式：</p>
-<ul>
-<li>消费者分组模式。通过订阅主题方式时，消费者必须加入到消费者群组中，即消费者必须有一个自己的分组；</li>
-<li>独立消费者模式。这种模式就是消费者是独立的不属于任何消费者分组，自己指定消费那些 <code>Partition</code>。</li>
-</ul>
-<p>（1）订阅主题方式</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">consumer.subscribe(Arrays.asList(topic));</span><br></pre></td></tr></table></figure>
-
-<p>（2）独立消费者模式</p>
-<p>通过 consumer 的 <code>assign(Collection&lt;TopicPartition&gt; partitions)</code> 方法来为消费者指定分区。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">consumeMessageForIndependentConsumer</span><span class="params">(String topic)</span>&#123;</span><br><span class="line">    <span class="comment">// 1.构建KafkaCustomer</span></span><br><span class="line">    <span class="type">Consumer</span> <span class="variable">consumer</span> <span class="operator">=</span> buildCustomer();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 2.指定分区</span></span><br><span class="line">    <span class="comment">// 2.1获取可用分区</span></span><br><span class="line">    List&lt;PartitionInfo&gt; partitionInfoList = buildCustomer().partitionsFor(topic);</span><br><span class="line">    <span class="comment">// 2.2指定分区,这里是指定了所有分区,也可以指定个别的分区</span></span><br><span class="line">    <span class="keyword">if</span>(<span class="literal">null</span> != partitionInfoList)&#123;</span><br><span class="line">        List&lt;TopicPartition&gt; partitions = Lists.newArrayList();</span><br><span class="line">        <span class="keyword">for</span>(PartitionInfo partitionInfo : partitionInfoList)&#123;</span><br><span class="line">            partitions.add(<span class="keyword">new</span> <span class="title class_">TopicPartition</span>(partitionInfo.topic(),partitionInfo.partition()));</span><br><span class="line">        &#125;</span><br><span class="line">        consumer.assign(partitions);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 3.接受消息</span></span><br><span class="line">    <span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">        ConsumerRecords&lt;String, String&gt; records = consumer.poll(<span class="number">500</span>);</span><br><span class="line">        System.out.println(<span class="string">&quot;consume Message---&quot;</span>);</span><br><span class="line">        <span class="keyword">for</span> (ConsumerRecord&lt;String, String&gt; record : records) &#123;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// print the offset,key and value for the consumer records.</span></span><br><span class="line">            System.out.printf(<span class="string">&quot;offset = %d, key = %s, value = %s\n&quot;</span>,</span><br><span class="line">                    record.offset(), record.key(), record.value());</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 异步提交</span></span><br><span class="line">            consumer.commitAsync();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
-<li><strong>官方</strong><ul>
-<li><a target="_blank" rel="noopener" href="http://kafka.apache.org/">Kafka 官网</a></li>
-<li><a target="_blank" rel="noopener" href="https://github.com/apache/kafka">Kafka Github</a></li>
-<li><a target="_blank" rel="noopener" href="https://kafka.apache.org/documentation/">Kafka 官方文档</a></li>
-</ul>
-</li>
-<li><strong>书籍</strong><ul>
-<li><a target="_blank" rel="noopener" href="https://item.jd.com/12270295.html">《Kafka 权威指南》</a></li>
-</ul>
-</li>
-<li><strong>教程</strong><ul>
-<li><a target="_blank" rel="noopener" href="https://github.com/apachecn/kafka-doc-zh">Kafka 中文文档</a></li>
-<li><a target="_blank" rel="noopener" href="https://time.geekbang.org/column/intro/100029201">Kafka 核心技术与实战</a></li>
-</ul>
-</li>
-<li><strong>文章</strong><ul>
-<li><a target="_blank" rel="noopener" href="https://hackernoon.com/thorough-introduction-to-apache-kafka-6fbf2989bbc1">Thorough Introduction to Apache Kafka</a></li>
-<li><a target="_blank" rel="noopener" href="http://www.heartthinkdo.com/?p=2006#233">Kafka(03) Kafka 介绍</a></li>
-</ul>
-</li>
 </ul>
 
       

@@ -88,7 +88,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">326</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">137</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">461</span></a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">326</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">137</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">462</span></a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -153,7 +153,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">461</span>
+          <span class="site-state-item-count">462</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -205,7 +205,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.ligoudan.cn/pages/229daa/">
+    <link itemprop="mainEntityOfPage" href="https://www.ligoudan.cn/pages/b7b857/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/uploads/ligoudan.png">
@@ -223,7 +223,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/pages/229daa/" class="post-title-link" itemprop="url">Hive 常用 DDL 操作</a>
+          <a href="/pages/b7b857/" class="post-title-link" itemprop="url">Hive 数据查询详解</a>
         </h2>
 
         <div class="post-meta-container">
@@ -264,7 +264,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>6k</span>
+      <span>5.4k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -282,125 +282,115 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="Hive-常用-DDL-操作"><a href="#Hive-常用-DDL-操作" class="headerlink" title="Hive 常用 DDL 操作"></a>Hive 常用 DDL 操作</h1><h2 id="Database"><a href="#Database" class="headerlink" title="Database"></a>Database</h2><h3 id="查看数据列表"><a href="#查看数据列表" class="headerlink" title="查看数据列表"></a>查看数据列表</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">show</span> databases;</span><br></pre></td></tr></table></figure>
+          <h1 id="Hive-数据查询详解"><a href="#Hive-数据查询详解" class="headerlink" title="Hive 数据查询详解"></a>Hive 数据查询详解</h1><h2 id="数据准备"><a href="#数据准备" class="headerlink" title="数据准备"></a>数据准备</h2><p>为了演示查询操作，这里需要预先创建三张表，并加载测试数据。</p>
+<blockquote>
+<p>数据文件 emp.txt 和 dept.txt 可以从本仓库的<a target="_blank" rel="noopener" href="https://github.com/heibaiying/BigData-Notes/tree/master/resources">resources</a> 目录下载。</p>
+</blockquote>
+<h3 id="员工表"><a href="#员工表" class="headerlink" title="员工表"></a>员工表</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">-- 建表语句</span></span><br><span class="line"> <span class="keyword">CREATE</span> <span class="keyword">TABLE</span> emp(</span><br><span class="line">     empno <span class="type">INT</span>,     <span class="comment">-- 员工表编号</span></span><br><span class="line">     ename STRING,  <span class="comment">-- 员工姓名</span></span><br><span class="line">     job STRING,    <span class="comment">-- 职位类型</span></span><br><span class="line">     mgr <span class="type">INT</span>,</span><br><span class="line">     hiredate <span class="type">TIMESTAMP</span>,  <span class="comment">--雇佣日期</span></span><br><span class="line">     sal <span class="type">DECIMAL</span>(<span class="number">7</span>,<span class="number">2</span>),  <span class="comment">--工资</span></span><br><span class="line">     comm <span class="type">DECIMAL</span>(<span class="number">7</span>,<span class="number">2</span>),</span><br><span class="line">     deptno <span class="type">INT</span>)   <span class="comment">--部门编号</span></span><br><span class="line">    <span class="type">ROW</span> FORMAT DELIMITED FIELDS TERMINATED <span class="keyword">BY</span> &quot;\t&quot;;</span><br><span class="line"></span><br><span class="line">  <span class="comment">--加载数据</span></span><br><span class="line">LOAD DATA <span class="keyword">LOCAL</span> INPATH &quot;/usr/file/emp.txt&quot; OVERWRITE <span class="keyword">INTO</span> <span class="keyword">TABLE</span> emp;</span><br></pre></td></tr></table></figure>
 
-<h3 id="使用数据库"><a href="#使用数据库" class="headerlink" title="使用数据库"></a>使用数据库</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">USE database_name;</span><br></pre></td></tr></table></figure>
+<h3 id="部门表"><a href="#部门表" class="headerlink" title="部门表"></a>部门表</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 建表语句</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> dept(</span><br><span class="line">    deptno <span class="type">INT</span>,   <span class="comment">--部门编号</span></span><br><span class="line">    dname STRING,  <span class="comment">--部门名称</span></span><br><span class="line">    loc STRING    <span class="comment">--部门所在的城市</span></span><br><span class="line">)</span><br><span class="line"><span class="type">ROW</span> FORMAT DELIMITED FIELDS TERMINATED <span class="keyword">BY</span> &quot;\t&quot;;</span><br><span class="line"></span><br><span class="line"><span class="comment">--加载数据</span></span><br><span class="line">LOAD DATA <span class="keyword">LOCAL</span> INPATH &quot;/usr/file/dept.txt&quot; OVERWRITE <span class="keyword">INTO</span> <span class="keyword">TABLE</span> dept;</span><br></pre></td></tr></table></figure>
 
-<h3 id="新建数据库"><a href="#新建数据库" class="headerlink" title="新建数据库"></a>新建数据库</h3><p>语法：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> (DATABASE<span class="operator">|</span>SCHEMA) [IF <span class="keyword">NOT</span> <span class="keyword">EXISTS</span>] database_name   <span class="comment">--DATABASE|SCHEMA 是等价的</span></span><br><span class="line">  [COMMENT database_comment] <span class="comment">--数据库注释</span></span><br><span class="line">  [LOCATION hdfs_path] <span class="comment">--存储在 HDFS 上的位置</span></span><br><span class="line">  [<span class="keyword">WITH</span> DBPROPERTIES (property_name<span class="operator">=</span>property_value, ...)]; <span class="comment">--指定额外属性</span></span><br></pre></td></tr></table></figure>
+<h3 id="分区表"><a href="#分区表" class="headerlink" title="分区表"></a>分区表</h3><p>这里需要额外创建一张分区表，主要是为了演示分区查询：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">EXTERNAL</span> <span class="keyword">TABLE</span> emp_ptn(</span><br><span class="line">      empno <span class="type">INT</span>,</span><br><span class="line">      ename STRING,</span><br><span class="line">      job STRING,</span><br><span class="line">      mgr <span class="type">INT</span>,</span><br><span class="line">      hiredate <span class="type">TIMESTAMP</span>,</span><br><span class="line">      sal <span class="type">DECIMAL</span>(<span class="number">7</span>,<span class="number">2</span>),</span><br><span class="line">      comm <span class="type">DECIMAL</span>(<span class="number">7</span>,<span class="number">2</span>)</span><br><span class="line">  )</span><br><span class="line"> PARTITIONED <span class="keyword">BY</span> (deptno <span class="type">INT</span>)   <span class="comment">-- 按照部门编号进行分区</span></span><br><span class="line"> <span class="type">ROW</span> FORMAT DELIMITED FIELDS TERMINATED <span class="keyword">BY</span> &quot;\t&quot;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">--加载数据</span></span><br><span class="line">LOAD DATA <span class="keyword">LOCAL</span> INPATH &quot;/usr/file/emp.txt&quot; OVERWRITE <span class="keyword">INTO</span> <span class="keyword">TABLE</span> emp_ptn <span class="keyword">PARTITION</span> (deptno<span class="operator">=</span><span class="number">20</span>)</span><br><span class="line">LOAD DATA <span class="keyword">LOCAL</span> INPATH &quot;/usr/file/emp.txt&quot; OVERWRITE <span class="keyword">INTO</span> <span class="keyword">TABLE</span> emp_ptn <span class="keyword">PARTITION</span> (deptno<span class="operator">=</span><span class="number">30</span>)</span><br><span class="line">LOAD DATA <span class="keyword">LOCAL</span> INPATH &quot;/usr/file/emp.txt&quot; OVERWRITE <span class="keyword">INTO</span> <span class="keyword">TABLE</span> emp_ptn <span class="keyword">PARTITION</span> (deptno<span class="operator">=</span><span class="number">40</span>)</span><br><span class="line">LOAD DATA <span class="keyword">LOCAL</span> INPATH &quot;/usr/file/emp.txt&quot; OVERWRITE <span class="keyword">INTO</span> <span class="keyword">TABLE</span> emp_ptn <span class="keyword">PARTITION</span> (deptno<span class="operator">=</span><span class="number">50</span>)</span><br></pre></td></tr></table></figure>
 
-<p>示例：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> DATABASE IF <span class="keyword">NOT</span> <span class="keyword">EXISTS</span> hive_test</span><br><span class="line">  COMMENT <span class="string">&#x27;hive database for test&#x27;</span></span><br><span class="line">  <span class="keyword">WITH</span> DBPROPERTIES (<span class="string">&#x27;create&#x27;</span><span class="operator">=</span><span class="string">&#x27;heibaiying&#x27;</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="单表查询"><a href="#单表查询" class="headerlink" title="单表查询"></a>单表查询</h2><h3 id="SELECT"><a href="#SELECT" class="headerlink" title="SELECT"></a>SELECT</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 查询表中全部数据</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> emp;</span><br></pre></td></tr></table></figure>
 
-<h3 id="查看数据库信息"><a href="#查看数据库信息" class="headerlink" title="查看数据库信息"></a>查看数据库信息</h3><p>语法：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DESC</span> DATABASE [EXTENDED] db_name; <span class="comment">--EXTENDED 表示是否显示额外属性</span></span><br></pre></td></tr></table></figure>
+<h3 id="WHERE"><a href="#WHERE" class="headerlink" title="WHERE"></a>WHERE</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 查询 10 号部门中员工编号大于 7782 的员工信息</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> emp <span class="keyword">WHERE</span> empno <span class="operator">&gt;</span> <span class="number">7782</span> <span class="keyword">AND</span> deptno <span class="operator">=</span> <span class="number">10</span>;</span><br></pre></td></tr></table></figure>
 
-<p>示例：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DESC</span> DATABASE  EXTENDED hive_test;</span><br></pre></td></tr></table></figure>
+<h3 id="DISTINCT"><a href="#DISTINCT" class="headerlink" title="DISTINCT"></a>DISTINCT</h3><p>Hive 支持使用 DISTINCT 关键字去重。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 查询所有工作类型</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">DISTINCT</span> job <span class="keyword">FROM</span> emp;</span><br></pre></td></tr></table></figure>
 
-<h3 id="删除数据库"><a href="#删除数据库" class="headerlink" title="删除数据库"></a>删除数据库</h3><p>语法：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> (DATABASE<span class="operator">|</span>SCHEMA) [IF <span class="keyword">EXISTS</span>] database_name [RESTRICT<span class="operator">|</span>CASCADE];</span><br></pre></td></tr></table></figure>
+<h3 id="分区查询"><a href="#分区查询" class="headerlink" title="分区查询"></a>分区查询</h3><p>分区查询 (Partition Based Queries)，可以指定某个分区或者分区范围。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 查询分区表中部门编号在[20,40]之间的员工</span></span><br><span class="line"><span class="keyword">SELECT</span> emp_ptn.<span class="operator">*</span> <span class="keyword">FROM</span> emp_ptn</span><br><span class="line"><span class="keyword">WHERE</span> emp_ptn.deptno <span class="operator">&gt;=</span> <span class="number">20</span> <span class="keyword">AND</span> emp_ptn.deptno <span class="operator">&lt;=</span> <span class="number">40</span>;</span><br></pre></td></tr></table></figure>
 
+<h3 id="LIMIT"><a href="#LIMIT" class="headerlink" title="LIMIT"></a>LIMIT</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 查询薪资最高的 5 名员工</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> emp <span class="keyword">ORDER</span> <span class="keyword">BY</span> sal <span class="keyword">DESC</span> LIMIT <span class="number">5</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="GROUP-BY"><a href="#GROUP-BY" class="headerlink" title="GROUP BY"></a>GROUP BY</h3><p>Hive 支持使用 GROUP BY 进行分组聚合操作。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">set</span> hive.map.aggr<span class="operator">=</span><span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 查询各个部门薪酬综合</span></span><br><span class="line"><span class="keyword">SELECT</span> deptno,<span class="built_in">SUM</span>(sal) <span class="keyword">FROM</span> emp <span class="keyword">GROUP</span> <span class="keyword">BY</span> deptno;</span><br></pre></td></tr></table></figure>
+
+<p><code>hive.map.aggr</code> 控制程序如何进行聚合。默认值为 false。如果设置为 true，Hive 会在 map 阶段就执行一次聚合。这可以提高聚合效率，但需要消耗更多内存。</p>
+<h3 id="ORDER-AND-SORT"><a href="#ORDER-AND-SORT" class="headerlink" title="ORDER AND SORT"></a>ORDER AND SORT</h3><p>可以使用 ORDER BY 或者 Sort BY 对查询结果进行排序，排序字段可以是整型也可以是字符串：如果是整型，则按照大小排序；如果是字符串，则按照字典序排序。ORDER BY 和 SORT BY 的区别如下：</p>
 <ul>
-<li>默认行为是 <code>RESTRICT</code>，如果数据库中存在表则删除失败。</li>
-<li>要想删除库及其中的表，可以使用 <code>CASCADE</code> 级联删除。</li>
+<li>使用 ORDER BY 时会有一个 Reducer 对全部查询结果进行排序，可以保证数据的全局有序性；</li>
+<li>使用 SORT BY 时只会在每个 Reducer 中进行排序，这可以保证每个 Reducer 的输出数据是有序的，但不能保证全局有序。</li>
 </ul>
-<p>示例：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> DATABASE IF <span class="keyword">EXISTS</span> hive_test CASCADE;</span><br></pre></td></tr></table></figure>
+<p>由于 ORDER BY 的时间可能很长，如果你设置了严格模式 (hive.mapred.mode &#x3D; strict)，则其后面必须再跟一个 <code>limit</code> 子句。</p>
+<blockquote>
+<p>注 ：hive.mapred.mode 默认值是 nonstrict ，也就是非严格模式。</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 查询员工工资，结果按照部门升序，按照工资降序排列</span></span><br><span class="line"><span class="keyword">SELECT</span> empno, deptno, sal <span class="keyword">FROM</span> emp <span class="keyword">ORDER</span> <span class="keyword">BY</span> deptno <span class="keyword">ASC</span>, sal <span class="keyword">DESC</span>;</span><br></pre></td></tr></table></figure>
 
-<h2 id="创建表"><a href="#创建表" class="headerlink" title="创建表"></a>创建表</h2><h3 id="建表语法"><a href="#建表语法" class="headerlink" title="建表语法"></a>建表语法</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> [TEMPORARY] [<span class="keyword">EXTERNAL</span>] <span class="keyword">TABLE</span> [IF <span class="keyword">NOT</span> <span class="keyword">EXISTS</span>] [db_name.]table_name     <span class="comment">--表名</span></span><br><span class="line">  [(col_name data_type [COMMENT col_comment],</span><br><span class="line">    ... [constraint_specification])]  <span class="comment">--列名 列数据类型</span></span><br><span class="line">  [COMMENT table_comment]   <span class="comment">--表描述</span></span><br><span class="line">  [PARTITIONED <span class="keyword">BY</span> (col_name data_type [COMMENT col_comment], ...)]  <span class="comment">--分区表分区规则</span></span><br><span class="line">  [</span><br><span class="line">    CLUSTERED <span class="keyword">BY</span> (col_name, col_name, ...)</span><br><span class="line">   [SORTED <span class="keyword">BY</span> (col_name [<span class="keyword">ASC</span><span class="operator">|</span><span class="keyword">DESC</span>], ...)] <span class="keyword">INTO</span> num_buckets BUCKETS</span><br><span class="line">  ]  <span class="comment">--分桶表分桶规则</span></span><br><span class="line">  [SKEWED <span class="keyword">BY</span> (col_name, col_name, ...) <span class="keyword">ON</span> ((col_value, col_value, ...), (col_value, col_value, ...), ...)</span><br><span class="line">   [STORED <span class="keyword">AS</span> DIRECTORIES]</span><br><span class="line">  ]  <span class="comment">--指定倾斜列和值</span></span><br><span class="line">  [</span><br><span class="line">   [<span class="type">ROW</span> FORMAT row_format]</span><br><span class="line">   [STORED <span class="keyword">AS</span> file_format]</span><br><span class="line">     <span class="operator">|</span> STORED <span class="keyword">BY</span> <span class="string">&#x27;storage.handler.class.name&#x27;</span> [<span class="keyword">WITH</span> SERDEPROPERTIES (...)]</span><br><span class="line">  ]  <span class="comment">-- 指定行分隔符、存储文件格式或采用自定义存储格式</span></span><br><span class="line">  [LOCATION hdfs_path]  <span class="comment">-- 指定表的存储位置</span></span><br><span class="line">  [TBLPROPERTIES (property_name<span class="operator">=</span>property_value, ...)]  <span class="comment">--指定表的属性</span></span><br><span class="line">  [<span class="keyword">AS</span> select_statement];   <span class="comment">--从查询结果创建表</span></span><br></pre></td></tr></table></figure>
+<h3 id="HAVING"><a href="#HAVING" class="headerlink" title="HAVING"></a>HAVING</h3><p>可以使用 HAVING 对分组数据进行过滤。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 查询工资总和大于 9000 的所有部门</span></span><br><span class="line"><span class="keyword">SELECT</span> deptno,<span class="built_in">SUM</span>(sal) <span class="keyword">FROM</span> emp <span class="keyword">GROUP</span> <span class="keyword">BY</span> deptno <span class="keyword">HAVING</span> <span class="built_in">SUM</span>(sal)<span class="operator">&gt;</span><span class="number">9000</span>;</span><br></pre></td></tr></table></figure>
 
-<h3 id="内部表"><a href="#内部表" class="headerlink" title="内部表"></a>内部表</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> emp(</span><br><span class="line">  empno <span class="type">INT</span>,</span><br><span class="line">  ename STRING,</span><br><span class="line">  job STRING,</span><br><span class="line">  mgr <span class="type">INT</span>,</span><br><span class="line">  hiredate <span class="type">TIMESTAMP</span>,</span><br><span class="line">  sal <span class="type">DECIMAL</span>(<span class="number">7</span>,<span class="number">2</span>),</span><br><span class="line">  comm <span class="type">DECIMAL</span>(<span class="number">7</span>,<span class="number">2</span>),</span><br><span class="line">  deptno <span class="type">INT</span>)</span><br><span class="line">  <span class="type">ROW</span> FORMAT DELIMITED FIELDS TERMINATED <span class="keyword">BY</span> &quot;\t&quot;;</span><br></pre></td></tr></table></figure>
+<h3 id="DISTRIBUTE-BY"><a href="#DISTRIBUTE-BY" class="headerlink" title="DISTRIBUTE BY"></a>DISTRIBUTE BY</h3><p>默认情况下，MapReduce 程序会对 Map 输出结果的 Key 值进行散列，并均匀分发到所有 Reducer 上。如果想要把具有相同 Key 值的数据分发到同一个 Reducer 进行处理，这就需要使用 DISTRIBUTE BY 字句。</p>
+<p>需要注意的是，DISTRIBUTE BY 虽然能保证具有相同 Key 值的数据分发到同一个 Reducer，但是不能保证数据在 Reducer 上是有序的。情况如下：</p>
+<p>把以下 5 个数据发送到两个 Reducer 上进行处理：</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">k1</span></span><br><span class="line"><span class="attr">k2</span></span><br><span class="line"><span class="attr">k4</span></span><br><span class="line"><span class="attr">k3</span></span><br><span class="line"><span class="attr">k1</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="外部表"><a href="#外部表" class="headerlink" title="外部表"></a>外部表</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">EXTERNAL</span> <span class="keyword">TABLE</span> emp_external(</span><br><span class="line">  empno <span class="type">INT</span>,</span><br><span class="line">  ename STRING,</span><br><span class="line">  job STRING,</span><br><span class="line">  mgr <span class="type">INT</span>,</span><br><span class="line">  hiredate <span class="type">TIMESTAMP</span>,</span><br><span class="line">  sal <span class="type">DECIMAL</span>(<span class="number">7</span>,<span class="number">2</span>),</span><br><span class="line">  comm <span class="type">DECIMAL</span>(<span class="number">7</span>,<span class="number">2</span>),</span><br><span class="line">  deptno <span class="type">INT</span>)</span><br><span class="line">  <span class="type">ROW</span> FORMAT DELIMITED FIELDS TERMINATED <span class="keyword">BY</span> &quot;\t&quot;</span><br><span class="line">  LOCATION <span class="string">&#x27;/hive/emp_external&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<p>Reducer1 得到如下乱序数据：</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">k1</span></span><br><span class="line"><span class="attr">k2</span></span><br><span class="line"><span class="attr">k1</span></span><br></pre></td></tr></table></figure>
 
-<p>使用 <code>desc format emp_external</code> 命令可以查看表的详细信息如下：</p>
-<h3 id="分区表"><a href="#分区表" class="headerlink" title="分区表"></a>分区表</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">EXTERNAL</span> <span class="keyword">TABLE</span> emp_partition(</span><br><span class="line">  empno <span class="type">INT</span>,</span><br><span class="line">  ename STRING,</span><br><span class="line">  job STRING,</span><br><span class="line">  mgr <span class="type">INT</span>,</span><br><span class="line">  hiredate <span class="type">TIMESTAMP</span>,</span><br><span class="line">  sal <span class="type">DECIMAL</span>(<span class="number">7</span>,<span class="number">2</span>),</span><br><span class="line">  comm <span class="type">DECIMAL</span>(<span class="number">7</span>,<span class="number">2</span>)</span><br><span class="line">  )</span><br><span class="line">  PARTITIONED <span class="keyword">BY</span> (deptno <span class="type">INT</span>)   <span class="comment">-- 按照部门编号进行分区</span></span><br><span class="line">  <span class="type">ROW</span> FORMAT DELIMITED FIELDS TERMINATED <span class="keyword">BY</span> &quot;\t&quot;</span><br><span class="line">  LOCATION <span class="string">&#x27;/hive/emp_partition&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<p>Reducer2 得到数据如下：</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">k4</span></span><br><span class="line"><span class="attr">k3</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="分桶表"><a href="#分桶表" class="headerlink" title="分桶表"></a>分桶表</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">EXTERNAL</span> <span class="keyword">TABLE</span> emp_bucket(</span><br><span class="line">  empno <span class="type">INT</span>,</span><br><span class="line">  ename STRING,</span><br><span class="line">  job STRING,</span><br><span class="line">  mgr <span class="type">INT</span>,</span><br><span class="line">  hiredate <span class="type">TIMESTAMP</span>,</span><br><span class="line">  sal <span class="type">DECIMAL</span>(<span class="number">7</span>,<span class="number">2</span>),</span><br><span class="line">  comm <span class="type">DECIMAL</span>(<span class="number">7</span>,<span class="number">2</span>),</span><br><span class="line">  deptno <span class="type">INT</span>)</span><br><span class="line">  CLUSTERED <span class="keyword">BY</span>(empno) SORTED <span class="keyword">BY</span>(empno <span class="keyword">ASC</span>) <span class="keyword">INTO</span> <span class="number">4</span> BUCKETS  <span class="comment">--按照员工编号散列到四个 bucket 中</span></span><br><span class="line">  <span class="type">ROW</span> FORMAT DELIMITED FIELDS TERMINATED <span class="keyword">BY</span> &quot;\t&quot;</span><br><span class="line">  LOCATION <span class="string">&#x27;/hive/emp_bucket&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<p>如果想让 Reducer 上的数据时有序的，可以结合 <code>SORT BY</code> 使用 (示例如下)，或者使用下面我们将要介绍的 CLUSTER BY。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 将数据按照部门分发到对应的 Reducer 上处理</span></span><br><span class="line"><span class="keyword">SELECT</span> empno, deptno, sal <span class="keyword">FROM</span> emp DISTRIBUTE <span class="keyword">BY</span> deptno SORT <span class="keyword">BY</span> deptno <span class="keyword">ASC</span>;</span><br></pre></td></tr></table></figure>
 
-<h3 id="倾斜表"><a href="#倾斜表" class="headerlink" title="倾斜表"></a>倾斜表</h3><p>通过指定一个或者多个列经常出现的值（严重偏斜），Hive 会自动将涉及到这些值的数据拆分为单独的文件。在查询时，如果涉及到倾斜值，它就直接从独立文件中获取数据，而不是扫描所有文件，这使得性能得到提升。</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">EXTERNAL</span> <span class="keyword">TABLE</span> emp_skewed(</span><br><span class="line">  empno <span class="type">INT</span>,</span><br><span class="line">  ename STRING,</span><br><span class="line">  job STRING,</span><br><span class="line">  mgr <span class="type">INT</span>,</span><br><span class="line">  hiredate <span class="type">TIMESTAMP</span>,</span><br><span class="line">  sal <span class="type">DECIMAL</span>(<span class="number">7</span>,<span class="number">2</span>),</span><br><span class="line">  comm <span class="type">DECIMAL</span>(<span class="number">7</span>,<span class="number">2</span>)</span><br><span class="line">  )</span><br><span class="line">  SKEWED <span class="keyword">BY</span> (empno) <span class="keyword">ON</span> (<span class="number">66</span>,<span class="number">88</span>,<span class="number">100</span>)  <span class="comment">--指定 empno 的倾斜值 66,88,100</span></span><br><span class="line">  <span class="type">ROW</span> FORMAT DELIMITED FIELDS TERMINATED <span class="keyword">BY</span> &quot;\t&quot;</span><br><span class="line">  LOCATION <span class="string">&#x27;/hive/emp_skewed&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="CLUSTER-BY"><a href="#CLUSTER-BY" class="headerlink" title="CLUSTER BY"></a>CLUSTER BY</h3><p>如果 <code>SORT BY</code> 和 <code>DISTRIBUTE BY</code> 指定的是相同字段，且 SORT BY 排序规则是 ASC，此时可以使用 <code>CLUSTER BY</code> 进行替换，同时 <code>CLUSTER BY</code> 可以保证数据在全局是有序的。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> empno, deptno, sal <span class="keyword">FROM</span> emp CLUSTER  <span class="keyword">BY</span> deptno ;</span><br></pre></td></tr></table></figure>
 
-<h3 id="临时表"><a href="#临时表" class="headerlink" title="临时表"></a>临时表</h3><p>临时表仅对当前 session 可见，临时表的数据将存储在用户的暂存目录中，并在会话结束后删除。如果临时表与永久表表名相同，则对该表名的任何引用都将解析为临时表，而不是永久表。临时表还具有以下两个限制：</p>
+<h2 id="多表联结查询"><a href="#多表联结查询" class="headerlink" title="多表联结查询"></a>多表联结查询</h2><p>Hive 支持内连接，外连接，左外连接，右外连接，笛卡尔连接，这和传统数据库中的概念是一致的，可以参见下图。</p>
+<p>需要特别强调：JOIN 语句的关联条件必须用 ON 指定，不能用 WHERE 指定，否则就会先做笛卡尔积，再过滤，这会导致你得不到预期的结果 (下面的演示会有说明)。</p>
+<p><img src="https://raw.githubusercontent.com/dunwu/images/master/snap/20200224195733.png" alt="img"></p>
+<h3 id="INNER-JOIN"><a href="#INNER-JOIN" class="headerlink" title="INNER JOIN"></a>INNER JOIN</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 查询员工编号为 7369 的员工的详细信息</span></span><br><span class="line"><span class="keyword">SELECT</span> e.<span class="operator">*</span>,d.<span class="operator">*</span> <span class="keyword">FROM</span></span><br><span class="line">emp e <span class="keyword">JOIN</span> dept d</span><br><span class="line"><span class="keyword">ON</span> e.deptno <span class="operator">=</span> d.deptno</span><br><span class="line"><span class="keyword">WHERE</span> empno<span class="operator">=</span><span class="number">7369</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">--如果是三表或者更多表连接，语法如下</span></span><br><span class="line"><span class="keyword">SELECT</span> a.val, b.val, c.val <span class="keyword">FROM</span> a <span class="keyword">JOIN</span> b <span class="keyword">ON</span> (a.key <span class="operator">=</span> b.key1) <span class="keyword">JOIN</span> c <span class="keyword">ON</span> (c.key <span class="operator">=</span> b.key1)</span><br></pre></td></tr></table></figure>
+
+<h3 id="LEFT-OUTER-JOIN"><a href="#LEFT-OUTER-JOIN" class="headerlink" title="LEFT OUTER JOIN"></a>LEFT OUTER JOIN</h3><p>LEFT OUTER JOIN 和 LEFT JOIN 是等价的。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 左连接</span></span><br><span class="line"><span class="keyword">SELECT</span> e.<span class="operator">*</span>,d.<span class="operator">*</span></span><br><span class="line"><span class="keyword">FROM</span> emp e <span class="keyword">LEFT</span> <span class="keyword">OUTER</span>  <span class="keyword">JOIN</span>  dept d</span><br><span class="line"><span class="keyword">ON</span> e.deptno <span class="operator">=</span> d.deptno;</span><br></pre></td></tr></table></figure>
+
+<h3 id="RIGHT-OUTER-JOIN"><a href="#RIGHT-OUTER-JOIN" class="headerlink" title="RIGHT OUTER JOIN"></a>RIGHT OUTER JOIN</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--右连接</span></span><br><span class="line"><span class="keyword">SELECT</span> e.<span class="operator">*</span>,d.<span class="operator">*</span></span><br><span class="line"><span class="keyword">FROM</span> emp e <span class="keyword">RIGHT</span> <span class="keyword">OUTER</span> <span class="keyword">JOIN</span>  dept d</span><br><span class="line"><span class="keyword">ON</span> e.deptno <span class="operator">=</span> d.deptno;</span><br></pre></td></tr></table></figure>
+
+<p>执行右连接后，由于 40 号部门下没有任何员工，所以此时员工信息为 NULL。这个查询可以很好的复述上面提到的——JOIN 语句的关联条件必须用 ON 指定，不能用 WHERE 指定。你可以把 ON 改成 WHERE，你会发现无论如何都查不出 40 号部门这条数据，因为笛卡尔运算不会有 (NULL, 40) 这种情况。</p>
+<p><img src="https://github.com/heibaiying/BigData-Notes/raw/master/pictures/hive-right-join.png" alt="img"></p>
+<h3 id="FULL-OUTER-JOIN"><a href="#FULL-OUTER-JOIN" class="headerlink" title="FULL OUTER JOIN"></a>FULL OUTER JOIN</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> e.<span class="operator">*</span>,d.<span class="operator">*</span></span><br><span class="line"><span class="keyword">FROM</span> emp e <span class="keyword">FULL</span> <span class="keyword">OUTER</span> <span class="keyword">JOIN</span>  dept d</span><br><span class="line"><span class="keyword">ON</span> e.deptno <span class="operator">=</span> d.deptno;</span><br></pre></td></tr></table></figure>
+
+<h3 id="LEFT-SEMI-JOIN"><a href="#LEFT-SEMI-JOIN" class="headerlink" title="LEFT SEMI JOIN"></a>LEFT SEMI JOIN</h3><p>LEFT SEMI JOIN （左半连接）是 IN&#x2F;EXISTS 子查询的一种更高效的实现。</p>
 <ul>
-<li>不支持分区列；</li>
-<li>不支持创建索引。</li>
+<li>JOIN 子句中右边的表只能在 ON 子句中设置过滤条件;</li>
+<li>查询结果只包含左边表的数据，所以只能 SELECT 左表中的列。</li>
 </ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> TEMPORARY <span class="keyword">TABLE</span> emp_temp(</span><br><span class="line">  empno <span class="type">INT</span>,</span><br><span class="line">  ename STRING,</span><br><span class="line">  job STRING,</span><br><span class="line">  mgr <span class="type">INT</span>,</span><br><span class="line">  hiredate <span class="type">TIMESTAMP</span>,</span><br><span class="line">  sal <span class="type">DECIMAL</span>(<span class="number">7</span>,<span class="number">2</span>),</span><br><span class="line">  comm <span class="type">DECIMAL</span>(<span class="number">7</span>,<span class="number">2</span>)</span><br><span class="line">  )</span><br><span class="line">  <span class="type">ROW</span> FORMAT DELIMITED FIELDS TERMINATED <span class="keyword">BY</span> &quot;\t&quot;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 查询在纽约办公的所有员工信息</span></span><br><span class="line"><span class="keyword">SELECT</span> emp.<span class="operator">*</span></span><br><span class="line"><span class="keyword">FROM</span> emp <span class="keyword">LEFT</span> SEMI <span class="keyword">JOIN</span> dept</span><br><span class="line"><span class="keyword">ON</span> emp.deptno <span class="operator">=</span> dept.deptno <span class="keyword">AND</span> dept.loc<span class="operator">=</span>&quot;NEW YORK&quot;;</span><br><span class="line"></span><br><span class="line"><span class="comment">--上面的语句就等价于</span></span><br><span class="line"><span class="keyword">SELECT</span> emp.<span class="operator">*</span> <span class="keyword">FROM</span> emp</span><br><span class="line"><span class="keyword">WHERE</span> emp.deptno <span class="keyword">IN</span> (<span class="keyword">SELECT</span> deptno <span class="keyword">FROM</span> dept <span class="keyword">WHERE</span> loc<span class="operator">=</span>&quot;NEW YORK&quot;);</span><br></pre></td></tr></table></figure>
 
-<h3 id="CTAS-创建表"><a href="#CTAS-创建表" class="headerlink" title="CTAS 创建表"></a>CTAS 创建表</h3><p>支持从查询语句的结果创建表：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> emp_copy <span class="keyword">AS</span> <span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> emp <span class="keyword">WHERE</span> deptno<span class="operator">=</span><span class="string">&#x27;20&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="JOIN"><a href="#JOIN" class="headerlink" title="JOIN"></a>JOIN</h3><p>笛卡尔积连接，这个连接日常的开发中可能很少遇到，且性能消耗比较大，基于这个原因，如果在严格模式下 (hive.mapred.mode &#x3D; strict)，Hive 会阻止用户执行此操作。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> emp <span class="keyword">JOIN</span> dept;</span><br></pre></td></tr></table></figure>
 
-<h3 id="复制表结构"><a href="#复制表结构" class="headerlink" title="复制表结构"></a>复制表结构</h3><p>语法：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> [TEMPORARY] [<span class="keyword">EXTERNAL</span>] <span class="keyword">TABLE</span> [IF <span class="keyword">NOT</span> <span class="keyword">EXISTS</span>] [db_name.]table_name  <span class="comment">--创建表表名</span></span><br><span class="line">   <span class="keyword">LIKE</span> existing_table_or_view_name  <span class="comment">--被复制表的表名</span></span><br><span class="line">   [LOCATION hdfs_path]; <span class="comment">--存储位置</span></span><br></pre></td></tr></table></figure>
+<h2 id="JOIN-优化"><a href="#JOIN-优化" class="headerlink" title="JOIN 优化"></a>JOIN 优化</h2><h3 id="STREAMTABLE"><a href="#STREAMTABLE" class="headerlink" title="STREAMTABLE"></a>STREAMTABLE</h3><p>在多表进行联结的时候，如果每个 ON 字句都使用到共同的列（如下面的 <code>b.key</code>），此时 Hive 会进行优化，将多表 JOIN 在同一个 map &#x2F; reduce 作业上进行。同时假定查询的最后一个表（如下面的 c 表）是最大的一个表，在对每行记录进行 JOIN 操作时，它将尝试将其他的表缓存起来，然后扫描最后那个表进行计算。因此用户需要保证查询的表的大小从左到右是依次增加的。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`<span class="keyword">SELECT</span> a.val, b.val, c.val <span class="keyword">FROM</span> a <span class="keyword">JOIN</span> b <span class="keyword">ON</span> (a.key <span class="operator">=</span> b.key) <span class="keyword">JOIN</span> c <span class="keyword">ON</span> (c.key <span class="operator">=</span> b.key)`</span><br></pre></td></tr></table></figure>
 
-<p>示例：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> TEMPORARY <span class="keyword">EXTERNAL</span> <span class="keyword">TABLE</span>  IF <span class="keyword">NOT</span> <span class="keyword">EXISTS</span>  emp_co  <span class="keyword">LIKE</span> emp</span><br></pre></td></tr></table></figure>
+<p>然后，用户并非需要总是把最大的表放在查询语句的最后面，Hive 提供了 <code>/*+ STREAMTABLE() */</code> 标志，用于标识最大的表，示例如下：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="comment">/*+ STREAMTABLE(d) */</span>  e.<span class="operator">*</span>,d.<span class="operator">*</span></span><br><span class="line"><span class="keyword">FROM</span> emp e <span class="keyword">JOIN</span> dept d</span><br><span class="line"><span class="keyword">ON</span> e.deptno <span class="operator">=</span> d.deptno</span><br><span class="line"><span class="keyword">WHERE</span> job<span class="operator">=</span><span class="string">&#x27;CLERK&#x27;</span>;</span><br></pre></td></tr></table></figure>
 
-<h3 id="加载数据到表"><a href="#加载数据到表" class="headerlink" title="加载数据到表"></a>加载数据到表</h3><p>加载数据到表中属于 DML 操作，这里为了方便大家测试，先简单介绍一下加载本地数据到表中：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 加载数据到 emp 表中</span></span><br><span class="line">load data <span class="keyword">local</span> inpath &quot;/usr/file/emp.txt&quot; <span class="keyword">into</span> <span class="keyword">table</span> emp;</span><br></pre></td></tr></table></figure>
+<h3 id="MAPJOIN"><a href="#MAPJOIN" class="headerlink" title="MAPJOIN"></a>MAPJOIN</h3><p>如果所有表中只有一张表是小表，那么 Hive 把这张小表加载到内存中。这时候程序会在 map 阶段直接拿另外一个表的数据和内存中表数据做匹配，由于在 map 就进行了 JOIN 操作，从而可以省略 reduce 过程，这样效率可以提升很多。Hive 中提供了 <code>/*+ MAPJOIN() */</code> 来标记小表，示例如下：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="comment">/*+ MAPJOIN(d) */</span> e.<span class="operator">*</span>,d.<span class="operator">*</span></span><br><span class="line"><span class="keyword">FROM</span> emp e <span class="keyword">JOIN</span> dept d</span><br><span class="line"><span class="keyword">ON</span> e.deptno <span class="operator">=</span> d.deptno</span><br><span class="line"><span class="keyword">WHERE</span> job<span class="operator">=</span><span class="string">&#x27;CLERK&#x27;</span>;</span><br></pre></td></tr></table></figure>
 
-<p>其中 emp.txt 的内容如下，你可以直接复制使用，也可以到本仓库的<a target="_blank" rel="noopener" href="https://github.com/heibaiying/BigData-Notes/tree/master/resources">resources</a> 目录下载：</p>
-<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">7369	SMITH	CLERK	7902	1980-12-17 00:00:00	800.00		20</span><br><span class="line">7499	ALLEN	SALESMAN	7698	1981-02-20 00:00:00	1600.00	300.00	30</span><br><span class="line">7521	WARD	SALESMAN	7698	1981-02-22 00:00:00	1250.00	500.00	30</span><br><span class="line">7566	JONES	MANAGER	7839	1981-04-02 00:00:00	2975.00		20</span><br><span class="line">7654	MARTIN	SALESMAN	7698	1981-09-28 00:00:00	1250.00	1400.00	30</span><br><span class="line">7698	BLAKE	MANAGER	7839	1981-05-01 00:00:00	2850.00		30</span><br><span class="line">7782	CLARK	MANAGER	7839	1981-06-09 00:00:00	2450.00		10</span><br><span class="line">7788	SCOTT	ANALYST	7566	1987-04-19 00:00:00	1500.00		20</span><br><span class="line">7839	KING	PRESIDENT		1981-11-17 00:00:00	5000.00		10</span><br><span class="line">7844	TURNER	SALESMAN	7698	1981-09-08 00:00:00	1500.00	0.00	30</span><br><span class="line">7876	ADAMS	CLERK	7788	1987-05-23 00:00:00	1100.00		20</span><br><span class="line">7900	JAMES	CLERK	7698	1981-12-03 00:00:00	950.00		30</span><br><span class="line">7902	FORD	ANALYST	7566	1981-12-03 00:00:00	3000.00		20</span><br><span class="line">7934	MILLER	CLERK	7782	1982-01-23 00:00:00	1300.00		10</span><br></pre></td></tr></table></figure>
+<h2 id="SELECT-的其他用途"><a href="#SELECT-的其他用途" class="headerlink" title="SELECT 的其他用途"></a>SELECT 的其他用途</h2><p>查看当前数据库：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> current_database()</span><br></pre></td></tr></table></figure>
 
-<p>加载后可查询表中数据</p>
-<h2 id="修改表"><a href="#修改表" class="headerlink" title="修改表"></a>修改表</h2><h3 id="重命名表"><a href="#重命名表" class="headerlink" title="重命名表"></a>重命名表</h3><p>语法：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> table_name RENAME <span class="keyword">TO</span> new_table_name;</span><br></pre></td></tr></table></figure>
+<h2 id="本地模式"><a href="#本地模式" class="headerlink" title="本地模式"></a>本地模式</h2><p>在上面演示的语句中，大多数都会触发 MapReduce, 少部分不会触发，比如 <code>select * from emp limit 5</code> 就不会触发 MR，此时 Hive 只是简单的读取数据文件中的内容，然后格式化后进行输出。在需要执行 MapReduce 的查询中，你会发现执行时间可能会很长，这时候你可以选择开启本地模式。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--本地模式默认关闭，需要手动开启此功能</span></span><br><span class="line"><span class="keyword">SET</span> hive.exec.mode.local.auto<span class="operator">=</span><span class="literal">true</span>;</span><br></pre></td></tr></table></figure>
 
-<p>示例：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> emp_temp RENAME <span class="keyword">TO</span> new_emp; <span class="comment">--把 emp_temp 表重命名为 new_emp</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="修改列"><a href="#修改列" class="headerlink" title="修改列"></a>修改列</h3><p>语法：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> table_name [<span class="keyword">PARTITION</span> partition_spec] CHANGE [<span class="keyword">COLUMN</span>] col_old_name col_new_name column_type</span><br><span class="line">  [COMMENT col_comment] [<span class="keyword">FIRST</span><span class="operator">|</span>AFTER column_name] [CASCADE<span class="operator">|</span>RESTRICT];</span><br></pre></td></tr></table></figure>
-
-<p>示例：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 修改字段名和类型</span></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> emp_temp CHANGE empno empno_new <span class="type">INT</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 修改字段 sal 的名称 并将其放置到 empno 字段后</span></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> emp_temp CHANGE sal sal_new <span class="type">decimal</span>(<span class="number">7</span>,<span class="number">2</span>)  AFTER ename;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 为字段增加注释</span></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> emp_temp CHANGE mgr mgr_new <span class="type">INT</span> COMMENT <span class="string">&#x27;this is column mgr&#x27;</span>;</span><br></pre></td></tr></table></figure>
-
-<h3 id="新增列"><a href="#新增列" class="headerlink" title="新增列"></a>新增列</h3><p>示例：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> emp_temp <span class="keyword">ADD</span> COLUMNS (address STRING COMMENT <span class="string">&#x27;home address&#x27;</span>);</span><br></pre></td></tr></table></figure>
-
-<h2 id="清空表-删除表"><a href="#清空表-删除表" class="headerlink" title="清空表&#x2F;删除表"></a>清空表&#x2F;删除表</h2><h3 id="清空表-hive-ddl-md"><a href="#清空表-hive-ddl-md" class="headerlink" title="清空表 hive-ddl.md"></a>清空表 hive-ddl.md</h3><p>语法：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 清空整个表或表指定分区中的数据</span></span><br><span class="line"><span class="keyword">TRUNCATE</span> <span class="keyword">TABLE</span> table_name [<span class="keyword">PARTITION</span> (partition_column <span class="operator">=</span> partition_col_value,  ...)];</span><br></pre></td></tr></table></figure>
-
+<p>启用后，Hive 将分析查询中每个 map-reduce 作业的大小，如果满足以下条件，则可以在本地运行它：</p>
 <ul>
-<li>目前只有内部表才能执行 TRUNCATE 操作，外部表执行时会抛出异常 <code>Cannot truncate non-managed table XXXX</code>。</li>
+<li>作业的总输入大小低于：hive.exec.mode.local.auto.inputbytes.max（默认为 128MB）；</li>
+<li>map-tasks 的总数小于：hive.exec.mode.local.auto.tasks.max（默认为 4）；</li>
+<li>所需的 reduce 任务总数为 1 或 0。</li>
 </ul>
-<p>示例：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">TRUNCATE</span> <span class="keyword">TABLE</span> emp_mgt_ptn <span class="keyword">PARTITION</span> (deptno<span class="operator">=</span><span class="number">20</span>);</span><br></pre></td></tr></table></figure>
-
-<h3 id="删除表"><a href="#删除表" class="headerlink" title="删除表"></a>删除表</h3><p>语法：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span> [IF <span class="keyword">EXISTS</span>] table_name [PURGE];</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>内部表：不仅会删除表的元数据，同时会删除 HDFS 上的数据；</li>
-<li>外部表：只会删除表的元数据，不会删除 HDFS 上的数据；</li>
-<li>删除视图引用的表时，不会给出警告（但视图已经无效了，必须由用户删除或重新创建）。</li>
-</ul>
-<h2 id="其他命令"><a href="#其他命令" class="headerlink" title="其他命令"></a>其他命令</h2><h3 id="Describe"><a href="#Describe" class="headerlink" title="Describe"></a>Describe</h3><p>查看数据库：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DESCRIBE</span><span class="operator">|</span><span class="keyword">Desc</span> DATABASE [EXTENDED] db_name;  <span class="comment">--EXTENDED 是否显示额外属性</span></span><br></pre></td></tr></table></figure>
-
-<p>查看表：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DESCRIBE</span><span class="operator">|</span><span class="keyword">Desc</span> [EXTENDED<span class="operator">|</span>FORMATTED] table_name <span class="comment">--FORMATTED 以友好的展现方式查看表详情</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="Show"><a href="#Show" class="headerlink" title="Show"></a>Show</h3><p><strong>1. 查看数据库列表</strong></p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 语法</span></span><br><span class="line"><span class="keyword">SHOW</span> (DATABASES<span class="operator">|</span>SCHEMAS) [<span class="keyword">LIKE</span> <span class="string">&#x27;identifier_with_wildcards&#x27;</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 示例：</span></span><br><span class="line"><span class="keyword">SHOW</span> DATABASES <span class="keyword">like</span> <span class="string">&#x27;hive*&#x27;</span>;</span><br></pre></td></tr></table></figure>
-
-<p>LIKE 子句允许使用正则表达式进行过滤，但是 SHOW 语句当中的 LIKE 子句只支持 <code>*</code>（通配符）和 <code>|</code>（条件或）两个符号。例如 <code>employees</code>，<code>emp *</code>，<code>emp * | * ees</code>，所有这些都将匹配名为 <code>employees</code> 的数据库。</p>
-<p><strong>2. 查看表的列表</strong></p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 语法</span></span><br><span class="line"><span class="keyword">SHOW</span> TABLES [<span class="keyword">IN</span> database_name] [<span class="string">&#x27;identifier_with_wildcards&#x27;</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 示例</span></span><br><span class="line"><span class="keyword">SHOW</span> TABLES <span class="keyword">IN</span> <span class="keyword">default</span>;</span><br></pre></td></tr></table></figure>
-
-<p><strong>3. 查看视图列表</strong></p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SHOW</span> VIEWS [<span class="keyword">IN</span><span class="operator">/</span><span class="keyword">FROM</span> database_name] [<span class="keyword">LIKE</span> <span class="string">&#x27;pattern_with_wildcards&#x27;</span>];   <span class="comment">--仅支持 Hive 2.2.0</span></span><br></pre></td></tr></table></figure>
-
-<p><strong>4. 查看表的分区列表</strong></p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SHOW</span> PARTITIONS table_name;</span><br></pre></td></tr></table></figure>
-
-<p><strong>5. 查看表&#x2F;视图的创建语句</strong></p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SHOW</span> <span class="keyword">CREATE</span> <span class="keyword">TABLE</span> ([db_name.]table_name<span class="operator">|</span>view_name);</span><br></pre></td></tr></table></figure>
-
+<p>因为我们测试的数据集很小，所以你再次去执行上面涉及 MR 操作的查询，你会发现速度会有显著的提升。</p>
 <h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://cwiki.apache.org/confluence/display/Hive/LanguageManual+DDL">LanguageManual DDL</a></li>
+<li><a target="_blank" rel="noopener" href="https://cwiki.apache.org/confluence/display/Hive/LanguageManual+Select">LanguageManual Select</a></li>
+<li><a target="_blank" rel="noopener" href="https://cwiki.apache.org/confluence/display/Hive/LanguageManual+Joins">LanguageManual Joins</a></li>
+<li><a target="_blank" rel="noopener" href="https://cwiki.apache.org/confluence/display/Hive/LanguageManual+GroupBy">LanguageManual GroupBy</a></li>
+<li><a target="_blank" rel="noopener" href="https://cwiki.apache.org/confluence/display/Hive/LanguageManual+SortBy">LanguageManual SortBy</a></li>
 </ul>
 
       
@@ -920,6 +910,229 @@
 <h3 id="配置参数"><a href="#配置参数" class="headerlink" title="配置参数"></a>配置参数</h3><p>Hive 可选的配置参数非常多，在用到时查阅官方文档即可<a target="_blank" rel="noopener" href="https://cwiki.apache.org/confluence/display/Hive/AdminManual+Configuration">AdminManual Configuration</a></p>
 <h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
 <li><a target="_blank" rel="noopener" href="https://github.com/heibaiying/BigData-Notes">BigData-Notes</a></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://www.ligoudan.cn/pages/229daa/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/ligoudan.png">
+      <meta itemprop="name" content="李狗蛋">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LIGOUDAN">
+      <meta itemprop="description" content="天气不错哇，你看这大冰雹下得">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | LIGOUDAN">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/pages/229daa/" class="post-title-link" itemprop="url">Hive 常用 DDL 操作</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-02-24 21:14:47" itemprop="dateCreated datePublished" datetime="2020-02-24T21:14:47+08:00">2020-02-24</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-12-12 10:02:53" itemprop="dateModified" datetime="2024-12-12T10:02:53+08:00">2024-12-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/" itemprop="url" rel="index"><span itemprop="name">大数据</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/hive/" itemprop="url" rel="index"><span itemprop="name">hive</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>6k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>5 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="Hive-常用-DDL-操作"><a href="#Hive-常用-DDL-操作" class="headerlink" title="Hive 常用 DDL 操作"></a>Hive 常用 DDL 操作</h1><h2 id="Database"><a href="#Database" class="headerlink" title="Database"></a>Database</h2><h3 id="查看数据列表"><a href="#查看数据列表" class="headerlink" title="查看数据列表"></a>查看数据列表</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">show</span> databases;</span><br></pre></td></tr></table></figure>
+
+<h3 id="使用数据库"><a href="#使用数据库" class="headerlink" title="使用数据库"></a>使用数据库</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">USE database_name;</span><br></pre></td></tr></table></figure>
+
+<h3 id="新建数据库"><a href="#新建数据库" class="headerlink" title="新建数据库"></a>新建数据库</h3><p>语法：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> (DATABASE<span class="operator">|</span>SCHEMA) [IF <span class="keyword">NOT</span> <span class="keyword">EXISTS</span>] database_name   <span class="comment">--DATABASE|SCHEMA 是等价的</span></span><br><span class="line">  [COMMENT database_comment] <span class="comment">--数据库注释</span></span><br><span class="line">  [LOCATION hdfs_path] <span class="comment">--存储在 HDFS 上的位置</span></span><br><span class="line">  [<span class="keyword">WITH</span> DBPROPERTIES (property_name<span class="operator">=</span>property_value, ...)]; <span class="comment">--指定额外属性</span></span><br></pre></td></tr></table></figure>
+
+<p>示例：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> DATABASE IF <span class="keyword">NOT</span> <span class="keyword">EXISTS</span> hive_test</span><br><span class="line">  COMMENT <span class="string">&#x27;hive database for test&#x27;</span></span><br><span class="line">  <span class="keyword">WITH</span> DBPROPERTIES (<span class="string">&#x27;create&#x27;</span><span class="operator">=</span><span class="string">&#x27;heibaiying&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="查看数据库信息"><a href="#查看数据库信息" class="headerlink" title="查看数据库信息"></a>查看数据库信息</h3><p>语法：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DESC</span> DATABASE [EXTENDED] db_name; <span class="comment">--EXTENDED 表示是否显示额外属性</span></span><br></pre></td></tr></table></figure>
+
+<p>示例：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DESC</span> DATABASE  EXTENDED hive_test;</span><br></pre></td></tr></table></figure>
+
+<h3 id="删除数据库"><a href="#删除数据库" class="headerlink" title="删除数据库"></a>删除数据库</h3><p>语法：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> (DATABASE<span class="operator">|</span>SCHEMA) [IF <span class="keyword">EXISTS</span>] database_name [RESTRICT<span class="operator">|</span>CASCADE];</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>默认行为是 <code>RESTRICT</code>，如果数据库中存在表则删除失败。</li>
+<li>要想删除库及其中的表，可以使用 <code>CASCADE</code> 级联删除。</li>
+</ul>
+<p>示例：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> DATABASE IF <span class="keyword">EXISTS</span> hive_test CASCADE;</span><br></pre></td></tr></table></figure>
+
+<h2 id="创建表"><a href="#创建表" class="headerlink" title="创建表"></a>创建表</h2><h3 id="建表语法"><a href="#建表语法" class="headerlink" title="建表语法"></a>建表语法</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> [TEMPORARY] [<span class="keyword">EXTERNAL</span>] <span class="keyword">TABLE</span> [IF <span class="keyword">NOT</span> <span class="keyword">EXISTS</span>] [db_name.]table_name     <span class="comment">--表名</span></span><br><span class="line">  [(col_name data_type [COMMENT col_comment],</span><br><span class="line">    ... [constraint_specification])]  <span class="comment">--列名 列数据类型</span></span><br><span class="line">  [COMMENT table_comment]   <span class="comment">--表描述</span></span><br><span class="line">  [PARTITIONED <span class="keyword">BY</span> (col_name data_type [COMMENT col_comment], ...)]  <span class="comment">--分区表分区规则</span></span><br><span class="line">  [</span><br><span class="line">    CLUSTERED <span class="keyword">BY</span> (col_name, col_name, ...)</span><br><span class="line">   [SORTED <span class="keyword">BY</span> (col_name [<span class="keyword">ASC</span><span class="operator">|</span><span class="keyword">DESC</span>], ...)] <span class="keyword">INTO</span> num_buckets BUCKETS</span><br><span class="line">  ]  <span class="comment">--分桶表分桶规则</span></span><br><span class="line">  [SKEWED <span class="keyword">BY</span> (col_name, col_name, ...) <span class="keyword">ON</span> ((col_value, col_value, ...), (col_value, col_value, ...), ...)</span><br><span class="line">   [STORED <span class="keyword">AS</span> DIRECTORIES]</span><br><span class="line">  ]  <span class="comment">--指定倾斜列和值</span></span><br><span class="line">  [</span><br><span class="line">   [<span class="type">ROW</span> FORMAT row_format]</span><br><span class="line">   [STORED <span class="keyword">AS</span> file_format]</span><br><span class="line">     <span class="operator">|</span> STORED <span class="keyword">BY</span> <span class="string">&#x27;storage.handler.class.name&#x27;</span> [<span class="keyword">WITH</span> SERDEPROPERTIES (...)]</span><br><span class="line">  ]  <span class="comment">-- 指定行分隔符、存储文件格式或采用自定义存储格式</span></span><br><span class="line">  [LOCATION hdfs_path]  <span class="comment">-- 指定表的存储位置</span></span><br><span class="line">  [TBLPROPERTIES (property_name<span class="operator">=</span>property_value, ...)]  <span class="comment">--指定表的属性</span></span><br><span class="line">  [<span class="keyword">AS</span> select_statement];   <span class="comment">--从查询结果创建表</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="内部表"><a href="#内部表" class="headerlink" title="内部表"></a>内部表</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> emp(</span><br><span class="line">  empno <span class="type">INT</span>,</span><br><span class="line">  ename STRING,</span><br><span class="line">  job STRING,</span><br><span class="line">  mgr <span class="type">INT</span>,</span><br><span class="line">  hiredate <span class="type">TIMESTAMP</span>,</span><br><span class="line">  sal <span class="type">DECIMAL</span>(<span class="number">7</span>,<span class="number">2</span>),</span><br><span class="line">  comm <span class="type">DECIMAL</span>(<span class="number">7</span>,<span class="number">2</span>),</span><br><span class="line">  deptno <span class="type">INT</span>)</span><br><span class="line">  <span class="type">ROW</span> FORMAT DELIMITED FIELDS TERMINATED <span class="keyword">BY</span> &quot;\t&quot;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="外部表"><a href="#外部表" class="headerlink" title="外部表"></a>外部表</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">EXTERNAL</span> <span class="keyword">TABLE</span> emp_external(</span><br><span class="line">  empno <span class="type">INT</span>,</span><br><span class="line">  ename STRING,</span><br><span class="line">  job STRING,</span><br><span class="line">  mgr <span class="type">INT</span>,</span><br><span class="line">  hiredate <span class="type">TIMESTAMP</span>,</span><br><span class="line">  sal <span class="type">DECIMAL</span>(<span class="number">7</span>,<span class="number">2</span>),</span><br><span class="line">  comm <span class="type">DECIMAL</span>(<span class="number">7</span>,<span class="number">2</span>),</span><br><span class="line">  deptno <span class="type">INT</span>)</span><br><span class="line">  <span class="type">ROW</span> FORMAT DELIMITED FIELDS TERMINATED <span class="keyword">BY</span> &quot;\t&quot;</span><br><span class="line">  LOCATION <span class="string">&#x27;/hive/emp_external&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<p>使用 <code>desc format emp_external</code> 命令可以查看表的详细信息如下：</p>
+<h3 id="分区表"><a href="#分区表" class="headerlink" title="分区表"></a>分区表</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">EXTERNAL</span> <span class="keyword">TABLE</span> emp_partition(</span><br><span class="line">  empno <span class="type">INT</span>,</span><br><span class="line">  ename STRING,</span><br><span class="line">  job STRING,</span><br><span class="line">  mgr <span class="type">INT</span>,</span><br><span class="line">  hiredate <span class="type">TIMESTAMP</span>,</span><br><span class="line">  sal <span class="type">DECIMAL</span>(<span class="number">7</span>,<span class="number">2</span>),</span><br><span class="line">  comm <span class="type">DECIMAL</span>(<span class="number">7</span>,<span class="number">2</span>)</span><br><span class="line">  )</span><br><span class="line">  PARTITIONED <span class="keyword">BY</span> (deptno <span class="type">INT</span>)   <span class="comment">-- 按照部门编号进行分区</span></span><br><span class="line">  <span class="type">ROW</span> FORMAT DELIMITED FIELDS TERMINATED <span class="keyword">BY</span> &quot;\t&quot;</span><br><span class="line">  LOCATION <span class="string">&#x27;/hive/emp_partition&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="分桶表"><a href="#分桶表" class="headerlink" title="分桶表"></a>分桶表</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">EXTERNAL</span> <span class="keyword">TABLE</span> emp_bucket(</span><br><span class="line">  empno <span class="type">INT</span>,</span><br><span class="line">  ename STRING,</span><br><span class="line">  job STRING,</span><br><span class="line">  mgr <span class="type">INT</span>,</span><br><span class="line">  hiredate <span class="type">TIMESTAMP</span>,</span><br><span class="line">  sal <span class="type">DECIMAL</span>(<span class="number">7</span>,<span class="number">2</span>),</span><br><span class="line">  comm <span class="type">DECIMAL</span>(<span class="number">7</span>,<span class="number">2</span>),</span><br><span class="line">  deptno <span class="type">INT</span>)</span><br><span class="line">  CLUSTERED <span class="keyword">BY</span>(empno) SORTED <span class="keyword">BY</span>(empno <span class="keyword">ASC</span>) <span class="keyword">INTO</span> <span class="number">4</span> BUCKETS  <span class="comment">--按照员工编号散列到四个 bucket 中</span></span><br><span class="line">  <span class="type">ROW</span> FORMAT DELIMITED FIELDS TERMINATED <span class="keyword">BY</span> &quot;\t&quot;</span><br><span class="line">  LOCATION <span class="string">&#x27;/hive/emp_bucket&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="倾斜表"><a href="#倾斜表" class="headerlink" title="倾斜表"></a>倾斜表</h3><p>通过指定一个或者多个列经常出现的值（严重偏斜），Hive 会自动将涉及到这些值的数据拆分为单独的文件。在查询时，如果涉及到倾斜值，它就直接从独立文件中获取数据，而不是扫描所有文件，这使得性能得到提升。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">EXTERNAL</span> <span class="keyword">TABLE</span> emp_skewed(</span><br><span class="line">  empno <span class="type">INT</span>,</span><br><span class="line">  ename STRING,</span><br><span class="line">  job STRING,</span><br><span class="line">  mgr <span class="type">INT</span>,</span><br><span class="line">  hiredate <span class="type">TIMESTAMP</span>,</span><br><span class="line">  sal <span class="type">DECIMAL</span>(<span class="number">7</span>,<span class="number">2</span>),</span><br><span class="line">  comm <span class="type">DECIMAL</span>(<span class="number">7</span>,<span class="number">2</span>)</span><br><span class="line">  )</span><br><span class="line">  SKEWED <span class="keyword">BY</span> (empno) <span class="keyword">ON</span> (<span class="number">66</span>,<span class="number">88</span>,<span class="number">100</span>)  <span class="comment">--指定 empno 的倾斜值 66,88,100</span></span><br><span class="line">  <span class="type">ROW</span> FORMAT DELIMITED FIELDS TERMINATED <span class="keyword">BY</span> &quot;\t&quot;</span><br><span class="line">  LOCATION <span class="string">&#x27;/hive/emp_skewed&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="临时表"><a href="#临时表" class="headerlink" title="临时表"></a>临时表</h3><p>临时表仅对当前 session 可见，临时表的数据将存储在用户的暂存目录中，并在会话结束后删除。如果临时表与永久表表名相同，则对该表名的任何引用都将解析为临时表，而不是永久表。临时表还具有以下两个限制：</p>
+<ul>
+<li>不支持分区列；</li>
+<li>不支持创建索引。</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> TEMPORARY <span class="keyword">TABLE</span> emp_temp(</span><br><span class="line">  empno <span class="type">INT</span>,</span><br><span class="line">  ename STRING,</span><br><span class="line">  job STRING,</span><br><span class="line">  mgr <span class="type">INT</span>,</span><br><span class="line">  hiredate <span class="type">TIMESTAMP</span>,</span><br><span class="line">  sal <span class="type">DECIMAL</span>(<span class="number">7</span>,<span class="number">2</span>),</span><br><span class="line">  comm <span class="type">DECIMAL</span>(<span class="number">7</span>,<span class="number">2</span>)</span><br><span class="line">  )</span><br><span class="line">  <span class="type">ROW</span> FORMAT DELIMITED FIELDS TERMINATED <span class="keyword">BY</span> &quot;\t&quot;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="CTAS-创建表"><a href="#CTAS-创建表" class="headerlink" title="CTAS 创建表"></a>CTAS 创建表</h3><p>支持从查询语句的结果创建表：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> emp_copy <span class="keyword">AS</span> <span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> emp <span class="keyword">WHERE</span> deptno<span class="operator">=</span><span class="string">&#x27;20&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="复制表结构"><a href="#复制表结构" class="headerlink" title="复制表结构"></a>复制表结构</h3><p>语法：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> [TEMPORARY] [<span class="keyword">EXTERNAL</span>] <span class="keyword">TABLE</span> [IF <span class="keyword">NOT</span> <span class="keyword">EXISTS</span>] [db_name.]table_name  <span class="comment">--创建表表名</span></span><br><span class="line">   <span class="keyword">LIKE</span> existing_table_or_view_name  <span class="comment">--被复制表的表名</span></span><br><span class="line">   [LOCATION hdfs_path]; <span class="comment">--存储位置</span></span><br></pre></td></tr></table></figure>
+
+<p>示例：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> TEMPORARY <span class="keyword">EXTERNAL</span> <span class="keyword">TABLE</span>  IF <span class="keyword">NOT</span> <span class="keyword">EXISTS</span>  emp_co  <span class="keyword">LIKE</span> emp</span><br></pre></td></tr></table></figure>
+
+<h3 id="加载数据到表"><a href="#加载数据到表" class="headerlink" title="加载数据到表"></a>加载数据到表</h3><p>加载数据到表中属于 DML 操作，这里为了方便大家测试，先简单介绍一下加载本地数据到表中：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 加载数据到 emp 表中</span></span><br><span class="line">load data <span class="keyword">local</span> inpath &quot;/usr/file/emp.txt&quot; <span class="keyword">into</span> <span class="keyword">table</span> emp;</span><br></pre></td></tr></table></figure>
+
+<p>其中 emp.txt 的内容如下，你可以直接复制使用，也可以到本仓库的<a target="_blank" rel="noopener" href="https://github.com/heibaiying/BigData-Notes/tree/master/resources">resources</a> 目录下载：</p>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">7369	SMITH	CLERK	7902	1980-12-17 00:00:00	800.00		20</span><br><span class="line">7499	ALLEN	SALESMAN	7698	1981-02-20 00:00:00	1600.00	300.00	30</span><br><span class="line">7521	WARD	SALESMAN	7698	1981-02-22 00:00:00	1250.00	500.00	30</span><br><span class="line">7566	JONES	MANAGER	7839	1981-04-02 00:00:00	2975.00		20</span><br><span class="line">7654	MARTIN	SALESMAN	7698	1981-09-28 00:00:00	1250.00	1400.00	30</span><br><span class="line">7698	BLAKE	MANAGER	7839	1981-05-01 00:00:00	2850.00		30</span><br><span class="line">7782	CLARK	MANAGER	7839	1981-06-09 00:00:00	2450.00		10</span><br><span class="line">7788	SCOTT	ANALYST	7566	1987-04-19 00:00:00	1500.00		20</span><br><span class="line">7839	KING	PRESIDENT		1981-11-17 00:00:00	5000.00		10</span><br><span class="line">7844	TURNER	SALESMAN	7698	1981-09-08 00:00:00	1500.00	0.00	30</span><br><span class="line">7876	ADAMS	CLERK	7788	1987-05-23 00:00:00	1100.00		20</span><br><span class="line">7900	JAMES	CLERK	7698	1981-12-03 00:00:00	950.00		30</span><br><span class="line">7902	FORD	ANALYST	7566	1981-12-03 00:00:00	3000.00		20</span><br><span class="line">7934	MILLER	CLERK	7782	1982-01-23 00:00:00	1300.00		10</span><br></pre></td></tr></table></figure>
+
+<p>加载后可查询表中数据</p>
+<h2 id="修改表"><a href="#修改表" class="headerlink" title="修改表"></a>修改表</h2><h3 id="重命名表"><a href="#重命名表" class="headerlink" title="重命名表"></a>重命名表</h3><p>语法：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> table_name RENAME <span class="keyword">TO</span> new_table_name;</span><br></pre></td></tr></table></figure>
+
+<p>示例：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> emp_temp RENAME <span class="keyword">TO</span> new_emp; <span class="comment">--把 emp_temp 表重命名为 new_emp</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="修改列"><a href="#修改列" class="headerlink" title="修改列"></a>修改列</h3><p>语法：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> table_name [<span class="keyword">PARTITION</span> partition_spec] CHANGE [<span class="keyword">COLUMN</span>] col_old_name col_new_name column_type</span><br><span class="line">  [COMMENT col_comment] [<span class="keyword">FIRST</span><span class="operator">|</span>AFTER column_name] [CASCADE<span class="operator">|</span>RESTRICT];</span><br></pre></td></tr></table></figure>
+
+<p>示例：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 修改字段名和类型</span></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> emp_temp CHANGE empno empno_new <span class="type">INT</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 修改字段 sal 的名称 并将其放置到 empno 字段后</span></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> emp_temp CHANGE sal sal_new <span class="type">decimal</span>(<span class="number">7</span>,<span class="number">2</span>)  AFTER ename;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 为字段增加注释</span></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> emp_temp CHANGE mgr mgr_new <span class="type">INT</span> COMMENT <span class="string">&#x27;this is column mgr&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="新增列"><a href="#新增列" class="headerlink" title="新增列"></a>新增列</h3><p>示例：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> emp_temp <span class="keyword">ADD</span> COLUMNS (address STRING COMMENT <span class="string">&#x27;home address&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="清空表-删除表"><a href="#清空表-删除表" class="headerlink" title="清空表&#x2F;删除表"></a>清空表&#x2F;删除表</h2><h3 id="清空表-hive-ddl-md"><a href="#清空表-hive-ddl-md" class="headerlink" title="清空表 hive-ddl.md"></a>清空表 hive-ddl.md</h3><p>语法：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 清空整个表或表指定分区中的数据</span></span><br><span class="line"><span class="keyword">TRUNCATE</span> <span class="keyword">TABLE</span> table_name [<span class="keyword">PARTITION</span> (partition_column <span class="operator">=</span> partition_col_value,  ...)];</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>目前只有内部表才能执行 TRUNCATE 操作，外部表执行时会抛出异常 <code>Cannot truncate non-managed table XXXX</code>。</li>
+</ul>
+<p>示例：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">TRUNCATE</span> <span class="keyword">TABLE</span> emp_mgt_ptn <span class="keyword">PARTITION</span> (deptno<span class="operator">=</span><span class="number">20</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="删除表"><a href="#删除表" class="headerlink" title="删除表"></a>删除表</h3><p>语法：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span> [IF <span class="keyword">EXISTS</span>] table_name [PURGE];</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>内部表：不仅会删除表的元数据，同时会删除 HDFS 上的数据；</li>
+<li>外部表：只会删除表的元数据，不会删除 HDFS 上的数据；</li>
+<li>删除视图引用的表时，不会给出警告（但视图已经无效了，必须由用户删除或重新创建）。</li>
+</ul>
+<h2 id="其他命令"><a href="#其他命令" class="headerlink" title="其他命令"></a>其他命令</h2><h3 id="Describe"><a href="#Describe" class="headerlink" title="Describe"></a>Describe</h3><p>查看数据库：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DESCRIBE</span><span class="operator">|</span><span class="keyword">Desc</span> DATABASE [EXTENDED] db_name;  <span class="comment">--EXTENDED 是否显示额外属性</span></span><br></pre></td></tr></table></figure>
+
+<p>查看表：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DESCRIBE</span><span class="operator">|</span><span class="keyword">Desc</span> [EXTENDED<span class="operator">|</span>FORMATTED] table_name <span class="comment">--FORMATTED 以友好的展现方式查看表详情</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Show"><a href="#Show" class="headerlink" title="Show"></a>Show</h3><p><strong>1. 查看数据库列表</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 语法</span></span><br><span class="line"><span class="keyword">SHOW</span> (DATABASES<span class="operator">|</span>SCHEMAS) [<span class="keyword">LIKE</span> <span class="string">&#x27;identifier_with_wildcards&#x27;</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 示例：</span></span><br><span class="line"><span class="keyword">SHOW</span> DATABASES <span class="keyword">like</span> <span class="string">&#x27;hive*&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<p>LIKE 子句允许使用正则表达式进行过滤，但是 SHOW 语句当中的 LIKE 子句只支持 <code>*</code>（通配符）和 <code>|</code>（条件或）两个符号。例如 <code>employees</code>，<code>emp *</code>，<code>emp * | * ees</code>，所有这些都将匹配名为 <code>employees</code> 的数据库。</p>
+<p><strong>2. 查看表的列表</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 语法</span></span><br><span class="line"><span class="keyword">SHOW</span> TABLES [<span class="keyword">IN</span> database_name] [<span class="string">&#x27;identifier_with_wildcards&#x27;</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 示例</span></span><br><span class="line"><span class="keyword">SHOW</span> TABLES <span class="keyword">IN</span> <span class="keyword">default</span>;</span><br></pre></td></tr></table></figure>
+
+<p><strong>3. 查看视图列表</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SHOW</span> VIEWS [<span class="keyword">IN</span><span class="operator">/</span><span class="keyword">FROM</span> database_name] [<span class="keyword">LIKE</span> <span class="string">&#x27;pattern_with_wildcards&#x27;</span>];   <span class="comment">--仅支持 Hive 2.2.0</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>4. 查看表的分区列表</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SHOW</span> PARTITIONS table_name;</span><br></pre></td></tr></table></figure>
+
+<p><strong>5. 查看表&#x2F;视图的创建语句</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SHOW</span> <span class="keyword">CREATE</span> <span class="keyword">TABLE</span> ([db_name.]table_name<span class="operator">|</span>view_name);</span><br></pre></td></tr></table></figure>
+
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://cwiki.apache.org/confluence/display/Hive/LanguageManual+DDL">LanguageManual DDL</a></li>
 </ul>
 
       
@@ -2194,123 +2407,6 @@
 <h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
 <li><a target="_blank" rel="noopener" href="https://www.runoob.com/java/java-networking.html">Java 网络编程</a></li>
 </ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.ligoudan.cn/pages/16563a/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/ligoudan.png">
-      <meta itemprop="name" content="李狗蛋">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="LIGOUDAN">
-      <meta itemprop="description" content="天气不错哇，你看这大冰雹下得">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | LIGOUDAN">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/pages/16563a/" class="post-title-link" itemprop="url">监控工具对比</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2020-02-11 17:48:32" itemprop="dateCreated datePublished" datetime="2020-02-11T17:48:32+08:00">2020-02-11</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-12 10:02:52" itemprop="dateModified" datetime="2024-12-12T10:02:52+08:00">2024-12-12</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Java/%E8%BD%AF%E4%BB%B6/" itemprop="url" rel="index"><span itemprop="name">软件</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Java/%E8%BD%AF%E4%BB%B6/%E7%9B%91%E6%8E%A7%E8%AF%8A%E6%96%AD/" itemprop="url" rel="index"><span itemprop="name">监控诊断</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>126</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="监控工具对比"><a href="#监控工具对比" class="headerlink" title="监控工具对比"></a>监控工具对比</h1><h2 id="监控工具发展史"><a href="#监控工具发展史" class="headerlink" title="监控工具发展史"></a>监控工具发展史</h2><p><img src="https://raw.githubusercontent.com/dunwu/images/master/snap/20200211165813.png" alt="img"></p>
-<h2 id="监控工具比对"><a href="#监控工具比对" class="headerlink" title="监控工具比对"></a>监控工具比对</h2><h3 id="特性对比"><a href="#特性对比" class="headerlink" title="特性对比"></a>特性对比</h3><p><img src="https://raw.githubusercontent.com/dunwu/images/master/snap/20200211171551.png" alt="img"></p>
-<h3 id="生态对比"><a href="#生态对比" class="headerlink" title="生态对比"></a>生态对比</h3><p><img src="https://raw.githubusercontent.com/dunwu/images/master/snap/20200211172631.png" alt="img"></p>
-<h2 id="技术选型"><a href="#技术选型" class="headerlink" title="技术选型"></a>技术选型</h2><ul>
-<li>Zipkin 欠缺 APM 报表能力，不推荐。</li>
-<li>企业级，推荐 CAT</li>
-<li>关注和试点 SkyWalking。</li>
-</ul>
-<p>用好调用链监控，需要订制化、自研能力。</p>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a target="_blank" rel="noopener" href="https://time.geekbang.org/dailylesson/detail/100028416">CAT、Zipkin 和 SkyWalking 该如何选型？</a></p>
 
       
     </div>

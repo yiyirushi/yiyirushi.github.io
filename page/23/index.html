@@ -88,7 +88,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">326</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">137</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">461</span></a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">326</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">137</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">462</span></a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -153,7 +153,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">461</span>
+          <span class="site-state-item-count">462</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -196,6 +196,275 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://www.ligoudan.cn/pages/84f329/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/ligoudan.png">
+      <meta itemprop="name" content="李狗蛋">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LIGOUDAN">
+      <meta itemprop="description" content="天气不错哇，你看这大冰雹下得">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | LIGOUDAN">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/pages/84f329/" class="post-title-link" itemprop="url">Java 故障诊断</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-07-30 17:56:33" itemprop="dateCreated datePublished" datetime="2020-07-30T17:56:33+08:00">2020-07-30</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-12-12 10:02:52" itemprop="dateModified" datetime="2024-12-12T10:02:52+08:00">2024-12-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Java/JavaSE/" itemprop="url" rel="index"><span itemprop="name">JavaSE</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Java/JavaSE/JVM/" itemprop="url" rel="index"><span itemprop="name">JVM</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>9.5k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>9 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="Java-故障诊断"><a href="#Java-故障诊断" class="headerlink" title="Java 故障诊断"></a>Java 故障诊断</h1><h2 id="故障定位思路"><a href="#故障定位思路" class="headerlink" title="故障定位思路"></a>故障定位思路</h2><p>Java 应用出现线上故障，如何进行诊断？</p>
+<p>我们在定位线上问题时要有一个整体的思路，顺藤摸瓜，才能较快的找到问题原因。</p>
+<p>一般来说，服务器故障诊断的整体思路如下：</p>
+<p><img src="https://raw.githubusercontent.com/dunwu/images/master/snap/20200309181645.png" alt="img"></p>
+<p>应用故障诊断思路：</p>
+<p><img src="https://raw.githubusercontent.com/dunwu/images/master/snap/20200309181831.png" alt="img"></p>
+<h2 id="CPU-问题"><a href="#CPU-问题" class="headerlink" title="CPU 问题"></a>CPU 问题</h2><p>一、<strong>CPU 使用率过高</strong>：往往是由于程序逻辑问题导致的。常见导致 CPU 飙升的问题场景如：死循环，无限递归、频繁 GC、线程上下文切换过多。</p>
+<p>二、<strong>CPU 始终升不上去</strong>：往往是由于程序中存在大量 IO 操作并且时间很长（数据库读写、日志等）。</p>
+<h3 id="查找-CPU-占用率较高的进程、线程"><a href="#查找-CPU-占用率较高的进程、线程" class="headerlink" title="查找 CPU 占用率较高的进程、线程"></a>查找 CPU 占用率较高的进程、线程</h3><p>线上环境的 Java 应用可能有多个进程、线程，所以，要先找到 CPU 占用率较高的进程、线程。</p>
+<p>（1）使用 <code>ps</code> 命令查看 xxx 应用的进程 ID（PID）</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -ef | grep xxx</span><br></pre></td></tr></table></figure>
+
+<p>也可以使用 <code>jps</code> 命令来查看。</p>
+<p>（2）如果应用有多个进程，可以用 <code>top</code> 命令查看哪个占用 CPU 较高。</p>
+<p>（3）用 <code>top -Hp pid</code> 来找到 CPU 使用率比较高的一些线程。</p>
+<p>（4）将占用 CPU 最高的 PID 转换为 16 进制，使用 <code>printf &#39;%x\n&#39; pid</code> 得到 <code>nid</code></p>
+<p>（5）使用 <code>jstack pic | grep &#39;nid&#39; -C5</code> 命令，查看堆栈信息：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">jstack 7129 | grep <span class="string">&#x27;0x1c23&#x27;</span> -C5</span></span><br><span class="line">        at java.lang.Object.wait(Object.java:502)</span><br><span class="line">        at java.lang.ref.Reference.tryHandlePending(Reference.java:191)</span><br><span class="line">        - locked &lt;0x00000000b5383ff0&gt; (a java.lang.ref.Reference$Lock)</span><br><span class="line">        at java.lang.ref.Reference$ReferenceHandler.run(Reference.java:153)</span><br><span class="line"></span><br><span class="line">&quot;main&quot; #1 prio=5 os_prio=0 tid=0x00007f4df400a800 nid=0x1c23 in Object.wait() [0x00007f4dfdec8000]</span><br><span class="line">   java.lang.Thread.State: WAITING (on object monitor)</span><br><span class="line">        at java.lang.Object.wait(Native Method)</span><br><span class="line">        - waiting on &lt;0x00000000b5384018&gt; (a org.apache.felix.framework.util.ThreadGate)</span><br><span class="line">        at org.apache.felix.framework.util.ThreadGate.await(ThreadGate.java:79)</span><br><span class="line">        - locked &lt;0x00000000b5384018&gt; (a org.apache.felix.framework.util.ThreadGate)</span><br></pre></td></tr></table></figure>
+
+<p>（6）更常见的操作是用 <code>jstack</code> 生成堆栈快照，然后基于快照文件进行分析。生成快照命令：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jstack -F -l pid &gt;&gt; threaddump.log</span><br></pre></td></tr></table></figure>
+
+<p>（7）分析堆栈信息</p>
+<p>一般来说，状态为 <code>WAITING</code>、<code>TIMED_WAITING</code> 、<code>BLOCKED</code> 的线程更可能出现问题。可以执行以下命令查看线程状态统计：</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">cat</span> threaddump.<span class="built_in">log</span> | <span class="keyword">grep</span> <span class="string">&quot;java.lang.Thread.State&quot;</span> | <span class="keyword">sort</span> -nr | uniq -<span class="keyword">c</span></span><br></pre></td></tr></table></figure>
+
+<p>如果存在大量 <code>WAITING</code>、<code>TIMED_WAITING</code> 、<code>BLOCKED</code> ，那么多半是有问题啦。</p>
+<h3 id="是否存在频繁-GC"><a href="#是否存在频繁-GC" class="headerlink" title="是否存在频繁 GC"></a>是否存在频繁 GC</h3><p>如果应用频繁 GC，也可能导致 CPU 飙升。为何频繁 GC 可以使用 <code>jstack</code> 来分析问题（分析和解决频繁 GC 问题，在后续讲解）。</p>
+<p>那么，如何判断 Java 进程 GC 是否频繁？</p>
+<p>可以使用 <code>jstat -gc pid 1000</code> 命令来观察 GC 状态。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">jstat -gc 29527 200 5</span></span><br><span class="line"> S0C    S1C    S0U    S1U      EC       EU        OC         OU       MC     MU    CCSC   CCSU   YGC     YGCT    FGC    FGCT     GCT</span><br><span class="line">22528.0 22016.0  0.0   21388.2 4106752.0 921244.7 5592576.0  2086826.5  110716.0 103441.1 12416.0 11167.7   3189   90.057  10      2.140   92.197</span><br><span class="line">22528.0 22016.0  0.0   21388.2 4106752.0 921244.7 5592576.0  2086826.5  110716.0 103441.1 12416.0 11167.7   3189   90.057  10      2.140   92.197</span><br><span class="line">22528.0 22016.0  0.0   21388.2 4106752.0 921244.7 5592576.0  2086826.5  110716.0 103441.1 12416.0 11167.7   3189   90.057  10      2.140   92.197</span><br><span class="line">22528.0 22016.0  0.0   21388.2 4106752.0 921244.7 5592576.0  2086826.5  110716.0 103441.1 12416.0 11167.7   3189   90.057  10      2.140   92.197</span><br><span class="line">22528.0 22016.0  0.0   21388.2 4106752.0 921244.7 5592576.0  2086826.5  110716.0 103441.1 12416.0 11167.7   3189   90.057  10      2.140   92.197</span><br></pre></td></tr></table></figure>
+
+<h3 id="是否存在频繁上下文切换"><a href="#是否存在频繁上下文切换" class="headerlink" title="是否存在频繁上下文切换"></a>是否存在频繁上下文切换</h3><p>针对频繁上下文切换问题，可以使用 <code>vmstat pid</code> 命令来进行查看。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">vmstat 7129</span></span><br><span class="line">procs -----------memory---------- ---swap-- -----io---- -system-- ------cpu-----</span><br><span class="line"> r  b   swpd   free   buff  cache   si   so    bi    bo   in   cs us sy id wa st</span><br><span class="line"> 1  0   6836 737532   1588 3504956    0    0     1     4    5    3  0  0 100  0  0</span><br></pre></td></tr></table></figure>
+
+<p>其中，<code>cs</code> 一列代表了上下文切换的次数。</p>
+<p>【解决方法】</p>
+<p>如果，线程上下文切换很频繁，可以考虑在应用中针对线程进行优化，方法有：</p>
+<ul>
+<li><strong>无锁并发</strong>：多线程竞争时，会引起上下文切换，所以多线程处理数据时，可以用一些办法来避免使用锁，如将数据的 ID 按照 Hash 取模分段，不同的线程处理不同段的数据；</li>
+<li><strong>CAS 算法</strong>：Java 的 Atomic 包使用 CAS 算法来更新数据，而不需要加锁；</li>
+<li><strong>最少线程</strong>：避免创建不需要的线程，比如任务很少，但是创建了很多线程来处理，这样会造成大量线程都处于等待状态；</li>
+<li><strong>使用协程</strong>：在单线程里实现多任务的调度，并在单线程里维持多个任务间的切换；</li>
+</ul>
+<h2 id="内存问题"><a href="#内存问题" class="headerlink" title="内存问题"></a>内存问题</h2><p>内存问题诊断起来相对比 CPU 麻烦一些，场景也比较多。主要包括 OOM、GC 问题和堆外内存。一般来讲，我们会先用 <code>free</code> 命令先来检查一发内存的各种情况。</p>
+<p>诊断内存问题，一般首先会用 <code>free</code> 命令查看一下机器的物理内存使用情况。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">free</span></span><br><span class="line">              total        used        free      shared  buff/cache   available</span><br><span class="line">Mem:        8011164     3767900      735364        8804     3507900     3898568</span><br><span class="line">Swap:       5242876        6836     5236040</span><br></pre></td></tr></table></figure>
+
+<h2 id="磁盘问题"><a href="#磁盘问题" class="headerlink" title="磁盘问题"></a>磁盘问题</h2><h3 id="查看磁盘空间使用率"><a href="#查看磁盘空间使用率" class="headerlink" title="查看磁盘空间使用率"></a>查看磁盘空间使用率</h3><p>可以使用 <code>df -hl</code> 命令查看磁盘空间使用率。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">df</span> -hl</span><br><span class="line">Filesystem      Size  Used Avail Use% Mounted on</span><br><span class="line">devtmpfs        494M     0  494M   0% /dev</span><br><span class="line">tmpfs           504M     0  504M   0% /dev/shm</span><br><span class="line">tmpfs           504M   58M  447M  12% /run</span><br><span class="line">tmpfs           504M     0  504M   0% /sys/fs/cgroup</span><br><span class="line">/dev/sda2        20G  5.7G   13G  31% /</span><br><span class="line">/dev/sda1       380M  142M  218M  40% /boot</span><br><span class="line">tmpfs           101M     0  101M   0% /run/user/0</span><br></pre></td></tr></table></figure>
+
+<h3 id="查看磁盘读写性能"><a href="#查看磁盘读写性能" class="headerlink" title="查看磁盘读写性能"></a>查看磁盘读写性能</h3><p>可以使用 <code>iostat</code> 命令查看磁盘读写性能。</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">iostat</span> -d -k -x</span><br><span class="line"><span class="attribute">Linux</span> <span class="number">3</span>.<span class="number">10</span>.<span class="number">0</span>-<span class="number">327</span>.el7.x86_64 (elk-server)        <span class="number">03</span>/<span class="number">07</span>/<span class="number">2020</span>      _x86_64_        (<span class="number">4</span> CPU)</span><br><span class="line"></span><br><span class="line"><span class="attribute">Device</span>:         rrqm/s   wrqm/s     r/s     w/s    rkB/s    wkB/s avgrq-sz avgqu-sz   await r_await w_await  svctm  %util</span><br><span class="line"><span class="attribute">sda</span>               <span class="number">0</span>.<span class="number">00</span>     <span class="number">0</span>.<span class="number">14</span>    <span class="number">0</span>.<span class="number">01</span>    <span class="number">1</span>.<span class="number">63</span>     <span class="number">0</span>.<span class="number">42</span>   <span class="number">157</span>.<span class="number">56</span>   <span class="number">193</span>.<span class="number">02</span>     <span class="number">0</span>.<span class="number">00</span>    <span class="number">2</span>.<span class="number">52</span>   <span class="number">11</span>.<span class="number">43</span>    <span class="number">2</span>.<span class="number">48</span>   <span class="number">0</span>.<span class="number">60</span>   <span class="number">0</span>.<span class="number">10</span></span><br><span class="line"><span class="attribute">scd0</span>              <span class="number">0</span>.<span class="number">00</span>     <span class="number">0</span>.<span class="number">00</span>    <span class="number">0</span>.<span class="number">00</span>    <span class="number">0</span>.<span class="number">00</span>     <span class="number">0</span>.<span class="number">00</span>     <span class="number">0</span>.<span class="number">00</span>     <span class="number">8</span>.<span class="number">00</span>     <span class="number">0</span>.<span class="number">00</span>    <span class="number">0</span>.<span class="number">27</span>    <span class="number">0</span>.<span class="number">27</span>    <span class="number">0</span>.<span class="number">00</span>   <span class="number">0</span>.<span class="number">27</span>   <span class="number">0</span>.<span class="number">00</span></span><br><span class="line"><span class="attribute">dm</span>-<span class="number">0</span>              <span class="number">0</span>.<span class="number">00</span>     <span class="number">0</span>.<span class="number">00</span>    <span class="number">0</span>.<span class="number">01</span>    <span class="number">1</span>.<span class="number">78</span>     <span class="number">0</span>.<span class="number">41</span>   <span class="number">157</span>.<span class="number">56</span>   <span class="number">177</span>.<span class="number">19</span>     <span class="number">0</span>.<span class="number">00</span>    <span class="number">2</span>.<span class="number">46</span>   <span class="number">12</span>.<span class="number">09</span>    <span class="number">2</span>.<span class="number">42</span>   <span class="number">0</span>.<span class="number">59</span>   <span class="number">0</span>.<span class="number">10</span></span><br><span class="line"><span class="attribute">dm</span>-<span class="number">1</span>              <span class="number">0</span>.<span class="number">00</span>     <span class="number">0</span>.<span class="number">00</span>    <span class="number">0</span>.<span class="number">00</span>    <span class="number">0</span>.<span class="number">00</span>     <span class="number">0</span>.<span class="number">00</span>     <span class="number">0</span>.<span class="number">00</span>    <span class="number">16</span>.<span class="number">95</span>     <span class="number">0</span>.<span class="number">00</span>    <span class="number">1</span>.<span class="number">04</span>    <span class="number">1</span>.<span class="number">04</span>    <span class="number">0</span>.<span class="number">00</span>   <span class="number">1</span>.<span class="number">02</span>   <span class="number">0</span>.<span class="number">00</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="查看具体的文件读写情况"><a href="#查看具体的文件读写情况" class="headerlink" title="查看具体的文件读写情况"></a>查看具体的文件读写情况</h3><p>可以使用 <code>lsof -p pid</code> 命令</p>
+<h2 id="网络问题"><a href="#网络问题" class="headerlink" title="网络问题"></a>网络问题</h2><h3 id="无法连接"><a href="#无法连接" class="headerlink" title="无法连接"></a>无法连接</h3><p>可以通过 <code>ping</code> 命令，查看是否能连通。</p>
+<p>通过 <code>netstat -nlp | grep &lt;port&gt;</code> 命令，查看服务端口是否在工作。</p>
+<h3 id="网络超时"><a href="#网络超时" class="headerlink" title="网络超时"></a>网络超时</h3><p>网络超时问题大部分出在应用层面。超时大体可以分为连接超时和读写超时，某些使用连接池的客户端框架还会存在获取连接超时和空闲连接清理超时。</p>
+<ul>
+<li>读写超时。readTimeout&#x2F;writeTimeout，有些框架叫做 so_timeout 或者 socketTimeout，均指的是数据读写超时。注意这边的超时大部分是指逻辑上的超时。soa 的超时指的也是读超时。读写超时一般都只针对客户端设置。</li>
+<li>连接超时。connectionTimeout，客户端通常指与服务端建立连接的最大时间。服务端这边 connectionTimeout 就有些五花八门了，jetty 中表示空闲连接清理时间，tomcat 则表示连接维持的最大时间。</li>
+<li>其他。包括连接获取超时 connectionAcquireTimeout 和空闲连接清理超时 idleConnectionTimeout。多用于使用连接池或队列的客户端或服务端框架。</li>
+</ul>
+<p>我们在设置各种超时时间中，需要确认的是尽量保持客户端的超时小于服务端的超时，以保证连接正常结束。</p>
+<p>在实际开发中，我们关心最多的应该是接口的读写超时了。</p>
+<p>如何设置合理的接口超时是一个问题。如果接口超时设置的过长，那么有可能会过多地占用服务端的 tcp 连接。而如果接口设置的过短，那么接口超时就会非常频繁。</p>
+<p>服务端接口明明 rt 降低，但客户端仍然一直超时又是另一个问题。这个问题其实很简单，客户端到服务端的链路包括网络传输、排队以及服务处理等，每一个环节都可能是耗时的原因。</p>
+<h3 id="TCP-队列溢出"><a href="#TCP-队列溢出" class="headerlink" title="TCP 队列溢出"></a>TCP 队列溢出</h3><p>tcp 队列溢出是个相对底层的错误，它可能会造成超时、rst 等更表层的错误。因此错误也更隐蔽，所以我们单独说一说。<br><img src="https://fredal-blog.oss-cn-hangzhou.aliyuncs.com/2019-11-04-083827.jpg" alt="img"></p>
+<p>如上图所示，这里有两个队列：syns queue(半连接队列）、accept queue（全连接队列）。三次握手，在 server 收到 client 的 syn 后，把消息放到 syns queue，回复 syn+ack 给 client，server 收到 client 的 ack，如果这时 accept queue 没满，那就从 syns queue 拿出暂存的信息放入 accept queue 中，否则按 tcp_abort_on_overflow 指示的执行。</p>
+<p>tcp_abort_on_overflow 0 表示如果三次握手第三步的时候 accept queue 满了那么 server 扔掉 client 发过来的 ack。tcp_abort_on_overflow 1 则表示第三步的时候如果全连接队列满了，server 发送一个 rst 包给 client，表示废掉这个握手过程和这个连接，意味着日志里可能会有很多<code>connection reset / connection reset by peer</code>。</p>
+<p>那么在实际开发中，我们怎么能快速定位到 tcp 队列溢出呢？</p>
+<p><strong>netstat 命令，执行 netstat -s | egrep “listen|LISTEN”</strong><br><img src="https://fredal-blog.oss-cn-hangzhou.aliyuncs.com/2019-11-04-83828.jpg" alt="img"><br>如上图所示，overflowed 表示全连接队列溢出的次数，sockets dropped 表示半连接队列溢出的次数。</p>
+<p><strong>ss 命令，执行 ss -lnt</strong><br><img src="https://fredal-blog.oss-cn-hangzhou.aliyuncs.com/2019-11-04-083828.jpg" alt="img"><br>上面看到 Send-Q 表示第三列的 listen 端口上的全连接队列最大为 5，第一列 Recv-Q 为全连接队列当前使用了多少。</p>
+<p>接着我们看看怎么设置全连接、半连接队列大小吧：</p>
+<p>全连接队列的大小取决于 min(backlog, somaxconn)。backlog 是在 socket 创建的时候传入的，somaxconn 是一个 os 级别的系统参数。而半连接队列的大小取决于 max(64, &#x2F;proc&#x2F;sys&#x2F;net&#x2F;ipv4&#x2F;tcp_max_syn_backlog)。</p>
+<p>在日常开发中，我们往往使用 servlet 容器作为服务端，所以我们有时候也需要关注容器的连接队列大小。在 tomcat 中 backlog 叫做<code>acceptCount</code>，在 jetty 里面则是<code>acceptQueueSize</code>。</p>
+<h3 id="RST-异常"><a href="#RST-异常" class="headerlink" title="RST 异常"></a>RST 异常</h3><p>RST 包表示连接重置，用于关闭一些无用的连接，通常表示异常关闭，区别于四次挥手。</p>
+<p>在实际开发中，我们往往会看到<code>connection reset / connection reset by peer</code>错误，这种情况就是 RST 包导致的。</p>
+<p><strong>端口不存在</strong></p>
+<p>如果像不存在的端口发出建立连接 SYN 请求，那么服务端发现自己并没有这个端口则会直接返回一个 RST 报文，用于中断连接。</p>
+<p><strong>主动代替 FIN 终止连接</strong></p>
+<p>一般来说，正常的连接关闭都是需要通过 FIN 报文实现，然而我们也可以用 RST 报文来代替 FIN，表示直接终止连接。实际开发中，可设置 SO_LINGER 数值来控制，这种往往是故意的，来跳过 TIMED_WAIT，提供交互效率，不闲就慎用。</p>
+<p><strong>客户端或服务端有一边发生了异常，该方向对端发送 RST 以告知关闭连接</strong></p>
+<p>我们上面讲的 tcp 队列溢出发送 RST 包其实也是属于这一种。这种往往是由于某些原因，一方无法再能正常处理请求连接了(比如程序崩了，队列满了)，从而告知另一方关闭连接。</p>
+<p><strong>接收到的 TCP 报文不在已知的 TCP 连接内</strong></p>
+<p>比如，一方机器由于网络实在太差 TCP 报文失踪了，另一方关闭了该连接，然后过了许久收到了之前失踪的 TCP 报文，但由于对应的 TCP 连接已不存在，那么会直接发一个 RST 包以便开启新的连接。</p>
+<p><strong>一方长期未收到另一方的确认报文，在一定时间或重传次数后发出 RST 报文</strong></p>
+<p>这种大多也和网络环境相关了，网络环境差可能会导致更多的 RST 报文。</p>
+<p>之前说过 RST 报文多会导致程序报错，在一个已关闭的连接上读操作会报<code>connection reset</code>，而在一个已关闭的连接上写操作则会报<code>connection reset by peer</code>。通常我们可能还会看到<code>broken pipe</code>错误，这是管道层面的错误，表示对已关闭的管道进行读写，往往是在收到 RST，报出<code>connection reset</code>错后继续读写数据报的错，这个在 glibc 源码注释中也有介绍。</p>
+<p>我们在诊断故障时候怎么确定有 RST 包的存在呢？当然是使用 tcpdump 命令进行抓包，并使用 wireshark 进行简单分析了。<code>tcpdump -i en0 tcp -w xxx.cap</code>，en0 表示监听的网卡。<br><img src="https://fredal-blog.oss-cn-hangzhou.aliyuncs.com/2019-11-04-083829.jpg" alt="img"></p>
+<p>接下来我们通过 wireshark 打开抓到的包，可能就能看到如下图所示，红色的就表示 RST 包了。<br><img src="https://fredal-blog.oss-cn-hangzhou.aliyuncs.com/2019-11-04-083830.jpg" alt="img"></p>
+<h3 id="TIME-WAIT-和-CLOSE-WAIT"><a href="#TIME-WAIT-和-CLOSE-WAIT" class="headerlink" title="TIME_WAIT 和 CLOSE_WAIT"></a>TIME_WAIT 和 CLOSE_WAIT</h3><p>TIME_WAIT 和 CLOSE_WAIT 是啥意思相信大家都知道。<br>在线上时，我们可以直接用命令<code>netstat -n | awk &#39;/^tcp/ &#123;++S[$NF]&#125; END &#123;for(a in S) print a, S[a]&#125;&#39;</code>来查看 time-wait 和 close_wait 的数量</p>
+<p>用 ss 命令会更快<code>ss -ant | awk &#39;&#123;++S[$1]&#125; END &#123;for(a in S) print a, S[a]&#125;&#39;</code></p>
+<p><img src="https://fredal-blog.oss-cn-hangzhou.aliyuncs.com/2019-11-04-083830.png" alt="img"></p>
+<h4 id="TIME-WAIT"><a href="#TIME-WAIT" class="headerlink" title="TIME_WAIT"></a>TIME_WAIT</h4><p>time_wait 的存在一是为了丢失的数据包被后面连接复用，二是为了在 2MSL 的时间范围内正常关闭连接。它的存在其实会大大减少 RST 包的出现。</p>
+<p>过多的 time_wait 在短连接频繁的场景比较容易出现。这种情况可以在服务端做一些内核参数调优:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#表示开启重用。允许将TIME-WAIT sockets重新用于新的TCP连接，默认为<span class="number">0</span>，表示关闭</span><br><span class="line">net.ipv4.tcp_tw_reuse = <span class="number">1</span></span><br><span class="line">#表示开启TCP连接中TIME-WAIT sockets的快速回收，默认为<span class="number">0</span>，表示关闭</span><br><span class="line">net.ipv4.tcp_tw_recycle = <span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<p>当然我们不要忘记在 NAT 环境下因为时间戳错乱导致数据包被拒绝的坑了，另外的办法就是改小<code>tcp_max_tw_buckets</code>，超过这个数的 time_wait 都会被干掉，不过这也会导致报<code>time wait bucket table overflow</code>的错。</p>
+<h4 id="CLOSE-WAIT"><a href="#CLOSE-WAIT" class="headerlink" title="CLOSE_WAIT"></a>CLOSE_WAIT</h4><p>close_wait 往往都是因为应用程序写的有问题，没有在 ACK 后再次发起 FIN 报文。close_wait 出现的概率甚至比 time_wait 要更高，后果也更严重。往往是由于某个地方阻塞住了，没有正常关闭连接，从而渐渐地消耗完所有的线程。</p>
+<p>想要定位这类问题，最好是通过 jstack 来分析线程堆栈来诊断问题，具体可参考上述章节。这里仅举一个例子。</p>
+<p>开发同学说应用上线后 CLOSE_WAIT 就一直增多，直到挂掉为止，jstack 后找到比较可疑的堆栈是大部分线程都卡在了<code>countdownlatch.await</code>方法，找开发同学了解后得知使用了多线程但是确没有 catch 异常，修改后发现异常仅仅是最简单的升级 sdk 后常出现的<code>class not found</code>。</p>
+<h2 id="GC-问题"><a href="#GC-问题" class="headerlink" title="GC 问题"></a>GC 问题</h2><p>GC 问题除了影响 CPU 也会影响内存，诊断思路也是一致的。</p>
+<p>（1）通常，先使用 <code>jstat</code> 来查看分代变化情况，比如 <strong>minor gc</strong> 或 <strong>full gc</strong> 次数是不是太频繁、耗时太久。</p>
+<p>线程量太大，且不被及时 GC 也会引发 OOM，大部分就是之前说的 <code>unable to create new native thread</code>。除了 jstack 细细分析 dump 文件外，我们一般先会看下总体线程。</p>
+<p>可以执行以下命令中任意一个，没来查看当前进程创建的总线程数。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pstreee -p pid | wc -l</span><br><span class="line">ls -l /proc/pid/task | wc -l</span><br></pre></td></tr></table></figure>
+
+<p>堆内内存泄漏总是和 GC 异常相伴。不过 GC 问题不只是和内存问题相关，还有可能引起 CPU 负载、网络问题等系列并发症，只是相对来说和内存联系紧密些，所以我们在此单独总结一下 GC 相关问题。</p>
+<p>我们在 cpu 章介绍了使用 jstat 来获取当前 GC 分代变化信息。而更多时候，我们是通过 GC 日志来诊断问题的，在启动参数中加上<code>-verbose:gc -XX:+PrintGCDetails -XX:+PrintGCDateStamps -XX:+PrintGCTimeStamps</code>来开启 GC 日志。<br>常见的 Minor GC、Full GC 日志含义在此就不做赘述了。</p>
+<p>针对 gc 日志，我们就能大致推断出 Minor GC 与 fullGC 是否过于频繁或者耗时过长，从而对症下药。我们下面将对 G1 垃圾收集器来做分析，这边也建议大家使用 G1<code>-XX:+UseG1GC</code>。</p>
+<h3 id="OOM"><a href="#OOM" class="headerlink" title="OOM"></a>OOM</h3><p>查看 GC 日志，如果有明显提示 OOM 问题，那就可以根据提示信息，较为快速的定位问题。</p>
+<blockquote>
+<p>OOM 定位可以参考：<a href="02.JVM%E5%86%85%E5%AD%98%E5%8C%BA%E5%9F%9F.md#OutOfMemoryError">JVM 内存区域之 OutOfMemoryError</a></p>
+</blockquote>
+<h3 id="Minor-GC"><a href="#Minor-GC" class="headerlink" title="Minor GC"></a>Minor GC</h3><h4 id="Minor-GC-过频"><a href="#Minor-GC-过频" class="headerlink" title="Minor GC 过频"></a>Minor GC 过频</h4><p><strong>Minor GC 频繁一般是短周期的 Java 小对象较多</strong>。</p>
+<p>（1）先考虑是不是 Eden 区&#x2F;新生代设置的太小了，看能否通过调整 <code>-Xmn、-XX:SurvivorRatio</code> 等参数设置来解决问题。</p>
+<p>（2）如果参数正常，但是 Minor GC 频率还是太高，就需要使用 <code>jmap</code> 和 <code>MAT</code> 对 dump 文件进行进一步诊断了。</p>
+<h4 id="Minor-GC-耗时过长"><a href="#Minor-GC-耗时过长" class="headerlink" title="Minor GC 耗时过长"></a>Minor GC 耗时过长</h4><p>Minor GC 耗时过长问题就要看 GC 日志里耗时耗在哪一块了。</p>
+<p>以 G1 GC 日志为例，可以关注 Root Scanning、Object Copy、Ref Proc 等阶段。Ref Proc 耗时长，就要注意引用相关的对象。Root Scanning 耗时长，就要注意线程数、跨代引用。Object Copy 则需要关注对象生存周期。而且耗时分析它需要横向比较，就是和其他项目或者正常时间段的耗时比较。</p>
+<h3 id="Full-GC-过频"><a href="#Full-GC-过频" class="headerlink" title="Full GC 过频"></a>Full GC 过频</h3><p>G1 中更多的还是 mixedGC，但 mixedGC 可以和 Minor GC 思路一样去诊断。触发 fullGC 了一般都会有问题，G1 会退化使用 Serial 收集器来完成垃圾的清理工作，暂停时长达到秒级别，可以说是半跪了。</p>
+<p>fullGC 的原因可能包括以下这些，以及参数调整方面的一些思路：</p>
+<ul>
+<li>并发阶段失败：在并发标记阶段，MixGC 之前老年代就被填满了，那么这时候 G1 就会放弃标记周期。这种情况，可能就需要增加堆大小，或者调整并发标记线程数<code>-XX:ConcGCThreads</code>。</li>
+<li>晋升失败：在 GC 的时候没有足够的内存供存活&#x2F;晋升对象使用，所以触发了 Full GC。这时候可以通过<code>-XX:G1ReservePercent</code>来增加预留内存百分比，减少<code>-XX:InitiatingHeapOccupancyPercent</code>来提前启动标记，<code>-XX:ConcGCThreads</code>来增加标记线程数也是可以的。</li>
+<li>大对象分配失败：大对象找不到合适的 region 空间进行分配，就会进行 fullGC，这种情况下可以增大内存或者增大<code>-XX:G1HeapRegionSize</code>。</li>
+<li>程序主动执行 System.gc()：不要随便写就对了。</li>
+</ul>
+<p>另外，我们可以在启动参数中配置<code>-XX:HeapDumpPath=/xxx/dump.hprof</code>来 dump fullGC 相关的文件，并通过 jinfo 来进行 gc 前后的 dump</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">jinfo -flag +HeapDumpBeforeFullGC pid</span><br><span class="line">jinfo -flag +HeapDumpAfterFullGC pid</span><br></pre></td></tr></table></figure>
+
+<p>这样得到 2 份 dump 文件，对比后主要关注被 gc 掉的问题对象来定位问题。</p>
+<h2 id="常用-Linux-命令"><a href="#常用-Linux-命令" class="headerlink" title="常用 Linux 命令"></a>常用 Linux 命令</h2><p>在故障排查时，有一些 Linux 命令十分有用，建议掌握。</p>
+<h3 id="top"><a href="#top" class="headerlink" title="top"></a>top</h3><p>top 命令可以实时动态地查看系统的整体运行情况，是一个综合了多方信息监测系统性能和运行信息的实用工具。</p>
+<p>通常，会使用 <code>top -Hp pid</code> 查看具体线程使用系统资源情况。</p>
+<blockquote>
+<p>命令详情参考：<a target="_blank" rel="noopener" href="http://man.linuxde.net/top">http://man.linuxde.net/top</a></p>
+</blockquote>
+<h3 id="vmstat"><a href="#vmstat" class="headerlink" title="vmstat"></a>vmstat</h3><p>vmstat 是一款指定采样周期和次数的功能性监测工具，我们可以看到，它不仅可以统计内存的使用情况，还可以观测到 CPU 的使用率、swap 的使用情况。但 vmstat 一般很少用来查看内存的使用情况，而是经常被用来观察进程的上下文切换。</p>
+<ul>
+<li>r：等待运行的进程数；</li>
+<li>b：处于非中断睡眠状态的进程数；</li>
+<li>swpd：虚拟内存使用情况；</li>
+<li>free：空闲的内存；</li>
+<li>buff：用来作为缓冲的内存数；</li>
+<li>si：从磁盘交换到内存的交换页数量；</li>
+<li>so：从内存交换到磁盘的交换页数量；</li>
+<li>bi：发送到块设备的块数；</li>
+<li>bo：从块设备接收到的块数；</li>
+<li>in：每秒中断数；</li>
+<li>cs：每秒上下文切换次数；</li>
+<li>us：用户 CPU 使用时间；</li>
+<li>sy：内核 CPU 系统使用时间；</li>
+<li>id：空闲时间；</li>
+<li>wa：等待 I&#x2F;O 时间；</li>
+<li>st：运行虚拟机窃取的时间。</li>
+</ul>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://time.geekbang.org/column/intro/100028001">《Java 性能调优实战》</a></li>
+<li><a target="_blank" rel="noopener" href="https://fredal.xin/java-error-check">JAVA 线上故障诊断全套路</a></li>
+<li><a target="_blank" rel="noopener" href="https://tech.meituan.com/2017/12/29/jvm-optimize.html">从实际案例聊聊 Java 应用的 GC 优化</a></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -2898,430 +3167,6 @@
 <li><a target="_blank" rel="noopener" href="https://book.douban.com/subject/2130190/">《Java 编程思想（Thinking in java）》</a></li>
 <li><a target="_blank" rel="noopener" href="https://book.douban.com/subject/26880667/">《Java 核心技术 卷 I 基础知识》</a></li>
 <li><a target="_blank" rel="noopener" href="https://docs.oracle.com/javase/7/docs/api/java/lang/System.html">System 官方 API 手册</a></li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.ligoudan.cn/pages/db5b69/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/ligoudan.png">
-      <meta itemprop="name" content="李狗蛋">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="LIGOUDAN">
-      <meta itemprop="description" content="天气不错哇，你看这大冰雹下得">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | LIGOUDAN">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/pages/db5b69/" class="post-title-link" itemprop="url">Java 内存管理</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2020-06-28 16:19:00" itemprop="dateCreated datePublished" datetime="2020-06-28T16:19:00+08:00">2020-06-28</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-12 10:02:52" itemprop="dateModified" datetime="2024-12-12T10:02:52+08:00">2024-12-12</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Java/JavaSE/" itemprop="url" rel="index"><span itemprop="name">JavaSE</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Java/JavaSE/JVM/" itemprop="url" rel="index"><span itemprop="name">JVM</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>15k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>13 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="Java-内存管理"><a href="#Java-内存管理" class="headerlink" title="Java 内存管理"></a>Java 内存管理</h1><h2 id="内存简介"><a href="#内存简介" class="headerlink" title="内存简介"></a>内存简介</h2><h3 id="物理内存和虚拟内存"><a href="#物理内存和虚拟内存" class="headerlink" title="物理内存和虚拟内存"></a>物理内存和虚拟内存</h3><p>所谓物理内存就是通常所说的 RAM（随机存储器）。</p>
-<p>虚拟内存使得多个进程在同时运行时可以共享物理内存，这里的共享只是空间上共享，在逻辑上彼此仍然是隔离的。</p>
-<h3 id="内核空间和用户空间"><a href="#内核空间和用户空间" class="headerlink" title="内核空间和用户空间"></a>内核空间和用户空间</h3><p>一个计算通常有固定大小的内存空间，但是程序并不能使用全部的空间。因为这些空间被划分为内核空间和用户空间，而程序只能使用用户空间的内存。</p>
-<h3 id="使用内存的-Java-组件"><a href="#使用内存的-Java-组件" class="headerlink" title="使用内存的 Java 组件"></a>使用内存的 Java 组件</h3><p>Java 启动后，作为一个进程运行在操作系统中。</p>
-<p>有哪些 Java 组件需要占用内存呢？</p>
-<ul>
-<li>堆内存：Java 堆、类和类加载器</li>
-<li>栈内存：线程</li>
-<li>本地内存：NIO、JNI</li>
-</ul>
-<h2 id="运行时数据区域"><a href="#运行时数据区域" class="headerlink" title="运行时数据区域"></a>运行时数据区域</h2><p>JVM 在执行 Java 程序的过程中会把它所管理的内存划分为若干个不同的数据区域。这些区域都有各自的用途，以及创建和销毁的时间，有的区域随着虚拟机进程的启动而存在，有些区域则依赖用户线程的启动和结束而建立和销毁。如下图所示：</p>
-<p><img src="https://raw.githubusercontent.com/dunwu/images/master/cs/java/javacore/jvm/jvm-memory-runtime-data-area.png" alt="img"></p>
-<h3 id="程序计数器"><a href="#程序计数器" class="headerlink" title="程序计数器"></a>程序计数器</h3><p><strong><code>程序计数器（Program Counter Register）</code></strong> 是一块较小的内存空间，它可以看做是<strong>当前线程所执行的字节码的行号指示器</strong>。例如，分支、循环、跳转、异常、线程恢复等都依赖于计数器。</p>
-<p>当执行的线程数量超过 CPU 数量时，线程之间会根据时间片轮询争夺 CPU 资源。如果一个线程的时间片用完了，或者是其它原因导致这个线程的 CPU 资源被提前抢夺，那么这个退出的线程就需要单独的一个程序计数器，来记录下一条运行的指令，从而在线程切换后能恢复到正确的执行位置。各条线程间的计数器互不影响，独立存储，我们称这类内存区域为 “线程私有” 的内存。</p>
-<ul>
-<li>如果线程正在执行的是一个 Java 方法，这个计数器记录的是正在执行的虚拟机字节码指令的地址；</li>
-<li>如果正在执行的是 Native 方法，这个计数器值则为空（Undefined）。</li>
-</ul>
-<blockquote>
-<p>🔔 注意：此内存区域是唯一一个在 JVM 中没有规定任何 <code>OutOfMemoryError</code> 情况的区域。</p>
-</blockquote>
-<h3 id="Java-虚拟机栈"><a href="#Java-虚拟机栈" class="headerlink" title="Java 虚拟机栈"></a>Java 虚拟机栈</h3><p><strong><code>Java 虚拟机栈（Java Virtual Machine Stacks）</code></strong> 也<strong>是线程私有的，它的生命周期与线程相同</strong>。</p>
-<p>每个 Java 方法在执行的同时都会创建一个栈帧（Stack Frame）用于存储 <strong>局部变量表</strong>、<strong>操作数栈</strong>、<strong>常量池引用</strong> 等信息。每一个方法从调用直至执行完成的过程，就对应着一个栈帧在 Java 虚拟机栈中入栈和出栈的过程。</p>
-<p><img src="https://raw.githubusercontent.com/dunwu/images/master/cs/java/javacore/jvm/jvm-stack.png!w640" alt="img"></p>
-<ul>
-<li><strong>局部变量表</strong> - 32 位变量槽，存放了编译期可知的各种基本数据类型、对象引用、<code>ReturnAddress</code> 类型。</li>
-<li><strong>操作数栈</strong> - 基于栈的执行引擎，虚拟机把操作数栈作为它的工作区，大多数指令都要从这里弹出数据、执行运算，然后把结果压回操作数栈。</li>
-<li><strong>动态链接</strong> - 每个栈帧都包含一个指向运行时常量池（方法区的一部分）中该栈帧所属方法的引用。持有这个引用是为了支持方法调用过程中的动态连接。Class 文件的常量池中有大量的符号引用，字节码中的方法调用指令就以常量池中指向方法的符号引用为参数。这些符号引用一部分会在类加载阶段或第一次使用的时候转化为直接引用，这种转化称为静态解析。另一部分将在每一次的运行期间转化为直接应用，这部分称为动态链接。</li>
-<li><strong>方法出口</strong> - 返回方法被调用的位置，恢复上层方法的局部变量和操作数栈，如果无返回值，则把它压入调用者的操作数栈。</li>
-</ul>
-<blockquote>
-<p>🔔 注意：</p>
-<p>该区域可能抛出以下异常：</p>
-<ul>
-<li>如果线程请求的栈深度超过最大值，就会抛出 <code>StackOverflowError</code> 异常；</li>
-<li>如果虚拟机栈进行动态扩展时，无法申请到足够内存，就会抛出 <code>OutOfMemoryError</code> 异常。</li>
-</ul>
-<p>💡 提示：</p>
-<p>可以通过 <code>-Xss</code> 这个虚拟机参数来指定一个程序的 Java 虚拟机栈内存大小：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -Xss=512M HackTheJava</span><br></pre></td></tr></table></figure>
-</blockquote>
-<h3 id="本地方法栈"><a href="#本地方法栈" class="headerlink" title="本地方法栈"></a>本地方法栈</h3><p><strong><code>本地方法栈（Native Method Stack）</code></strong> 与虚拟机栈的作用相似。</p>
-<p>二者的区别在于：<strong>虚拟机栈为 Java 方法服务；本地方法栈为 Native 方法服务</strong>。本地方法并不是用 Java 实现的，而是由 C 语言实现的。</p>
-<p><img src="https://raw.githubusercontent.com/dunwu/images/master/cs/java/javacore/jvm/jvm-native-method-stack.gif!w640" alt="img"></p>
-<blockquote>
-<p>🔔 注意：本地方法栈也会抛出 <code>StackOverflowError</code> 异常和 <code>OutOfMemoryError</code> 异常。</p>
-</blockquote>
-<h3 id="Java-堆"><a href="#Java-堆" class="headerlink" title="Java 堆"></a>Java 堆</h3><p><strong><code>Java 堆（Java Heap）</code> 的作用就是存放对象实例，几乎所有的对象实例都是在这里分配内存</strong>。</p>
-<p>Java 堆是垃圾收集的主要区域（因此也被叫做”GC 堆”）。现代的垃圾收集器基本都是采用<strong>分代收集算法</strong>，该算法的思想是针对不同的对象采取不同的垃圾回收算法。</p>
-<p>因此虚拟机把 Java 堆分成以下三块：</p>
-<ul>
-<li><strong><code>新生代（Young Generation）</code></strong><ul>
-<li><code>Eden</code> - Eden 和 Survivor 的比例为 8:1</li>
-<li><code>From Survivor</code></li>
-<li><code>To Survivor</code></li>
-</ul>
-</li>
-<li><strong><code>老年代（Old Generation）</code></strong></li>
-<li><strong><code>永久代（Permanent Generation）</code></strong></li>
-</ul>
-<p>当一个对象被创建时，它首先进入新生代，之后有可能被转移到老年代中。新生代存放着大量的生命很短的对象，因此新生代在三个区域中垃圾回收的频率最高。</p>
-<p><img src="https://raw.githubusercontent.com/dunwu/images/master/cs/java/javacore/jvm/jvm-heap.gif!w640" alt="img"></p>
-<blockquote>
-<p>🔔 注意：Java 堆不需要连续内存，并且可以动态扩展其内存，扩展失败会抛出 <code>OutOfMemoryError</code> 异常。</p>
-<p>💡 提示：可以通过 <code>-Xms</code> 和 <code>-Xmx</code> 两个虚拟机参数来指定一个程序的 Java 堆内存大小，第一个参数设置初始值，第二个参数设置最大值。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -Xms=1M -Xmx=2M HackTheJava</span><br></pre></td></tr></table></figure>
-</blockquote>
-<h3 id="方法区"><a href="#方法区" class="headerlink" title="方法区"></a>方法区</h3><p>方法区（Method Area）也被称为永久代。<strong>方法区用于存放已被加载的类信息、常量、静态变量、即时编译器编译后的代码等数据</strong>。</p>
-<p>对这块区域进行垃圾回收的主要目标是对常量池的回收和对类的卸载，但是一般比较难实现。</p>
-<blockquote>
-<p>🔔 注意：和 Java 堆一样不需要连续的内存，并且可以动态扩展，动态扩展失败一样会抛出 <code>OutOfMemoryError</code> 异常。</p>
-<p>💡 提示：</p>
-<ul>
-<li>JDK 1.7 之前，HotSpot 虚拟机把它当成永久代来进行垃圾回收。可通过参数 <code>-XX:PermSize</code> 和 <code>-XX:MaxPermSize</code> 设置。</li>
-<li>JDK 1.8 之后，取消了永久代，用 **<code>metaspace（元数据）</code>**区替代。可通过参数 <code>-XX:MaxMetaspaceSize</code> 设置。</li>
-</ul>
-</blockquote>
-<h3 id="运行时常量池"><a href="#运行时常量池" class="headerlink" title="运行时常量池"></a>运行时常量池</h3><p><strong><code>运行时常量池（Runtime Constant Pool）</code> 是方法区的一部分</strong>，Class 文件中除了有类的版本、字段、方法、接口等描述信息，还有一项信息是常量池（Constant Pool Table），<strong>用于存放编译器生成的各种字面量和符号引用</strong>，这部分内容会在类加载后被放入这个区域。</p>
-<ul>
-<li><strong>字面量</strong> - 文本字符串、声明为 <code>final</code> 的常量值等。</li>
-<li><strong>符号引用</strong> - 类和接口的完全限定名（Fully Qualified Name）、字段的名称和描述符（Descriptor）、方法的名称和描述符。</li>
-</ul>
-<p>除了在编译期生成的常量，还允许动态生成，例如 <code>String</code> 类的 <code>intern()</code>。这部分常量也会被放入运行时常量池。</p>
-<blockquote>
-<p>🔔 注意：当常量池无法再申请到内存时会抛出 <code>OutOfMemoryError</code> 异常。</p>
-</blockquote>
-<h3 id="直接内存"><a href="#直接内存" class="headerlink" title="直接内存"></a>直接内存</h3><p>直接内存（Direct Memory）并不是虚拟机运行时数据区的一部分，也不是 JVM 规范中定义的内存区域。</p>
-<p>在 JDK 1.4 中新加入了 NIO 类，它可以使用 Native 函数库直接分配堆外内存，然后通过一个存储在 Java 堆里的 <code>DirectByteBuffer</code> 对象作为这块内存的引用进行操作。这样能在一些场景中显著提高性能，因为避免了在 Java 堆和 Native 堆中来回复制数据。</p>
-<blockquote>
-<p>🔔 注意：直接内存这部分也被频繁的使用，且也可能导致 <code>OutOfMemoryError</code> 异常。</p>
-<p>💡 提示：直接内存容量可通过 <code>-XX:MaxDirectMemorySize</code> 指定，如果不指定，则默认与 Java 堆最大值（<code>-Xmx</code> 指定）一样。</p>
-</blockquote>
-<h3 id="Java-内存区域对比"><a href="#Java-内存区域对比" class="headerlink" title="Java 内存区域对比"></a>Java 内存区域对比</h3><table>
-<thead>
-<tr>
-<th>内存区域</th>
-<th>内存作用范围</th>
-<th>异常</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>程序计数器</td>
-<td>线程私有</td>
-<td>无</td>
-</tr>
-<tr>
-<td>Java 虚拟机栈</td>
-<td>线程私有</td>
-<td><code>StackOverflowError</code> 和 <code>OutOfMemoryError</code></td>
-</tr>
-<tr>
-<td>本地方法栈</td>
-<td>线程私有</td>
-<td><code>StackOverflowError</code> 和 <code>OutOfMemoryError</code></td>
-</tr>
-<tr>
-<td>Java 堆</td>
-<td>线程共享</td>
-<td><code>OutOfMemoryError</code></td>
-</tr>
-<tr>
-<td>方法区</td>
-<td>线程共享</td>
-<td><code>OutOfMemoryError</code></td>
-</tr>
-<tr>
-<td>运行时常量池</td>
-<td>线程共享</td>
-<td><code>OutOfMemoryError</code></td>
-</tr>
-<tr>
-<td>直接内存</td>
-<td>非运行时数据区</td>
-<td><code>OutOfMemoryError</code></td>
-</tr>
-</tbody></table>
-<h2 id="JVM-运行原理"><a href="#JVM-运行原理" class="headerlink" title="JVM 运行原理"></a>JVM 运行原理</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">JVMCase</span> &#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 常量</span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">static</span> <span class="type">String</span> <span class="variable">MAN_SEX_TYPE</span> <span class="operator">=</span> <span class="string">&quot;man&quot;</span>;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 静态变量</span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="type">String</span> <span class="variable">WOMAN_SEX_TYPE</span> <span class="operator">=</span> <span class="string">&quot;woman&quot;</span>;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line"></span><br><span class="line">		<span class="type">Student</span> <span class="variable">stu</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Student</span>();</span><br><span class="line">		stu.setName(<span class="string">&quot;nick&quot;</span>);</span><br><span class="line">		stu.setSexType(MAN_SEX_TYPE);</span><br><span class="line">		stu.setAge(<span class="number">20</span>);</span><br><span class="line"></span><br><span class="line">		<span class="type">JVMCase</span> <span class="variable">jvmcase</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">JVMCase</span>();</span><br><span class="line"></span><br><span class="line">		<span class="comment">// 调用静态方法</span></span><br><span class="line">		print(stu);</span><br><span class="line">		<span class="comment">// 调用非静态方法</span></span><br><span class="line">		jvmcase.sayHello(stu);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="comment">// 常规静态方法</span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">print</span><span class="params">(Student stu)</span> &#123;</span><br><span class="line">		System.out.println(<span class="string">&quot;name: &quot;</span> + stu.getName() + <span class="string">&quot;; sex:&quot;</span> + stu.getSexType() + <span class="string">&quot;; age:&quot;</span> + stu.getAge());</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="comment">// 非静态方法</span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">sayHello</span><span class="params">(Student stu)</span> &#123;</span><br><span class="line">		System.out.println(stu.getName() + <span class="string">&quot;say: hello&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Student</span>&#123;</span><br><span class="line">	String name;</span><br><span class="line">	String sexType;</span><br><span class="line">	<span class="type">int</span> age;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">public</span> String <span class="title function_">getName</span><span class="params">()</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> name;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setName</span><span class="params">(String name)</span> &#123;</span><br><span class="line">		<span class="built_in">this</span>.name = name;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">public</span> String <span class="title function_">getSexType</span><span class="params">()</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> sexType;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setSexType</span><span class="params">(String sexType)</span> &#123;</span><br><span class="line">		<span class="built_in">this</span>.sexType = sexType;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">public</span> <span class="type">int</span> <span class="title function_">getAge</span><span class="params">()</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> age;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setAge</span><span class="params">(<span class="type">int</span> age)</span> &#123;</span><br><span class="line">		<span class="built_in">this</span>.age = age;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>运行以上代码时，JVM 处理过程如下：</p>
-<p>（1）JVM 向操作系统申请内存，JVM 第一步就是通过配置参数或者默认配置参数向操作系统申请内存空间，根据内存大小找到具体的内存分配表，然后把内存段的起始地址和终止地址分配给 JVM，接下来 JVM 就进行内部分配。</p>
-<p>（2）JVM 获得内存空间后，会根据配置参数分配堆、栈以及方法区的内存大小。</p>
-<p>（3）class 文件加载、验证、准备以及解析，其中准备阶段会为类的静态变量分配内存，初始化为系统的初始值（这部分我在第 21 讲还会详细介绍）。</p>
-<p><img src="https://raw.githubusercontent.com/dunwu/images/master/snap/20200630094250.png" alt="img"></p>
-<p>（4）完成上一个步骤后，将会进行最后一个初始化阶段。在这个阶段中，JVM 首先会执行构造器 <code>&lt;clinit&gt;</code> 方法，编译器会在 <code>.java</code> 文件被编译成 <code>.class</code> 文件时，收集所有类的初始化代码，包括静态变量赋值语句、静态代码块、静态方法，收集在一起成为 <code>&lt;clinit&gt;()</code> 方法。</p>
-<p><img src="https://raw.githubusercontent.com/dunwu/images/master/snap/20200630094329.png" alt="img"></p>
-<p>（5）执行方法。启动 main 线程，执行 main 方法，开始执行第一行代码。此时堆内存中会创建一个 student 对象，对象引用 student 就存放在栈中。</p>
-<p><img src="https://raw.githubusercontent.com/dunwu/images/master/snap/20200630094651.png" alt="img"></p>
-<p>（6）此时再次创建一个 JVMCase 对象，调用 sayHello 非静态方法，sayHello 方法属于对象 JVMCase，此时 sayHello 方法入栈，并通过栈中的 student 引用调用堆中的 Student 对象；之后，调用静态方法 print，print 静态方法属于 JVMCase 类，是从静态方法中获取，之后放入到栈中，也是通过 student 引用调用堆中的 student 对象。</p>
-<p><img src="https://raw.githubusercontent.com/dunwu/images/master/snap/20200630094714.png" alt="img"></p>
-<h2 id="OutOfMemoryError"><a href="#OutOfMemoryError" class="headerlink" title="OutOfMemoryError"></a>OutOfMemoryError</h2><h3 id="什么是-OutOfMemoryError"><a href="#什么是-OutOfMemoryError" class="headerlink" title="什么是 OutOfMemoryError"></a>什么是 OutOfMemoryError</h3><p><code>OutOfMemoryError</code> 简称为 OOM。Java 中对 OOM 的解释是，没有空闲内存，并且垃圾收集器也无法提供更多内存。通俗的解释是：JVM 内存不足了。</p>
-<p>在 JVM 规范中，<strong>除了程序计数器区域外，其他运行时区域都可能发生 <code>OutOfMemoryError</code> 异常（简称 OOM）</strong>。</p>
-<p>下面逐一介绍 OOM 发生场景。</p>
-<h3 id="堆空间溢出"><a href="#堆空间溢出" class="headerlink" title="堆空间溢出"></a>堆空间溢出</h3><p><code>java.lang.OutOfMemoryError: Java heap space</code> 这个错误意味着：<strong>堆空间溢出</strong>。</p>
-<p>更细致的说法是：Java 堆内存已经达到 <code>-Xmx</code> 设置的最大值。Java 堆用于存储对象实例，只要不断地创建对象，并且保证 GC Roots 到对象之间有可达路径来避免垃圾收集器回收这些对象，那么当堆空间到达最大容量限制后就会产生 OOM。</p>
-<p>堆空间溢出有可能是**<code>内存泄漏（Memory Leak）</code>** 或 <strong><code>内存溢出（Memory Overflow）</code></strong> 。需要使用 jstack 和 jmap 生成 threaddump 和 heapdump，然后用内存分析工具（如：MAT）进行分析。</p>
-<h4 id="Java-heap-space-分析步骤"><a href="#Java-heap-space-分析步骤" class="headerlink" title="Java heap space 分析步骤"></a>Java heap space 分析步骤</h4><ol>
-<li>使用 <code>jmap</code> 或 <code>-XX:+HeapDumpOnOutOfMemoryError</code> 获取堆快照。</li>
-<li>使用内存分析工具（visualvm、mat、jProfile 等）对堆快照文件进行分析。</li>
-<li>根据分析图，重点是确认内存中的对象是否是必要的，分清究竟是是内存泄漏（Memory Leak）还是内存溢出（Memory Overflow）。</li>
-</ol>
-<h4 id="内存泄漏"><a href="#内存泄漏" class="headerlink" title="内存泄漏"></a>内存泄漏</h4><p><strong>内存泄漏是指由于疏忽或错误造成程序未能释放已经不再使用的内存的情况</strong>。</p>
-<p>内存泄漏并非指内存在物理上的消失，而是应用程序分配某段内存后，由于设计错误，失去了对该段内存的控制，因而造成了内存的浪费。内存泄漏随着被执行的次数不断增加，最终会导致内存溢出。</p>
-<p>内存泄漏常见场景：</p>
-<ul>
-<li>静态容器<ul>
-<li>声明为静态（<code>static</code>）的 <code>HashMap</code>、<code>Vector</code> 等集合</li>
-<li>通俗来讲 A 中有 B，当前只把 B 设置为空，A 没有设置为空，回收时 B 无法回收。因为被 A 引用。</li>
-</ul>
-</li>
-<li>监听器<ul>
-<li>监听器被注册后释放对象时没有删除监听器</li>
-</ul>
-</li>
-<li>物理连接<ul>
-<li>各种连接池建立了连接，必须通过 <code>close()</code> 关闭链接</li>
-</ul>
-</li>
-<li>内部类和外部模块等的引用<ul>
-<li>发现它的方式同内存溢出，可再加个实时观察</li>
-<li><code>jstat -gcutil 7362 2500 70</code></li>
-</ul>
-</li>
-</ul>
-<p>重点关注：</p>
-<ul>
-<li><code>FGC</code> — 从应用程序启动到采样时发生 Full GC 的次数。</li>
-<li><code>FGCT</code> — 从应用程序启动到采样时 Full GC 所用的时间（单位秒）。</li>
-<li><code>FGC</code> 次数越多，<code>FGCT</code> 所需时间越多，越有可能存在内存泄漏。</li>
-</ul>
-<p>如果是内存泄漏，可以进一步查看泄漏对象到 GC Roots 的对象引用链。这样就能找到泄漏对象是怎样与 GC Roots 关联并导致 GC 无法回收它们的。掌握了这些原因，就可以较准确的定位出引起内存泄漏的代码。</p>
-<p>导致内存泄漏的常见原因是使用容器，且不断向容器中添加元素，但没有清理，导致容器内存不断膨胀。</p>
-<p>【示例】</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 内存泄漏示例</span></span><br><span class="line"><span class="comment"> * 错误现象：java.lang.OutOfMemoryError: Java heap space</span></span><br><span class="line"><span class="comment"> * VM Args：-verbose:gc -Xms10M -Xmx10M -XX:+HeapDumpOnOutOfMemoryError</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">HeapOutOfMemoryDemo</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        List&lt;OomObject&gt; list = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        <span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">            list.add(<span class="keyword">new</span> <span class="title class_">OomObject</span>());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">class</span> <span class="title class_">OomObject</span> &#123;&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="内存溢出"><a href="#内存溢出" class="headerlink" title="内存溢出"></a>内存溢出</h4><p>如果不存在内存泄漏，即内存中的对象确实都必须存活着，则应当检查虚拟机的堆参数（<code>-Xmx</code> 和 <code>-Xms</code>），与机器物理内存进行对比，看看是否可以调大。并从代码上检查是否存在某些对象生命周期过长、持有时间过长的情况，尝试减少程序运行期的内存消耗。</p>
-<p>【示例】</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 堆溢出示例</span></span><br><span class="line"><span class="comment"> * &lt;p&gt;</span></span><br><span class="line"><span class="comment"> * 错误现象：java.lang.OutOfMemoryError: Java heap space</span></span><br><span class="line"><span class="comment"> * &lt;p&gt;</span></span><br><span class="line"><span class="comment"> * VM Args：-verbose:gc -Xms10M -Xmx10M</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> &lt;a href=&quot;mailto:forbreak@163.com&quot;&gt;Zhang Peng&lt;/a&gt;</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@since</span> 2019-06-25</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">HeapOutOfMemoryDemo</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        Double[] array = <span class="keyword">new</span> <span class="title class_">Double</span>[<span class="number">999999999</span>];</span><br><span class="line">        System.out.println(<span class="string">&quot;array length = [&quot;</span> + array.length + <span class="string">&quot;]&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>执行 <code>java -verbose:gc -Xms10M -Xmx10M -XX:+HeapDumpOnOutOfMemoryError io.github.dunwu.javacore.jvm.memory.HeapMemoryLeakMemoryErrorDemo</code></p>
-<p>上面的例子是一个极端的例子，试图创建一个维度很大的数组，堆内存无法分配这么大的内存，从而报错：<code>Java heap space</code>。</p>
-<p>但如果在现实中，代码并没有问题，仅仅是因为堆内存不足，可以通过 <code>-Xms</code> 和 <code>-Xmx</code> 适当调整堆内存大小。</p>
-<h3 id="GC-开销超过限制"><a href="#GC-开销超过限制" class="headerlink" title="GC 开销超过限制"></a>GC 开销超过限制</h3><p><code>java.lang.OutOfMemoryError: GC overhead limit exceeded</code> 这个错误，官方给出的定义是：<strong>超过 <code>98%</code> 的时间用来做 GC 并且回收了不到 <code>2%</code> 的堆内存时会抛出此异常</strong>。这意味着，发生在 GC 占用大量时间为释放很小空间的时候发生的，是一种保护机制。导致异常的原因：一般是因为堆太小，没有足够的内存。</p>
-<p>【示例】</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * GC overhead limit exceeded 示例</span></span><br><span class="line"><span class="comment"> * 错误现象：java.lang.OutOfMemoryError: GC overhead limit exceeded</span></span><br><span class="line"><span class="comment"> * 发生在GC占用大量时间为释放很小空间的时候发生的，是一种保护机制。导致异常的原因：一般是因为堆太小，没有足够的内存。</span></span><br><span class="line"><span class="comment"> * 官方对此的定义：超过98%的时间用来做GC并且回收了不到2%的堆内存时会抛出此异常。</span></span><br><span class="line"><span class="comment"> * VM Args: -Xms10M -Xmx10M</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">GcOverheadLimitExceededDemo</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        List&lt;Double&gt; list = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        <span class="type">double</span> <span class="variable">d</span> <span class="operator">=</span> <span class="number">0.0</span>;</span><br><span class="line">        <span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">            list.add(d++);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>【处理】</p>
-<p>与 <strong>Java heap space</strong> 错误处理方法类似，先判断是否存在内存泄漏。如果有，则修正代码；如果没有，则通过 <code>-Xms</code> 和 <code>-Xmx</code> 适当调整堆内存大小。</p>
-<h3 id="永久代空间不足"><a href="#永久代空间不足" class="headerlink" title="永久代空间不足"></a>永久代空间不足</h3><p>【错误】</p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java<span class="selector-class">.lang</span><span class="selector-class">.OutOfMemoryError</span>: PermGen space</span><br></pre></td></tr></table></figure>
-
-<p>【原因】</p>
-<p>Perm （永久代）空间主要用于存放 <code>Class</code> 和 Meta 信息，包括类的名称和字段，带有方法字节码的方法，常量池信息，与类关联的对象数组和类型数组以及即时编译器优化。GC 在主程序运行期间不会对永久代空间进行清理，默认是 64M 大小。</p>
-<p>根据上面的定义，可以得出 <strong>PermGen 大小要求取决于加载的类的数量以及此类声明的大小</strong>。因此，可以说造成该错误的主要原因是永久代中装入了太多的类或太大的类。</p>
-<p>在 JDK8 之前的版本中，可以通过 <code>-XX:PermSize</code> 和 <code>-XX:MaxPermSize</code> 设置永久代空间大小，从而限制方法区大小，并间接限制其中常量池的容量。</p>
-<h4 id="初始化时永久代空间不足"><a href="#初始化时永久代空间不足" class="headerlink" title="初始化时永久代空间不足"></a>初始化时永久代空间不足</h4><p>【示例】</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 永久代内存空间不足示例</span></span><br><span class="line"><span class="comment"> * &lt;p&gt;</span></span><br><span class="line"><span class="comment"> * 错误现象：</span></span><br><span class="line"><span class="comment"> * &lt;ul&gt;</span></span><br><span class="line"><span class="comment"> * &lt;li&gt;java.lang.OutOfMemoryError: PermGen space (JDK8 以前版本)&lt;/li&gt;</span></span><br><span class="line"><span class="comment"> * &lt;li&gt;java.lang.OutOfMemoryError: Metaspace (JDK8 及以后版本)&lt;/li&gt;</span></span><br><span class="line"><span class="comment"> * &lt;/ul&gt;</span></span><br><span class="line"><span class="comment"> * VM Args:</span></span><br><span class="line"><span class="comment"> * &lt;ul&gt;</span></span><br><span class="line"><span class="comment"> * &lt;li&gt;-Xmx100M -XX:MaxPermSize=16M (JDK8 以前版本)&lt;/li&gt;</span></span><br><span class="line"><span class="comment"> * &lt;li&gt;-Xmx100M -XX:MaxMetaspaceSize=16M (JDK8 及以后版本)&lt;/li&gt;</span></span><br><span class="line"><span class="comment"> * &lt;/ul&gt;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">PermOutOfMemoryErrorDemo</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; <span class="number">100_000_000</span>; i++) &#123;</span><br><span class="line">            generate(<span class="string">&quot;eu.plumbr.demo.Generated&quot;</span> + i);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Class <span class="title function_">generate</span><span class="params">(String name)</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">        <span class="type">ClassPool</span> <span class="variable">pool</span> <span class="operator">=</span> ClassPool.getDefault();</span><br><span class="line">        <span class="keyword">return</span> pool.makeClass(name).toClass();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>在此示例中，源代码遍历循环并在运行时生成类。javassist 库正在处理类生成的复杂性。</p>
-<h4 id="重部署时永久代空间不足"><a href="#重部署时永久代空间不足" class="headerlink" title="重部署时永久代空间不足"></a>重部署时永久代空间不足</h4><p>对于更复杂，更实际的示例，让我们逐步介绍一下在应用程序重新部署期间发生的 Permgen 空间错误。重新部署应用程序时，你希望垃圾回收会摆脱引用所有先前加载的类的加载器，并被加载新类的类加载器取代。</p>
-<p>不幸的是，许多第三方库以及对线程，JDBC 驱动程序或文件系统句柄等资源的不良处理使得无法卸载以前使用的类加载器。反过来，这意味着在每次重新部署期间，所有先前版本的类仍将驻留在 PermGen 中，从而在每次重新部署期间生成数十兆的垃圾。</p>
-<p>让我们想象一个使用 JDBC 驱动程序连接到关系数据库的示例应用程序。启动应用程序时，初始化代码将加载 JDBC 驱动程序以连接到数据库。对应于规范，JDBC 驱动程序向 java.sql.DriverManager 进行注册。该注册包括将对驱动程序实例的引用存储在 DriverManager 的静态字段中。</p>
-<p>现在，当从应用程序服务器取消部署应用程序时，java.sql.DriverManager 仍将保留该引用。我们最终获得了对驱动程序类的实时引用，而驱动程序类又保留了用于加载应用程序的 java.lang.Classloader 实例的引用。反过来，这意味着垃圾回收算法无法回收空间。</p>
-<p>而且该 java.lang.ClassLoader 实例仍引用应用程序的所有类，通常在 PermGen 中占据数十兆字节。这意味着只需少量重新部署即可填充通常大小的 PermGen。</p>
-<h4 id="PermGen-space-解决方案"><a href="#PermGen-space-解决方案" class="headerlink" title="PermGen space 解决方案"></a>PermGen space 解决方案</h4><p>（1）解决初始化时的 <code>OutOfMemoryError</code></p>
-<p>在应用程序启动期间触发由于 PermGen 耗尽导致的 <code>OutOfMemoryError</code> 时，解决方案很简单。该应用程序仅需要更多空间才能将所有类加载到 PermGen 区域，因此我们只需要增加其大小即可。为此，更改你的应用程序启动配置并添加（或增加，如果存在）<code>-XX:MaxPermSize</code> 参数，类似于以下示例：</p>
-<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -XX:<span class="attribute">MaxPermSize</span>=512m com.yourcompany.YourClass</span><br></pre></td></tr></table></figure>
-
-<p>上面的配置将告诉 JVM，PermGen 可以增长到 512MB。</p>
-<p>清理应用程序中 <code>WEB-INF/lib</code> 下的 jar，用不上的 jar 删除掉，多个应用公共的 jar 移动到 Tomcat 的 lib 目录，减少重复加载。</p>
-<p>🔔 注意：<code>-XX:PermSize</code> 一般设为 64M</p>
-<p>（2）解决重新部署时的 <code>OutOfMemoryError</code></p>
-<p>重新部署应用程序后立即发生 OutOfMemoryError 时，应用程序会遭受类加载器泄漏的困扰。在这种情况下，解决问题的最简单，继续进行堆转储分析–使用类似于以下命令的重新部署后进行堆转储：</p>
-<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jmap -<span class="keyword">dump</span>:format=b,<span class="keyword">file</span>=<span class="keyword">dump</span>.hprof &lt;process-id&gt;</span><br></pre></td></tr></table></figure>
-
-<p>然后使用你最喜欢的堆转储分析器打开转储（Eclipse MAT 是一个很好的工具）。在分析器中可以查找重复的类，尤其是那些正在加载应用程序类的类。从那里，你需要进行所有类加载器的查找，以找到当前活动的类加载器。</p>
-<p>对于非活动类加载器，你需要通过从非活动类加载器收集到 GC 根的最短路径来确定阻止它们被垃圾收集的引用。有了此信息，你将找到根本原因。如果根本原因是在第三方库中，则可以进入 Google&#x2F;StackOverflow 查看是否是已知问题以获取补丁&#x2F;解决方法。</p>
-<p>（3）解决运行时 <code>OutOfMemoryError</code></p>
-<p>第一步是检查是否允许 GC 从 PermGen 卸载类。在这方面，标准的 JVM 相当保守-类是天生的。因此，一旦加载，即使没有代码在使用它们，类也会保留在内存中。当应用程序动态创建许多类并且长时间不需要生成的类时，这可能会成为问题。在这种情况下，允许 JVM 卸载类定义可能会有所帮助。这可以通过在启动脚本中仅添加一个配置参数来实现：</p>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-<span class="variable constant_">XX</span><span class="symbol">:+CMSClassUnloadingEnabled</span></span><br></pre></td></tr></table></figure>
-
-<p>默认情况下，此选项设置为 false，因此要启用此功能，你需要在 Java 选项中显式设置。如果启用 CMSClassUnloadingEnabled，GC 也会扫描 PermGen 并删除不再使用的类。请记住，只有同时使用 UseConcMarkSweepGC 时此选项才起作用。</p>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-<span class="variable constant_">XX</span><span class="symbol">:+UseConcMarkSweepGC</span></span><br></pre></td></tr></table></figure>
-
-<p>在确保可以卸载类并且问题仍然存在之后，你应该继续进行堆转储分析–使用类似于以下命令的方法进行堆转储：</p>
-<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jmap -<span class="keyword">dump</span>:<span class="keyword">file</span>=<span class="keyword">dump</span>.hprof,format=b &lt;process-id&gt;</span><br></pre></td></tr></table></figure>
-
-<p>然后，使用你最喜欢的堆转储分析器（例如 Eclipse MAT）打开转储，然后根据已加载的类数查找最昂贵的类加载器。从此类加载器中，你可以继续提取已加载的类，并按实例对此类进行排序，以使可疑对象排在首位。</p>
-<p>然后，对于每个可疑者，就需要你手动将根本原因追溯到生成此类的应用程序代码。</p>
-<h3 id="元数据区空间不足"><a href="#元数据区空间不足" class="headerlink" title="元数据区空间不足"></a>元数据区空间不足</h3><p>【错误】</p>
-<figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Exception</span> <span class="keyword">in</span> thread <span class="string">&quot;main&quot;</span> java.lang.<span class="built_in">OutOfMemoryError</span>: Metaspace</span><br></pre></td></tr></table></figure>
-
-<p>【原因】</p>
-<p>Java8 以后，JVM 内存空间发生了很大的变化。取消了永久代，转而变为元数据区。</p>
-<p><strong>元数据区的内存不足，即方法区和运行时常量池的空间不足</strong>。</p>
-<p>方法区用于存放 Class 的相关信息，如类名、访问修饰符、常量池、字段描述、方法描述等。</p>
-<p>一个类要被垃圾收集器回收，判定条件是比较苛刻的。在经常动态生成大量 Class 的应用中，需要特别注意类的回收状况。这类常见除了 CGLib 字节码增强和动态语言以外，常见的还有：大量 JSP 或动态产生 JSP 文件的应用（JSP 第一次运行时需要编译为 Java 类）、基于 OSGi 的应用（即使是同一个类文件，被不同的加载器加载也会视为不同的类）等。</p>
-<p>【示例】方法区出现 <code>OutOfMemoryError</code></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MethodAreaOutOfMemoryDemo</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">            <span class="type">Enhancer</span> <span class="variable">enhancer</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Enhancer</span>();</span><br><span class="line">            enhancer.setSuperclass(Bean.class);</span><br><span class="line">            enhancer.setUseCache(<span class="literal">false</span>);</span><br><span class="line">            enhancer.setCallback(<span class="keyword">new</span> <span class="title class_">MethodInterceptor</span>() &#123;</span><br><span class="line">                <span class="meta">@Override</span></span><br><span class="line">                <span class="keyword">public</span> Object <span class="title function_">intercept</span><span class="params">(Object obj, Method method, Object[] args, MethodProxy proxy)</span> <span class="keyword">throws</span> Throwable &#123;</span><br><span class="line">                    <span class="keyword">return</span> proxy.invokeSuper(obj, args);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;);</span><br><span class="line">            enhancer.create();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">class</span> <span class="title class_">Bean</span> &#123;&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>【解决】</p>
-<p>当由于元空间而面临 <code>OutOfMemoryError</code> 时，第一个解决方案应该是显而易见的。如果应用程序耗尽了内存中的 Metaspace 区域，则应增加 Metaspace 的大小。更改应用程序启动配置并增加以下内容：</p>
-<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-XX:<span class="attribute">MaxMetaspaceSize</span>=512m</span><br></pre></td></tr></table></figure>
-
-<p>上面的配置示例告诉 JVM，允许 Metaspace 增长到 512 MB。</p>
-<p>另一种解决方案甚至更简单。你可以通过删除此参数来完全解除对 Metaspace 大小的限制，JVM 默认对 Metaspace 的大小没有限制。但是请注意以下事实：这样做可能会导致大量交换或达到本机物理内存而分配失败。</p>
-<h3 id="无法新建本地线程"><a href="#无法新建本地线程" class="headerlink" title="无法新建本地线程"></a>无法新建本地线程</h3><p><code>java.lang.OutOfMemoryError: Unable to create new native thread</code> 这个错误意味着：<strong>Java 应用程序已达到其可以启动线程数的限制</strong>。</p>
-<p>【原因】</p>
-<p>当发起一个线程的创建时，虚拟机会在 JVM 内存创建一个 <code>Thread</code> 对象同时创建一个操作系统线程，而这个系统线程的内存用的不是 JVM 内存，而是系统中剩下的内存。</p>
-<p>那么，究竟能创建多少线程呢？这里有一个公式：</p>
-<figure class="highlight gcode"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">线程数 = <span class="comment">(MaxProcessMemory - JVMMemory - ReservedOsMemory)</span> / <span class="comment">(ThreadStackSize)</span></span><br></pre></td></tr></table></figure>
-
-<p>【参数】</p>
-<ul>
-<li><code>MaxProcessMemory</code> - 一个进程的最大内存</li>
-<li><code>JVMMemory</code> - JVM 内存</li>
-<li><code>ReservedOsMemory</code> - 保留的操作系统内存</li>
-<li><code>ThreadStackSize</code> - 线程栈的大小</li>
-</ul>
-<p>**给 JVM 分配的内存越多，那么能用来创建系统线程的内存就会越少，越容易发生 <code>unable to create new native thread</code>**。所以，JVM 内存不是分配的越大越好。</p>
-<p>但是，通常导致 <code>java.lang.OutOfMemoryError</code> 的情况：无法创建新的本机线程需要经历以下阶段：</p>
-<ol>
-<li>JVM 内部运行的应用程序请求新的 Java 线程</li>
-<li>JVM 本机代码代理为操作系统创建新本机线程的请求</li>
-<li>操作系统尝试创建一个新的本机线程，该线程需要将内存分配给该线程</li>
-<li>操作系统将拒绝本机内存分配，原因是 32 位 Java 进程大小已耗尽其内存地址空间（例如，已达到（2-4）GB 进程大小限制）或操作系统的虚拟内存已完全耗尽</li>
-<li>引发 <code>java.lang.OutOfMemoryError: Unable to create new native thread</code> 错误。</li>
-</ol>
-<p>【示例】</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">UnableCreateNativeThreadErrorDemo</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">            <span class="keyword">new</span> <span class="title class_">Thread</span>(<span class="keyword">new</span> <span class="title class_">Runnable</span>() &#123;</span><br><span class="line">                <span class="meta">@Override</span></span><br><span class="line">                <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">run</span><span class="params">()</span> &#123;</span><br><span class="line">                    <span class="keyword">try</span> &#123;</span><br><span class="line">                        TimeUnit.MINUTES.sleep(<span class="number">5</span>);</span><br><span class="line">                    &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                        e.printStackTrace();</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;).start();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>【处理】</p>
-<p>可以通过增加操作系统级别的限制来绕过无法创建新的本机线程问题。例如，如果限制了 JVM 可在用户空间中产生的进程数，则应检查出并可能增加该限制：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@dev ~]# ulimit -a</span><br><span class="line">core file size          (blocks, -c) 0</span><br><span class="line">--- cut for brevity ---</span><br><span class="line">max user processes              (-u) 1800</span><br></pre></td></tr></table></figure>
-
-<p>通常，<code>OutOfMemoryError</code> 对新的本机线程的限制表示编程错误。当应用程序产生数千个线程时，很可能出了一些问题—很少有应用程序可以从如此大量的线程中受益。</p>
-<p>解决问题的一种方法是开始进行线程转储以了解情况。</p>
-<h3 id="直接内存溢出"><a href="#直接内存溢出" class="headerlink" title="直接内存溢出"></a>直接内存溢出</h3><p>由直接内存导致的内存溢出，一个明显的特征是在 Head Dump 文件中不会看见明显的异常，如果发现 OOM 之后 Dump 文件很小，而程序中又直接或间接使用了 NIO，就可以考虑检查一下是不是这方面的原因。</p>
-<p>【示例】直接内存 <code>OutOfMemoryError</code></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 本机直接内存溢出示例</span></span><br><span class="line"><span class="comment"> * 错误现象：java.lang.OutOfMemoryError</span></span><br><span class="line"><span class="comment"> * VM Args：-Xmx20M -XX:MaxDirectMemorySize=10M</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">DirectOutOfMemoryDemo</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">int</span> <span class="variable">_1MB</span> <span class="operator">=</span> <span class="number">1024</span> * <span class="number">1024</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IllegalAccessException &#123;</span><br><span class="line">        <span class="type">Field</span> <span class="variable">unsafeField</span> <span class="operator">=</span> Unsafe.class.getDeclaredFields()[<span class="number">0</span>];</span><br><span class="line">        unsafeField.setAccessible(<span class="literal">true</span>);</span><br><span class="line">        <span class="type">Unsafe</span> <span class="variable">unsafe</span> <span class="operator">=</span> (Unsafe) unsafeField.get(<span class="literal">null</span>);</span><br><span class="line">        <span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">            unsafe.allocateMemory(_1MB);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="StackOverflowError"><a href="#StackOverflowError" class="headerlink" title="StackOverflowError"></a>StackOverflowError</h2><p>对于 HotSpot 虚拟机来说，栈容量只由 <code>-Xss</code> 参数来决定如果线程请求的栈深度大于虚拟机所允许的最大深度，将抛出 <code>StackOverflowError</code> 异常。</p>
-<p>从实战来说，栈溢出的常见原因：</p>
-<ul>
-<li><strong>递归函数调用层数太深</strong></li>
-<li><strong>大量循环或死循环</strong></li>
-</ul>
-<p>【示例】递归函数调用层数太深导致 <code>StackOverflowError</code></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">StackOverflowDemo</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> <span class="variable">stackLength</span> <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">recursion</span><span class="params">()</span> &#123;</span><br><span class="line">        stackLength++;</span><br><span class="line">        recursion();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">StackOverflowDemo</span> <span class="variable">obj</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StackOverflowDemo</span>();</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            obj.recursion();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Throwable e) &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;栈深度：&quot;</span> + obj.stackLength);</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://book.douban.com/subject/34907497/">《深入理解 Java 虚拟机》</a></li>
-<li><a target="_blank" rel="noopener" href="https://time.geekbang.org/column/intro/100028001">《Java 性能调优实战》</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.douban.com/doulist/2545443/">从表到里学习 JVM 实现</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/28935cbfbae0">作为测试你应该知道的 JAVA OOM 及定位分析</a></li>
-<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/sinat_29912455/article/details/51125748">异常、堆内存溢出、OOM 的几种情况</a></li>
-<li><a target="_blank" rel="noopener" href="https://tianmingxing.com/2019/11/17/%E4%BB%8B%E7%BB%8DJVM%E4%B8%ADOOM%E7%9A%848%E7%A7%8D%E7%B1%BB%E5%9E%8B/">介绍 JVM 中 OOM 的 8 种类型</a></li>
 </ul>
 
       
