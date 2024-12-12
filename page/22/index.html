@@ -1985,239 +1985,6 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.ligoudan.cn/pages/43a8e5/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/ligoudan.png">
-      <meta itemprop="name" content="李狗蛋">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="LIGOUDAN">
-      <meta itemprop="description" content="天气不错哇，你看这大冰雹下得">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | LIGOUDAN">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/pages/43a8e5/" class="post-title-link" itemprop="url">JVM GUI 工具</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2020-07-30 17:56:33" itemprop="dateCreated datePublished" datetime="2020-07-30T17:56:33+08:00">2020-07-30</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-12 10:02:52" itemprop="dateModified" datetime="2024-12-12T10:02:52+08:00">2024-12-12</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Java/JavaSE/" itemprop="url" rel="index"><span itemprop="name">JavaSE</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Java/JavaSE/JVM/" itemprop="url" rel="index"><span itemprop="name">JVM</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>3.7k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>3 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="JVM-GUI-工具"><a href="#JVM-GUI-工具" class="headerlink" title="JVM GUI 工具"></a>JVM GUI 工具</h1><blockquote>
-<p>Java 程序员免不了故障排查工作，所以经常需要使用一些 JVM 工具。</p>
-<p>本文系统性的介绍一下常用的 JVM GUI 工具。</p>
-</blockquote>
-<h2 id="jconsole"><a href="#jconsole" class="headerlink" title="jconsole"></a>jconsole</h2><blockquote>
-<p>jconsole 是 JDK 自带的 GUI 工具。<strong>jconsole(Java Monitoring and Management Console) 是一种基于 JMX 的可视化监视与管理工具</strong>。</p>
-<p>jconsole 的管理功能是针对 JMX MBean 进行管理，由于 MBean 可以使用代码、中间件服务器的管理控制台或所有符合 JMX 规范的软件进行访问。</p>
-</blockquote>
-<p>注意：使用 jconsole 的前提是 Java 应用开启 JMX。</p>
-<h3 id="开启-JMX"><a href="#开启-JMX" class="headerlink" title="开启 JMX"></a>开启 JMX</h3><p>Java 应用开启 JMX 后，可以使用 <code>jconsole</code> 或 <code>jvisualvm</code> 进行监控 Java 程序的基本信息和运行情况。</p>
-<p>开启方法是，在 java 指令后，添加以下参数：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">-Dcom.sun.management.jmxremote=<span class="literal">true</span></span><br><span class="line">-Dcom.sun.management.jmxremote.ssl=<span class="literal">false</span></span><br><span class="line">-Dcom.sun.management.jmxremote.authenticate=<span class="literal">false</span></span><br><span class="line">-Djava.rmi.server.hostname=<span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span></span><br><span class="line">-Dcom.sun.management.jmxremote.port=<span class="number">18888</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><code>-Djava.rmi.server.hostname</code> - 指定 Java 程序运行的服务器</li>
-<li><code>-Dcom.sun.management.jmxremote.port</code> - 指定 JMX 服务监听端口</li>
-</ul>
-<h3 id="连接-jconsole"><a href="#连接-jconsole" class="headerlink" title="连接 jconsole"></a>连接 jconsole</h3><p>如果是本地 Java 进程，jconsole 可以直接绑定连接。</p>
-<p>如果是远程 Java 进程，需要连接 Java 进程的 JMX 端口。</p>
-<p><img src="https://docs.oracle.com/javase/8/docs/technotes/guides/management/figures/connectadv.gif" alt="Connecting to a JMX Agent Using the JMX Service URL"></p>
-<h3 id="jconsole-界面"><a href="#jconsole-界面" class="headerlink" title="jconsole 界面"></a>jconsole 界面</h3><p>进入 jconsole 应用后，可以看到以下 tab 页面。</p>
-<ul>
-<li><code>概述</code> - 显示有关 Java VM 和监视值的概述信息。</li>
-<li><code>内存</code> - 显示有关内存使用的信息。内存页相当于可视化的 <code>jstat</code> 命令。</li>
-<li><code>线程</code> - 显示有关线程使用的信息。</li>
-<li><code>类</code> - 显示有关类加载的信息。</li>
-<li><code>VM 摘要</code> - 显示有关 Java VM 的信息。</li>
-<li><code>MBean</code> - 显示有关 MBean 的信息。</li>
-</ul>
-<p><img src="https://raw.githubusercontent.com/dunwu/images/master/snap/20200730151422.png" alt="img"></p>
-<h2 id="jvisualvm"><a href="#jvisualvm" class="headerlink" title="jvisualvm"></a>jvisualvm</h2><blockquote>
-<p>jvisualvm 是 JDK 自带的 GUI 工具。<strong>jvisualvm(All-In-One Java Troubleshooting Tool) 是多合一故障处理工具</strong>。它支持运行监视、故障处理、性能分析等功能。</p>
-</blockquote>
-<p>个人觉得 jvisualvm 比 jconsole 好用。</p>
-<h3 id="jvisualvm-概述页面"><a href="#jvisualvm-概述页面" class="headerlink" title="jvisualvm 概述页面"></a>jvisualvm 概述页面</h3><p>jvisualvm 概述页面可以查看当前 Java 进程的基本信息，如：JDK 版本、Java 进程、JVM 参数等。</p>
-<p><img src="https://raw.githubusercontent.com/dunwu/images/master/snap/20200730150147.png" alt="img"></p>
-<h3 id="jvisualvm-监控页面"><a href="#jvisualvm-监控页面" class="headerlink" title="jvisualvm 监控页面"></a>jvisualvm 监控页面</h3><p>在 jvisualvm 监控页面，可以看到 Java 进程的 CPU、内存、类加载、线程的实时变化。</p>
-<p><img src="https://raw.githubusercontent.com/dunwu/images/master/snap/20200730150254.png" alt="img"></p>
-<h3 id="jvisualvm-线程页面"><a href="#jvisualvm-线程页面" class="headerlink" title="jvisualvm 线程页面"></a>jvisualvm 线程页面</h3><p>jvisualvm 线程页面展示了当前的线程状态。</p>
-<p><img src="https://raw.githubusercontent.com/dunwu/images/master/snap/20200730150416.png" alt="img"></p>
-<p>jvisualvm 还可以生成线程 Dump 文件，帮助进一步分析线程栈信息。</p>
-<p><img src="https://raw.githubusercontent.com/dunwu/images/master/snap/20200730150830.png" alt="img"></p>
-<h3 id="jvisualvm-抽样器页面"><a href="#jvisualvm-抽样器页面" class="headerlink" title="jvisualvm 抽样器页面"></a>jvisualvm 抽样器页面</h3><p>jvisualvm 可以对 CPU、内存进行抽样，帮助我们进行性能分析。</p>
-<h2 id="MAT"><a href="#MAT" class="headerlink" title="MAT"></a>MAT</h2><p><a target="_blank" rel="noopener" href="https://www.eclipse.org/mat/">MAT</a> 即 Eclipse Memory Analyzer Tool 的缩写。</p>
-<p>MAT 本身也能够获取堆的二进制快照。该功能将借助 <code>jps</code> 列出当前正在运行的 Java 进程，以供选择并获取快照。由于 <code>jps</code> 会将自己列入其中，因此你会在列表中发现一个已经结束运行的 <code>jps</code> 进程。</p>
-<p>MAT 可以独立安装（<a target="_blank" rel="noopener" href="http://www.eclipse.org/mat/downloads.php">官方下载地址</a>），也可以作为 Eclipse IDE 的插件安装。</p>
-<h3 id="MAT-配置"><a href="#MAT-配置" class="headerlink" title="MAT 配置"></a>MAT 配置</h3><p>MAT 解压后，安装目录下有个 <code>MemoryAnalyzer.ini</code> 文件。</p>
-<p><code>MemoryAnalyzer.ini</code> 中有个重要的参数 <code>Xmx</code> 表示最大内存，默认为：<code>-vmargs -Xmx1024m</code></p>
-<p>如果试图用 MAT 导入的 dump 文件超过 1024 M，会报错：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">An internal error occurred during: &quot;Parsing heap dump from XXX&quot;</span><br></pre></td></tr></table></figure>
-
-<p>此时，可以适当调整 <code>Xmx</code> 大小。如果设置的 <code>Xmx</code> 数值过大，本机内存不足以支撑，启动 MAT 会报错：</p>
-<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Failed <span class="built_in">to</span> <span class="built_in">create</span> <span class="keyword">the</span> Java Virtual Machine</span><br></pre></td></tr></table></figure>
-
-<h3 id="MAT-分析"><a href="#MAT-分析" class="headerlink" title="MAT 分析"></a>MAT 分析</h3><p><img src="https://raw.githubusercontent.com/dunwu/images/master/snap/20200308092746.png" alt="img"></p>
-<p>点击 Leak Suspects 可以进入内存泄漏页面。</p>
-<p>（1）首先，可以查看饼图了解内存的整体消耗情况</p>
-<p><img src="https://raw.githubusercontent.com/dunwu/images/master/snap/20200308150556.png" alt="img"></p>
-<p>（2）缩小范围，寻找问题疑似点</p>
-<p><img src="https://img-blog.csdn.net/20160223202154818" alt="img"></p>
-<p>可以点击进入详情页面，在详情页面 Shortest Paths To the Accumulation Point 表示 GC root 到内存消耗聚集点的最短路径，如果某个内存消耗聚集点有路径到达 GC root，则该内存消耗聚集点不会被当做垃圾被回收。</p>
-<p>为了找到内存泄露，我获取了两个堆转储文件，两个文件获取时间间隔是一天（因为内存只是小幅度增长，短时间很难发现问题）。对比两个文件的对象，通过对比后的结果可以很方便定位内存泄露。</p>
-<p>MAT 同时打开两个堆转储文件，分别打开 Histogram，如下图。在下图中方框 1 按钮用于对比两个 Histogram，对比后在方框 2 处选择 Group By package，然后对比各对象的变化。不难发现 heap3.hprof 比 heap6.hprof 少了 64 个 eventInfo 对象，如果对代码比较熟悉的话想必这样一个结果是能够给程序员一定的启示的。而我也是根据这个启示差找到了最终内存泄露的位置。<br><img src="https://img-blog.csdn.net/20160223203226362" alt="img"></p>
-<h2 id="JProfile"><a href="#JProfile" class="headerlink" title="JProfile"></a>JProfile</h2><p><a target="_blank" rel="noopener" href="https://www.ej-technologies.com/products/jprofiler/overview.html">JProfiler</a> 是一款性能分析工具。</p>
-<p>由于它是收费的，所以我本人使用较少。但是，它确实功能强大，且方便使用，还可以和 Intellij Idea 集成。</p>
-<h2 id="Arthas"><a href="#Arthas" class="headerlink" title="Arthas"></a>Arthas</h2><p><a target="_blank" rel="noopener" href="https://github.com/alibaba/arthas">Arthas</a> 是 Alibaba 开源的 Java 诊断工具，深受开发者喜爱。在线排查问题，无需重启；动态跟踪 Java 代码；实时监控 JVM 状态。</p>
-<p>Arthas 支持 JDK 6+，支持 Linux&#x2F;Mac&#x2F;Windows，采用命令行交互模式，同时提供丰富的 <code>Tab</code> 自动补全功能，进一步方便进行问题的定位和诊断。</p>
-<p><img src="https://raw.githubusercontent.com/dunwu/images/master/snap/20200730145030.png" alt="img"></p>
-<h3 id="Arthas-基础命令"><a href="#Arthas-基础命令" class="headerlink" title="Arthas 基础命令"></a>Arthas 基础命令</h3><ul>
-<li>help——查看命令帮助信息</li>
-<li><a target="_blank" rel="noopener" href="https://alibaba.github.io/arthas/cat.html">cat</a>——打印文件内容，和 linux 里的 cat 命令类似</li>
-<li><a target="_blank" rel="noopener" href="https://alibaba.github.io/arthas/echo.html">echo</a>–打印参数，和 linux 里的 echo 命令类似</li>
-<li><a target="_blank" rel="noopener" href="https://alibaba.github.io/arthas/grep.html">grep</a>——匹配查找，和 linux 里的 grep 命令类似</li>
-<li><a target="_blank" rel="noopener" href="https://alibaba.github.io/arthas/tee.html">tee</a>——复制标准输入到标准输出和指定的文件，和 linux 里的 tee 命令类似</li>
-<li><a target="_blank" rel="noopener" href="https://alibaba.github.io/arthas/pwd.html">pwd</a>——返回当前的工作目录，和 linux 命令类似</li>
-<li>cls——清空当前屏幕区域</li>
-<li>session——查看当前会话的信息</li>
-<li><a target="_blank" rel="noopener" href="https://alibaba.github.io/arthas/reset.html">reset</a>——重置增强类，将被 Arthas 增强过的类全部还原，Arthas 服务端关闭时会重置所有增强过的类</li>
-<li>version——输出当前目标 Java 进程所加载的 Arthas 版本号</li>
-<li>history——打印命令历史</li>
-<li>quit——退出当前 Arthas 客户端，其他 Arthas 客户端不受影响</li>
-<li>stop——关闭 Arthas 服务端，所有 Arthas 客户端全部退出</li>
-<li><a target="_blank" rel="noopener" href="https://alibaba.github.io/arthas/keymap.html">keymap</a>——Arthas 快捷键列表及自定义快捷键</li>
-</ul>
-<h3 id="Arthas-jvm-相关命令"><a href="#Arthas-jvm-相关命令" class="headerlink" title="Arthas jvm 相关命令"></a>Arthas jvm 相关命令</h3><ul>
-<li><a target="_blank" rel="noopener" href="https://alibaba.github.io/arthas/dashboard.html">dashboard</a>——当前系统的实时数据面板</li>
-<li><a target="_blank" rel="noopener" href="https://alibaba.github.io/arthas/thread.html">thread</a>——查看当前 JVM 的线程堆栈信息</li>
-<li><a target="_blank" rel="noopener" href="https://alibaba.github.io/arthas/jvm.html">jvm</a>——查看当前 JVM 的信息</li>
-<li><a target="_blank" rel="noopener" href="https://alibaba.github.io/arthas/sysprop.html">sysprop</a>——查看和修改 JVM 的系统属性</li>
-<li><a target="_blank" rel="noopener" href="https://alibaba.github.io/arthas/sysenv.html">sysenv</a>——查看 JVM 的环境变量</li>
-<li><a target="_blank" rel="noopener" href="https://alibaba.github.io/arthas/vmoption.html">vmoption</a>——查看和修改 JVM 里诊断相关的 option</li>
-<li><a target="_blank" rel="noopener" href="https://alibaba.github.io/arthas/perfcounter.html">perfcounter</a>——查看当前 JVM 的 Perf Counter 信息</li>
-<li><a target="_blank" rel="noopener" href="https://alibaba.github.io/arthas/logger.html">logger</a>——查看和修改 logger</li>
-<li><a target="_blank" rel="noopener" href="https://alibaba.github.io/arthas/getstatic.html">getstatic</a>——查看类的静态属性</li>
-<li><a target="_blank" rel="noopener" href="https://alibaba.github.io/arthas/ognl.html">ognl</a>——执行 ognl 表达式</li>
-<li><a target="_blank" rel="noopener" href="https://alibaba.github.io/arthas/mbean.html">mbean</a>——查看 Mbean 的信息</li>
-<li><a target="_blank" rel="noopener" href="https://alibaba.github.io/arthas/heapdump.html">heapdump</a>——dump java heap, 类似 jmap 命令的 heap dump 功能</li>
-</ul>
-<h3 id="Arthas-class-classloader-相关命令"><a href="#Arthas-class-classloader-相关命令" class="headerlink" title="Arthas class&#x2F;classloader 相关命令"></a>Arthas class&#x2F;classloader 相关命令</h3><ul>
-<li><a target="_blank" rel="noopener" href="https://alibaba.github.io/arthas/sc.html">sc</a>——查看 JVM 已加载的类信息</li>
-<li><a target="_blank" rel="noopener" href="https://alibaba.github.io/arthas/sm.html">sm</a>——查看已加载类的方法信息</li>
-<li><a target="_blank" rel="noopener" href="https://alibaba.github.io/arthas/jad.html">jad</a>——反编译指定已加载类的源码</li>
-<li><a target="_blank" rel="noopener" href="https://alibaba.github.io/arthas/mc.html">mc</a>——内存编译器，内存编译<code>.java</code>文件为<code>.class</code>文件</li>
-<li><a target="_blank" rel="noopener" href="https://alibaba.github.io/arthas/redefine.html">redefine</a>——加载外部的<code>.class</code>文件，redefine 到 JVM 里</li>
-<li><a target="_blank" rel="noopener" href="https://alibaba.github.io/arthas/dump.html">dump</a>——dump 已加载类的 byte code 到特定目录</li>
-<li><a target="_blank" rel="noopener" href="https://alibaba.github.io/arthas/classloader.html">classloader</a>——查看 classloader 的继承树，urls，类加载信息，使用 classloader 去 getResource</li>
-</ul>
-<h3 id="Arthas-monitor-watch-trace-相关命令"><a href="#Arthas-monitor-watch-trace-相关命令" class="headerlink" title="Arthas monitor&#x2F;watch&#x2F;trace 相关命令"></a>Arthas monitor&#x2F;watch&#x2F;trace 相关命令</h3><blockquote>
-<p>请注意，这些命令，都通过字节码增强技术来实现的，会在指定类的方法中插入一些切面来实现数据统计和观测，因此在线上、预发使用时，请尽量明确需要观测的类、方法以及条件，诊断结束要执行 <code>stop</code> 或将增强过的类执行 <code>reset</code> 命令。</p>
-</blockquote>
-<ul>
-<li><a target="_blank" rel="noopener" href="https://alibaba.github.io/arthas/monitor.html">monitor</a>——方法执行监控</li>
-<li><a target="_blank" rel="noopener" href="https://alibaba.github.io/arthas/watch.html">watch</a>——方法执行数据观测</li>
-<li><a target="_blank" rel="noopener" href="https://alibaba.github.io/arthas/trace.html">trace</a>——方法内部调用路径，并输出方法路径上的每个节点上耗时</li>
-<li><a target="_blank" rel="noopener" href="https://alibaba.github.io/arthas/stack.html">stack</a>——输出当前方法被调用的调用路径</li>
-<li><a target="_blank" rel="noopener" href="https://alibaba.github.io/arthas/tt.html">tt</a>——方法执行数据的时空隧道，记录下指定方法每次调用的入参和返回信息，并能对这些不同的时间下调用进行观测</li>
-</ul>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://book.douban.com/subject/34907497/">《深入理解 Java 虚拟机》</a></li>
-<li><a target="_blank" rel="noopener" href="https://time.geekbang.org/column/intro/100028001">《Java 性能调优实战》</a></li>
-<li><a target="_blank" rel="noopener" href="https://docs.oracle.com/javase/8/docs/technotes/guides/management/jconsole.html">jconsole 官方文档</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/kongzhongqijing/articles/3621441.html">jconsole 工具使用</a></li>
-<li><a target="_blank" rel="noopener" href="https://docs.oracle.com/javase/8/docs/technotes/guides/visualvm/index.html">jvisualvm 官方文档</a></li>
-<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/a19881029/article/details/8432368">Java jvisualvm 简要说明</a></li>
-<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/wanghuiqi2008/article/details/50724676">利用内存分析工具（Memory Analyzer Tool，MAT）分析 java 项目内存泄露</a></li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="https://www.ligoudan.cn/pages/c590ae/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2672,6 +2439,239 @@
 <li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/yjd_hycf_space/p/7755633.html">jstat 命令查看 jvm 的 GC 情况</a></li>
 <li><a target="_blank" rel="noopener" href="https://blog.csdn.net/wanghuiqi2008/article/details/50724676">利用内存分析工具（Memory Analyzer Tool，MAT）分析 java 项目内存泄露</a></li>
 <li><a target="_blank" rel="noopener" href="https://www.javatang.com/archives/2017/10/19/33151873.html">JVM 故障分析及性能优化系列之一：使用 jstack 定位线程堆栈信息</a></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://www.ligoudan.cn/pages/43a8e5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/ligoudan.png">
+      <meta itemprop="name" content="李狗蛋">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LIGOUDAN">
+      <meta itemprop="description" content="天气不错哇，你看这大冰雹下得">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | LIGOUDAN">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/pages/43a8e5/" class="post-title-link" itemprop="url">JVM GUI 工具</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-07-30 17:56:33" itemprop="dateCreated datePublished" datetime="2020-07-30T17:56:33+08:00">2020-07-30</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-12-12 10:02:52" itemprop="dateModified" datetime="2024-12-12T10:02:52+08:00">2024-12-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Java/JavaSE/" itemprop="url" rel="index"><span itemprop="name">JavaSE</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Java/JavaSE/JVM/" itemprop="url" rel="index"><span itemprop="name">JVM</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>3.7k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>3 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="JVM-GUI-工具"><a href="#JVM-GUI-工具" class="headerlink" title="JVM GUI 工具"></a>JVM GUI 工具</h1><blockquote>
+<p>Java 程序员免不了故障排查工作，所以经常需要使用一些 JVM 工具。</p>
+<p>本文系统性的介绍一下常用的 JVM GUI 工具。</p>
+</blockquote>
+<h2 id="jconsole"><a href="#jconsole" class="headerlink" title="jconsole"></a>jconsole</h2><blockquote>
+<p>jconsole 是 JDK 自带的 GUI 工具。<strong>jconsole(Java Monitoring and Management Console) 是一种基于 JMX 的可视化监视与管理工具</strong>。</p>
+<p>jconsole 的管理功能是针对 JMX MBean 进行管理，由于 MBean 可以使用代码、中间件服务器的管理控制台或所有符合 JMX 规范的软件进行访问。</p>
+</blockquote>
+<p>注意：使用 jconsole 的前提是 Java 应用开启 JMX。</p>
+<h3 id="开启-JMX"><a href="#开启-JMX" class="headerlink" title="开启 JMX"></a>开启 JMX</h3><p>Java 应用开启 JMX 后，可以使用 <code>jconsole</code> 或 <code>jvisualvm</code> 进行监控 Java 程序的基本信息和运行情况。</p>
+<p>开启方法是，在 java 指令后，添加以下参数：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">-Dcom.sun.management.jmxremote=<span class="literal">true</span></span><br><span class="line">-Dcom.sun.management.jmxremote.ssl=<span class="literal">false</span></span><br><span class="line">-Dcom.sun.management.jmxremote.authenticate=<span class="literal">false</span></span><br><span class="line">-Djava.rmi.server.hostname=<span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span></span><br><span class="line">-Dcom.sun.management.jmxremote.port=<span class="number">18888</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>-Djava.rmi.server.hostname</code> - 指定 Java 程序运行的服务器</li>
+<li><code>-Dcom.sun.management.jmxremote.port</code> - 指定 JMX 服务监听端口</li>
+</ul>
+<h3 id="连接-jconsole"><a href="#连接-jconsole" class="headerlink" title="连接 jconsole"></a>连接 jconsole</h3><p>如果是本地 Java 进程，jconsole 可以直接绑定连接。</p>
+<p>如果是远程 Java 进程，需要连接 Java 进程的 JMX 端口。</p>
+<p><img src="https://docs.oracle.com/javase/8/docs/technotes/guides/management/figures/connectadv.gif" alt="Connecting to a JMX Agent Using the JMX Service URL"></p>
+<h3 id="jconsole-界面"><a href="#jconsole-界面" class="headerlink" title="jconsole 界面"></a>jconsole 界面</h3><p>进入 jconsole 应用后，可以看到以下 tab 页面。</p>
+<ul>
+<li><code>概述</code> - 显示有关 Java VM 和监视值的概述信息。</li>
+<li><code>内存</code> - 显示有关内存使用的信息。内存页相当于可视化的 <code>jstat</code> 命令。</li>
+<li><code>线程</code> - 显示有关线程使用的信息。</li>
+<li><code>类</code> - 显示有关类加载的信息。</li>
+<li><code>VM 摘要</code> - 显示有关 Java VM 的信息。</li>
+<li><code>MBean</code> - 显示有关 MBean 的信息。</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/dunwu/images/master/snap/20200730151422.png" alt="img"></p>
+<h2 id="jvisualvm"><a href="#jvisualvm" class="headerlink" title="jvisualvm"></a>jvisualvm</h2><blockquote>
+<p>jvisualvm 是 JDK 自带的 GUI 工具。<strong>jvisualvm(All-In-One Java Troubleshooting Tool) 是多合一故障处理工具</strong>。它支持运行监视、故障处理、性能分析等功能。</p>
+</blockquote>
+<p>个人觉得 jvisualvm 比 jconsole 好用。</p>
+<h3 id="jvisualvm-概述页面"><a href="#jvisualvm-概述页面" class="headerlink" title="jvisualvm 概述页面"></a>jvisualvm 概述页面</h3><p>jvisualvm 概述页面可以查看当前 Java 进程的基本信息，如：JDK 版本、Java 进程、JVM 参数等。</p>
+<p><img src="https://raw.githubusercontent.com/dunwu/images/master/snap/20200730150147.png" alt="img"></p>
+<h3 id="jvisualvm-监控页面"><a href="#jvisualvm-监控页面" class="headerlink" title="jvisualvm 监控页面"></a>jvisualvm 监控页面</h3><p>在 jvisualvm 监控页面，可以看到 Java 进程的 CPU、内存、类加载、线程的实时变化。</p>
+<p><img src="https://raw.githubusercontent.com/dunwu/images/master/snap/20200730150254.png" alt="img"></p>
+<h3 id="jvisualvm-线程页面"><a href="#jvisualvm-线程页面" class="headerlink" title="jvisualvm 线程页面"></a>jvisualvm 线程页面</h3><p>jvisualvm 线程页面展示了当前的线程状态。</p>
+<p><img src="https://raw.githubusercontent.com/dunwu/images/master/snap/20200730150416.png" alt="img"></p>
+<p>jvisualvm 还可以生成线程 Dump 文件，帮助进一步分析线程栈信息。</p>
+<p><img src="https://raw.githubusercontent.com/dunwu/images/master/snap/20200730150830.png" alt="img"></p>
+<h3 id="jvisualvm-抽样器页面"><a href="#jvisualvm-抽样器页面" class="headerlink" title="jvisualvm 抽样器页面"></a>jvisualvm 抽样器页面</h3><p>jvisualvm 可以对 CPU、内存进行抽样，帮助我们进行性能分析。</p>
+<h2 id="MAT"><a href="#MAT" class="headerlink" title="MAT"></a>MAT</h2><p><a target="_blank" rel="noopener" href="https://www.eclipse.org/mat/">MAT</a> 即 Eclipse Memory Analyzer Tool 的缩写。</p>
+<p>MAT 本身也能够获取堆的二进制快照。该功能将借助 <code>jps</code> 列出当前正在运行的 Java 进程，以供选择并获取快照。由于 <code>jps</code> 会将自己列入其中，因此你会在列表中发现一个已经结束运行的 <code>jps</code> 进程。</p>
+<p>MAT 可以独立安装（<a target="_blank" rel="noopener" href="http://www.eclipse.org/mat/downloads.php">官方下载地址</a>），也可以作为 Eclipse IDE 的插件安装。</p>
+<h3 id="MAT-配置"><a href="#MAT-配置" class="headerlink" title="MAT 配置"></a>MAT 配置</h3><p>MAT 解压后，安装目录下有个 <code>MemoryAnalyzer.ini</code> 文件。</p>
+<p><code>MemoryAnalyzer.ini</code> 中有个重要的参数 <code>Xmx</code> 表示最大内存，默认为：<code>-vmargs -Xmx1024m</code></p>
+<p>如果试图用 MAT 导入的 dump 文件超过 1024 M，会报错：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">An internal error occurred during: &quot;Parsing heap dump from XXX&quot;</span><br></pre></td></tr></table></figure>
+
+<p>此时，可以适当调整 <code>Xmx</code> 大小。如果设置的 <code>Xmx</code> 数值过大，本机内存不足以支撑，启动 MAT 会报错：</p>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Failed <span class="built_in">to</span> <span class="built_in">create</span> <span class="keyword">the</span> Java Virtual Machine</span><br></pre></td></tr></table></figure>
+
+<h3 id="MAT-分析"><a href="#MAT-分析" class="headerlink" title="MAT 分析"></a>MAT 分析</h3><p><img src="https://raw.githubusercontent.com/dunwu/images/master/snap/20200308092746.png" alt="img"></p>
+<p>点击 Leak Suspects 可以进入内存泄漏页面。</p>
+<p>（1）首先，可以查看饼图了解内存的整体消耗情况</p>
+<p><img src="https://raw.githubusercontent.com/dunwu/images/master/snap/20200308150556.png" alt="img"></p>
+<p>（2）缩小范围，寻找问题疑似点</p>
+<p><img src="https://img-blog.csdn.net/20160223202154818" alt="img"></p>
+<p>可以点击进入详情页面，在详情页面 Shortest Paths To the Accumulation Point 表示 GC root 到内存消耗聚集点的最短路径，如果某个内存消耗聚集点有路径到达 GC root，则该内存消耗聚集点不会被当做垃圾被回收。</p>
+<p>为了找到内存泄露，我获取了两个堆转储文件，两个文件获取时间间隔是一天（因为内存只是小幅度增长，短时间很难发现问题）。对比两个文件的对象，通过对比后的结果可以很方便定位内存泄露。</p>
+<p>MAT 同时打开两个堆转储文件，分别打开 Histogram，如下图。在下图中方框 1 按钮用于对比两个 Histogram，对比后在方框 2 处选择 Group By package，然后对比各对象的变化。不难发现 heap3.hprof 比 heap6.hprof 少了 64 个 eventInfo 对象，如果对代码比较熟悉的话想必这样一个结果是能够给程序员一定的启示的。而我也是根据这个启示差找到了最终内存泄露的位置。<br><img src="https://img-blog.csdn.net/20160223203226362" alt="img"></p>
+<h2 id="JProfile"><a href="#JProfile" class="headerlink" title="JProfile"></a>JProfile</h2><p><a target="_blank" rel="noopener" href="https://www.ej-technologies.com/products/jprofiler/overview.html">JProfiler</a> 是一款性能分析工具。</p>
+<p>由于它是收费的，所以我本人使用较少。但是，它确实功能强大，且方便使用，还可以和 Intellij Idea 集成。</p>
+<h2 id="Arthas"><a href="#Arthas" class="headerlink" title="Arthas"></a>Arthas</h2><p><a target="_blank" rel="noopener" href="https://github.com/alibaba/arthas">Arthas</a> 是 Alibaba 开源的 Java 诊断工具，深受开发者喜爱。在线排查问题，无需重启；动态跟踪 Java 代码；实时监控 JVM 状态。</p>
+<p>Arthas 支持 JDK 6+，支持 Linux&#x2F;Mac&#x2F;Windows，采用命令行交互模式，同时提供丰富的 <code>Tab</code> 自动补全功能，进一步方便进行问题的定位和诊断。</p>
+<p><img src="https://raw.githubusercontent.com/dunwu/images/master/snap/20200730145030.png" alt="img"></p>
+<h3 id="Arthas-基础命令"><a href="#Arthas-基础命令" class="headerlink" title="Arthas 基础命令"></a>Arthas 基础命令</h3><ul>
+<li>help——查看命令帮助信息</li>
+<li><a target="_blank" rel="noopener" href="https://alibaba.github.io/arthas/cat.html">cat</a>——打印文件内容，和 linux 里的 cat 命令类似</li>
+<li><a target="_blank" rel="noopener" href="https://alibaba.github.io/arthas/echo.html">echo</a>–打印参数，和 linux 里的 echo 命令类似</li>
+<li><a target="_blank" rel="noopener" href="https://alibaba.github.io/arthas/grep.html">grep</a>——匹配查找，和 linux 里的 grep 命令类似</li>
+<li><a target="_blank" rel="noopener" href="https://alibaba.github.io/arthas/tee.html">tee</a>——复制标准输入到标准输出和指定的文件，和 linux 里的 tee 命令类似</li>
+<li><a target="_blank" rel="noopener" href="https://alibaba.github.io/arthas/pwd.html">pwd</a>——返回当前的工作目录，和 linux 命令类似</li>
+<li>cls——清空当前屏幕区域</li>
+<li>session——查看当前会话的信息</li>
+<li><a target="_blank" rel="noopener" href="https://alibaba.github.io/arthas/reset.html">reset</a>——重置增强类，将被 Arthas 增强过的类全部还原，Arthas 服务端关闭时会重置所有增强过的类</li>
+<li>version——输出当前目标 Java 进程所加载的 Arthas 版本号</li>
+<li>history——打印命令历史</li>
+<li>quit——退出当前 Arthas 客户端，其他 Arthas 客户端不受影响</li>
+<li>stop——关闭 Arthas 服务端，所有 Arthas 客户端全部退出</li>
+<li><a target="_blank" rel="noopener" href="https://alibaba.github.io/arthas/keymap.html">keymap</a>——Arthas 快捷键列表及自定义快捷键</li>
+</ul>
+<h3 id="Arthas-jvm-相关命令"><a href="#Arthas-jvm-相关命令" class="headerlink" title="Arthas jvm 相关命令"></a>Arthas jvm 相关命令</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://alibaba.github.io/arthas/dashboard.html">dashboard</a>——当前系统的实时数据面板</li>
+<li><a target="_blank" rel="noopener" href="https://alibaba.github.io/arthas/thread.html">thread</a>——查看当前 JVM 的线程堆栈信息</li>
+<li><a target="_blank" rel="noopener" href="https://alibaba.github.io/arthas/jvm.html">jvm</a>——查看当前 JVM 的信息</li>
+<li><a target="_blank" rel="noopener" href="https://alibaba.github.io/arthas/sysprop.html">sysprop</a>——查看和修改 JVM 的系统属性</li>
+<li><a target="_blank" rel="noopener" href="https://alibaba.github.io/arthas/sysenv.html">sysenv</a>——查看 JVM 的环境变量</li>
+<li><a target="_blank" rel="noopener" href="https://alibaba.github.io/arthas/vmoption.html">vmoption</a>——查看和修改 JVM 里诊断相关的 option</li>
+<li><a target="_blank" rel="noopener" href="https://alibaba.github.io/arthas/perfcounter.html">perfcounter</a>——查看当前 JVM 的 Perf Counter 信息</li>
+<li><a target="_blank" rel="noopener" href="https://alibaba.github.io/arthas/logger.html">logger</a>——查看和修改 logger</li>
+<li><a target="_blank" rel="noopener" href="https://alibaba.github.io/arthas/getstatic.html">getstatic</a>——查看类的静态属性</li>
+<li><a target="_blank" rel="noopener" href="https://alibaba.github.io/arthas/ognl.html">ognl</a>——执行 ognl 表达式</li>
+<li><a target="_blank" rel="noopener" href="https://alibaba.github.io/arthas/mbean.html">mbean</a>——查看 Mbean 的信息</li>
+<li><a target="_blank" rel="noopener" href="https://alibaba.github.io/arthas/heapdump.html">heapdump</a>——dump java heap, 类似 jmap 命令的 heap dump 功能</li>
+</ul>
+<h3 id="Arthas-class-classloader-相关命令"><a href="#Arthas-class-classloader-相关命令" class="headerlink" title="Arthas class&#x2F;classloader 相关命令"></a>Arthas class&#x2F;classloader 相关命令</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://alibaba.github.io/arthas/sc.html">sc</a>——查看 JVM 已加载的类信息</li>
+<li><a target="_blank" rel="noopener" href="https://alibaba.github.io/arthas/sm.html">sm</a>——查看已加载类的方法信息</li>
+<li><a target="_blank" rel="noopener" href="https://alibaba.github.io/arthas/jad.html">jad</a>——反编译指定已加载类的源码</li>
+<li><a target="_blank" rel="noopener" href="https://alibaba.github.io/arthas/mc.html">mc</a>——内存编译器，内存编译<code>.java</code>文件为<code>.class</code>文件</li>
+<li><a target="_blank" rel="noopener" href="https://alibaba.github.io/arthas/redefine.html">redefine</a>——加载外部的<code>.class</code>文件，redefine 到 JVM 里</li>
+<li><a target="_blank" rel="noopener" href="https://alibaba.github.io/arthas/dump.html">dump</a>——dump 已加载类的 byte code 到特定目录</li>
+<li><a target="_blank" rel="noopener" href="https://alibaba.github.io/arthas/classloader.html">classloader</a>——查看 classloader 的继承树，urls，类加载信息，使用 classloader 去 getResource</li>
+</ul>
+<h3 id="Arthas-monitor-watch-trace-相关命令"><a href="#Arthas-monitor-watch-trace-相关命令" class="headerlink" title="Arthas monitor&#x2F;watch&#x2F;trace 相关命令"></a>Arthas monitor&#x2F;watch&#x2F;trace 相关命令</h3><blockquote>
+<p>请注意，这些命令，都通过字节码增强技术来实现的，会在指定类的方法中插入一些切面来实现数据统计和观测，因此在线上、预发使用时，请尽量明确需要观测的类、方法以及条件，诊断结束要执行 <code>stop</code> 或将增强过的类执行 <code>reset</code> 命令。</p>
+</blockquote>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://alibaba.github.io/arthas/monitor.html">monitor</a>——方法执行监控</li>
+<li><a target="_blank" rel="noopener" href="https://alibaba.github.io/arthas/watch.html">watch</a>——方法执行数据观测</li>
+<li><a target="_blank" rel="noopener" href="https://alibaba.github.io/arthas/trace.html">trace</a>——方法内部调用路径，并输出方法路径上的每个节点上耗时</li>
+<li><a target="_blank" rel="noopener" href="https://alibaba.github.io/arthas/stack.html">stack</a>——输出当前方法被调用的调用路径</li>
+<li><a target="_blank" rel="noopener" href="https://alibaba.github.io/arthas/tt.html">tt</a>——方法执行数据的时空隧道，记录下指定方法每次调用的入参和返回信息，并能对这些不同的时间下调用进行观测</li>
+</ul>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://book.douban.com/subject/34907497/">《深入理解 Java 虚拟机》</a></li>
+<li><a target="_blank" rel="noopener" href="https://time.geekbang.org/column/intro/100028001">《Java 性能调优实战》</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.oracle.com/javase/8/docs/technotes/guides/management/jconsole.html">jconsole 官方文档</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/kongzhongqijing/articles/3621441.html">jconsole 工具使用</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.oracle.com/javase/8/docs/technotes/guides/visualvm/index.html">jvisualvm 官方文档</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/a19881029/article/details/8432368">Java jvisualvm 简要说明</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/wanghuiqi2008/article/details/50724676">利用内存分析工具（Memory Analyzer Tool，MAT）分析 java 项目内存泄露</a></li>
 </ul>
 
       
