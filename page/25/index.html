@@ -205,7 +205,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.ligoudan.cn/pages/e0d035/">
+    <link itemprop="mainEntityOfPage" href="https://www.ligoudan.cn/pages/7644aa/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/uploads/ligoudan.png">
@@ -223,7 +223,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/pages/e0d035/" class="post-title-link" itemprop="url">大数据学习</a>
+          <a href="/pages/7644aa/" class="post-title-link" itemprop="url">MapReduce</a>
         </h2>
 
         <div class="post-meta-container">
@@ -253,7 +253,7 @@
         </span>
           ，
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/%E7%BB%BC%E5%90%88/" itemprop="url" rel="index"><span itemprop="name">综合</span></a>
+          <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/hadoop/" itemprop="url" rel="index"><span itemprop="name">hadoop</span></a>
         </span>
     </span>
 
@@ -264,14 +264,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>3.3k</span>
+      <span>7.2k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>3 分钟</span>
+      <span>7 分钟</span>
     </span>
 </div>
 
@@ -282,72 +282,133 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="大数据学习路线"><a href="#大数据学习路线" class="headerlink" title="大数据学习路线"></a>大数据学习路线</h1><h2 id="大数据简介"><a href="#大数据简介" class="headerlink" title="大数据简介"></a>大数据简介</h2><h3 id="移动计算"><a href="#移动计算" class="headerlink" title="移动计算"></a>移动计算</h3><p>传统的软件计算处理模型，都是“输入 -&gt; 计算 -&gt; 输出”模型。</p>
-<p>如何解决 PB 级数据进行计算的问题呢？</p>
-<p>采用分布式集群的解决方案，用数千台甚至上万台计算机构建一个大数据计算处理集群，利用更多的网络带宽、内存空间、磁盘容量、CPU 核心数去进行计算处理。</p>
-<p>大数据计算处理通常针对的是网站的存量数据，网站大数据系统要做的就是将这些统计规律和关联关系计算出来，并由此进一步改善网站的用户体验和运营决策。</p>
-<p>将程序分发到数据所在的地方进行计算，也就是所谓的移动计算比移动数据更划算。</p>
-<h3 id="大数据存储"><a href="#大数据存储" class="headerlink" title="大数据存储"></a>大数据存储</h3><p>大规模数据存储的核心问题：</p>
+          <h1 id="MapReduce"><a href="#MapReduce" class="headerlink" title="MapReduce"></a>MapReduce</h1><h2 id="MapReduce-简介"><a href="#MapReduce-简介" class="headerlink" title="MapReduce 简介"></a>MapReduce 简介</h2><blockquote>
+<p>Hadoop MapReduce 是一个分布式计算框架，用于编写批处理应用程序。编写好的程序可以提交到 Hadoop 集群上用于并行处理大规模的数据集。</p>
+</blockquote>
+<p>MapReduce 的设计思路是：</p>
 <ul>
-<li>数据存储容量</li>
-<li>数据读写速度</li>
-<li>数据可靠性</li>
+<li>分而治之，并行计算</li>
+<li>移动计算，而非移动数据</li>
 </ul>
-<p>解决方案：水平伸缩</p>
-<h2 id="大数据处理流程"><a href="#大数据处理流程" class="headerlink" title="大数据处理流程"></a>大数据处理流程</h2><p><img src="https://raw.githubusercontent.com/dunwu/images/master/snap/20220217114216.png" alt="img"></p>
-<h3 id="1-1-数据采集"><a href="#1-1-数据采集" class="headerlink" title="1.1 数据采集"></a>1.1 数据采集</h3><p>大数据处理的第一步是数据的收集。现在的中大型项目通常采用微服务架构进行分布式部署，所以数据的采集需要在多台服务器上进行，且采集过程不能影响正常业务的开展。基于这种需求，就衍生了多种日志收集工具，如 Flume 、Logstash、Kibana 等，它们都能通过简单的配置完成复杂的数据收集和数据聚合。</p>
-<h3 id="1-2-数据存储"><a href="#1-2-数据存储" class="headerlink" title="1.2 数据存储"></a>1.2 数据存储</h3><p>收集到数据后，下一个问题就是：数据该如何进行存储？通常大家最为熟知是 MySQL、Oracle 等传统的关系型数据库，它们的优点是能够快速存储结构化的数据，并支持随机访问。但大数据的数据结构通常是半结构化（如日志数据）、甚至是非结构化的（如视频、音频数据），为了解决海量半结构化和非结构化数据的存储，衍生了 Hadoop HDFS 、KFS、GFS 等分布式文件系统，它们都能够支持结构化、半结构和非结构化数据的存储，并可以通过增加机器进行横向扩展。</p>
-<p>分布式文件系统完美地解决了海量数据存储的问题，但是一个优秀的数据存储系统需要同时考虑数据存储和访问两方面的问题，比如你希望能够对数据进行随机访问，这是传统的关系型数据库所擅长的，但却不是分布式文件系统所擅长的，那么有没有一种存储方案能够同时兼具分布式文件系统和关系型数据库的优点，基于这种需求，就产生了 HBase、MongoDB。</p>
-<h3 id="1-3-数据分析"><a href="#1-3-数据分析" class="headerlink" title="1.3 数据分析"></a>1.3 数据分析</h3><p>大数据处理最重要的环节就是数据分析，数据分析通常分为两种：批处理和流处理。</p>
+<p>MapReduce 作业通过将输入的数据集拆分为独立的块，这些块由 <code>map</code> 以并行的方式处理，框架对 <code>map</code> 的输出进行排序，然后输入到 <code>reduce</code> 中。MapReduce 框架专门用于 <code>&lt;key，value&gt;</code> 键值对处理，它将作业的输入视为一组 <code>&lt;key，value&gt;</code> 对，并生成一组 <code>&lt;key，value&gt;</code> 对作为输出。输出和输出的 <code>key</code> 和 <code>value</code> 都必须实现<a target="_blank" rel="noopener" href="http://hadoop.apache.org/docs/stable/api/org/apache/hadoop/io/Writable.html">Writable</a> 接口。</p>
+<figure class="highlight xl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="title">input</span>) &lt;k1, v1&gt; -&gt;</span> <span class="function"><span class="title">map</span> -&gt;</span> &lt;<span class="function"><span class="title">k2</span>, v2&gt; -&gt;</span> <span class="function"><span class="title">combine</span> -&gt;</span> &lt;<span class="function"><span class="title">k2</span>, v2&gt; -&gt;</span> <span class="function"><span class="title">reduce</span> -&gt;</span> &lt;k3, v3&gt; (output)</span><br></pre></td></tr></table></figure>
+
+<h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><ul>
+<li>计算跟着数据走</li>
+<li>良好的扩展性：计算能力随着节点数增加，近似线性递增</li>
+<li>高容错</li>
+<li>状态监控</li>
+<li>适合海量数据的离线批处理</li>
+<li>降低了分布式编程的门槛</li>
+</ul>
+<h3 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h3><p>适用场景：</p>
 <ul>
-<li><strong>批处理</strong>：对一段时间内海量的离线数据进行统一的处理，对应的处理框架有 Hadoop MapReduce、Spark、Flink 等；</li>
-<li><strong>流处理</strong>：对运动中的数据进行处理，即在接收数据的同时就对其进行处理，对应的处理框架有 Storm、Spark Streaming、Flink Streaming 等。</li>
+<li>数据统计，如：网站的 PV、UV 统计</li>
+<li>搜索引擎构建索引</li>
+<li>海量数据查询</li>
 </ul>
-<p>批处理和流处理各有其适用的场景，时间不敏感或者硬件资源有限，可以采用批处理；时间敏感和实时性要求高就可以采用流处理。随着服务器硬件的价格越来越低和大家对及时性的要求越来越高，流处理越来越普遍，如股票价格预测和电商运营数据分析等。</p>
-<p>上面的框架都是需要通过编程来进行数据分析，那么如果你不是一个后台工程师，是不是就不能进行数据的分析了？当然不是，大数据是一个非常完善的生态圈，有需求就有解决方案。为了能够让熟悉 SQL 的人员也能够进行数据的分析，查询分析框架应运而生，常用的有 Hive 、Spark SQL 、Flink SQL、 Pig、Phoenix 等。这些框架都能够使用标准的 SQL 或者 类 SQL 语法灵活地进行数据的查询分析。这些 SQL 经过解析优化后转换为对应的作业程序来运行，如 Hive 本质上就是将 SQL 转换为 MapReduce 作业，Spark SQL 将 SQL 转换为一系列的 RDDs 和转换关系（transformations），Phoenix 将 SQL 查询转换为一个或多个 HBase Scan。</p>
-<h3 id="1-4-数据应用"><a href="#1-4-数据应用" class="headerlink" title="1.4 数据应用"></a>1.4 数据应用</h3><p>数据分析完成后，接下来就是数据应用的范畴，这取决于你实际的业务需求。比如你可以将数据进行可视化展现，或者将数据用于优化你的推荐算法，这种运用现在很普遍，比如短视频个性化推荐、电商商品推荐、头条新闻推荐等。当然你也可以将数据用于训练你的机器学习模型，这些都属于其他领域的范畴，都有着对应的框架和技术栈进行处理，这里就不一一赘述。</p>
-<h3 id="1-5-其他框架"><a href="#1-5-其他框架" class="headerlink" title="1.5 其他框架"></a>1.5 其他框架</h3><p>上面是一个标准的大数据处理流程所用到的技术框架。但是实际的大数据处理流程比上面复杂很多，针对大数据处理中的各种复杂问题分别衍生了各类框架：</p>
+<p>不适用场景：</p>
 <ul>
-<li>单机的处理能力都是存在瓶颈的，所以大数据框架都是采用集群模式进行部署，为了更方便的进行集群的部署、监控和管理，衍生了 Ambari、Cloudera Manager 等集群管理工具；</li>
-<li>想要保证集群高可用，需要用到 ZooKeeper ，ZooKeeper 是最常用的分布式协调服务，它能够解决大多数集群问题，包括首领选举、失败恢复、元数据存储及其一致性保证。同时针对集群资源管理的需求，又衍生了 Hadoop YARN ;</li>
-<li>复杂大数据处理的另外一个显著的问题是，如何调度多个复杂的并且彼此之间存在依赖关系的作业？基于这种需求，产生了 Azkaban 和 Oozie 等工作流调度框架；</li>
-<li>大数据流处理中使用的比较多的另外一个框架是 Kafka，它可以用于消峰，避免在秒杀等场景下并发数据对流处理程序造成冲击；</li>
-<li>另一个常用的框架是 Sqoop ，主要是解决了数据迁移的问题，它能够通过简单的命令将关系型数据库中的数据导入到 HDFS 、Hive 或 HBase 中，或者从 HDFS 、Hive 导出到关系型数据库上。</li>
+<li>OLAP<ul>
+<li>要求毫秒或秒级返回结果</li>
 </ul>
-<h2 id="大数据学习路线-1"><a href="#大数据学习路线-1" class="headerlink" title="大数据学习路线"></a>大数据学习路线</h2><h3 id="框架分类"><a href="#框架分类" class="headerlink" title="框架分类"></a>框架分类</h3><p><strong>日志收集框架</strong>：Flume 、Logstash、Kibana</p>
-<p><strong>分布式文件存储系统</strong>：Hadoop HDFS</p>
-<p><strong>数据库系统</strong>：Mongodb、HBase</p>
-<p><strong>分布式计算框架</strong>：</p>
+</li>
+<li>流计算<ul>
+<li>流计算的输入数据集是动态的，而 MapReduce 是静态的</li>
+</ul>
+</li>
+<li>DAG 计算<ul>
+<li>多个作业存在依赖关系，后一个的输入是前一个的输出，构成有向无环图 DAG</li>
+<li>每个 MapReduce 作业的输出结果都会落盘，造成大量磁盘 IO，导致性能非常低下</li>
+</ul>
+</li>
+</ul>
+<h2 id="MapReduce-编程模型"><a href="#MapReduce-编程模型" class="headerlink" title="MapReduce 编程模型"></a>MapReduce 编程模型</h2><p>MapReduce 编程模型：MapReduce 程序被分为 Map（映射）阶段和 Reduce（化简）阶段。</p>
+<p><img src="https://raw.githubusercontent.com/dunwu/images/master/snap/20200601162305.png" alt="img"></p>
+<ol>
+<li><strong>input</strong> : 读取文本文件；</li>
+<li><strong>splitting</strong> : 将文件按照行进行拆分，此时得到的 <code>K1</code> 行数，<code>V1</code> 表示对应行的文本内容；</li>
+<li><strong>mapping</strong> : 并行将每一行按照空格进行拆分，拆分得到的 <code>List(K2,V2)</code>，其中 <code>K2</code> 代表每一个单词，由于是做词频统计，所以 <code>V2</code> 的值为 1，代表出现 1 次；</li>
+<li><strong>shuffling</strong>：由于 <code>Mapping</code> 操作可能是在不同的机器上并行处理的，所以需要通过 <code>shuffling</code> 将相同 <code>key</code> 值的数据分发到同一个节点上去合并，这样才能统计出最终的结果，此时得到 <code>K2</code> 为每一个单词，<code>List(V2)</code> 为可迭代集合，<code>V2</code> 就是 Mapping 中的 V2；</li>
+<li><strong>Reducing</strong> : 这里的案例是统计单词出现的总次数，所以 <code>Reducing</code> 对 <code>List(V2)</code> 进行归约求和操作，最终输出。</li>
+</ol>
+<p>MapReduce 编程模型中 <code>splitting</code> 和 <code>shuffing</code> 操作都是由框架实现的，需要我们自己编程实现的只有 <code>mapping</code> 和 <code>reducing</code>，这也就是 MapReduce 这个称呼的来源。</p>
+<h2 id="combiner-partitioner"><a href="#combiner-partitioner" class="headerlink" title="combiner &amp; partitioner"></a>combiner &amp; partitioner</h2><p><img src="https://raw.githubusercontent.com/dunwu/images/master/snap/20200601163846.png" alt="img"></p>
+<h3 id="InputFormat-RecordReaders"><a href="#InputFormat-RecordReaders" class="headerlink" title="InputFormat &amp; RecordReaders"></a>InputFormat &amp; RecordReaders</h3><p><code>InputFormat</code> 将输出文件拆分为多个 <code>InputSplit</code>，并由 <code>RecordReaders</code> 将 <code>InputSplit</code> 转换为标准的&lt;key，value&gt;键值对，作为 map 的输出。这一步的意义在于只有先进行逻辑拆分并转为标准的键值对格式后，才能为多个 <code>map</code> 提供输入，以便进行并行处理。</p>
+<h3 id="Combiner"><a href="#Combiner" class="headerlink" title="Combiner"></a>Combiner</h3><p><code>combiner</code> 是 <code>map</code> 运算后的可选操作，它实际上是一个本地化的 <code>reduce</code> 操作，它主要是在 <code>map</code> 计算出中间文件后做一个简单的合并重复 <code>key</code> 值的操作。这里以词频统计为例：</p>
+<p><code>map</code> 在遇到一个 hadoop 的单词时就会记录为 1，但是这篇文章里 hadoop 可能会出现 n 多次，那么 <code>map</code> 输出文件冗余就会很多，因此在 <code>reduce</code> 计算前对相同的 key 做一个合并操作，那么需要传输的数据量就会减少，传输效率就可以得到提升。</p>
+<p>但并非所有场景都适合使用 <code>combiner</code>，使用它的原则是 <code>combiner</code> 的输出不会影响到 <code>reduce</code> 计算的最终输入，例如：求总数，最大值，最小值时都可以使用 <code>combiner</code>，但是做平均值计算则不能使用 <code>combiner</code>。</p>
+<p>不使用 combiner 的情况：</p>
+<p><img src="https://raw.githubusercontent.com/dunwu/images/master/snap/20200601164709.png" alt="img"></p>
+<p>使用 combiner 的情况：</p>
+<p><img src="https://raw.githubusercontent.com/dunwu/images/master/snap/20200601164804.png" alt="img"></p>
+<p>可以看到使用 combiner 的时候，需要传输到 reducer 中的数据由 12keys，降低到 10keys。降低的幅度取决于你 keys 的重复率，下文词频统计案例会演示用 combiner 降低数百倍的传输量。</p>
+<h2 id="MapReduce-词频统计案例"><a href="#MapReduce-词频统计案例" class="headerlink" title="MapReduce 词频统计案例"></a>MapReduce 词频统计案例</h2><h3 id="项目简介"><a href="#项目简介" class="headerlink" title="项目简介"></a>项目简介</h3><p>这里给出一个经典的词频统计的案例：统计如下样本数据中每个单词出现的次数。</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">Spark	HBase</span></span><br><span class="line"><span class="attribute">Hive	Flink	Storm	Hadoop	HBase	Spark</span></span><br><span class="line"><span class="attribute">Flink</span></span><br><span class="line"><span class="attribute">HBase	Storm</span></span><br><span class="line"><span class="attribute">HBase	Hadoop	Hive	Flink</span></span><br><span class="line"><span class="attribute">HBase	Flink	Hive	Storm</span></span><br><span class="line"><span class="attribute">Hive	Flink	Hadoop</span></span><br><span class="line"><span class="attribute">HBase	Hive</span></span><br><span class="line"><span class="attribute">Hadoop	Spark	HBase	Storm</span></span><br><span class="line"><span class="attribute">HBase	Hadoop	Hive	Flink</span></span><br><span class="line"><span class="attribute">HBase	Flink	Hive	Storm</span></span><br><span class="line"><span class="attribute">Hive	Flink	Hadoop</span></span><br><span class="line"><span class="attribute">HBase	Hive</span></span><br></pre></td></tr></table></figure>
+
+<p>为方便大家开发，我在项目源码中放置了一个工具类 <code>WordCountDataUtils</code>，用于模拟产生词频统计的样本，生成的文件支持输出到本地或者直接写到 HDFS 上。</p>
+<blockquote>
+<p>项目完整源码下载地址：<a target="_blank" rel="noopener" href="https://github.com/heibaiying/BigData-Notes/tree/master/code/Hadoop/hadoop-word-count">hadoop-word-count</a></p>
+</blockquote>
+<h3 id="项目依赖"><a href="#项目依赖" class="headerlink" title="项目依赖"></a>项目依赖</h3><p>想要进行 MapReduce 编程，需要导入 <code>hadoop-client</code> 依赖：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.hadoop<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>hadoop-client<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;hadoop.version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="WordCountMapper"><a href="#WordCountMapper" class="headerlink" title="WordCountMapper"></a>WordCountMapper</h3><p>将每行数据按照指定分隔符进行拆分。这里需要注意在 MapReduce 中必须使用 Hadoop 定义的类型，因为 Hadoop 预定义的类型都是可序列化，可比较的，所有类型均实现了 <code>WritableComparable</code> 接口。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">WordCountMapper</span> <span class="keyword">extends</span> <span class="title class_">Mapper</span>&lt;LongWritable, Text, Text, IntWritable&gt; &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">map</span><span class="params">(LongWritable key, Text value, Context context)</span> <span class="keyword">throws</span> IOException,</span><br><span class="line">                                                                      InterruptedException &#123;</span><br><span class="line">        String[] words = value.toString().split(<span class="string">&quot;\t&quot;</span>);</span><br><span class="line">        <span class="keyword">for</span> (String word : words) &#123;</span><br><span class="line">            context.write(<span class="keyword">new</span> <span class="title class_">Text</span>(word), <span class="keyword">new</span> <span class="title class_">IntWritable</span>(<span class="number">1</span>));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>WordCountMapper</code> 对应下图的 Mapping 操作：</p>
+<p><a target="_blank" rel="noopener" href="https://camo.githubusercontent.com/fcf3ac016579c1fbb050d97309660aaa3b9550cc/68747470733a2f2f67697465652e636f6d2f68656962616979696e672f426967446174612d4e6f7465732f7261772f6d61737465722f70696374757265732f6861646f6f702d636f64652d6d617070696e672e706e67"><img src="https://camo.githubusercontent.com/fcf3ac016579c1fbb050d97309660aaa3b9550cc/68747470733a2f2f67697465652e636f6d2f68656962616979696e672f426967446174612d4e6f7465732f7261772f6d61737465722f70696374757265732f6861646f6f702d636f64652d6d617070696e672e706e67" alt="img"></a></p>
+<p><code>WordCountMapper</code> 继承自 <code>Mappe</code> 类，这是一个泛型类，定义如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">WordCountMapper <span class="keyword">extends</span> <span class="title class_">Mapper</span>&lt;LongWritable, Text, Text, IntWritable&gt;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Mapper</span>&lt;KEYIN, VALUEIN, KEYOUT, VALUEOUT&gt; &#123;</span><br><span class="line">   ......</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <ul>
-<li>批处理框架：Hadoop MapReduce</li>
-<li>流处理框架：Storm</li>
-<li>混合处理框架：Spark、Flink</li>
+<li><strong>KEYIN</strong> : <code>mapping</code> 输入 key 的类型，即每行的偏移量 (每行第一个字符在整个文本中的位置)，<code>Long</code> 类型，对应 Hadoop 中的 <code>LongWritable</code> 类型；</li>
+<li><strong>VALUEIN</strong> : <code>mapping</code> 输入 value 的类型，即每行数据；<code>String</code> 类型，对应 Hadoop 中 <code>Text</code> 类型；</li>
+<li><strong>KEYOUT</strong> ：<code>mapping</code> 输出的 key 的类型，即每个单词；<code>String</code> 类型，对应 Hadoop 中 <code>Text</code> 类型；</li>
+<li><strong>VALUEOUT</strong>：<code>mapping</code> 输出 value 的类型，即每个单词出现的次数；这里用 <code>int</code> 类型，对应 <code>IntWritable</code> 类型。</li>
 </ul>
-<p><strong>查询分析框架</strong>：Hive 、Spark SQL 、Flink SQL、 Pig、Phoenix</p>
-<p><strong>集群资源管理器</strong>：Hadoop YARN</p>
-<p><strong>分布式协调服务</strong>：Zookeeper</p>
-<p><strong>数据迁移工具</strong>：Sqoop</p>
-<p><strong>任务调度框架</strong>：Azkaban、Oozie</p>
-<p><strong>集群部署和监控</strong>：Ambari、Cloudera Manager</p>
-<p>上面列出的都是比较主流的大数据框架，社区都很活跃，学习资源也比较丰富。建议从 Hadoop 开始入门学习，因为它是整个大数据生态圈的基石，其它框架都直接或者间接依赖于 Hadoop 。接着就可以学习计算框架，Spark 和 Flink 都是比较主流的混合处理框架，Spark 出现得较早，所以其应用也比较广泛。 Flink 是当下最火热的新一代的混合处理框架，其凭借众多优异的特性得到了众多公司的青睐。两者可以按照你个人喜好或者实际工作需要进行学习。</p>
-<p><img src="https://raw.githubusercontent.com/dunwu/images/master/snap/20200601160917.png" alt="img"></p>
-<h3 id="学习资料"><a href="#学习资料" class="headerlink" title="学习资料"></a>学习资料</h3><p>大数据最权威和最全面的学习资料就是官方文档。热门的大数据框架社区都比较活跃、版本更新迭代也比较快，所以其出版物都明显滞后于其实际版本，基于这个原因采用书本学习不是一个最好的方案。比较庆幸的是，大数据框架的官方文档都写的比较好，内容完善，重点突出，同时都采用了大量配图进行辅助讲解。当然也有一些优秀的书籍历经时间的检验，至今依然很经典，这里列出部分个人阅读过的经典书籍：</p>
-<ul>
-<li><a target="_blank" rel="noopener" href="https://book.douban.com/subject/27115351/">《hadoop 权威指南 (第四版)》</a> 2017 年</li>
-<li><a target="_blank" rel="noopener" href="https://item.jd.com/12270295.html">《Kafka 权威指南》</a> 2017 年</li>
-<li><a target="_blank" rel="noopener" href="https://item.jd.com/11622772.html">《从 Paxos 到 Zookeeper 分布式一致性原理与实践》</a> 2015 年</li>
-<li><a target="_blank" rel="noopener" href="https://book.douban.com/subject/26649141/">《Spark 技术内幕 深入解析 Spark 内核架构设计与实现原理》</a> 2015 年</li>
-<li><a target="_blank" rel="noopener" href="https://book.douban.com/subject/27035127/">《Spark.The.Definitive.Guide》</a> 2018 年</li>
-<li><a target="_blank" rel="noopener" href="https://book.douban.com/subject/10748460/">《HBase 权威指南》</a> 2012 年</li>
-<li><a target="_blank" rel="noopener" href="https://book.douban.com/subject/25791255/">《Hive 编程指南》</a> 2013 年</li>
-</ul>
-<h3 id="视频学习资料"><a href="#视频学习资料" class="headerlink" title="视频学习资料"></a>视频学习资料</h3><p>上面我推荐的都是书籍学习资料，很少推荐视频学习资料，这里说明一下原因：因为书籍历经时间的考验，能够再版的或者豆瓣等平台评价高的证明都是被大众所认可的，从概率的角度上来说，其必然更加优秀，不容易浪费大家的学习时间和精力，所以我个人更倾向于官方文档或者书本的学习方式，而不是视频。因为视频学习资料，缺少一个公共的评价平台和完善的评价机制，所以其质量良莠不齐。但是视频任然有其不可替代的好处，学习起来更直观、印象也更深刻，所以对于习惯视频学习的小伙伴，这里我各推荐一个免费的和付费的视频学习资源，大家按需选择：</p>
-<ul>
-<li>免费学习资源：尚硅谷大数据学习路线 —— <a target="_blank" rel="noopener" href="http://www.atguigu.com/bigdata_video.shtml#bigdata">下载链接</a> \ <a target="_blank" rel="noopener" href="https://space.bilibili.com/302417610/">在线观看链接</a></li>
-<li>付费学习资源：<a target="_blank" rel="noopener" href="https://www.imooc.com/t/2781843">慕课网 Michael PK 的系列课程</a></li>
-</ul>
+<h3 id="WordCountReducer"><a href="#WordCountReducer" class="headerlink" title="WordCountReducer"></a>WordCountReducer</h3><p>在 Reduce 中进行单词出现次数的统计：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">WordCountReducer</span> <span class="keyword">extends</span> <span class="title class_">Reducer</span>&lt;Text, IntWritable, Text, IntWritable&gt; &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">reduce</span><span class="params">(Text key, Iterable&lt;IntWritable&gt; values, Context context)</span> <span class="keyword">throws</span> IOException,</span><br><span class="line">                                                                                  InterruptedException &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">count</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (IntWritable value : values) &#123;</span><br><span class="line">            count += value.get();</span><br><span class="line">        &#125;</span><br><span class="line">        context.write(key, <span class="keyword">new</span> <span class="title class_">IntWritable</span>(count));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如下图，<code>shuffling</code> 的输出是 reduce 的输入。这里的 key 是每个单词，values 是一个可迭代的数据类型，类似 <code>(1,1,1,...)</code>。</p>
+<p><a target="_blank" rel="noopener" href="https://camo.githubusercontent.com/bf6ad9c970812b1db6f6f86d12d783db75eaa9fb/68747470733a2f2f67697465652e636f6d2f68656962616979696e672f426967446174612d4e6f7465732f7261772f6d61737465722f70696374757265732f6861646f6f702d636f64652d726564756365722e706e67"><img src="https://camo.githubusercontent.com/bf6ad9c970812b1db6f6f86d12d783db75eaa9fb/68747470733a2f2f67697465652e636f6d2f68656962616979696e672f426967446174612d4e6f7465732f7261772f6d61737465722f70696374757265732f6861646f6f702d636f64652d726564756365722e706e67" alt="img"></a></p>
+<h3 id="WordCountApp"><a href="#WordCountApp" class="headerlink" title="WordCountApp"></a>WordCountApp</h3><p>组装 MapReduce 作业，并提交到服务器运行，代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 组装作业 并提交到集群运行</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">WordCountApp</span> &#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 这里为了直观显示参数 使用了硬编码，实际开发中可以通过外部传参</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">String</span> <span class="variable">HDFS_URL</span> <span class="operator">=</span> <span class="string">&quot;hdfs://192.168.0.107:8020&quot;</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">String</span> <span class="variable">HADOOP_USER_NAME</span> <span class="operator">=</span> <span class="string">&quot;root&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//  文件输入路径和输出路径由外部传参指定</span></span><br><span class="line">        <span class="keyword">if</span> (args.length &lt; <span class="number">2</span>) &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;Input and output paths are necessary!&quot;</span>);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 需要指明 hadoop 用户名，否则在 HDFS 上创建目录时可能会抛出权限不足的异常</span></span><br><span class="line">        System.setProperty(<span class="string">&quot;HADOOP_USER_NAME&quot;</span>, HADOOP_USER_NAME);</span><br><span class="line"></span><br><span class="line">        <span class="type">Configuration</span> <span class="variable">configuration</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Configuration</span>();</span><br><span class="line">        <span class="comment">// 指明 HDFS 的地址</span></span><br><span class="line">        configuration.set(<span class="string">&quot;fs.defaultFS&quot;</span>, HDFS_URL);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 创建一个 Job</span></span><br><span class="line">        <span class="type">Job</span> <span class="variable">job</span> <span class="operator">=</span> Job.getInstance(configuration);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 设置运行的主类</span></span><br><span class="line">        job.setJarByClass(WordCountApp.class);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 设置 Mapper 和 Reducer</span></span><br><span class="line">        job.setMapperClass(WordCountMapper.class);</span><br><span class="line">        job.setReducerClass(WordCountReducer.class);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 设置 Mapper 输出 key 和 value 的类型</span></span><br><span class="line">        job.setMapOutputKeyClass(Text.class);</span><br><span class="line">        job.setMapOutputValueClass(IntWritable.class);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 设置 Reducer 输出 key 和 value 的类型</span></span><br><span class="line">        job.setOutputKeyClass(Text.class);</span><br><span class="line">        job.setOutputValueClass(IntWritable.class);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 如果输出目录已经存在，则必须先删除，否则重复运行程序时会抛出异常</span></span><br><span class="line">        <span class="type">FileSystem</span> <span class="variable">fileSystem</span> <span class="operator">=</span> FileSystem.get(<span class="keyword">new</span> <span class="title class_">URI</span>(HDFS_URL), configuration, HADOOP_USER_NAME);</span><br><span class="line">        <span class="type">Path</span> <span class="variable">outputPath</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Path</span>(args[<span class="number">1</span>]);</span><br><span class="line">        <span class="keyword">if</span> (fileSystem.exists(outputPath)) &#123;</span><br><span class="line">            fileSystem.delete(outputPath, <span class="literal">true</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 设置作业输入文件和输出文件的路径</span></span><br><span class="line">        FileInputFormat.setInputPaths(job, <span class="keyword">new</span> <span class="title class_">Path</span>(args[<span class="number">0</span>]));</span><br><span class="line">        FileOutputFormat.setOutputPath(job, outputPath);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 将作业提交到群集并等待它完成，参数设置为 true 代表打印显示对应的进度</span></span><br><span class="line">        <span class="type">boolean</span> <span class="variable">result</span> <span class="operator">=</span> job.waitForCompletion(<span class="literal">true</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 关闭之前创建的 fileSystem</span></span><br><span class="line">        fileSystem.close();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 根据作业结果,终止当前运行的 Java 虚拟机,退出程序</span></span><br><span class="line">        System.exit(result ? <span class="number">0</span> : -<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>需要注意的是：如果不设置 <code>Mapper</code> 操作的输出类型，则程序默认它和 <code>Reducer</code> 操作输出的类型相同。</p>
+<h3 id="提交到服务器运行"><a href="#提交到服务器运行" class="headerlink" title="提交到服务器运行"></a>提交到服务器运行</h3><p>在实际开发中，可以在本机配置 hadoop 开发环境，直接在 IDE 中启动进行测试。这里主要介绍一下打包提交到服务器运行。由于本项目没有使用除 Hadoop 外的第三方依赖，直接打包即可：</p>
+<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># mvn clean package</span></span><br></pre></td></tr></table></figure>
+
+<p>使用以下命令提交作业：</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hadoop jar /usr/appjar/hadoop-word-count-<span class="number">1.0</span><span class="selector-class">.jar</span> \</span><br><span class="line">com<span class="selector-class">.heibaiying</span><span class="selector-class">.WordCountApp</span> \</span><br><span class="line">/wordcount/<span class="selector-tag">input</span><span class="selector-class">.txt</span> /wordcount/output/WordCountApp</span><br></pre></td></tr></table></figure>
+
+<p>作业完成后查看 HDFS 上生成目录：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看目录</span></span><br><span class="line">hadoop fs -<span class="built_in">ls</span> /wordcount/output/WordCountApp</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看统计结果</span></span><br><span class="line">hadoop fs -<span class="built_in">cat</span> /wordcount/output/WordCountApp/part-r-00000</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://camo.githubusercontent.com/cecb00eef3b951794fbf92b8308d8b6601faf5a0/68747470733a2f2f67697465652e636f6d2f68656962616979696e672f426967446174612d4e6f7465732f7261772f6d61737465722f70696374757265732f6861646f6f702d776f7264636f756e746170702e706e67"><img src="https://camo.githubusercontent.com/cecb00eef3b951794fbf92b8308d8b6601faf5a0/68747470733a2f2f67697465652e636f6d2f68656962616979696e672f426967446174612d4e6f7465732f7261772f6d61737465722f70696374757265732f6861646f6f702d776f7264636f756e746170702e706e67" alt="img"></a></p>
+<h2 id="词频统计案例进阶之-Combiner"><a href="#词频统计案例进阶之-Combiner" class="headerlink" title="词频统计案例进阶之 Combiner"></a>词频统计案例进阶之 Combiner</h2><h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><p>想要使用 <code>combiner</code> 功能只要在组装作业时，添加下面一行代码即可：</p>
+<figure class="highlight cos"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 设置 Combiner</span></span><br><span class="line"><span class="keyword">job</span>.setCombinerClass(WordCountReducer.<span class="keyword">class</span>)<span class="comment">;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="执行结果"><a href="#执行结果" class="headerlink" title="执行结果"></a>执行结果</h3><p>加入 <code>combiner</code> 后统计结果是不会有变化的，但是可以从打印的日志看出 <code>combiner</code> 的效果：</p>
+<p>没有加入 <code>combiner</code> 的打印日志：</p>
+<p><a target="_blank" rel="noopener" href="https://camo.githubusercontent.com/e4849556db34d3a02b82b546af7296154920dfff/68747470733a2f2f67697465652e636f6d2f68656962616979696e672f426967446174612d4e6f7465732f7261772f6d61737465722f70696374757265732f6861646f6f702d6e6f2d636f6d62696e65722e706e67"><img src="https://camo.githubusercontent.com/e4849556db34d3a02b82b546af7296154920dfff/68747470733a2f2f67697465652e636f6d2f68656962616979696e672f426967446174612d4e6f7465732f7261772f6d61737465722f70696374757265732f6861646f6f702d6e6f2d636f6d62696e65722e706e67" alt="img"></a></p>
+<p>加入 <code>combiner</code> 后的打印日志如下：</p>
+<p><a target="_blank" rel="noopener" href="https://camo.githubusercontent.com/17f20f481bc4bd01252bc3ccb3b2aceb7d0eca63/68747470733a2f2f67697465652e636f6d2f68656962616979696e672f426967446174612d4e6f7465732f7261772f6d61737465722f70696374757265732f6861646f6f702d636f6d62696e65722e706e67"><img src="https://camo.githubusercontent.com/17f20f481bc4bd01252bc3ccb3b2aceb7d0eca63/68747470733a2f2f67697465652e636f6d2f68656962616979696e672f426967446174612d4e6f7465732f7261772f6d61737465722f70696374757265732f6861646f6f702d636f6d62696e65722e706e67" alt="img"></a></p>
+<p>这里我们只有一个输入文件并且小于 128M，所以只有一个 Map 进行处理。可以看到经过 combiner 后，records 由 <code>3519</code> 降低为 <code>6</code>(样本中单词种类就只有 6 种)，在这个用例中 combiner 就能极大地降低需要传输的数据量。</p>
+<h2 id="词频统计案例进阶之-Partitioner"><a href="#词频统计案例进阶之-Partitioner" class="headerlink" title="词频统计案例进阶之 Partitioner"></a>词频统计案例进阶之 Partitioner</h2><h3 id="默认的-Partitioner"><a href="#默认的-Partitioner" class="headerlink" title="默认的 Partitioner"></a>默认的 Partitioner</h3><p>这里假设有个需求：将不同单词的统计结果输出到不同文件。这种需求实际上比较常见，比如统计产品的销量时，需要将结果按照产品种类进行拆分。要实现这个功能，就需要用到自定义 <code>Partitioner</code>。</p>
+<p>这里先介绍下 MapReduce 默认的分类规则：在构建 job 时候，如果不指定，默认的使用的是 <code>HashPartitioner</code>：对 key 值进行哈希散列并对 <code>numReduceTasks</code> 取余。其实现如下：</p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="symbol">HashPartitioner</span>&lt;<span class="symbol">K, <span class="symbol">V</span></span>&gt; <span class="symbol">extends</span> <span class="symbol">Partitioner</span>&lt;<span class="symbol">K, <span class="symbol">V</span></span>&gt; &#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> <span class="built_in">int</span> getPartition(K key, V value,</span><br><span class="line">                          <span class="built_in">int</span> numReduceTasks) &#123;</span><br><span class="line">    <span class="keyword">return</span> (key.hashCode() &amp; Integer.MAX_VALUE) % numReduceTasks;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="自定义-Partitioner"><a href="#自定义-Partitioner" class="headerlink" title="自定义 Partitioner"></a>自定义 Partitioner</h3><p>这里我们继承 <code>Partitioner</code> 自定义分类规则，这里按照单词进行分类：</p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="symbol">CustomPartitioner</span> <span class="symbol">extends</span> <span class="symbol">Partitioner</span>&lt;<span class="symbol">Text, <span class="symbol">IntWritable</span></span>&gt; &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">int</span> getPartition(Text text, IntWritable <span class="built_in">int</span>Writable, <span class="built_in">int</span> numPartitions) &#123;</span><br><span class="line">        <span class="keyword">return</span> WordCountDataUtils.WORD_LIST.indexOf(text.toString());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在构建 <code>job</code> 时候指定使用我们自己的分类规则，并设置 <code>reduce</code> 的个数：</p>
+<figure class="highlight cos"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 设置自定义分区规则</span></span><br><span class="line"><span class="keyword">job</span>.setPartitionerClass(CustomPartitioner.<span class="keyword">class</span>)<span class="comment">;</span></span><br><span class="line"><span class="comment">// 设置 reduce 个数</span></span><br><span class="line"><span class="keyword">job</span>.setNumReduceTasks(WordCountDataUtils.WORD_LIST.size())<span class="comment">;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="执行结果-1"><a href="#执行结果-1" class="headerlink" title="执行结果"></a>执行结果</h3><p>执行结果如下，分别生成 6 个文件，每个文件中为对应单词的统计结果：</p>
+<p><a target="_blank" rel="noopener" href="https://camo.githubusercontent.com/202b1eb7065e18a513db5b2a50b22ab62a7d6692/68747470733a2f2f67697465652e636f6d2f68656962616979696e672f426967446174612d4e6f7465732f7261772f6d61737465722f70696374757265732f6861646f6f702d776f7264636f756e74636f6d62696e6572706172746974696f6e2e706e67"><img src="https://camo.githubusercontent.com/202b1eb7065e18a513db5b2a50b22ab62a7d6692/68747470733a2f2f67697465652e636f6d2f68656962616979696e672f426967446174612d4e6f7465732f7261772f6d61737465722f70696374757265732f6861646f6f702d776f7264636f756e74636f6d62696e6572706172746974696f6e2e706e67" alt="img"></a></p>
 <h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://github.com/heibaiying/BigData-Notes/blob/master/notes/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF.md">大数据学习路线</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/heibaiying/BigData-Notes/blob/master/notes/Hadoop-MapReduce.md">分布式计算框架——MapReduce</a></li>
 </ul>
 
       
@@ -1037,6 +1098,339 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://www.ligoudan.cn/pages/98c3a5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/ligoudan.png">
+      <meta itemprop="name" content="李狗蛋">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LIGOUDAN">
+      <meta itemprop="description" content="天气不错哇，你看这大冰雹下得">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | LIGOUDAN">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/pages/98c3a5/" class="post-title-link" itemprop="url">Elasticsearch 快速入门</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-06-16 07:10:44" itemprop="dateCreated datePublished" datetime="2020-06-16T07:10:44+08:00">2020-06-16</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-12-12 10:02:52" itemprop="dateModified" datetime="2024-12-12T10:02:52+08:00">2024-12-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E6%95%B0%E6%8D%AE%E5%BA%93/" itemprop="url" rel="index"><span itemprop="name">搜索引擎数据库</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E6%95%B0%E6%8D%AE%E5%BA%93/Elasticsearch/" itemprop="url" rel="index"><span itemprop="name">Elasticsearch</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>6.3k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>6 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="Elasticsearch-快速入门"><a href="#Elasticsearch-快速入门" class="headerlink" title="Elasticsearch 快速入门"></a>Elasticsearch 快速入门</h1><blockquote>
+<p><strong><a target="_blank" rel="noopener" href="https://github.com/elastic/elasticsearch">Elasticsearch</a> 是一个分布式、RESTful 风格的搜索和数据分析引擎</strong>，能够解决不断涌现出的各种用例。 作为 Elastic Stack 的核心，它集中存储您的数据，帮助您发现意料之中以及意料之外的情况。</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/elastic/elasticsearch">Elasticsearch</a> 基于搜索库 <a target="_blank" rel="noopener" href="https://github.com/apache/lucene-solr">Lucene</a> 开发。ElasticSearch 隐藏了 Lucene 的复杂性，提供了简单易用的 REST API &#x2F; Java API 接口（另外还有其他语言的 API 接口）。</p>
+<p>_以下简称 ES_。</p>
+</blockquote>
+<h2 id="Elasticsearch-简介"><a href="#Elasticsearch-简介" class="headerlink" title="Elasticsearch 简介"></a>Elasticsearch 简介</h2><h3 id="什么是-Elasticsearch"><a href="#什么是-Elasticsearch" class="headerlink" title="什么是 Elasticsearch"></a>什么是 Elasticsearch</h3><p><strong><a target="_blank" rel="noopener" href="https://github.com/elastic/elasticsearch">Elasticsearch</a> 是一个分布式、RESTful 风格的搜索和数据分析引擎</strong>，能够解决不断涌现出的各种用例。 作为 Elastic Stack 的核心，它集中存储您的数据，帮助您发现意料之中以及意料之外的情况。</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/elastic/elasticsearch">Elasticsearch</a> <strong>基于搜索库 <a target="_blank" rel="noopener" href="https://github.com/apache/lucene-solr">Lucene</a> 开发</strong>。ElasticSearch 隐藏了 Lucene 的复杂性，提供了简单易用的 REST API &#x2F; Java API 接口（另外还有其他语言的 API 接口）。</p>
+<p>ElasticSearch 可以视为一个文档存储，它<strong>将复杂数据结构序列化为 JSON 存储</strong>。</p>
+<p><strong>ElasticSearch 是近乎于实时的全文搜素</strong>，这是指：</p>
+<ul>
+<li>从写入数据到数据可以被搜索，存在较小的延迟（大概是 1s）</li>
+<li>基于 ES 执行搜索和分析可以达到秒级</li>
+</ul>
+<h3 id="核心概念"><a href="#核心概念" class="headerlink" title="核心概念"></a>核心概念</h3><figure class="highlight xl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">index</span> -&gt;</span> <span class="function"><span class="title">type</span> -&gt;</span> <span class="function"><span class="title">mapping</span> -&gt;</span> <span class="function"><span class="title">document</span> -&gt;</span> field</span><br></pre></td></tr></table></figure>
+
+<h4 id="Cluster"><a href="#Cluster" class="headerlink" title="Cluster"></a>Cluster</h4><p>集群包含多个节点，每个节点属于哪个集群都是通过一个配置来决定的，对于中小型应用来说，刚开始一个集群就一个节点很正常。</p>
+<h4 id="Node"><a href="#Node" class="headerlink" title="Node"></a>Node</h4><p>Node 是集群中的一个节点，节点也有一个名称，默认是随机分配的。默认节点会去加入一个名称为 <code>elasticsearch</code> 的集群。如果直接启动一堆节点，那么它们会自动组成一个 elasticsearch 集群，当然一个节点也可以组成 elasticsearch 集群。</p>
+<h4 id="Index"><a href="#Index" class="headerlink" title="Index"></a>Index</h4><p><strong>可以认为是文档（document）的优化集合。</strong></p>
+<p>ES 会为所有字段建立索引，经过处理后写入一个反向索引（Inverted Index）。查找数据的时候，直接查找该索引。</p>
+<p>所以，ES 数据管理的顶层单位就叫做 Index（索引）。它是单个数据库的同义词。每个 Index （即数据库）的名字必须是小写。</p>
+<h4 id="Type"><a href="#Type" class="headerlink" title="Type"></a>Type</h4><p>每个索引里可以有一个或者多个类型（type）。<code>类型（type）</code> 是 index 的一个逻辑分类。</p>
+<p>不同的 Type 应该有相似的结构（schema），举例来说，<code>id</code>字段不能在这个组是字符串，在另一个组是数值。这是与关系型数据库的表的<a target="_blank" rel="noopener" href="https://www.elastic.co/guide/en/elasticsearch/guide/current/mapping.html">一个区别</a>。性质完全不同的数据（比如<code>products</code>和<code>logs</code>）应该存成两个 Index，而不是一个 Index 里面的两个 Type（虽然可以做到）。</p>
+<blockquote>
+<p>注意：根据<a target="_blank" rel="noopener" href="https://www.elastic.co/blog/index-type-parent-child-join-now-future-in-elasticsearch">规划</a>，Elastic 6.x 版只允许每个 Index 包含一个 Type，7.x 版将会彻底移除 Type。</p>
+</blockquote>
+<h4 id="Document"><a href="#Document" class="headerlink" title="Document"></a>Document</h4><p>Index 里面单条的记录称为 Document（文档）。许多条 Document 构成了一个 Index。</p>
+<p>每个 <strong><code>文档（document）</code></strong> 都是字段（field）的集合。</p>
+<p>Document 使用 JSON 格式表示，下面是一个例子。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line"><span class="string">&quot;user&quot;</span>: <span class="string">&quot;张三&quot;</span>,</span><br><span class="line"><span class="string">&quot;title&quot;</span>: <span class="string">&quot;工程师&quot;</span>,</span><br><span class="line"><span class="string">&quot;desc&quot;</span>: <span class="string">&quot;数据库管理&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>同一个 Index 里面的 Document，不要求有相同的结构（scheme），但是最好保持相同，这样有利于提高搜索效率。</p>
+<h4 id="Field"><a href="#Field" class="headerlink" title="Field"></a>Field</h4><p><strong><code>字段（field）</code></strong> 是包含数据的键值对。</p>
+<p>默认情况下，Elasticsearch 对每个字段中的所有数据建立索引，并且每个索引字段都具有专用的优化数据结构。</p>
+<h4 id="Shard"><a href="#Shard" class="headerlink" title="Shard"></a>Shard</h4><p>当单台机器不足以存储大量数据时，Elasticsearch 可以将一个索引中的数据切分为多个 <strong><code>分片（shard）</code></strong> 。 <strong><code>分片（shard）</code></strong> 分布在多台服务器上存储。有了 shard 就可以横向扩展，存储更多数据，让搜索和分析等操作分布到多台服务器上去执行，提升吞吐量和性能。每个 shard 都是一个 lucene index。</p>
+<h4 id="Replica"><a href="#Replica" class="headerlink" title="Replica"></a>Replica</h4><p>任何一个服务器随时可能故障或宕机，此时 shard 可能就会丢失，因此可以为每个 shard 创建多个 **<code>副本（replica）</code>**。replica 可以在 shard 故障时提供备用服务，保证数据不丢失，多个 replica 还可以提升搜索操作的吞吐量和性能。primary shard（建立索引时一次设置，不能修改，默认 5 个），replica shard（随时修改数量，默认 1 个），默认每个索引 10 个 shard，5 个 primary shard，5 个 replica shard，最小的高可用配置，是 2 台服务器。</p>
+<h4 id="ES-核心概念-vs-DB-核心概念"><a href="#ES-核心概念-vs-DB-核心概念" class="headerlink" title="ES 核心概念 vs. DB 核心概念"></a>ES 核心概念 vs. DB 核心概念</h4><table>
+<thead>
+<tr>
+<th>ES</th>
+<th>DB</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>index</td>
+<td>数据库</td>
+</tr>
+<tr>
+<td>type</td>
+<td>数据表</td>
+</tr>
+<tr>
+<td>docuemnt</td>
+<td>一行数据</td>
+</tr>
+</tbody></table>
+<h2 id="ElasticSearch-基本原理"><a href="#ElasticSearch-基本原理" class="headerlink" title="ElasticSearch 基本原理"></a>ElasticSearch 基本原理</h2><h3 id="ES-写数据过程"><a href="#ES-写数据过程" class="headerlink" title="ES 写数据过程"></a>ES 写数据过程</h3><ul>
+<li>客户端选择一个 node 发送请求过去，这个 node 就是 <code>coordinating node</code>（协调节点）。</li>
+<li><code>coordinating node</code> 对 document 进行<strong>路由</strong>，将请求转发给对应的 node（有 primary shard）。</li>
+<li>实际的 node 上的 <code>primary shard</code> 处理请求，然后将数据同步到 <code>replica node</code>。</li>
+<li><code>coordinating node</code> 如果发现 <code>primary node</code> 和所有 <code>replica node</code> 都搞定之后，就返回响应结果给客户端。</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/dunwu/images/master/snap/20210712104055.png" alt="img"></p>
+<h3 id="ES-读数据过程"><a href="#ES-读数据过程" class="headerlink" title="ES 读数据过程"></a>ES 读数据过程</h3><p>可以通过 <code>doc id</code> 来查询，会根据 <code>doc id</code> 进行 hash，判断出来当时把 <code>doc id</code> 分配到了哪个 shard 上面去，从那个 shard 去查询。</p>
+<ul>
+<li>客户端发送请求到<strong>任意</strong>一个 node，成为 <code>coordinate node</code>。</li>
+<li><code>coordinate node</code> 对 <code>doc id</code> 进行哈希路由，将请求转发到对应的 node，此时会使用 <code>round-robin</code> <strong>轮询算法</strong>，在 <code>primary shard</code> 以及其所有 replica 中随机选择一个，让读请求负载均衡。</li>
+<li>接收请求的 node 返回 document 给 <code>coordinate node</code>。</li>
+<li><code>coordinate node</code> 返回 document 给客户端。</li>
+</ul>
+<h3 id="es-搜索数据过程"><a href="#es-搜索数据过程" class="headerlink" title="es 搜索数据过程"></a>es 搜索数据过程</h3><p>es 最强大的是做全文检索，就是比如你有三条数据：</p>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">java真好玩儿啊</span></span><br><span class="line"><span class="keyword"></span><span class="keyword">java好难学啊</span></span><br><span class="line"><span class="keyword"></span><span class="keyword">j2ee特别牛</span></span><br></pre></td></tr></table></figure>
+
+<p>你根据 <code>java</code> 关键词来搜索，将包含 <code>java</code> 的 <code>document</code> 给搜索出来。es 就会给你返回：java 真好玩儿啊，java 好难学啊。</p>
+<ul>
+<li>客户端发送请求到一个 <code>coordinate node</code> 。</li>
+<li>协调节点将搜索请求转发到<strong>所有</strong>的 shard 对应的 <code>primary shard</code> 或 <code>replica shard</code> ，都可以。</li>
+<li>query phase：每个 shard 将自己的搜索结果（其实就是一些 <code>doc id</code> ）返回给协调节点，由协调节点进行数据的合并、排序、分页等操作，产出最终结果。</li>
+<li>fetch phase：接着由协调节点根据 <code>doc id</code> 去各个节点上<strong>拉取实际</strong>的 <code>document</code> 数据，最终返回给客户端。</li>
+</ul>
+<blockquote>
+<p>写请求是写入 primary shard，然后同步给所有的 replica shard；读请求可以从 primary shard 或 replica shard 读取，采用的是随机轮询算法。</p>
+</blockquote>
+<h3 id="写数据底层原理"><a href="#写数据底层原理" class="headerlink" title="写数据底层原理"></a>写数据底层原理</h3><p><a target="_blank" rel="noopener" href="https://github.com/doocs/advanced-java/blob/master/docs/high-concurrency/images/es-write-detail.png"><img src="https://github.com/doocs/advanced-java/raw/master/docs/high-concurrency/images/es-write-detail.png" alt="es-write-detail"></a></p>
+<p>先写入内存 buffer，在 buffer 里的时候数据是搜索不到的；同时将数据写入 translog 日志文件。</p>
+<p>如果 buffer 快满了，或者到一定时间，就会将内存 buffer 数据 <code>refresh</code> 到一个新的 <code>segment file</code> 中，但是此时数据不是直接进入 <code>segment file</code> 磁盘文件，而是先进入 <code>os cache</code> 。这个过程就是 <code>refresh</code>。</p>
+<p>每隔 1 秒钟，es 将 buffer 中的数据写入一个<strong>新的</strong> <code>segment file</code>，每秒钟会产生一个<strong>新的磁盘文件</strong> <code>segment file</code>，这个 <code>segment file</code> 中就存储最近 1 秒内 buffer 中写入的数据。</p>
+<p>但是如果 buffer 里面此时没有数据，那当然不会执行 refresh 操作，如果 buffer 里面有数据，默认 1 秒钟执行一次 refresh 操作，刷入一个新的 segment file 中。</p>
+<p>操作系统里面，磁盘文件其实都有一个东西，叫做 <code>os cache</code>，即操作系统缓存，就是说数据写入磁盘文件之前，会先进入 <code>os cache</code>，先进入操作系统级别的一个内存缓存中去。只要 <code>buffer</code> 中的数据被 refresh 操作刷入 <code>os cache</code>中，这个数据就可以被搜索到了。</p>
+<p>为什么叫 es 是<strong>准实时</strong>的？ <code>NRT</code>，全称 <code>near real-time</code>。默认是每隔 1 秒 refresh 一次的，所以 es 是准实时的，因为写入的数据 1 秒之后才能被看到。可以通过 es 的 <code>restful api</code> 或者 <code>java api</code>，<strong>手动</strong>执行一次 refresh 操作，就是手动将 buffer 中的数据刷入 <code>os cache</code>中，让数据立马就可以被搜索到。只要数据被输入 <code>os cache</code> 中，buffer 就会被清空了，因为不需要保留 buffer 了，数据在 translog 里面已经持久化到磁盘去一份了。</p>
+<p>重复上面的步骤，新的数据不断进入 buffer 和 translog，不断将 <code>buffer</code> 数据写入一个又一个新的 <code>segment file</code> 中去，每次 <code>refresh</code> 完 buffer 清空，translog 保留。随着这个过程推进，translog 会变得越来越大。当 translog 达到一定长度的时候，就会触发 <code>commit</code> 操作。</p>
+<p>commit 操作发生第一步，就是将 buffer 中现有数据 <code>refresh</code> 到 <code>os cache</code> 中去，清空 buffer。然后，将一个 <code>commit point</code> 写入磁盘文件，里面标识着这个 <code>commit point</code> 对应的所有 <code>segment file</code>，同时强行将 <code>os cache</code> 中目前所有的数据都 <code>fsync</code> 到磁盘文件中去。最后<strong>清空</strong> 现有 translog 日志文件，重启一个 translog，此时 commit 操作完成。</p>
+<p>这个 commit 操作叫做 <code>flush</code>。默认 30 分钟自动执行一次 <code>flush</code>，但如果 translog 过大，也会触发 <code>flush</code>。flush 操作就对应着 commit 的全过程，我们可以通过 es api，手动执行 flush 操作，手动将 os cache 中的数据 fsync 强刷到磁盘上去。</p>
+<p>translog 日志文件的作用是什么？你执行 commit 操作之前，数据要么是停留在 buffer 中，要么是停留在 os cache 中，无论是 buffer 还是 os cache 都是内存，一旦这台机器死了，内存中的数据就全丢了。所以需要将数据对应的操作写入一个专门的日志文件 <code>translog</code> 中，一旦此时机器宕机，再次重启的时候，es 会自动读取 translog 日志文件中的数据，恢复到内存 buffer 和 os cache 中去。</p>
+<p>translog 其实也是先写入 os cache 的，默认每隔 5 秒刷一次到磁盘中去，所以默认情况下，可能有 5 秒的数据会仅仅停留在 buffer 或者 translog 文件的 os cache 中，如果此时机器挂了，会<strong>丢失</strong> 5 秒钟的数据。但是这样性能比较好，最多丢 5 秒的数据。也可以将 translog 设置成每次写操作必须是直接 <code>fsync</code> 到磁盘，但是性能会差很多。</p>
+<p>实际上你在这里，如果面试官没有问你 es 丢数据的问题，你可以在这里给面试官炫一把，你说，其实 es 第一是准实时的，数据写入 1 秒后可以搜索到；可能会丢失数据的。有 5 秒的数据，停留在 buffer、translog os cache、segment file os cache 中，而不在磁盘上，此时如果宕机，会导致 5 秒的<strong>数据丢失</strong>。</p>
+<p><strong>总结一下</strong>，数据先写入内存 buffer，然后每隔 1s，将数据 refresh 到 os cache，到了 os cache 数据就能被搜索到（所以我们才说 es 从写入到能被搜索到，中间有 1s 的延迟）。每隔 5s，将数据写入 translog 文件（这样如果机器宕机，内存数据全没，最多会有 5s 的数据丢失），translog 大到一定程度，或者默认每隔 30mins，会触发 commit 操作，将缓冲区的数据都 flush 到 segment file 磁盘文件中。</p>
+<blockquote>
+<p>数据写入 segment file 之后，同时就建立好了倒排索引。</p>
+</blockquote>
+<h3 id="删除-更新数据底层原理"><a href="#删除-更新数据底层原理" class="headerlink" title="删除&#x2F;更新数据底层原理"></a>删除&#x2F;更新数据底层原理</h3><p>如果是删除操作，commit 的时候会生成一个 <code>.del</code> 文件，里面将某个 doc 标识为 <code>deleted</code> 状态，那么搜索的时候根据 <code>.del</code> 文件就知道这个 doc 是否被删除了。</p>
+<p>如果是更新操作，就是将原来的 doc 标识为 <code>deleted</code> 状态，然后新写入一条数据。</p>
+<p>buffer 每 refresh 一次，就会产生一个 <code>segment file</code>，所以默认情况下是 1 秒钟一个 <code>segment file</code>，这样下来 <code>segment file</code> 会越来越多，此时会定期执行 merge。每次 merge 的时候，会将多个 <code>segment file</code> 合并成一个，同时这里会将标识为 <code>deleted</code> 的 doc 给<strong>物理删除掉</strong>，然后将新的 <code>segment file</code> 写入磁盘，这里会写一个 <code>commit point</code>，标识所有新的 <code>segment file</code>，然后打开 <code>segment file</code> 供搜索使用，同时删除旧的 <code>segment file</code>。</p>
+<h3 id="底层-lucene"><a href="#底层-lucene" class="headerlink" title="底层 lucene"></a>底层 lucene</h3><p>简单来说，lucene 就是一个 jar 包，里面包含了封装好的各种建立倒排索引的算法代码。我们用 Java 开发的时候，引入 lucene jar，然后基于 lucene 的 api 去开发就可以了。</p>
+<p>通过 lucene，我们可以将已有的数据建立索引，lucene 会在本地磁盘上面，给我们组织索引的数据结构。</p>
+<h3 id="倒排索引"><a href="#倒排索引" class="headerlink" title="倒排索引"></a>倒排索引</h3><p>在搜索引擎中，每个文档都有一个对应的文档 ID，文档内容被表示为一系列关键词的集合。例如，文档 1 经过分词，提取了 20 个关键词，每个关键词都会记录它在文档中出现的次数和出现位置。</p>
+<p>那么，倒排索引就是<strong>关键词到文档</strong> ID 的映射，每个关键词都对应着一系列的文件，这些文件中都出现了关键词。</p>
+<p>举个栗子。</p>
+<p>有以下文档：</p>
+<table>
+<thead>
+<tr>
+<th>DocId</th>
+<th>Doc</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>谷歌地图之父跳槽 Facebook</td>
+</tr>
+<tr>
+<td>2</td>
+<td>谷歌地图之父加盟 Facebook</td>
+</tr>
+<tr>
+<td>3</td>
+<td>谷歌地图创始人拉斯离开谷歌加盟 Facebook</td>
+</tr>
+<tr>
+<td>4</td>
+<td>谷歌地图之父跳槽 Facebook 与 Wave 项目取消有关</td>
+</tr>
+<tr>
+<td>5</td>
+<td>谷歌地图之父拉斯加盟社交网站 Facebook</td>
+</tr>
+</tbody></table>
+<p>对文档进行分词之后，得到以下<strong>倒排索引</strong>。</p>
+<table>
+<thead>
+<tr>
+<th>WordId</th>
+<th>Word</th>
+<th>DocIds</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>谷歌</td>
+<td>1,2,3,4,5</td>
+</tr>
+<tr>
+<td>2</td>
+<td>地图</td>
+<td>1,2,3,4,5</td>
+</tr>
+<tr>
+<td>3</td>
+<td>之父</td>
+<td>1,2,4,5</td>
+</tr>
+<tr>
+<td>4</td>
+<td>跳槽</td>
+<td>1,4</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Facebook</td>
+<td>1,2,3,4,5</td>
+</tr>
+<tr>
+<td>6</td>
+<td>加盟</td>
+<td>2,3,5</td>
+</tr>
+<tr>
+<td>7</td>
+<td>创始人</td>
+<td>3</td>
+</tr>
+<tr>
+<td>8</td>
+<td>拉斯</td>
+<td>3,5</td>
+</tr>
+<tr>
+<td>9</td>
+<td>离开</td>
+<td>3</td>
+</tr>
+<tr>
+<td>10</td>
+<td>与</td>
+<td>4</td>
+</tr>
+<tr>
+<td>..</td>
+<td>..</td>
+<td>..</td>
+</tr>
+</tbody></table>
+<p>另外，实用的倒排索引还可以记录更多的信息，比如文档频率信息，表示在文档集合中有多少个文档包含某个单词。</p>
+<p>那么，有了倒排索引，搜索引擎可以很方便地响应用户的查询。比如用户输入查询 <code>Facebook</code>，搜索系统查找倒排索引，从中读出包含这个单词的文档，这些文档就是提供给用户的搜索结果。</p>
+<p>要注意倒排索引的两个重要细节：</p>
+<ul>
+<li>倒排索引中的所有词项对应一个或多个文档；</li>
+<li>倒排索引中的词项<strong>根据字典顺序升序排列</strong></li>
+</ul>
+<blockquote>
+<p>上面只是一个简单的栗子，并没有严格按照字典顺序升序排列。</p>
+</blockquote>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><strong>官方</strong><ul>
+<li><a target="_blank" rel="noopener" href="https://www.elastic.co/cn/products/elasticsearch">Elasticsearch 官网</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/elastic/elasticsearch">Elasticsearch Github</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.elastic.co/guide/en/elasticsearch/reference/current/index.html">Elasticsearch 官方文档</a></li>
+</ul>
+</li>
+<li><strong>文章</strong><ul>
+<li><a target="_blank" rel="noopener" href="https://www.elastic.co/guide/en/elasticsearch/reference/current/rpm.html#rpm">Install Elasticsearch with RPM</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.ruanyifeng.com/blog/2017/08/elasticsearch.html">https://www.ruanyifeng.com/blog/2017/08/elasticsearch.html</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/doocs/advanced-java/blob/master/docs/high-concurrency/es-introduction.md">es-introduction</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/doocs/advanced-java/blob/master/docs/high-concurrency/es-write-query-search.md">es-write-query-search</a></li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="https://www.ligoudan.cn/pages/0cb563/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1491,339 +1885,6 @@
 <p>（2）BK 树的构造就过程如下：每个节点有任意个子节点，每条边有个值表示编辑距离。所有子节点到父节点的边上标注 n 表示编辑距离恰好为 n。比如，我们有棵树父节点是”book”和两个子节点”cake”和”books”，”book”到”books”的边标号 1，”book”到”cake”的边上标号 4。从字典里构造好树后，无论何时你想插入新单词时，计算该单词与根节点的编辑距离，并且查找数值为 d(neweord, root)的边。递归得与各子节点进行比较，直到没有子节点，你就可以创建新的子节点并将新单词保存在那。比如，插入”boo”到刚才上述例子的树中，我们先检查根节点，查找 d(“book”, “boo”) &#x3D; 1 的边，然后检查标号为 1 的边的子节点，得到单词”books”。我们再计算距离 d(“books”, “boo”)&#x3D;2，则将新单词插在”books”之后，边标号为 2。</p>
 <p>（3）查询相似词如下：计算单词与根节点的编辑距离 d，然后递归查找每个子节点标号为 d-n 到 d+n（包含）的边。假如被检查的节点与搜索单词的距离 d 小于 n，则返回该节点并继续查询。比如输入 cape 且最大容忍距离为 1，则先计算和根的编辑距离 d(“book”, “cape”)&#x3D;4，然后接着找和根节点之间编辑距离为 3 到 5 的，这个就找到了 cake 这个节点，计算 d(“cake”, “cape”)&#x3D;1，满足条件所以返回 cake，然后再找和 cake 节点编辑距离是 0 到 2 的，分别找到 cape 和 cart 节点，这样就得到 cape 这个满足条件的结果。</p>
 <p><img src="https://pic4.zhimg.com/80/v2-79f2a89041e546d9feccf55e4ff1c0d7_720w.jpg" alt="img"></p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.ligoudan.cn/pages/98c3a5/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/ligoudan.png">
-      <meta itemprop="name" content="李狗蛋">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="LIGOUDAN">
-      <meta itemprop="description" content="天气不错哇，你看这大冰雹下得">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | LIGOUDAN">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/pages/98c3a5/" class="post-title-link" itemprop="url">Elasticsearch 快速入门</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2020-06-16 07:10:44" itemprop="dateCreated datePublished" datetime="2020-06-16T07:10:44+08:00">2020-06-16</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-12 10:02:52" itemprop="dateModified" datetime="2024-12-12T10:02:52+08:00">2024-12-12</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E6%95%B0%E6%8D%AE%E5%BA%93/" itemprop="url" rel="index"><span itemprop="name">搜索引擎数据库</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E6%95%B0%E6%8D%AE%E5%BA%93/Elasticsearch/" itemprop="url" rel="index"><span itemprop="name">Elasticsearch</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>6.3k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>6 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="Elasticsearch-快速入门"><a href="#Elasticsearch-快速入门" class="headerlink" title="Elasticsearch 快速入门"></a>Elasticsearch 快速入门</h1><blockquote>
-<p><strong><a target="_blank" rel="noopener" href="https://github.com/elastic/elasticsearch">Elasticsearch</a> 是一个分布式、RESTful 风格的搜索和数据分析引擎</strong>，能够解决不断涌现出的各种用例。 作为 Elastic Stack 的核心，它集中存储您的数据，帮助您发现意料之中以及意料之外的情况。</p>
-<p><a target="_blank" rel="noopener" href="https://github.com/elastic/elasticsearch">Elasticsearch</a> 基于搜索库 <a target="_blank" rel="noopener" href="https://github.com/apache/lucene-solr">Lucene</a> 开发。ElasticSearch 隐藏了 Lucene 的复杂性，提供了简单易用的 REST API &#x2F; Java API 接口（另外还有其他语言的 API 接口）。</p>
-<p>_以下简称 ES_。</p>
-</blockquote>
-<h2 id="Elasticsearch-简介"><a href="#Elasticsearch-简介" class="headerlink" title="Elasticsearch 简介"></a>Elasticsearch 简介</h2><h3 id="什么是-Elasticsearch"><a href="#什么是-Elasticsearch" class="headerlink" title="什么是 Elasticsearch"></a>什么是 Elasticsearch</h3><p><strong><a target="_blank" rel="noopener" href="https://github.com/elastic/elasticsearch">Elasticsearch</a> 是一个分布式、RESTful 风格的搜索和数据分析引擎</strong>，能够解决不断涌现出的各种用例。 作为 Elastic Stack 的核心，它集中存储您的数据，帮助您发现意料之中以及意料之外的情况。</p>
-<p><a target="_blank" rel="noopener" href="https://github.com/elastic/elasticsearch">Elasticsearch</a> <strong>基于搜索库 <a target="_blank" rel="noopener" href="https://github.com/apache/lucene-solr">Lucene</a> 开发</strong>。ElasticSearch 隐藏了 Lucene 的复杂性，提供了简单易用的 REST API &#x2F; Java API 接口（另外还有其他语言的 API 接口）。</p>
-<p>ElasticSearch 可以视为一个文档存储，它<strong>将复杂数据结构序列化为 JSON 存储</strong>。</p>
-<p><strong>ElasticSearch 是近乎于实时的全文搜素</strong>，这是指：</p>
-<ul>
-<li>从写入数据到数据可以被搜索，存在较小的延迟（大概是 1s）</li>
-<li>基于 ES 执行搜索和分析可以达到秒级</li>
-</ul>
-<h3 id="核心概念"><a href="#核心概念" class="headerlink" title="核心概念"></a>核心概念</h3><figure class="highlight xl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">index</span> -&gt;</span> <span class="function"><span class="title">type</span> -&gt;</span> <span class="function"><span class="title">mapping</span> -&gt;</span> <span class="function"><span class="title">document</span> -&gt;</span> field</span><br></pre></td></tr></table></figure>
-
-<h4 id="Cluster"><a href="#Cluster" class="headerlink" title="Cluster"></a>Cluster</h4><p>集群包含多个节点，每个节点属于哪个集群都是通过一个配置来决定的，对于中小型应用来说，刚开始一个集群就一个节点很正常。</p>
-<h4 id="Node"><a href="#Node" class="headerlink" title="Node"></a>Node</h4><p>Node 是集群中的一个节点，节点也有一个名称，默认是随机分配的。默认节点会去加入一个名称为 <code>elasticsearch</code> 的集群。如果直接启动一堆节点，那么它们会自动组成一个 elasticsearch 集群，当然一个节点也可以组成 elasticsearch 集群。</p>
-<h4 id="Index"><a href="#Index" class="headerlink" title="Index"></a>Index</h4><p><strong>可以认为是文档（document）的优化集合。</strong></p>
-<p>ES 会为所有字段建立索引，经过处理后写入一个反向索引（Inverted Index）。查找数据的时候，直接查找该索引。</p>
-<p>所以，ES 数据管理的顶层单位就叫做 Index（索引）。它是单个数据库的同义词。每个 Index （即数据库）的名字必须是小写。</p>
-<h4 id="Type"><a href="#Type" class="headerlink" title="Type"></a>Type</h4><p>每个索引里可以有一个或者多个类型（type）。<code>类型（type）</code> 是 index 的一个逻辑分类。</p>
-<p>不同的 Type 应该有相似的结构（schema），举例来说，<code>id</code>字段不能在这个组是字符串，在另一个组是数值。这是与关系型数据库的表的<a target="_blank" rel="noopener" href="https://www.elastic.co/guide/en/elasticsearch/guide/current/mapping.html">一个区别</a>。性质完全不同的数据（比如<code>products</code>和<code>logs</code>）应该存成两个 Index，而不是一个 Index 里面的两个 Type（虽然可以做到）。</p>
-<blockquote>
-<p>注意：根据<a target="_blank" rel="noopener" href="https://www.elastic.co/blog/index-type-parent-child-join-now-future-in-elasticsearch">规划</a>，Elastic 6.x 版只允许每个 Index 包含一个 Type，7.x 版将会彻底移除 Type。</p>
-</blockquote>
-<h4 id="Document"><a href="#Document" class="headerlink" title="Document"></a>Document</h4><p>Index 里面单条的记录称为 Document（文档）。许多条 Document 构成了一个 Index。</p>
-<p>每个 <strong><code>文档（document）</code></strong> 都是字段（field）的集合。</p>
-<p>Document 使用 JSON 格式表示，下面是一个例子。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line"><span class="string">&quot;user&quot;</span>: <span class="string">&quot;张三&quot;</span>,</span><br><span class="line"><span class="string">&quot;title&quot;</span>: <span class="string">&quot;工程师&quot;</span>,</span><br><span class="line"><span class="string">&quot;desc&quot;</span>: <span class="string">&quot;数据库管理&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>同一个 Index 里面的 Document，不要求有相同的结构（scheme），但是最好保持相同，这样有利于提高搜索效率。</p>
-<h4 id="Field"><a href="#Field" class="headerlink" title="Field"></a>Field</h4><p><strong><code>字段（field）</code></strong> 是包含数据的键值对。</p>
-<p>默认情况下，Elasticsearch 对每个字段中的所有数据建立索引，并且每个索引字段都具有专用的优化数据结构。</p>
-<h4 id="Shard"><a href="#Shard" class="headerlink" title="Shard"></a>Shard</h4><p>当单台机器不足以存储大量数据时，Elasticsearch 可以将一个索引中的数据切分为多个 <strong><code>分片（shard）</code></strong> 。 <strong><code>分片（shard）</code></strong> 分布在多台服务器上存储。有了 shard 就可以横向扩展，存储更多数据，让搜索和分析等操作分布到多台服务器上去执行，提升吞吐量和性能。每个 shard 都是一个 lucene index。</p>
-<h4 id="Replica"><a href="#Replica" class="headerlink" title="Replica"></a>Replica</h4><p>任何一个服务器随时可能故障或宕机，此时 shard 可能就会丢失，因此可以为每个 shard 创建多个 **<code>副本（replica）</code>**。replica 可以在 shard 故障时提供备用服务，保证数据不丢失，多个 replica 还可以提升搜索操作的吞吐量和性能。primary shard（建立索引时一次设置，不能修改，默认 5 个），replica shard（随时修改数量，默认 1 个），默认每个索引 10 个 shard，5 个 primary shard，5 个 replica shard，最小的高可用配置，是 2 台服务器。</p>
-<h4 id="ES-核心概念-vs-DB-核心概念"><a href="#ES-核心概念-vs-DB-核心概念" class="headerlink" title="ES 核心概念 vs. DB 核心概念"></a>ES 核心概念 vs. DB 核心概念</h4><table>
-<thead>
-<tr>
-<th>ES</th>
-<th>DB</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>index</td>
-<td>数据库</td>
-</tr>
-<tr>
-<td>type</td>
-<td>数据表</td>
-</tr>
-<tr>
-<td>docuemnt</td>
-<td>一行数据</td>
-</tr>
-</tbody></table>
-<h2 id="ElasticSearch-基本原理"><a href="#ElasticSearch-基本原理" class="headerlink" title="ElasticSearch 基本原理"></a>ElasticSearch 基本原理</h2><h3 id="ES-写数据过程"><a href="#ES-写数据过程" class="headerlink" title="ES 写数据过程"></a>ES 写数据过程</h3><ul>
-<li>客户端选择一个 node 发送请求过去，这个 node 就是 <code>coordinating node</code>（协调节点）。</li>
-<li><code>coordinating node</code> 对 document 进行<strong>路由</strong>，将请求转发给对应的 node（有 primary shard）。</li>
-<li>实际的 node 上的 <code>primary shard</code> 处理请求，然后将数据同步到 <code>replica node</code>。</li>
-<li><code>coordinating node</code> 如果发现 <code>primary node</code> 和所有 <code>replica node</code> 都搞定之后，就返回响应结果给客户端。</li>
-</ul>
-<p><img src="https://raw.githubusercontent.com/dunwu/images/master/snap/20210712104055.png" alt="img"></p>
-<h3 id="ES-读数据过程"><a href="#ES-读数据过程" class="headerlink" title="ES 读数据过程"></a>ES 读数据过程</h3><p>可以通过 <code>doc id</code> 来查询，会根据 <code>doc id</code> 进行 hash，判断出来当时把 <code>doc id</code> 分配到了哪个 shard 上面去，从那个 shard 去查询。</p>
-<ul>
-<li>客户端发送请求到<strong>任意</strong>一个 node，成为 <code>coordinate node</code>。</li>
-<li><code>coordinate node</code> 对 <code>doc id</code> 进行哈希路由，将请求转发到对应的 node，此时会使用 <code>round-robin</code> <strong>轮询算法</strong>，在 <code>primary shard</code> 以及其所有 replica 中随机选择一个，让读请求负载均衡。</li>
-<li>接收请求的 node 返回 document 给 <code>coordinate node</code>。</li>
-<li><code>coordinate node</code> 返回 document 给客户端。</li>
-</ul>
-<h3 id="es-搜索数据过程"><a href="#es-搜索数据过程" class="headerlink" title="es 搜索数据过程"></a>es 搜索数据过程</h3><p>es 最强大的是做全文检索，就是比如你有三条数据：</p>
-<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">java真好玩儿啊</span></span><br><span class="line"><span class="keyword"></span><span class="keyword">java好难学啊</span></span><br><span class="line"><span class="keyword"></span><span class="keyword">j2ee特别牛</span></span><br></pre></td></tr></table></figure>
-
-<p>你根据 <code>java</code> 关键词来搜索，将包含 <code>java</code> 的 <code>document</code> 给搜索出来。es 就会给你返回：java 真好玩儿啊，java 好难学啊。</p>
-<ul>
-<li>客户端发送请求到一个 <code>coordinate node</code> 。</li>
-<li>协调节点将搜索请求转发到<strong>所有</strong>的 shard 对应的 <code>primary shard</code> 或 <code>replica shard</code> ，都可以。</li>
-<li>query phase：每个 shard 将自己的搜索结果（其实就是一些 <code>doc id</code> ）返回给协调节点，由协调节点进行数据的合并、排序、分页等操作，产出最终结果。</li>
-<li>fetch phase：接着由协调节点根据 <code>doc id</code> 去各个节点上<strong>拉取实际</strong>的 <code>document</code> 数据，最终返回给客户端。</li>
-</ul>
-<blockquote>
-<p>写请求是写入 primary shard，然后同步给所有的 replica shard；读请求可以从 primary shard 或 replica shard 读取，采用的是随机轮询算法。</p>
-</blockquote>
-<h3 id="写数据底层原理"><a href="#写数据底层原理" class="headerlink" title="写数据底层原理"></a>写数据底层原理</h3><p><a target="_blank" rel="noopener" href="https://github.com/doocs/advanced-java/blob/master/docs/high-concurrency/images/es-write-detail.png"><img src="https://github.com/doocs/advanced-java/raw/master/docs/high-concurrency/images/es-write-detail.png" alt="es-write-detail"></a></p>
-<p>先写入内存 buffer，在 buffer 里的时候数据是搜索不到的；同时将数据写入 translog 日志文件。</p>
-<p>如果 buffer 快满了，或者到一定时间，就会将内存 buffer 数据 <code>refresh</code> 到一个新的 <code>segment file</code> 中，但是此时数据不是直接进入 <code>segment file</code> 磁盘文件，而是先进入 <code>os cache</code> 。这个过程就是 <code>refresh</code>。</p>
-<p>每隔 1 秒钟，es 将 buffer 中的数据写入一个<strong>新的</strong> <code>segment file</code>，每秒钟会产生一个<strong>新的磁盘文件</strong> <code>segment file</code>，这个 <code>segment file</code> 中就存储最近 1 秒内 buffer 中写入的数据。</p>
-<p>但是如果 buffer 里面此时没有数据，那当然不会执行 refresh 操作，如果 buffer 里面有数据，默认 1 秒钟执行一次 refresh 操作，刷入一个新的 segment file 中。</p>
-<p>操作系统里面，磁盘文件其实都有一个东西，叫做 <code>os cache</code>，即操作系统缓存，就是说数据写入磁盘文件之前，会先进入 <code>os cache</code>，先进入操作系统级别的一个内存缓存中去。只要 <code>buffer</code> 中的数据被 refresh 操作刷入 <code>os cache</code>中，这个数据就可以被搜索到了。</p>
-<p>为什么叫 es 是<strong>准实时</strong>的？ <code>NRT</code>，全称 <code>near real-time</code>。默认是每隔 1 秒 refresh 一次的，所以 es 是准实时的，因为写入的数据 1 秒之后才能被看到。可以通过 es 的 <code>restful api</code> 或者 <code>java api</code>，<strong>手动</strong>执行一次 refresh 操作，就是手动将 buffer 中的数据刷入 <code>os cache</code>中，让数据立马就可以被搜索到。只要数据被输入 <code>os cache</code> 中，buffer 就会被清空了，因为不需要保留 buffer 了，数据在 translog 里面已经持久化到磁盘去一份了。</p>
-<p>重复上面的步骤，新的数据不断进入 buffer 和 translog，不断将 <code>buffer</code> 数据写入一个又一个新的 <code>segment file</code> 中去，每次 <code>refresh</code> 完 buffer 清空，translog 保留。随着这个过程推进，translog 会变得越来越大。当 translog 达到一定长度的时候，就会触发 <code>commit</code> 操作。</p>
-<p>commit 操作发生第一步，就是将 buffer 中现有数据 <code>refresh</code> 到 <code>os cache</code> 中去，清空 buffer。然后，将一个 <code>commit point</code> 写入磁盘文件，里面标识着这个 <code>commit point</code> 对应的所有 <code>segment file</code>，同时强行将 <code>os cache</code> 中目前所有的数据都 <code>fsync</code> 到磁盘文件中去。最后<strong>清空</strong> 现有 translog 日志文件，重启一个 translog，此时 commit 操作完成。</p>
-<p>这个 commit 操作叫做 <code>flush</code>。默认 30 分钟自动执行一次 <code>flush</code>，但如果 translog 过大，也会触发 <code>flush</code>。flush 操作就对应着 commit 的全过程，我们可以通过 es api，手动执行 flush 操作，手动将 os cache 中的数据 fsync 强刷到磁盘上去。</p>
-<p>translog 日志文件的作用是什么？你执行 commit 操作之前，数据要么是停留在 buffer 中，要么是停留在 os cache 中，无论是 buffer 还是 os cache 都是内存，一旦这台机器死了，内存中的数据就全丢了。所以需要将数据对应的操作写入一个专门的日志文件 <code>translog</code> 中，一旦此时机器宕机，再次重启的时候，es 会自动读取 translog 日志文件中的数据，恢复到内存 buffer 和 os cache 中去。</p>
-<p>translog 其实也是先写入 os cache 的，默认每隔 5 秒刷一次到磁盘中去，所以默认情况下，可能有 5 秒的数据会仅仅停留在 buffer 或者 translog 文件的 os cache 中，如果此时机器挂了，会<strong>丢失</strong> 5 秒钟的数据。但是这样性能比较好，最多丢 5 秒的数据。也可以将 translog 设置成每次写操作必须是直接 <code>fsync</code> 到磁盘，但是性能会差很多。</p>
-<p>实际上你在这里，如果面试官没有问你 es 丢数据的问题，你可以在这里给面试官炫一把，你说，其实 es 第一是准实时的，数据写入 1 秒后可以搜索到；可能会丢失数据的。有 5 秒的数据，停留在 buffer、translog os cache、segment file os cache 中，而不在磁盘上，此时如果宕机，会导致 5 秒的<strong>数据丢失</strong>。</p>
-<p><strong>总结一下</strong>，数据先写入内存 buffer，然后每隔 1s，将数据 refresh 到 os cache，到了 os cache 数据就能被搜索到（所以我们才说 es 从写入到能被搜索到，中间有 1s 的延迟）。每隔 5s，将数据写入 translog 文件（这样如果机器宕机，内存数据全没，最多会有 5s 的数据丢失），translog 大到一定程度，或者默认每隔 30mins，会触发 commit 操作，将缓冲区的数据都 flush 到 segment file 磁盘文件中。</p>
-<blockquote>
-<p>数据写入 segment file 之后，同时就建立好了倒排索引。</p>
-</blockquote>
-<h3 id="删除-更新数据底层原理"><a href="#删除-更新数据底层原理" class="headerlink" title="删除&#x2F;更新数据底层原理"></a>删除&#x2F;更新数据底层原理</h3><p>如果是删除操作，commit 的时候会生成一个 <code>.del</code> 文件，里面将某个 doc 标识为 <code>deleted</code> 状态，那么搜索的时候根据 <code>.del</code> 文件就知道这个 doc 是否被删除了。</p>
-<p>如果是更新操作，就是将原来的 doc 标识为 <code>deleted</code> 状态，然后新写入一条数据。</p>
-<p>buffer 每 refresh 一次，就会产生一个 <code>segment file</code>，所以默认情况下是 1 秒钟一个 <code>segment file</code>，这样下来 <code>segment file</code> 会越来越多，此时会定期执行 merge。每次 merge 的时候，会将多个 <code>segment file</code> 合并成一个，同时这里会将标识为 <code>deleted</code> 的 doc 给<strong>物理删除掉</strong>，然后将新的 <code>segment file</code> 写入磁盘，这里会写一个 <code>commit point</code>，标识所有新的 <code>segment file</code>，然后打开 <code>segment file</code> 供搜索使用，同时删除旧的 <code>segment file</code>。</p>
-<h3 id="底层-lucene"><a href="#底层-lucene" class="headerlink" title="底层 lucene"></a>底层 lucene</h3><p>简单来说，lucene 就是一个 jar 包，里面包含了封装好的各种建立倒排索引的算法代码。我们用 Java 开发的时候，引入 lucene jar，然后基于 lucene 的 api 去开发就可以了。</p>
-<p>通过 lucene，我们可以将已有的数据建立索引，lucene 会在本地磁盘上面，给我们组织索引的数据结构。</p>
-<h3 id="倒排索引"><a href="#倒排索引" class="headerlink" title="倒排索引"></a>倒排索引</h3><p>在搜索引擎中，每个文档都有一个对应的文档 ID，文档内容被表示为一系列关键词的集合。例如，文档 1 经过分词，提取了 20 个关键词，每个关键词都会记录它在文档中出现的次数和出现位置。</p>
-<p>那么，倒排索引就是<strong>关键词到文档</strong> ID 的映射，每个关键词都对应着一系列的文件，这些文件中都出现了关键词。</p>
-<p>举个栗子。</p>
-<p>有以下文档：</p>
-<table>
-<thead>
-<tr>
-<th>DocId</th>
-<th>Doc</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>1</td>
-<td>谷歌地图之父跳槽 Facebook</td>
-</tr>
-<tr>
-<td>2</td>
-<td>谷歌地图之父加盟 Facebook</td>
-</tr>
-<tr>
-<td>3</td>
-<td>谷歌地图创始人拉斯离开谷歌加盟 Facebook</td>
-</tr>
-<tr>
-<td>4</td>
-<td>谷歌地图之父跳槽 Facebook 与 Wave 项目取消有关</td>
-</tr>
-<tr>
-<td>5</td>
-<td>谷歌地图之父拉斯加盟社交网站 Facebook</td>
-</tr>
-</tbody></table>
-<p>对文档进行分词之后，得到以下<strong>倒排索引</strong>。</p>
-<table>
-<thead>
-<tr>
-<th>WordId</th>
-<th>Word</th>
-<th>DocIds</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>1</td>
-<td>谷歌</td>
-<td>1,2,3,4,5</td>
-</tr>
-<tr>
-<td>2</td>
-<td>地图</td>
-<td>1,2,3,4,5</td>
-</tr>
-<tr>
-<td>3</td>
-<td>之父</td>
-<td>1,2,4,5</td>
-</tr>
-<tr>
-<td>4</td>
-<td>跳槽</td>
-<td>1,4</td>
-</tr>
-<tr>
-<td>5</td>
-<td>Facebook</td>
-<td>1,2,3,4,5</td>
-</tr>
-<tr>
-<td>6</td>
-<td>加盟</td>
-<td>2,3,5</td>
-</tr>
-<tr>
-<td>7</td>
-<td>创始人</td>
-<td>3</td>
-</tr>
-<tr>
-<td>8</td>
-<td>拉斯</td>
-<td>3,5</td>
-</tr>
-<tr>
-<td>9</td>
-<td>离开</td>
-<td>3</td>
-</tr>
-<tr>
-<td>10</td>
-<td>与</td>
-<td>4</td>
-</tr>
-<tr>
-<td>..</td>
-<td>..</td>
-<td>..</td>
-</tr>
-</tbody></table>
-<p>另外，实用的倒排索引还可以记录更多的信息，比如文档频率信息，表示在文档集合中有多少个文档包含某个单词。</p>
-<p>那么，有了倒排索引，搜索引擎可以很方便地响应用户的查询。比如用户输入查询 <code>Facebook</code>，搜索系统查找倒排索引，从中读出包含这个单词的文档，这些文档就是提供给用户的搜索结果。</p>
-<p>要注意倒排索引的两个重要细节：</p>
-<ul>
-<li>倒排索引中的所有词项对应一个或多个文档；</li>
-<li>倒排索引中的词项<strong>根据字典顺序升序排列</strong></li>
-</ul>
-<blockquote>
-<p>上面只是一个简单的栗子，并没有严格按照字典顺序升序排列。</p>
-</blockquote>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
-<li><strong>官方</strong><ul>
-<li><a target="_blank" rel="noopener" href="https://www.elastic.co/cn/products/elasticsearch">Elasticsearch 官网</a></li>
-<li><a target="_blank" rel="noopener" href="https://github.com/elastic/elasticsearch">Elasticsearch Github</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.elastic.co/guide/en/elasticsearch/reference/current/index.html">Elasticsearch 官方文档</a></li>
-</ul>
-</li>
-<li><strong>文章</strong><ul>
-<li><a target="_blank" rel="noopener" href="https://www.elastic.co/guide/en/elasticsearch/reference/current/rpm.html#rpm">Install Elasticsearch with RPM</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.ruanyifeng.com/blog/2017/08/elasticsearch.html">https://www.ruanyifeng.com/blog/2017/08/elasticsearch.html</a></li>
-<li><a target="_blank" rel="noopener" href="https://github.com/doocs/advanced-java/blob/master/docs/high-concurrency/es-introduction.md">es-introduction</a></li>
-<li><a target="_blank" rel="noopener" href="https://github.com/doocs/advanced-java/blob/master/docs/high-concurrency/es-write-query-search.md">es-write-query-search</a></li>
-</ul>
-</li>
-</ul>
 
       
     </div>

@@ -3645,7 +3645,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.ligoudan.cn/pages/7644aa/">
+    <link itemprop="mainEntityOfPage" href="https://www.ligoudan.cn/pages/e0d035/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/uploads/ligoudan.png">
@@ -3663,7 +3663,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/pages/7644aa/" class="post-title-link" itemprop="url">MapReduce</a>
+          <a href="/pages/e0d035/" class="post-title-link" itemprop="url">大数据学习</a>
         </h2>
 
         <div class="post-meta-container">
@@ -3693,7 +3693,7 @@
         </span>
           ，
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/hadoop/" itemprop="url" rel="index"><span itemprop="name">hadoop</span></a>
+          <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/%E7%BB%BC%E5%90%88/" itemprop="url" rel="index"><span itemprop="name">综合</span></a>
         </span>
     </span>
 
@@ -3704,14 +3704,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>7.2k</span>
+      <span>3.3k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>7 分钟</span>
+      <span>3 分钟</span>
     </span>
 </div>
 
@@ -3722,133 +3722,72 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="MapReduce"><a href="#MapReduce" class="headerlink" title="MapReduce"></a>MapReduce</h1><h2 id="MapReduce-简介"><a href="#MapReduce-简介" class="headerlink" title="MapReduce 简介"></a>MapReduce 简介</h2><blockquote>
-<p>Hadoop MapReduce 是一个分布式计算框架，用于编写批处理应用程序。编写好的程序可以提交到 Hadoop 集群上用于并行处理大规模的数据集。</p>
-</blockquote>
-<p>MapReduce 的设计思路是：</p>
+          <h1 id="大数据学习路线"><a href="#大数据学习路线" class="headerlink" title="大数据学习路线"></a>大数据学习路线</h1><h2 id="大数据简介"><a href="#大数据简介" class="headerlink" title="大数据简介"></a>大数据简介</h2><h3 id="移动计算"><a href="#移动计算" class="headerlink" title="移动计算"></a>移动计算</h3><p>传统的软件计算处理模型，都是“输入 -&gt; 计算 -&gt; 输出”模型。</p>
+<p>如何解决 PB 级数据进行计算的问题呢？</p>
+<p>采用分布式集群的解决方案，用数千台甚至上万台计算机构建一个大数据计算处理集群，利用更多的网络带宽、内存空间、磁盘容量、CPU 核心数去进行计算处理。</p>
+<p>大数据计算处理通常针对的是网站的存量数据，网站大数据系统要做的就是将这些统计规律和关联关系计算出来，并由此进一步改善网站的用户体验和运营决策。</p>
+<p>将程序分发到数据所在的地方进行计算，也就是所谓的移动计算比移动数据更划算。</p>
+<h3 id="大数据存储"><a href="#大数据存储" class="headerlink" title="大数据存储"></a>大数据存储</h3><p>大规模数据存储的核心问题：</p>
 <ul>
-<li>分而治之，并行计算</li>
-<li>移动计算，而非移动数据</li>
+<li>数据存储容量</li>
+<li>数据读写速度</li>
+<li>数据可靠性</li>
 </ul>
-<p>MapReduce 作业通过将输入的数据集拆分为独立的块，这些块由 <code>map</code> 以并行的方式处理，框架对 <code>map</code> 的输出进行排序，然后输入到 <code>reduce</code> 中。MapReduce 框架专门用于 <code>&lt;key，value&gt;</code> 键值对处理，它将作业的输入视为一组 <code>&lt;key，value&gt;</code> 对，并生成一组 <code>&lt;key，value&gt;</code> 对作为输出。输出和输出的 <code>key</code> 和 <code>value</code> 都必须实现<a target="_blank" rel="noopener" href="http://hadoop.apache.org/docs/stable/api/org/apache/hadoop/io/Writable.html">Writable</a> 接口。</p>
-<figure class="highlight xl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="title">input</span>) &lt;k1, v1&gt; -&gt;</span> <span class="function"><span class="title">map</span> -&gt;</span> &lt;<span class="function"><span class="title">k2</span>, v2&gt; -&gt;</span> <span class="function"><span class="title">combine</span> -&gt;</span> &lt;<span class="function"><span class="title">k2</span>, v2&gt; -&gt;</span> <span class="function"><span class="title">reduce</span> -&gt;</span> &lt;k3, v3&gt; (output)</span><br></pre></td></tr></table></figure>
-
-<h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><ul>
-<li>计算跟着数据走</li>
-<li>良好的扩展性：计算能力随着节点数增加，近似线性递增</li>
-<li>高容错</li>
-<li>状态监控</li>
-<li>适合海量数据的离线批处理</li>
-<li>降低了分布式编程的门槛</li>
-</ul>
-<h3 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h3><p>适用场景：</p>
+<p>解决方案：水平伸缩</p>
+<h2 id="大数据处理流程"><a href="#大数据处理流程" class="headerlink" title="大数据处理流程"></a>大数据处理流程</h2><p><img src="https://raw.githubusercontent.com/dunwu/images/master/snap/20220217114216.png" alt="img"></p>
+<h3 id="1-1-数据采集"><a href="#1-1-数据采集" class="headerlink" title="1.1 数据采集"></a>1.1 数据采集</h3><p>大数据处理的第一步是数据的收集。现在的中大型项目通常采用微服务架构进行分布式部署，所以数据的采集需要在多台服务器上进行，且采集过程不能影响正常业务的开展。基于这种需求，就衍生了多种日志收集工具，如 Flume 、Logstash、Kibana 等，它们都能通过简单的配置完成复杂的数据收集和数据聚合。</p>
+<h3 id="1-2-数据存储"><a href="#1-2-数据存储" class="headerlink" title="1.2 数据存储"></a>1.2 数据存储</h3><p>收集到数据后，下一个问题就是：数据该如何进行存储？通常大家最为熟知是 MySQL、Oracle 等传统的关系型数据库，它们的优点是能够快速存储结构化的数据，并支持随机访问。但大数据的数据结构通常是半结构化（如日志数据）、甚至是非结构化的（如视频、音频数据），为了解决海量半结构化和非结构化数据的存储，衍生了 Hadoop HDFS 、KFS、GFS 等分布式文件系统，它们都能够支持结构化、半结构和非结构化数据的存储，并可以通过增加机器进行横向扩展。</p>
+<p>分布式文件系统完美地解决了海量数据存储的问题，但是一个优秀的数据存储系统需要同时考虑数据存储和访问两方面的问题，比如你希望能够对数据进行随机访问，这是传统的关系型数据库所擅长的，但却不是分布式文件系统所擅长的，那么有没有一种存储方案能够同时兼具分布式文件系统和关系型数据库的优点，基于这种需求，就产生了 HBase、MongoDB。</p>
+<h3 id="1-3-数据分析"><a href="#1-3-数据分析" class="headerlink" title="1.3 数据分析"></a>1.3 数据分析</h3><p>大数据处理最重要的环节就是数据分析，数据分析通常分为两种：批处理和流处理。</p>
 <ul>
-<li>数据统计，如：网站的 PV、UV 统计</li>
-<li>搜索引擎构建索引</li>
-<li>海量数据查询</li>
+<li><strong>批处理</strong>：对一段时间内海量的离线数据进行统一的处理，对应的处理框架有 Hadoop MapReduce、Spark、Flink 等；</li>
+<li><strong>流处理</strong>：对运动中的数据进行处理，即在接收数据的同时就对其进行处理，对应的处理框架有 Storm、Spark Streaming、Flink Streaming 等。</li>
 </ul>
-<p>不适用场景：</p>
+<p>批处理和流处理各有其适用的场景，时间不敏感或者硬件资源有限，可以采用批处理；时间敏感和实时性要求高就可以采用流处理。随着服务器硬件的价格越来越低和大家对及时性的要求越来越高，流处理越来越普遍，如股票价格预测和电商运营数据分析等。</p>
+<p>上面的框架都是需要通过编程来进行数据分析，那么如果你不是一个后台工程师，是不是就不能进行数据的分析了？当然不是，大数据是一个非常完善的生态圈，有需求就有解决方案。为了能够让熟悉 SQL 的人员也能够进行数据的分析，查询分析框架应运而生，常用的有 Hive 、Spark SQL 、Flink SQL、 Pig、Phoenix 等。这些框架都能够使用标准的 SQL 或者 类 SQL 语法灵活地进行数据的查询分析。这些 SQL 经过解析优化后转换为对应的作业程序来运行，如 Hive 本质上就是将 SQL 转换为 MapReduce 作业，Spark SQL 将 SQL 转换为一系列的 RDDs 和转换关系（transformations），Phoenix 将 SQL 查询转换为一个或多个 HBase Scan。</p>
+<h3 id="1-4-数据应用"><a href="#1-4-数据应用" class="headerlink" title="1.4 数据应用"></a>1.4 数据应用</h3><p>数据分析完成后，接下来就是数据应用的范畴，这取决于你实际的业务需求。比如你可以将数据进行可视化展现，或者将数据用于优化你的推荐算法，这种运用现在很普遍，比如短视频个性化推荐、电商商品推荐、头条新闻推荐等。当然你也可以将数据用于训练你的机器学习模型，这些都属于其他领域的范畴，都有着对应的框架和技术栈进行处理，这里就不一一赘述。</p>
+<h3 id="1-5-其他框架"><a href="#1-5-其他框架" class="headerlink" title="1.5 其他框架"></a>1.5 其他框架</h3><p>上面是一个标准的大数据处理流程所用到的技术框架。但是实际的大数据处理流程比上面复杂很多，针对大数据处理中的各种复杂问题分别衍生了各类框架：</p>
 <ul>
-<li>OLAP<ul>
-<li>要求毫秒或秒级返回结果</li>
+<li>单机的处理能力都是存在瓶颈的，所以大数据框架都是采用集群模式进行部署，为了更方便的进行集群的部署、监控和管理，衍生了 Ambari、Cloudera Manager 等集群管理工具；</li>
+<li>想要保证集群高可用，需要用到 ZooKeeper ，ZooKeeper 是最常用的分布式协调服务，它能够解决大多数集群问题，包括首领选举、失败恢复、元数据存储及其一致性保证。同时针对集群资源管理的需求，又衍生了 Hadoop YARN ;</li>
+<li>复杂大数据处理的另外一个显著的问题是，如何调度多个复杂的并且彼此之间存在依赖关系的作业？基于这种需求，产生了 Azkaban 和 Oozie 等工作流调度框架；</li>
+<li>大数据流处理中使用的比较多的另外一个框架是 Kafka，它可以用于消峰，避免在秒杀等场景下并发数据对流处理程序造成冲击；</li>
+<li>另一个常用的框架是 Sqoop ，主要是解决了数据迁移的问题，它能够通过简单的命令将关系型数据库中的数据导入到 HDFS 、Hive 或 HBase 中，或者从 HDFS 、Hive 导出到关系型数据库上。</li>
 </ul>
-</li>
-<li>流计算<ul>
-<li>流计算的输入数据集是动态的，而 MapReduce 是静态的</li>
-</ul>
-</li>
-<li>DAG 计算<ul>
-<li>多个作业存在依赖关系，后一个的输入是前一个的输出，构成有向无环图 DAG</li>
-<li>每个 MapReduce 作业的输出结果都会落盘，造成大量磁盘 IO，导致性能非常低下</li>
-</ul>
-</li>
-</ul>
-<h2 id="MapReduce-编程模型"><a href="#MapReduce-编程模型" class="headerlink" title="MapReduce 编程模型"></a>MapReduce 编程模型</h2><p>MapReduce 编程模型：MapReduce 程序被分为 Map（映射）阶段和 Reduce（化简）阶段。</p>
-<p><img src="https://raw.githubusercontent.com/dunwu/images/master/snap/20200601162305.png" alt="img"></p>
-<ol>
-<li><strong>input</strong> : 读取文本文件；</li>
-<li><strong>splitting</strong> : 将文件按照行进行拆分，此时得到的 <code>K1</code> 行数，<code>V1</code> 表示对应行的文本内容；</li>
-<li><strong>mapping</strong> : 并行将每一行按照空格进行拆分，拆分得到的 <code>List(K2,V2)</code>，其中 <code>K2</code> 代表每一个单词，由于是做词频统计，所以 <code>V2</code> 的值为 1，代表出现 1 次；</li>
-<li><strong>shuffling</strong>：由于 <code>Mapping</code> 操作可能是在不同的机器上并行处理的，所以需要通过 <code>shuffling</code> 将相同 <code>key</code> 值的数据分发到同一个节点上去合并，这样才能统计出最终的结果，此时得到 <code>K2</code> 为每一个单词，<code>List(V2)</code> 为可迭代集合，<code>V2</code> 就是 Mapping 中的 V2；</li>
-<li><strong>Reducing</strong> : 这里的案例是统计单词出现的总次数，所以 <code>Reducing</code> 对 <code>List(V2)</code> 进行归约求和操作，最终输出。</li>
-</ol>
-<p>MapReduce 编程模型中 <code>splitting</code> 和 <code>shuffing</code> 操作都是由框架实现的，需要我们自己编程实现的只有 <code>mapping</code> 和 <code>reducing</code>，这也就是 MapReduce 这个称呼的来源。</p>
-<h2 id="combiner-partitioner"><a href="#combiner-partitioner" class="headerlink" title="combiner &amp; partitioner"></a>combiner &amp; partitioner</h2><p><img src="https://raw.githubusercontent.com/dunwu/images/master/snap/20200601163846.png" alt="img"></p>
-<h3 id="InputFormat-RecordReaders"><a href="#InputFormat-RecordReaders" class="headerlink" title="InputFormat &amp; RecordReaders"></a>InputFormat &amp; RecordReaders</h3><p><code>InputFormat</code> 将输出文件拆分为多个 <code>InputSplit</code>，并由 <code>RecordReaders</code> 将 <code>InputSplit</code> 转换为标准的&lt;key，value&gt;键值对，作为 map 的输出。这一步的意义在于只有先进行逻辑拆分并转为标准的键值对格式后，才能为多个 <code>map</code> 提供输入，以便进行并行处理。</p>
-<h3 id="Combiner"><a href="#Combiner" class="headerlink" title="Combiner"></a>Combiner</h3><p><code>combiner</code> 是 <code>map</code> 运算后的可选操作，它实际上是一个本地化的 <code>reduce</code> 操作，它主要是在 <code>map</code> 计算出中间文件后做一个简单的合并重复 <code>key</code> 值的操作。这里以词频统计为例：</p>
-<p><code>map</code> 在遇到一个 hadoop 的单词时就会记录为 1，但是这篇文章里 hadoop 可能会出现 n 多次，那么 <code>map</code> 输出文件冗余就会很多，因此在 <code>reduce</code> 计算前对相同的 key 做一个合并操作，那么需要传输的数据量就会减少，传输效率就可以得到提升。</p>
-<p>但并非所有场景都适合使用 <code>combiner</code>，使用它的原则是 <code>combiner</code> 的输出不会影响到 <code>reduce</code> 计算的最终输入，例如：求总数，最大值，最小值时都可以使用 <code>combiner</code>，但是做平均值计算则不能使用 <code>combiner</code>。</p>
-<p>不使用 combiner 的情况：</p>
-<p><img src="https://raw.githubusercontent.com/dunwu/images/master/snap/20200601164709.png" alt="img"></p>
-<p>使用 combiner 的情况：</p>
-<p><img src="https://raw.githubusercontent.com/dunwu/images/master/snap/20200601164804.png" alt="img"></p>
-<p>可以看到使用 combiner 的时候，需要传输到 reducer 中的数据由 12keys，降低到 10keys。降低的幅度取决于你 keys 的重复率，下文词频统计案例会演示用 combiner 降低数百倍的传输量。</p>
-<h2 id="MapReduce-词频统计案例"><a href="#MapReduce-词频统计案例" class="headerlink" title="MapReduce 词频统计案例"></a>MapReduce 词频统计案例</h2><h3 id="项目简介"><a href="#项目简介" class="headerlink" title="项目简介"></a>项目简介</h3><p>这里给出一个经典的词频统计的案例：统计如下样本数据中每个单词出现的次数。</p>
-<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">Spark	HBase</span></span><br><span class="line"><span class="attribute">Hive	Flink	Storm	Hadoop	HBase	Spark</span></span><br><span class="line"><span class="attribute">Flink</span></span><br><span class="line"><span class="attribute">HBase	Storm</span></span><br><span class="line"><span class="attribute">HBase	Hadoop	Hive	Flink</span></span><br><span class="line"><span class="attribute">HBase	Flink	Hive	Storm</span></span><br><span class="line"><span class="attribute">Hive	Flink	Hadoop</span></span><br><span class="line"><span class="attribute">HBase	Hive</span></span><br><span class="line"><span class="attribute">Hadoop	Spark	HBase	Storm</span></span><br><span class="line"><span class="attribute">HBase	Hadoop	Hive	Flink</span></span><br><span class="line"><span class="attribute">HBase	Flink	Hive	Storm</span></span><br><span class="line"><span class="attribute">Hive	Flink	Hadoop</span></span><br><span class="line"><span class="attribute">HBase	Hive</span></span><br></pre></td></tr></table></figure>
-
-<p>为方便大家开发，我在项目源码中放置了一个工具类 <code>WordCountDataUtils</code>，用于模拟产生词频统计的样本，生成的文件支持输出到本地或者直接写到 HDFS 上。</p>
-<blockquote>
-<p>项目完整源码下载地址：<a target="_blank" rel="noopener" href="https://github.com/heibaiying/BigData-Notes/tree/master/code/Hadoop/hadoop-word-count">hadoop-word-count</a></p>
-</blockquote>
-<h3 id="项目依赖"><a href="#项目依赖" class="headerlink" title="项目依赖"></a>项目依赖</h3><p>想要进行 MapReduce 编程，需要导入 <code>hadoop-client</code> 依赖：</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.hadoop<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>hadoop-client<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;hadoop.version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="WordCountMapper"><a href="#WordCountMapper" class="headerlink" title="WordCountMapper"></a>WordCountMapper</h3><p>将每行数据按照指定分隔符进行拆分。这里需要注意在 MapReduce 中必须使用 Hadoop 定义的类型，因为 Hadoop 预定义的类型都是可序列化，可比较的，所有类型均实现了 <code>WritableComparable</code> 接口。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">WordCountMapper</span> <span class="keyword">extends</span> <span class="title class_">Mapper</span>&lt;LongWritable, Text, Text, IntWritable&gt; &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">map</span><span class="params">(LongWritable key, Text value, Context context)</span> <span class="keyword">throws</span> IOException,</span><br><span class="line">                                                                      InterruptedException &#123;</span><br><span class="line">        String[] words = value.toString().split(<span class="string">&quot;\t&quot;</span>);</span><br><span class="line">        <span class="keyword">for</span> (String word : words) &#123;</span><br><span class="line">            context.write(<span class="keyword">new</span> <span class="title class_">Text</span>(word), <span class="keyword">new</span> <span class="title class_">IntWritable</span>(<span class="number">1</span>));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><code>WordCountMapper</code> 对应下图的 Mapping 操作：</p>
-<p><a target="_blank" rel="noopener" href="https://camo.githubusercontent.com/fcf3ac016579c1fbb050d97309660aaa3b9550cc/68747470733a2f2f67697465652e636f6d2f68656962616979696e672f426967446174612d4e6f7465732f7261772f6d61737465722f70696374757265732f6861646f6f702d636f64652d6d617070696e672e706e67"><img src="https://camo.githubusercontent.com/fcf3ac016579c1fbb050d97309660aaa3b9550cc/68747470733a2f2f67697465652e636f6d2f68656962616979696e672f426967446174612d4e6f7465732f7261772f6d61737465722f70696374757265732f6861646f6f702d636f64652d6d617070696e672e706e67" alt="img"></a></p>
-<p><code>WordCountMapper</code> 继承自 <code>Mappe</code> 类，这是一个泛型类，定义如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">WordCountMapper <span class="keyword">extends</span> <span class="title class_">Mapper</span>&lt;LongWritable, Text, Text, IntWritable&gt;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Mapper</span>&lt;KEYIN, VALUEIN, KEYOUT, VALUEOUT&gt; &#123;</span><br><span class="line">   ......</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<h2 id="大数据学习路线-1"><a href="#大数据学习路线-1" class="headerlink" title="大数据学习路线"></a>大数据学习路线</h2><h3 id="框架分类"><a href="#框架分类" class="headerlink" title="框架分类"></a>框架分类</h3><p><strong>日志收集框架</strong>：Flume 、Logstash、Kibana</p>
+<p><strong>分布式文件存储系统</strong>：Hadoop HDFS</p>
+<p><strong>数据库系统</strong>：Mongodb、HBase</p>
+<p><strong>分布式计算框架</strong>：</p>
 <ul>
-<li><strong>KEYIN</strong> : <code>mapping</code> 输入 key 的类型，即每行的偏移量 (每行第一个字符在整个文本中的位置)，<code>Long</code> 类型，对应 Hadoop 中的 <code>LongWritable</code> 类型；</li>
-<li><strong>VALUEIN</strong> : <code>mapping</code> 输入 value 的类型，即每行数据；<code>String</code> 类型，对应 Hadoop 中 <code>Text</code> 类型；</li>
-<li><strong>KEYOUT</strong> ：<code>mapping</code> 输出的 key 的类型，即每个单词；<code>String</code> 类型，对应 Hadoop 中 <code>Text</code> 类型；</li>
-<li><strong>VALUEOUT</strong>：<code>mapping</code> 输出 value 的类型，即每个单词出现的次数；这里用 <code>int</code> 类型，对应 <code>IntWritable</code> 类型。</li>
+<li>批处理框架：Hadoop MapReduce</li>
+<li>流处理框架：Storm</li>
+<li>混合处理框架：Spark、Flink</li>
 </ul>
-<h3 id="WordCountReducer"><a href="#WordCountReducer" class="headerlink" title="WordCountReducer"></a>WordCountReducer</h3><p>在 Reduce 中进行单词出现次数的统计：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">WordCountReducer</span> <span class="keyword">extends</span> <span class="title class_">Reducer</span>&lt;Text, IntWritable, Text, IntWritable&gt; &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">reduce</span><span class="params">(Text key, Iterable&lt;IntWritable&gt; values, Context context)</span> <span class="keyword">throws</span> IOException,</span><br><span class="line">                                                                                  InterruptedException &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">count</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (IntWritable value : values) &#123;</span><br><span class="line">            count += value.get();</span><br><span class="line">        &#125;</span><br><span class="line">        context.write(key, <span class="keyword">new</span> <span class="title class_">IntWritable</span>(count));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>如下图，<code>shuffling</code> 的输出是 reduce 的输入。这里的 key 是每个单词，values 是一个可迭代的数据类型，类似 <code>(1,1,1,...)</code>。</p>
-<p><a target="_blank" rel="noopener" href="https://camo.githubusercontent.com/bf6ad9c970812b1db6f6f86d12d783db75eaa9fb/68747470733a2f2f67697465652e636f6d2f68656962616979696e672f426967446174612d4e6f7465732f7261772f6d61737465722f70696374757265732f6861646f6f702d636f64652d726564756365722e706e67"><img src="https://camo.githubusercontent.com/bf6ad9c970812b1db6f6f86d12d783db75eaa9fb/68747470733a2f2f67697465652e636f6d2f68656962616979696e672f426967446174612d4e6f7465732f7261772f6d61737465722f70696374757265732f6861646f6f702d636f64652d726564756365722e706e67" alt="img"></a></p>
-<h3 id="WordCountApp"><a href="#WordCountApp" class="headerlink" title="WordCountApp"></a>WordCountApp</h3><p>组装 MapReduce 作业，并提交到服务器运行，代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 组装作业 并提交到集群运行</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">WordCountApp</span> &#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 这里为了直观显示参数 使用了硬编码，实际开发中可以通过外部传参</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">String</span> <span class="variable">HDFS_URL</span> <span class="operator">=</span> <span class="string">&quot;hdfs://192.168.0.107:8020&quot;</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">String</span> <span class="variable">HADOOP_USER_NAME</span> <span class="operator">=</span> <span class="string">&quot;root&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//  文件输入路径和输出路径由外部传参指定</span></span><br><span class="line">        <span class="keyword">if</span> (args.length &lt; <span class="number">2</span>) &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;Input and output paths are necessary!&quot;</span>);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 需要指明 hadoop 用户名，否则在 HDFS 上创建目录时可能会抛出权限不足的异常</span></span><br><span class="line">        System.setProperty(<span class="string">&quot;HADOOP_USER_NAME&quot;</span>, HADOOP_USER_NAME);</span><br><span class="line"></span><br><span class="line">        <span class="type">Configuration</span> <span class="variable">configuration</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Configuration</span>();</span><br><span class="line">        <span class="comment">// 指明 HDFS 的地址</span></span><br><span class="line">        configuration.set(<span class="string">&quot;fs.defaultFS&quot;</span>, HDFS_URL);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 创建一个 Job</span></span><br><span class="line">        <span class="type">Job</span> <span class="variable">job</span> <span class="operator">=</span> Job.getInstance(configuration);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 设置运行的主类</span></span><br><span class="line">        job.setJarByClass(WordCountApp.class);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 设置 Mapper 和 Reducer</span></span><br><span class="line">        job.setMapperClass(WordCountMapper.class);</span><br><span class="line">        job.setReducerClass(WordCountReducer.class);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 设置 Mapper 输出 key 和 value 的类型</span></span><br><span class="line">        job.setMapOutputKeyClass(Text.class);</span><br><span class="line">        job.setMapOutputValueClass(IntWritable.class);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 设置 Reducer 输出 key 和 value 的类型</span></span><br><span class="line">        job.setOutputKeyClass(Text.class);</span><br><span class="line">        job.setOutputValueClass(IntWritable.class);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 如果输出目录已经存在，则必须先删除，否则重复运行程序时会抛出异常</span></span><br><span class="line">        <span class="type">FileSystem</span> <span class="variable">fileSystem</span> <span class="operator">=</span> FileSystem.get(<span class="keyword">new</span> <span class="title class_">URI</span>(HDFS_URL), configuration, HADOOP_USER_NAME);</span><br><span class="line">        <span class="type">Path</span> <span class="variable">outputPath</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Path</span>(args[<span class="number">1</span>]);</span><br><span class="line">        <span class="keyword">if</span> (fileSystem.exists(outputPath)) &#123;</span><br><span class="line">            fileSystem.delete(outputPath, <span class="literal">true</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 设置作业输入文件和输出文件的路径</span></span><br><span class="line">        FileInputFormat.setInputPaths(job, <span class="keyword">new</span> <span class="title class_">Path</span>(args[<span class="number">0</span>]));</span><br><span class="line">        FileOutputFormat.setOutputPath(job, outputPath);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 将作业提交到群集并等待它完成，参数设置为 true 代表打印显示对应的进度</span></span><br><span class="line">        <span class="type">boolean</span> <span class="variable">result</span> <span class="operator">=</span> job.waitForCompletion(<span class="literal">true</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 关闭之前创建的 fileSystem</span></span><br><span class="line">        fileSystem.close();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 根据作业结果,终止当前运行的 Java 虚拟机,退出程序</span></span><br><span class="line">        System.exit(result ? <span class="number">0</span> : -<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>需要注意的是：如果不设置 <code>Mapper</code> 操作的输出类型，则程序默认它和 <code>Reducer</code> 操作输出的类型相同。</p>
-<h3 id="提交到服务器运行"><a href="#提交到服务器运行" class="headerlink" title="提交到服务器运行"></a>提交到服务器运行</h3><p>在实际开发中，可以在本机配置 hadoop 开发环境，直接在 IDE 中启动进行测试。这里主要介绍一下打包提交到服务器运行。由于本项目没有使用除 Hadoop 外的第三方依赖，直接打包即可：</p>
-<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># mvn clean package</span></span><br></pre></td></tr></table></figure>
-
-<p>使用以下命令提交作业：</p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hadoop jar /usr/appjar/hadoop-word-count-<span class="number">1.0</span><span class="selector-class">.jar</span> \</span><br><span class="line">com<span class="selector-class">.heibaiying</span><span class="selector-class">.WordCountApp</span> \</span><br><span class="line">/wordcount/<span class="selector-tag">input</span><span class="selector-class">.txt</span> /wordcount/output/WordCountApp</span><br></pre></td></tr></table></figure>
-
-<p>作业完成后查看 HDFS 上生成目录：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看目录</span></span><br><span class="line">hadoop fs -<span class="built_in">ls</span> /wordcount/output/WordCountApp</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看统计结果</span></span><br><span class="line">hadoop fs -<span class="built_in">cat</span> /wordcount/output/WordCountApp/part-r-00000</span><br></pre></td></tr></table></figure>
-
-<p><a target="_blank" rel="noopener" href="https://camo.githubusercontent.com/cecb00eef3b951794fbf92b8308d8b6601faf5a0/68747470733a2f2f67697465652e636f6d2f68656962616979696e672f426967446174612d4e6f7465732f7261772f6d61737465722f70696374757265732f6861646f6f702d776f7264636f756e746170702e706e67"><img src="https://camo.githubusercontent.com/cecb00eef3b951794fbf92b8308d8b6601faf5a0/68747470733a2f2f67697465652e636f6d2f68656962616979696e672f426967446174612d4e6f7465732f7261772f6d61737465722f70696374757265732f6861646f6f702d776f7264636f756e746170702e706e67" alt="img"></a></p>
-<h2 id="词频统计案例进阶之-Combiner"><a href="#词频统计案例进阶之-Combiner" class="headerlink" title="词频统计案例进阶之 Combiner"></a>词频统计案例进阶之 Combiner</h2><h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><p>想要使用 <code>combiner</code> 功能只要在组装作业时，添加下面一行代码即可：</p>
-<figure class="highlight cos"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 设置 Combiner</span></span><br><span class="line"><span class="keyword">job</span>.setCombinerClass(WordCountReducer.<span class="keyword">class</span>)<span class="comment">;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="执行结果"><a href="#执行结果" class="headerlink" title="执行结果"></a>执行结果</h3><p>加入 <code>combiner</code> 后统计结果是不会有变化的，但是可以从打印的日志看出 <code>combiner</code> 的效果：</p>
-<p>没有加入 <code>combiner</code> 的打印日志：</p>
-<p><a target="_blank" rel="noopener" href="https://camo.githubusercontent.com/e4849556db34d3a02b82b546af7296154920dfff/68747470733a2f2f67697465652e636f6d2f68656962616979696e672f426967446174612d4e6f7465732f7261772f6d61737465722f70696374757265732f6861646f6f702d6e6f2d636f6d62696e65722e706e67"><img src="https://camo.githubusercontent.com/e4849556db34d3a02b82b546af7296154920dfff/68747470733a2f2f67697465652e636f6d2f68656962616979696e672f426967446174612d4e6f7465732f7261772f6d61737465722f70696374757265732f6861646f6f702d6e6f2d636f6d62696e65722e706e67" alt="img"></a></p>
-<p>加入 <code>combiner</code> 后的打印日志如下：</p>
-<p><a target="_blank" rel="noopener" href="https://camo.githubusercontent.com/17f20f481bc4bd01252bc3ccb3b2aceb7d0eca63/68747470733a2f2f67697465652e636f6d2f68656962616979696e672f426967446174612d4e6f7465732f7261772f6d61737465722f70696374757265732f6861646f6f702d636f6d62696e65722e706e67"><img src="https://camo.githubusercontent.com/17f20f481bc4bd01252bc3ccb3b2aceb7d0eca63/68747470733a2f2f67697465652e636f6d2f68656962616979696e672f426967446174612d4e6f7465732f7261772f6d61737465722f70696374757265732f6861646f6f702d636f6d62696e65722e706e67" alt="img"></a></p>
-<p>这里我们只有一个输入文件并且小于 128M，所以只有一个 Map 进行处理。可以看到经过 combiner 后，records 由 <code>3519</code> 降低为 <code>6</code>(样本中单词种类就只有 6 种)，在这个用例中 combiner 就能极大地降低需要传输的数据量。</p>
-<h2 id="词频统计案例进阶之-Partitioner"><a href="#词频统计案例进阶之-Partitioner" class="headerlink" title="词频统计案例进阶之 Partitioner"></a>词频统计案例进阶之 Partitioner</h2><h3 id="默认的-Partitioner"><a href="#默认的-Partitioner" class="headerlink" title="默认的 Partitioner"></a>默认的 Partitioner</h3><p>这里假设有个需求：将不同单词的统计结果输出到不同文件。这种需求实际上比较常见，比如统计产品的销量时，需要将结果按照产品种类进行拆分。要实现这个功能，就需要用到自定义 <code>Partitioner</code>。</p>
-<p>这里先介绍下 MapReduce 默认的分类规则：在构建 job 时候，如果不指定，默认的使用的是 <code>HashPartitioner</code>：对 key 值进行哈希散列并对 <code>numReduceTasks</code> 取余。其实现如下：</p>
-<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="symbol">HashPartitioner</span>&lt;<span class="symbol">K, <span class="symbol">V</span></span>&gt; <span class="symbol">extends</span> <span class="symbol">Partitioner</span>&lt;<span class="symbol">K, <span class="symbol">V</span></span>&gt; &#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> <span class="built_in">int</span> getPartition(K key, V value,</span><br><span class="line">                          <span class="built_in">int</span> numReduceTasks) &#123;</span><br><span class="line">    <span class="keyword">return</span> (key.hashCode() &amp; Integer.MAX_VALUE) % numReduceTasks;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="自定义-Partitioner"><a href="#自定义-Partitioner" class="headerlink" title="自定义 Partitioner"></a>自定义 Partitioner</h3><p>这里我们继承 <code>Partitioner</code> 自定义分类规则，这里按照单词进行分类：</p>
-<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="symbol">CustomPartitioner</span> <span class="symbol">extends</span> <span class="symbol">Partitioner</span>&lt;<span class="symbol">Text, <span class="symbol">IntWritable</span></span>&gt; &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">int</span> getPartition(Text text, IntWritable <span class="built_in">int</span>Writable, <span class="built_in">int</span> numPartitions) &#123;</span><br><span class="line">        <span class="keyword">return</span> WordCountDataUtils.WORD_LIST.indexOf(text.toString());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>在构建 <code>job</code> 时候指定使用我们自己的分类规则，并设置 <code>reduce</code> 的个数：</p>
-<figure class="highlight cos"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 设置自定义分区规则</span></span><br><span class="line"><span class="keyword">job</span>.setPartitionerClass(CustomPartitioner.<span class="keyword">class</span>)<span class="comment">;</span></span><br><span class="line"><span class="comment">// 设置 reduce 个数</span></span><br><span class="line"><span class="keyword">job</span>.setNumReduceTasks(WordCountDataUtils.WORD_LIST.size())<span class="comment">;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="执行结果-1"><a href="#执行结果-1" class="headerlink" title="执行结果"></a>执行结果</h3><p>执行结果如下，分别生成 6 个文件，每个文件中为对应单词的统计结果：</p>
-<p><a target="_blank" rel="noopener" href="https://camo.githubusercontent.com/202b1eb7065e18a513db5b2a50b22ab62a7d6692/68747470733a2f2f67697465652e636f6d2f68656962616979696e672f426967446174612d4e6f7465732f7261772f6d61737465722f70696374757265732f6861646f6f702d776f7264636f756e74636f6d62696e6572706172746974696f6e2e706e67"><img src="https://camo.githubusercontent.com/202b1eb7065e18a513db5b2a50b22ab62a7d6692/68747470733a2f2f67697465652e636f6d2f68656962616979696e672f426967446174612d4e6f7465732f7261772f6d61737465722f70696374757265732f6861646f6f702d776f7264636f756e74636f6d62696e6572706172746974696f6e2e706e67" alt="img"></a></p>
+<p><strong>查询分析框架</strong>：Hive 、Spark SQL 、Flink SQL、 Pig、Phoenix</p>
+<p><strong>集群资源管理器</strong>：Hadoop YARN</p>
+<p><strong>分布式协调服务</strong>：Zookeeper</p>
+<p><strong>数据迁移工具</strong>：Sqoop</p>
+<p><strong>任务调度框架</strong>：Azkaban、Oozie</p>
+<p><strong>集群部署和监控</strong>：Ambari、Cloudera Manager</p>
+<p>上面列出的都是比较主流的大数据框架，社区都很活跃，学习资源也比较丰富。建议从 Hadoop 开始入门学习，因为它是整个大数据生态圈的基石，其它框架都直接或者间接依赖于 Hadoop 。接着就可以学习计算框架，Spark 和 Flink 都是比较主流的混合处理框架，Spark 出现得较早，所以其应用也比较广泛。 Flink 是当下最火热的新一代的混合处理框架，其凭借众多优异的特性得到了众多公司的青睐。两者可以按照你个人喜好或者实际工作需要进行学习。</p>
+<p><img src="https://raw.githubusercontent.com/dunwu/images/master/snap/20200601160917.png" alt="img"></p>
+<h3 id="学习资料"><a href="#学习资料" class="headerlink" title="学习资料"></a>学习资料</h3><p>大数据最权威和最全面的学习资料就是官方文档。热门的大数据框架社区都比较活跃、版本更新迭代也比较快，所以其出版物都明显滞后于其实际版本，基于这个原因采用书本学习不是一个最好的方案。比较庆幸的是，大数据框架的官方文档都写的比较好，内容完善，重点突出，同时都采用了大量配图进行辅助讲解。当然也有一些优秀的书籍历经时间的检验，至今依然很经典，这里列出部分个人阅读过的经典书籍：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://book.douban.com/subject/27115351/">《hadoop 权威指南 (第四版)》</a> 2017 年</li>
+<li><a target="_blank" rel="noopener" href="https://item.jd.com/12270295.html">《Kafka 权威指南》</a> 2017 年</li>
+<li><a target="_blank" rel="noopener" href="https://item.jd.com/11622772.html">《从 Paxos 到 Zookeeper 分布式一致性原理与实践》</a> 2015 年</li>
+<li><a target="_blank" rel="noopener" href="https://book.douban.com/subject/26649141/">《Spark 技术内幕 深入解析 Spark 内核架构设计与实现原理》</a> 2015 年</li>
+<li><a target="_blank" rel="noopener" href="https://book.douban.com/subject/27035127/">《Spark.The.Definitive.Guide》</a> 2018 年</li>
+<li><a target="_blank" rel="noopener" href="https://book.douban.com/subject/10748460/">《HBase 权威指南》</a> 2012 年</li>
+<li><a target="_blank" rel="noopener" href="https://book.douban.com/subject/25791255/">《Hive 编程指南》</a> 2013 年</li>
+</ul>
+<h3 id="视频学习资料"><a href="#视频学习资料" class="headerlink" title="视频学习资料"></a>视频学习资料</h3><p>上面我推荐的都是书籍学习资料，很少推荐视频学习资料，这里说明一下原因：因为书籍历经时间的考验，能够再版的或者豆瓣等平台评价高的证明都是被大众所认可的，从概率的角度上来说，其必然更加优秀，不容易浪费大家的学习时间和精力，所以我个人更倾向于官方文档或者书本的学习方式，而不是视频。因为视频学习资料，缺少一个公共的评价平台和完善的评价机制，所以其质量良莠不齐。但是视频任然有其不可替代的好处，学习起来更直观、印象也更深刻，所以对于习惯视频学习的小伙伴，这里我各推荐一个免费的和付费的视频学习资源，大家按需选择：</p>
+<ul>
+<li>免费学习资源：尚硅谷大数据学习路线 —— <a target="_blank" rel="noopener" href="http://www.atguigu.com/bigdata_video.shtml#bigdata">下载链接</a> \ <a target="_blank" rel="noopener" href="https://space.bilibili.com/302417610/">在线观看链接</a></li>
+<li>付费学习资源：<a target="_blank" rel="noopener" href="https://www.imooc.com/t/2781843">慕课网 Michael PK 的系列课程</a></li>
+</ul>
 <h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://github.com/heibaiying/BigData-Notes/blob/master/notes/Hadoop-MapReduce.md">分布式计算框架——MapReduce</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/heibaiying/BigData-Notes/blob/master/notes/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF.md">大数据学习路线</a></li>
 </ul>
 
       

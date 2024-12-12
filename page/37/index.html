@@ -205,7 +205,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.ligoudan.cn/pages/979887/">
+    <link itemprop="mainEntityOfPage" href="https://www.ligoudan.cn/pages/37415c/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/uploads/ligoudan.png">
@@ -223,7 +223,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/pages/979887/" class="post-title-link" itemprop="url">深入理解 Java 枚举</a>
+          <a href="/pages/37415c/" class="post-title-link" itemprop="url">深入理解 Java 异常</a>
         </h2>
 
         <div class="post-meta-container">
@@ -268,14 +268,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>13k</span>
+      <span>10k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>11 分钟</span>
+      <span>9 分钟</span>
     </span>
 </div>
 
@@ -286,156 +286,184 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="深入理解-Java-枚举"><a href="#深入理解-Java-枚举" class="headerlink" title="深入理解 Java 枚举"></a>深入理解 Java 枚举</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p><code>enum</code> 的全称为 enumeration， 是 JDK5 中引入的特性。</p>
-<p>在 Java 中，被 <code>enum</code> 关键字修饰的类型就是枚举类型。形式如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">enum</span> <span class="title class_">ColorEn</span> &#123; RED, GREEN, BLUE &#125;</span><br></pre></td></tr></table></figure>
+          <h1 id="深入理解-Java-异常"><a href="#深入理解-Java-异常" class="headerlink" title="深入理解 Java 异常"></a>深入理解 Java 异常</h1><p><img src="https://raw.githubusercontent.com/dunwu/images/master/snap/1553752019030.png" alt="img"></p>
+<h2 id="异常框架"><a href="#异常框架" class="headerlink" title="异常框架"></a>异常框架</h2><h3 id="Throwable"><a href="#Throwable" class="headerlink" title="Throwable"></a>Throwable</h3><p><strong><code>Throwable</code> 是 Java 语言中所有错误（<code>Error</code>）和异常（<code>Exception</code>）的超类。</strong>在 Java 中只有 <code>Throwable</code> 类型的实例才可以被抛出（<code>throw</code>）或者捕获（<code>catch</code>），它是异常处理机制的基本组成类型。</p>
+<p><code>Throwable</code> 包含了其线程创建时线程执行堆栈的快照，它提供了 <code>printStackTrace()</code> 等接口用于获取堆栈跟踪数据等信息。</p>
+<p>主要方法：</p>
+<ul>
+<li><code>fillInStackTrace</code> - 用当前的调用栈层次填充 <code>Throwable</code> 对象栈层次，添加到栈层次任何先前信息中。</li>
+<li><code>getMessage</code> - 返回关于发生的异常的详细信息。这个消息在 <code>Throwable</code> 类的构造函数中初始化了。</li>
+<li><code>getCause</code> - 返回一个 <code>Throwable</code> 对象代表异常原因。</li>
+<li><code>getStackTrace</code> - 返回一个包含堆栈层次的数组。下标为 0 的元素代表栈顶，最后一个元素代表方法调用堆栈的栈底。</li>
+<li><code>printStackTrace</code> - 打印 <code>toString()</code> 结果和栈层次到 <code>System.err</code>，即错误输出流。</li>
+<li><code>toString</code> - 使用 <code>getMessage</code> 的结果返回代表 <code>Throwable</code> 对象的字符串。</li>
+</ul>
+<h3 id="Error"><a href="#Error" class="headerlink" title="Error"></a>Error</h3><p><code>Error</code> 是 <code>Throwable</code> 的一个子类。**<code>Error</code> 表示正常情况下，不大可能出现的严重问题<strong>。</strong>编译器不会检查 <code>Error</code>**。绝大部分的 Error 都会导致程序（比如 JVM 自身）处于非正常的、不可恢复状态。既然是非正常情况，所以不便于也不需要捕获，常见的比如 OutOfMemoryError 之类，都是 Error 的子类。</p>
+<p>常见 <code>Error</code>：</p>
+<ul>
+<li><code>AssertionError</code> - 断言错误。</li>
+<li><code>VirtualMachineError</code> - 虚拟机错误。</li>
+<li><code>UnsupportedClassVersionError</code> - Java 类版本错误。</li>
+<li><code>StackOverflowError</code> - 栈溢出错误。</li>
+<li><code>OutOfMemoryError</code> - 内存溢出错误。</li>
+</ul>
+<h3 id="Exception"><a href="#Exception" class="headerlink" title="Exception"></a>Exception</h3><p><code>Exception</code> 是 <code>Throwable</code> 的一个子类。**<code>Exception</code> 表示合理的应用程序可能想要捕获的条件。**Exception 是程序正常运行中，可以预料的意外情况，可能并且应该被捕获，进行相应处理。</p>
+<p>Exception 又分为可检查（checked）异常和不检查（unchecked）异常，可检查异常在源代码里必须显式地进行捕获处理，这是编译期检查的一部分。</p>
+<p><strong>编译器会检查 <code>Exception</code> 异常。</strong>此类异常，要么通过 <code>throws</code> 进行声明抛出，要么通过 <code>try catch</code> 进行捕获处理，否则不能通过编译。</p>
+<p>常见 <code>Exception</code>：</p>
+<ul>
+<li><code>ClassNotFoundException</code> - 应用程序试图加载类时，找不到相应的类，抛出该异常。</li>
+<li><code>CloneNotSupportedException</code> - 当调用 Object 类中的 clone 方法克隆对象，但该对象的类无法实现 Cloneable 接口时，抛出该异常。</li>
+<li><code>IllegalAccessException</code> - 拒绝访问一个类的时候，抛出该异常。</li>
+<li><code>InstantiationException</code> - 当试图使用 Class 类中的 newInstance 方法创建一个类的实例，而指定的类对象因为是一个接口或是一个抽象类而无法实例化时，抛出该异常。</li>
+<li><code>InterruptedException</code> - 一个线程被另一个线程中断，抛出该异常。</li>
+<li><code>NoSuchFieldException</code> - 请求的变量不存在。</li>
+<li><code>NoSuchMethodException</code> - 请求的方法不存在。</li>
+</ul>
+<p>【示例】<code>Exception</code> 示例</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ExceptionDemo</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Method</span> <span class="variable">method</span> <span class="operator">=</span> String.class.getMethod(<span class="string">&quot;toString&quot;</span>, <span class="type">int</span>.class);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
-<p><strong>枚举的好处</strong>：可以将常量组织起来，统一进行管理。</p>
-<p><strong>枚举的典型应用场景</strong>：错误码、状态机等。</p>
-<h2 id="枚举的本质"><a href="#枚举的本质" class="headerlink" title="枚举的本质"></a>枚举的本质</h2><p><code>java.lang.Enum</code>类声明</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title class_">Enum</span>&lt;E <span class="keyword">extends</span> <span class="title class_">Enum</span>&lt;E&gt;&gt;</span><br><span class="line">        <span class="keyword">implements</span> <span class="title class_">Comparable</span>&lt;E&gt;, Serializable &#123; ... &#125;</span><br></pre></td></tr></table></figure>
+<p>试图编译运行时会报错：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Error:(<span class="number">7</span>, <span class="number">47</span>) java: 未报告的异常错误java.lang.NoSuchMethodException; 必须对其进行捕获或声明以便抛出</span><br></pre></td></tr></table></figure>
 
-<p>新建一个 ColorEn.java 文件，内容如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> io.github.dunwu.javacore.enumeration;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">enum</span> <span class="title class_">ColorEn</span> &#123;</span><br><span class="line">    RED,YELLOW,BLUE</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="RuntimeException"><a href="#RuntimeException" class="headerlink" title="RuntimeException"></a>RuntimeException</h3><p><code>RuntimeException</code> 是 <code>Exception</code> 的一个子类。<code>RuntimeException</code> 是那些可能在 Java 虚拟机正常运行期间抛出的异常的超类。</p>
+<p><strong>编译器不会检查 <code>RuntimeException</code> 异常。</strong>当程序中可能出现这类异常时，倘若既没有通过 <code>throws</code> 声明抛出它，也没有用 <code>try catch</code> 语句捕获它，程序还是会编译通过。</p>
+<p>【示例】<code>RuntimeException</code> 示例</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">RuntimeExceptionDemo</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="comment">// 此处产生了异常</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">result</span> <span class="operator">=</span> <span class="number">10</span> / <span class="number">0</span>;</span><br><span class="line">        System.out.println(<span class="string">&quot;两个数字相除的结果：&quot;</span> + result);</span><br><span class="line">        System.out.println(<span class="string">&quot;----------------------------&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
-<p>执行 <code>javac ColorEn.java</code> 命令，生成 ColorEn.class 文件。</p>
-<p>然后执行 <code>javap ColorEn.class</code> 命令，输出如下内容：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Compiled from <span class="string">&quot;ColorEn.java&quot;</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">class</span> <span class="title class_">io</span>.github.dunwu.javacore.enumeration.ColorEn <span class="keyword">extends</span> <span class="title class_">java</span>.lang.Enum&lt;io.github.dunwu.javacore.enumeration.ColorEn&gt; &#123;</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> io.github.dunwu.javacore.enumeration.ColorEn RED;</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> io.github.dunwu.javacore.enumeration.ColorEn YELLOW;</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> io.github.dunwu.javacore.enumeration.ColorEn BLUE;</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> io.github.dunwu.javacore.enumeration.ColorEn[] values();</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> io.github.dunwu.javacore.enumeration.ColorEn <span class="title function_">valueOf</span><span class="params">(java.lang.String)</span>;</span><br><span class="line">  <span class="keyword">static</span> &#123;&#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>运行时输出：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Exception in thread <span class="string">&quot;main&quot;</span> java.lang.ArithmeticException: / by zero</span><br><span class="line">	at io.github.dunwu.javacore.exception.RumtimeExceptionDemo01.main(RumtimeExceptionDemo01.java:<span class="number">6</span>)</span><br></pre></td></tr></table></figure>
+
+<p>常见 <code>RuntimeException</code>：</p>
+<ul>
+<li><code>ArrayIndexOutOfBoundsException</code> - 用非法索引访问数组时抛出的异常。如果索引为负或大于等于数组大小，则该索引为非法索引。</li>
+<li><code>ArrayStoreException</code> - 试图将错误类型的对象存储到一个对象数组时抛出的异常。</li>
+<li><code>ClassCastException</code> - 当试图将对象强制转换为不是实例的子类时，抛出该异常。</li>
+<li><code>IllegalArgumentException</code> - 抛出的异常表明向方法传递了一个不合法或不正确的参数。</li>
+<li><code>IllegalMonitorStateException</code> - 抛出的异常表明某一线程已经试图等待对象的监视器，或者试图通知其他正在等待对象的监视器而本身没有指定监视器的线程。</li>
+<li><code>IllegalStateException</code> - 在非法或不适当的时间调用方法时产生的信号。换句话说，即 Java 环境或 Java 应用程序没有处于请求操作所要求的适当状态下。</li>
+<li><code>IllegalThreadStateException</code> - 线程没有处于请求操作所要求的适当状态时抛出的异常。</li>
+<li><code>IndexOutOfBoundsException</code> - 指示某排序索引（例如对数组、字符串或向量的排序）超出范围时抛出。</li>
+<li><code>NegativeArraySizeException</code> - 如果应用程序试图创建大小为负的数组，则抛出该异常。</li>
+<li><code>NullPointerException</code> - 当应用程序试图在需要对象的地方使用 null 时，抛出该异常</li>
+<li><code>NumberFormatException</code> - 当应用程序试图将字符串转换成一种数值类型，但该字符串不能转换为适当格式时，抛出该异常。</li>
+<li><code>SecurityException</code> - 由安全管理器抛出的异常，指示存在安全侵犯。</li>
+<li><code>StringIndexOutOfBoundsException</code> - 此异常由 String 方法抛出，指示索引或者为负，或者超出字符串的大小。</li>
+<li><code>UnsupportedOperationException</code> - 当不支持请求的操作时，抛出该异常。</li>
+</ul>
+<h2 id="自定义异常"><a href="#自定义异常" class="headerlink" title="自定义异常"></a>自定义异常</h2><p><img src="https://raw.githubusercontent.com/dunwu/images/master/snap/1553752795010.png" alt="img"></p>
+<p><strong>自定义一个异常类，只需要继承 <code>Exception</code> 或 <code>RuntimeException</code> 即可。</strong></p>
+<p>【示例】自定义异常示例</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MyExceptionDemo</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">MyException</span>(<span class="string">&quot;自定义异常&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">class</span> <span class="title class_">MyException</span> <span class="keyword">extends</span> <span class="title class_">RuntimeException</span> &#123;</span><br><span class="line">        <span class="keyword">public</span> <span class="title function_">MyException</span><span class="params">(String message)</span> &#123;</span><br><span class="line">            <span class="built_in">super</span>(message);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Exception in thread <span class="string">&quot;main&quot;</span> io.github.dunwu.javacore.exception.MyExceptionDemo$MyException: 自定义异常</span><br><span class="line">	at io.github.dunwu.javacore.exception.MyExceptionDemo.main(MyExceptionDemo.java:<span class="number">9</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="抛出异常"><a href="#抛出异常" class="headerlink" title="抛出异常"></a>抛出异常</h2><p>如果想在程序中明确地抛出异常，需要用到 <code>throw</code> 和 <code>throws</code> 。</p>
+<p>如果一个方法没有捕获一个检查性异常，那么该方法必须使用 <code>throws</code> 关键字来声明。<code>throws</code> 关键字放在方法签名的尾部。</p>
+<p>【示例】<code>throw</code> 示例</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ThrowDemo</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">f</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">RuntimeException</span>(<span class="string">&quot;抛出一个异常&quot;</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            System.out.println(e);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        f();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java<span class="selector-class">.lang</span><span class="selector-class">.RuntimeException</span>: 抛出一个异常</span><br></pre></td></tr></table></figure>
+
+<p>也可以使用 <code>throw</code> 关键字抛出一个异常，无论它是新实例化的还是刚捕获到的。</p>
+<p>【示例】<code>throws</code> 示例</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ThrowsDemo</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">f1</span><span class="params">()</span> <span class="keyword">throws</span> NoSuchMethodException, NoSuchFieldException &#123;</span><br><span class="line">        <span class="type">Field</span> <span class="variable">field</span> <span class="operator">=</span> Integer.class.getDeclaredField(<span class="string">&quot;digits&quot;</span>);</span><br><span class="line">        <span class="keyword">if</span> (field != <span class="literal">null</span>) &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;反射获取 digits 方法成功&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">Method</span> <span class="variable">method</span> <span class="operator">=</span> String.class.getMethod(<span class="string">&quot;toString&quot;</span>, <span class="type">int</span>.class);</span><br><span class="line">        <span class="keyword">if</span> (method != <span class="literal">null</span>) &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;反射获取 toString 方法成功&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">f2</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">// 调用 f1 处，如果不用 try catch ，编译时会报错</span></span><br><span class="line">            f1();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (NoSuchMethodException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (NoSuchFieldException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        f2();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 反射获取 digits 方法成功</span></span><br><span class="line">java.lang.NoSuchMethodException: java.lang.String.toString(<span class="type">int</span>)</span><br><span class="line">	at java.lang.Class.getMethod(Class.java:<span class="number">1786</span>)</span><br><span class="line">	at io.github.dunwu.javacore.exception.ThrowsDemo.f1(ThrowsDemo.java:<span class="number">12</span>)</span><br><span class="line">	at io.github.dunwu.javacore.exception.ThrowsDemo.f2(ThrowsDemo.java:<span class="number">21</span>)</span><br><span class="line">	at io.github.dunwu.javacore.exception.ThrowsDemo.main(ThrowsDemo.java:<span class="number">30</span>)</span><br></pre></td></tr></table></figure>
+
+<p><code>throw</code> 和 <code>throws</code> 的区别：</p>
+<ul>
+<li><code>throws</code> 使用在函数上，<code>throw</code> 使用在函数内。</li>
+<li><code>throws</code> 后面跟异常类，可以跟多个，用逗号区别；<code>throw</code> 后面跟的是异常对象。</li>
+</ul>
+<h2 id="捕获异常"><a href="#捕获异常" class="headerlink" title="捕获异常"></a>捕获异常</h2><p><strong>使用 try 和 catch 关键字可以捕获异常</strong>。<code>try catch</code> 代码块放在异常可能发生的地方。</p>
+<p>它的语法形式如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="comment">// 可能会发生异常的代码块</span></span><br><span class="line">&#125; <span class="keyword">catch</span> (Exception e1) &#123;</span><br><span class="line">    <span class="comment">// 捕获并处理try抛出的异常类型Exception</span></span><br><span class="line">&#125; <span class="keyword">catch</span> (Exception2 e2) &#123;</span><br><span class="line">    <span class="comment">// 捕获并处理try抛出的异常类型Exception2</span></span><br><span class="line">&#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">    <span class="comment">// 无论是否发生异常，都将执行的代码块</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>此外，JDK7 以后，<code>catch</code> 多种异常时，也可以像下面这样简化代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="comment">// 可能会发生异常的代码块</span></span><br><span class="line">&#125; <span class="keyword">catch</span> (Exception | Exception2 e) &#123;</span><br><span class="line">    <span class="comment">// 捕获并处理try抛出的异常类型</span></span><br><span class="line">&#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">    <span class="comment">// 无论是否发生异常，都将执行的代码块</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>try</code>、<code>catch</code>、<code>finally</code> 使用要点如下：</p>
+<ul>
+<li><p><code>try</code> - <strong><code>try</code> 语句用于监听</strong>。将要被监听的代码(可能抛出异常的代码)放在 <code>try</code> 语句块之内，当 <code>try</code> 语句块内发生异常时，异常就被抛出。</p>
+</li>
+<li><p><code>catch</code> - <strong><code>catch</code> 语句包含要捕获异常类型的声明</strong>。当保护代码块中发生一个异常时，<code>try</code> 后面的 <code>catch</code> 块就会被检查。</p>
+</li>
+<li><p><code>finally</code> - <strong><code>finally</code> 语句块总是会被执行，无论是否出现异常。</strong><code>try catch</code> 语句后不一定非要 <code>finally</code> 语句。<code>finally</code> 常用于这样的场景：由于 <code>finally</code> 语句块总是会被执行，所以那些在 <code>try</code> 代码块中打开的，并且必须回收的物理资源(如数据库连接、网络连接和文件)，一般会放在 <code>finally</code> 语句块中释放资源。</p>
+</li>
+<li><p><strong><code>try</code>、<code>catch</code>、<code>finally</code> 三个代码块中的局部变量不可共享使用</strong>。</p>
+</li>
+<li><p><code>catch</code> 块尝试捕获异常时，是按照 <code>catch</code> 块的声明顺序依次寻找的，一旦匹配，就不会再向下执行。因此，如果同一个 <code>try</code> 块下的多个 <code>catch</code> 异常类型有父子关系，应该将子类异常放在前面，父类异常放在后面。</p>
+</li>
+</ul>
+<p>【示例】<code>try</code>、<code>catch</code>、<code>finally</code> 使用示例</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">TryCatchFinallyDemo</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">// 此处产生了异常</span></span><br><span class="line">            <span class="type">int</span> <span class="variable">temp</span> <span class="operator">=</span> <span class="number">10</span> / <span class="number">0</span>;</span><br><span class="line">            System.out.println(<span class="string">&quot;两个数字相除的结果：&quot;</span> + temp);</span><br><span class="line">            System.out.println(<span class="string">&quot;----------------------------&quot;</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (ArithmeticException e) &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;出现异常了：&quot;</span> + e);</span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;不管是否出现异常，都执行此代码&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>运行时输出：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 出现异常了：java.lang.ArithmeticException: / by zero</span></span><br><span class="line"><span class="comment">// 不管是否出现异常，都执行此代码</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="异常链"><a href="#异常链" class="headerlink" title="异常链"></a>异常链</h2><p>异常链是以一个异常对象为参数构造新的异常对象，新的异常对象将包含先前异常的信息。</p>
+<p>通过使用异常链，我们可以提高代码的可理解性、系统的可维护性和友好性。</p>
+<p>我们有两种方式处理异常，一是 <code>throws</code> 抛出交给上级处理，二是 <code>try…catch</code> 做具体处理。<code>try…catch</code> 的 <code>catch</code> 块我们可以不需要做任何处理，仅仅只用 throw 这个关键字将我们封装异常信息主动抛出来。然后在通过关键字 <code>throws</code> 继续抛出该方法异常。它的上层也可以做这样的处理，以此类推就会产生一条由异常构成的异常链。</p>
+<p>【示例】异常链示例</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ExceptionChainDemo</span> &#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">class</span> <span class="title class_">MyException1</span> <span class="keyword">extends</span> <span class="title class_">Exception</span> &#123;</span><br><span class="line">        <span class="keyword">public</span> <span class="title function_">MyException1</span><span class="params">(String message)</span> &#123;</span><br><span class="line">            <span class="built_in">super</span>(message);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">class</span> <span class="title class_">MyException2</span> <span class="keyword">extends</span> <span class="title class_">Exception</span> &#123;</span><br><span class="line">        <span class="keyword">public</span> <span class="title function_">MyException2</span><span class="params">(String message, Throwable cause)</span> &#123;</span><br><span class="line">            <span class="built_in">super</span>(message, cause);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">f1</span><span class="params">()</span> <span class="keyword">throws</span> MyException1 &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">MyException1</span>(<span class="string">&quot;出现 MyException1&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">f2</span><span class="params">()</span> <span class="keyword">throws</span> MyException2 &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            f1();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (MyException1 e) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">MyException2</span>(<span class="string">&quot;出现 MyException2&quot;</span>, e);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> MyException2 &#123;</span><br><span class="line">        f2();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Exception in thread <span class="string">&quot;main&quot;</span> io.github.dunwu.javacore.exception.ExceptionChainDemo$MyException2: 出现 MyException2</span><br><span class="line">	at io.github.dunwu.javacore.exception.ExceptionChainDemo.f2(ExceptionChainDemo.java:<span class="number">29</span>)</span><br><span class="line">	at io.github.dunwu.javacore.exception.ExceptionChainDemo.main(ExceptionChainDemo.java:<span class="number">34</span>)</span><br><span class="line">Caused by: io.github.dunwu.javacore.exception.ExceptionChainDemo$MyException1: 出现 MyException1</span><br><span class="line">	at io.github.dunwu.javacore.exception.ExceptionChainDemo.f1(ExceptionChainDemo.java:<span class="number">22</span>)</span><br><span class="line">	at io.github.dunwu.javacore.exception.ExceptionChainDemo.f2(ExceptionChainDemo.java:<span class="number">27</span>)</span><br><span class="line">	... <span class="number">1</span> more</span><br></pre></td></tr></table></figure>
 
 <blockquote>
-<p>💡 说明：</p>
-<p>从上面的例子可以看出：</p>
-<p><strong>枚举的本质是 <code>java.lang.Enum</code> 的子类。</strong></p>
-<p>尽管 <code>enum</code> 看起来像是一种新的数据类型，事实上，<strong>enum 是一种受限制的类，并且具有自己的方法</strong>。枚举这种特殊的类因为被修饰为 <code>final</code>，所以不能继承其他类。</p>
-<p>定义的枚举值，会被默认修饰为 <code>public static final</code> ，从修饰关键字，即可看出枚举值本质上是静态常量。</p>
+<p>扩展阅读：<a target="_blank" rel="noopener" href="https://juejin.im/post/5b6d61e55188251b38129f9a#heading-10">https://juejin.im/post/5b6d61e55188251b38129f9a#heading-10</a></p>
+<p>这篇文章中对于异常链讲解比较详细。</p>
 </blockquote>
-<h2 id="枚举的方法"><a href="#枚举的方法" class="headerlink" title="枚举的方法"></a>枚举的方法</h2><p>在 enum 中，提供了一些基本方法：</p>
-<ul>
-<li><code>values()</code>：返回 enum 实例的数组，而且该数组中的元素严格保持在 enum 中声明时的顺序。</li>
-<li><code>name()</code>：返回实例名。</li>
-<li><code>ordinal()</code>：返回实例声明时的次序，从 0 开始。</li>
-<li><code>getDeclaringClass()</code>：返回实例所属的 enum 类型。</li>
-<li><code>equals()</code> ：判断是否为同一个对象。</li>
-</ul>
-<p>可以使用 <code>==</code> 来比较<code>enum</code>实例。</p>
-<p>此外，<code>java.lang.Enum</code>实现了<code>Comparable</code>和 <code>Serializable</code> 接口，所以也提供 <code>compareTo()</code> 方法。</p>
-<p><strong>例：展示 enum 的基本方法</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">EnumMethodDemo</span> &#123;</span><br><span class="line">    <span class="keyword">enum</span> <span class="title class_">Color</span> &#123;RED, GREEN, BLUE;&#125;</span><br><span class="line">    <span class="keyword">enum</span> <span class="title class_">Size</span> &#123;BIG, MIDDLE, SMALL;&#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String args[])</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;=========== Print all Color ===========&quot;</span>);</span><br><span class="line">        <span class="keyword">for</span> (Color c : Color.values()) &#123;</span><br><span class="line">            System.out.println(c + <span class="string">&quot; ordinal: &quot;</span> + c.ordinal());</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(<span class="string">&quot;=========== Print all Size ===========&quot;</span>);</span><br><span class="line">        <span class="keyword">for</span> (Size s : Size.values()) &#123;</span><br><span class="line">            System.out.println(s + <span class="string">&quot; ordinal: &quot;</span> + s.ordinal());</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="type">Color</span> <span class="variable">green</span> <span class="operator">=</span> Color.GREEN;</span><br><span class="line">        System.out.println(<span class="string">&quot;green name(): &quot;</span> + green.name());</span><br><span class="line">        System.out.println(<span class="string">&quot;green getDeclaringClass(): &quot;</span> + green.getDeclaringClass());</span><br><span class="line">        System.out.println(<span class="string">&quot;green hashCode(): &quot;</span> + green.hashCode());</span><br><span class="line">        System.out.println(<span class="string">&quot;green compareTo Color.GREEN: &quot;</span> + green.compareTo(Color.GREEN));</span><br><span class="line">        System.out.println(<span class="string">&quot;green equals Color.GREEN: &quot;</span> + green.equals(Color.GREEN));</span><br><span class="line">        System.out.println(<span class="string">&quot;green equals Size.MIDDLE: &quot;</span> + green.equals(Size.MIDDLE));</span><br><span class="line">        System.out.println(<span class="string">&quot;green equals 1: &quot;</span> + green.equals(<span class="number">1</span>));</span><br><span class="line">        System.out.format(<span class="string">&quot;green == Color.BLUE: %b\n&quot;</span>, green == Color.BLUE);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="异常注意事项"><a href="#异常注意事项" class="headerlink" title="异常注意事项"></a>异常注意事项</h2><h3 id="finally-覆盖异常"><a href="#finally-覆盖异常" class="headerlink" title="finally 覆盖异常"></a>finally 覆盖异常</h3><p>Java 异常处理中 <code>finally</code> 中的 <code>return</code> 会覆盖 <code>catch</code> 代码块中的 <code>return</code> 语句和 <code>throw</code> 语句，所以<strong>不建议在 <code>finally</code> 中使用 <code>return</code> 语句</strong>。</p>
+<p>此外 <code>finally</code> 中的 <code>throw</code> 语句也会覆盖 <code>catch</code> 代码块中的 <code>return</code> 语句和 <code>throw</code> 语句。</p>
+<p>【示例】<code>finally</code> 覆盖示例</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">FinallyOverrideExceptionDemo</span> &#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">f</span><span class="params">()</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">Exception</span>(<span class="string">&quot;A&quot;</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">Exception</span>(<span class="string">&quot;B&quot;</span>);</span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">Exception</span>(<span class="string">&quot;C&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            f();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            System.out.println(e.getMessage());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 输出：C</span></span><br></pre></td></tr></table></figure>
 
-<p><strong>输出</strong></p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">===========</span> <span class="string">Print</span> <span class="string">all</span> <span class="string">Color</span> <span class="string">===========</span></span><br><span class="line"><span class="attr">RED ordinal:</span> <span class="number">0</span></span><br><span class="line"><span class="attr">GREEN ordinal:</span> <span class="number">1</span></span><br><span class="line"><span class="attr">BLUE ordinal:</span> <span class="number">2</span></span><br><span class="line"><span class="string">===========</span> <span class="string">Print</span> <span class="string">all</span> <span class="string">Size</span> <span class="string">===========</span></span><br><span class="line"><span class="attr">BIG ordinal:</span> <span class="number">0</span></span><br><span class="line"><span class="attr">MIDDLE ordinal:</span> <span class="number">1</span></span><br><span class="line"><span class="attr">SMALL ordinal:</span> <span class="number">2</span></span><br><span class="line"><span class="attr">green name():</span> <span class="string">GREEN</span></span><br><span class="line"><span class="attr">green getDeclaringClass():</span> <span class="string">class</span> <span class="string">org.zp.javase.enumeration.EnumDemo$Color</span></span><br><span class="line"><span class="attr">green hashCode():</span> <span class="number">460141958</span></span><br><span class="line"><span class="attr">green compareTo Color.GREEN:</span> <span class="number">0</span></span><br><span class="line"><span class="attr">green equals Color.GREEN:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">green equals Size.MIDDLE:</span> <span class="literal">false</span></span><br><span class="line"><span class="attr">green equals 1:</span> <span class="literal">false</span></span><br><span class="line"><span class="string">green</span> <span class="string">==</span> <span class="attr">Color.BLUE:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="枚举的特性"><a href="#枚举的特性" class="headerlink" title="枚举的特性"></a>枚举的特性</h2><p>枚举的特性，归结起来就是一句话：</p>
-<blockquote>
-<p><strong>除了不能继承，基本上可以将 <code>enum</code> 看做一个常规的类</strong>。</p>
-</blockquote>
-<p>但是这句话需要拆分去理解，让我们细细道来。</p>
-<h3 id="基本特性"><a href="#基本特性" class="headerlink" title="基本特性"></a>基本特性</h3><p><strong>如果枚举中没有定义方法，也可以在最后一个实例后面加逗号、分号或什么都不加。</strong></p>
-<p>如果枚举中没有定义方法，<strong>枚举值默认为从 0 开始的有序数值</strong>。以 Color 枚举类型举例，它的枚举常量依次为 <code>RED：0，GREEN：1，BLUE：2</code>。</p>
-<h3 id="枚举可以添加方法"><a href="#枚举可以添加方法" class="headerlink" title="枚举可以添加方法"></a>枚举可以添加方法</h3><p>在概念章节提到了，<strong>枚举值默认为从 0 开始的有序数值</strong> 。那么问题来了：如何为枚举显式的赋值。</p>
-<p>（1）<strong>Java 不允许使用 <code>=</code> 为枚举常量赋值</strong></p>
-<p>如果你接触过 C&#x2F;C++，你肯定会很自然的想到赋值符号 <code>=</code> 。在 C&#x2F;C++语言中的 enum，可以用赋值符号<code>=</code>显式的为枚举常量赋值；但是 ，很遗憾，<strong>Java 语法中却不允许使用赋值符号 <code>=</code> 为枚举常量赋值</strong>。</p>
-<p><strong>例：C&#x2F;C++ 语言中的枚举声明</strong></p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">enum</span> &#123;</span></span><br><span class="line">    ONE = <span class="number">1</span>,</span><br><span class="line">    TWO,</span><br><span class="line">    THREE = <span class="number">3</span>,</span><br><span class="line">    TEN = <span class="number">10</span></span><br><span class="line">&#125; Number;</span><br></pre></td></tr></table></figure>
-
-<p>（2）<strong>枚举可以添加普通方法、静态方法、抽象方法、构造方法</strong></p>
-<p>Java 虽然不能直接为实例赋值，但是它有更优秀的解决方案：<strong>为 enum 添加方法来间接实现显式赋值</strong>。</p>
-<p>创建 <code>enum</code> 时，可以为其添加多种方法，甚至可以为其添加构造方法。</p>
-<p><strong>注意一个细节：如果要为 enum 定义方法，那么必须在 enum 的最后一个实例尾部添加一个分号。此外，在 enum 中，必须先定义实例，不能将字段或方法定义在实例前面。否则，编译器会报错。</strong></p>
-<p><strong>例：全面展示如何在枚举中定义普通方法、静态方法、抽象方法、构造方法</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">enum</span> <span class="title class_">ErrorCodeEn</span> &#123;</span><br><span class="line">    OK(<span class="number">0</span>) &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="keyword">public</span> String <span class="title function_">getDescription</span><span class="params">()</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;成功&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    ERROR_A(<span class="number">100</span>) &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="keyword">public</span> String <span class="title function_">getDescription</span><span class="params">()</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;错误A&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    ERROR_B(<span class="number">200</span>) &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="keyword">public</span> String <span class="title function_">getDescription</span><span class="params">()</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;错误B&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> code;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 构造方法：enum的构造方法只能被声明为private权限或不声明权限</span></span><br><span class="line">    <span class="keyword">private</span> <span class="title function_">ErrorCodeEn</span><span class="params">(<span class="type">int</span> number)</span> &#123; <span class="comment">// 构造方法</span></span><br><span class="line">        <span class="built_in">this</span>.code = number;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">getCode</span><span class="params">()</span> &#123; <span class="comment">// 普通方法</span></span><br><span class="line">        <span class="keyword">return</span> code;</span><br><span class="line">    &#125; <span class="comment">// 普通方法</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">abstract</span> String <span class="title function_">getDescription</span><span class="params">()</span>; <span class="comment">// 抽象方法</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String args[])</span> &#123; <span class="comment">// 静态方法</span></span><br><span class="line">        <span class="keyword">for</span> (ErrorCodeEn s : ErrorCodeEn.values()) &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;code: &quot;</span> + s.getCode() + <span class="string">&quot;, description: &quot;</span> + s.getDescription());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// Output:</span></span><br><span class="line"><span class="comment">// code: 0, description: 成功</span></span><br><span class="line"><span class="comment">// code: 100, description: 错误A</span></span><br><span class="line"><span class="comment">// code: 200, description: 错误B</span></span><br></pre></td></tr></table></figure>
-
-<p>注：上面的例子并不可取，仅仅是为了展示枚举支持定义各种方法。正确的例子情况<a href="#%E9%94%99%E8%AF%AF%E7%A0%81">错误码示例</a></p>
-<h3 id="枚举可以实现接口"><a href="#枚举可以实现接口" class="headerlink" title="枚举可以实现接口"></a>枚举可以实现接口</h3><p><strong><code>enum</code> 可以像一般类一样实现接口。</strong></p>
-<p>同样是实现上一节中的错误码枚举类，通过实现接口，可以约束它的方法。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">INumberEnum</span> &#123;</span><br><span class="line">    <span class="type">int</span> <span class="title function_">getCode</span><span class="params">()</span>;</span><br><span class="line">    String <span class="title function_">getDescription</span><span class="params">()</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">enum</span> <span class="title class_">ErrorCodeEn2</span> <span class="keyword">implements</span> <span class="title class_">INumberEnum</span> &#123;</span><br><span class="line">    OK(<span class="number">0</span>, <span class="string">&quot;成功&quot;</span>),</span><br><span class="line">    ERROR_A(<span class="number">100</span>, <span class="string">&quot;错误A&quot;</span>),</span><br><span class="line">    ERROR_B(<span class="number">200</span>, <span class="string">&quot;错误B&quot;</span>);</span><br><span class="line"></span><br><span class="line">    ErrorCodeEn2(<span class="type">int</span> number, String description) &#123;</span><br><span class="line">        <span class="built_in">this</span>.code = number;</span><br><span class="line">        <span class="built_in">this</span>.description = description;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> code;</span><br><span class="line">    <span class="keyword">private</span> String description;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">getCode</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> code;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getDescription</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> description;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="枚举不可以继承"><a href="#枚举不可以继承" class="headerlink" title="枚举不可以继承"></a>枚举不可以继承</h3><p><strong>enum 不可以继承另外一个类，当然，也不能继承另一个 enum 。</strong></p>
-<p>因为 <code>enum</code> 实际上都继承自 <code>java.lang.Enum</code> 类，而 Java 不支持多重继承，所以 <code>enum</code> 不能再继承其他类，当然也不能继承另一个 <code>enum</code>。</p>
-<h2 id="枚举的应用"><a href="#枚举的应用" class="headerlink" title="枚举的应用"></a>枚举的应用</h2><h3 id="组织常量"><a href="#组织常量" class="headerlink" title="组织常量"></a>组织常量</h3><p>在 JDK5 之前，在 Java 中定义常量都是<code>public static final TYPE a;</code> 这样的形式。有了枚举，你可以将有关联关系的常量组织起来，使代码更加易读、安全，并且还可以使用枚举提供的方法。</p>
-<p>下面三种声明方式是等价的：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">enum</span> <span class="title class_">Color</span> &#123; RED, GREEN, BLUE &#125;</span><br><span class="line"><span class="keyword">enum</span> <span class="title class_">Color</span> &#123; RED, GREEN, BLUE, &#125;</span><br><span class="line"><span class="keyword">enum</span> <span class="title class_">Color</span> &#123; RED, GREEN, BLUE; &#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="switch-状态机"><a href="#switch-状态机" class="headerlink" title="switch 状态机"></a>switch 状态机</h3><p>我们经常使用 switch 语句来写状态机。JDK7 以后，switch 已经支持 <code>int</code>、<code>char</code>、<code>String</code>、<code>enum</code> 类型的参数。这几种类型的参数比较起来，使用枚举的 switch 代码更具有可读性。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">StateMachineDemo</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">enum</span> <span class="title class_">Signal</span> &#123;</span><br><span class="line">        GREEN, YELLOW, RED</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> String <span class="title function_">getTrafficInstruct</span><span class="params">(Signal signal)</span> &#123;</span><br><span class="line">        <span class="type">String</span> <span class="variable">instruct</span> <span class="operator">=</span> <span class="string">&quot;信号灯故障&quot;</span>;</span><br><span class="line">        <span class="keyword">switch</span> (signal) &#123;</span><br><span class="line">            <span class="keyword">case</span> RED:</span><br><span class="line">                instruct = <span class="string">&quot;红灯停&quot;</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> YELLOW:</span><br><span class="line">                instruct = <span class="string">&quot;黄灯请注意&quot;</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> GREEN:</span><br><span class="line">                instruct = <span class="string">&quot;绿灯行&quot;</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">default</span>:</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> instruct;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        System.out.println(getTrafficInstruct(Signal.RED));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// Output:</span></span><br><span class="line"><span class="comment">// 红灯停</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="错误码"><a href="#错误码" class="headerlink" title="错误码"></a>错误码</h3><p>枚举常被用于定义程序错误码。下面是一个简单示例：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ErrorCodeEnumDemo</span> &#123;</span><br><span class="line">    <span class="keyword">enum</span> <span class="title class_">ErrorCodeEn</span> &#123;</span><br><span class="line">        OK(<span class="number">0</span>, <span class="string">&quot;成功&quot;</span>),</span><br><span class="line">        ERROR_A(<span class="number">100</span>, <span class="string">&quot;错误A&quot;</span>),</span><br><span class="line">        ERROR_B(<span class="number">200</span>, <span class="string">&quot;错误B&quot;</span>);</span><br><span class="line"></span><br><span class="line">        ErrorCodeEn(<span class="type">int</span> number, String msg) &#123;</span><br><span class="line">            <span class="built_in">this</span>.code = number;</span><br><span class="line">            <span class="built_in">this</span>.msg = msg;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">private</span> <span class="type">int</span> code;</span><br><span class="line">        <span class="keyword">private</span> String msg;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">getCode</span><span class="params">()</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> code;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">public</span> String <span class="title function_">getMsg</span><span class="params">()</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> msg;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="keyword">public</span> String <span class="title function_">toString</span><span class="params">()</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;ErrorCodeEn&#123;&quot;</span> + <span class="string">&quot;code=&quot;</span> + code + <span class="string">&quot;, msg=&#x27;&quot;</span> + msg + <span class="string">&#x27;\&#x27;&#x27;</span> + <span class="string">&#x27;&#125;&#x27;</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">static</span> String <span class="title function_">toStringAll</span><span class="params">()</span> &#123;</span><br><span class="line">            <span class="type">StringBuilder</span> <span class="variable">sb</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StringBuilder</span>();</span><br><span class="line">            sb.append(<span class="string">&quot;ErrorCodeEn All Elements: [&quot;</span>);</span><br><span class="line">            <span class="keyword">for</span> (ErrorCodeEn code : ErrorCodeEn.values()) &#123;</span><br><span class="line">                sb.append(code.getCode()).append(<span class="string">&quot;, &quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            sb.append(<span class="string">&quot;]&quot;</span>);</span><br><span class="line">            <span class="keyword">return</span> sb.toString();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        System.out.println(ErrorCodeEn.toStringAll());</span><br><span class="line">        <span class="keyword">for</span> (ErrorCodeEn s : ErrorCodeEn.values()) &#123;</span><br><span class="line">            System.out.println(s);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// Output:</span></span><br><span class="line"><span class="comment">// ErrorCodeEn All Elements: [0, 100, 200, ]</span></span><br><span class="line"><span class="comment">// ErrorCodeEn&#123;code=0, msg=&#x27;成功&#x27;&#125;</span></span><br><span class="line"><span class="comment">// ErrorCodeEn&#123;code=100, msg=&#x27;错误A&#x27;&#125;</span></span><br><span class="line"><span class="comment">// ErrorCodeEn&#123;code=200, msg=&#x27;错误B&#x27;&#125;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="组织枚举"><a href="#组织枚举" class="headerlink" title="组织枚举"></a>组织枚举</h3><p>可以将类型相近的枚举通过接口或类组织起来，但是一般用接口方式进行组织。</p>
-<p>原因是：Java 接口在编译时会自动为 enum 类型加上<code>public static</code>修饰符；Java 类在编译时会自动为 <code>enum</code> 类型加上 static 修饰符。看出差异了吗？没错，就是说，在类中组织 <code>enum</code>，如果你不给它修饰为 <code>public</code>，那么只能在本包中进行访问。</p>
-<p><strong>例：在接口中组织 enum</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">EnumInInterfaceDemo</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">INumberEnum</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="title function_">getCode</span><span class="params">()</span>;</span><br><span class="line">        String <span class="title function_">getDescription</span><span class="params">()</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">Plant</span> &#123;</span><br><span class="line">        <span class="keyword">enum</span> <span class="title class_">Vegetable</span> <span class="keyword">implements</span> <span class="title class_">INumberEnum</span> &#123;</span><br><span class="line">            POTATO(<span class="number">0</span>, <span class="string">&quot;土豆&quot;</span>),</span><br><span class="line">            TOMATO(<span class="number">0</span>, <span class="string">&quot;西红柿&quot;</span>);</span><br><span class="line"></span><br><span class="line">            Vegetable(<span class="type">int</span> number, String description) &#123;</span><br><span class="line">                <span class="built_in">this</span>.code = number;</span><br><span class="line">                <span class="built_in">this</span>.description = description;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">private</span> <span class="type">int</span> code;</span><br><span class="line">            <span class="keyword">private</span> String description;</span><br><span class="line"></span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">getCode</span><span class="params">()</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="built_in">this</span>.code;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="keyword">public</span> String <span class="title function_">getDescription</span><span class="params">()</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="built_in">this</span>.description;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="keyword">enum</span> <span class="title class_">Fruit</span> <span class="keyword">implements</span> <span class="title class_">INumberEnum</span> &#123;</span><br><span class="line">            APPLE(<span class="number">0</span>, <span class="string">&quot;苹果&quot;</span>),</span><br><span class="line">            ORANGE(<span class="number">0</span>, <span class="string">&quot;桔子&quot;</span>),</span><br><span class="line">            BANANA(<span class="number">0</span>, <span class="string">&quot;香蕉&quot;</span>);</span><br><span class="line"></span><br><span class="line">            Fruit(<span class="type">int</span> number, String description) &#123;</span><br><span class="line">                <span class="built_in">this</span>.code = number;</span><br><span class="line">                <span class="built_in">this</span>.description = description;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">private</span> <span class="type">int</span> code;</span><br><span class="line">            <span class="keyword">private</span> String description;</span><br><span class="line"></span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">getCode</span><span class="params">()</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="built_in">this</span>.code;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="keyword">public</span> String <span class="title function_">getDescription</span><span class="params">()</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="built_in">this</span>.description;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="keyword">for</span> (Plant.Fruit f : Plant.Fruit.values()) &#123;</span><br><span class="line">            System.out.println(f.getDescription());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// Output:</span></span><br><span class="line"><span class="comment">// 苹果</span></span><br><span class="line"><span class="comment">// 桔子</span></span><br><span class="line"><span class="comment">// 香蕉</span></span><br></pre></td></tr></table></figure>
-
-<p><strong>例：在类中组织 enum</strong></p>
-<p>本例和上例效果相同。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">EnumInClassDemo</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">INumberEnum</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="title function_">getCode</span><span class="params">()</span>;</span><br><span class="line">        String <span class="title function_">getDescription</span><span class="params">()</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">class</span> <span class="title class_">Plant2</span> &#123;</span><br><span class="line">        <span class="keyword">enum</span> <span class="title class_">Vegetable</span> <span class="keyword">implements</span> <span class="title class_">INumberEnum</span> &#123;</span><br><span class="line">            <span class="comment">// 略，与上面完全相同</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">enum</span> <span class="title class_">Fruit</span> <span class="keyword">implements</span> <span class="title class_">INumberEnum</span> &#123;</span><br><span class="line">            <span class="comment">// 略，与上面完全相同</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 略</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// Output:</span></span><br><span class="line"><span class="comment">// 土豆</span></span><br><span class="line"><span class="comment">// 西红柿</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="策略枚举"><a href="#策略枚举" class="headerlink" title="策略枚举"></a>策略枚举</h3><p>Effective Java 中展示了一种策略枚举。这种枚举通过枚举嵌套枚举的方式，将枚举常量分类处理。</p>
-<p>这种做法虽然没有 switch 语句简洁，但是更加安全、灵活。</p>
-<p><strong>例：EffectvieJava 中的策略枚举范例</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">enum</span> <span class="title class_">PayrollDay</span> &#123;</span><br><span class="line">    MONDAY(PayType.WEEKDAY), TUESDAY(PayType.WEEKDAY), WEDNESDAY(</span><br><span class="line">            PayType.WEEKDAY), THURSDAY(PayType.WEEKDAY), FRIDAY(PayType.WEEKDAY), SATURDAY(</span><br><span class="line">            PayType.WEEKEND), SUNDAY(PayType.WEEKEND);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> PayType payType;</span><br><span class="line"></span><br><span class="line">    PayrollDay(PayType payType) &#123;</span><br><span class="line">        <span class="built_in">this</span>.payType = payType;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="type">double</span> <span class="title function_">pay</span><span class="params">(<span class="type">double</span> hoursWorked, <span class="type">double</span> payRate)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> payType.pay(hoursWorked, payRate);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 策略枚举</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">enum</span> <span class="title class_">PayType</span> &#123;</span><br><span class="line">        WEEKDAY &#123;</span><br><span class="line">            <span class="type">double</span> <span class="title function_">overtimePay</span><span class="params">(<span class="type">double</span> hours, <span class="type">double</span> payRate)</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> hours &lt;= HOURS_PER_SHIFT ? <span class="number">0</span> : (hours - HOURS_PER_SHIFT)</span><br><span class="line">                        * payRate / <span class="number">2</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        WEEKEND &#123;</span><br><span class="line">            <span class="type">double</span> <span class="title function_">overtimePay</span><span class="params">(<span class="type">double</span> hours, <span class="type">double</span> payRate)</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> hours * payRate / <span class="number">2</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">int</span> <span class="variable">HOURS_PER_SHIFT</span> <span class="operator">=</span> <span class="number">8</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">abstract</span> <span class="type">double</span> <span class="title function_">overtimePay</span><span class="params">(<span class="type">double</span> hrs, <span class="type">double</span> payRate)</span>;</span><br><span class="line"></span><br><span class="line">        <span class="type">double</span> <span class="title function_">pay</span><span class="params">(<span class="type">double</span> hoursWorked, <span class="type">double</span> payRate)</span> &#123;</span><br><span class="line">            <span class="type">double</span> <span class="variable">basePay</span> <span class="operator">=</span> hoursWorked * payRate;</span><br><span class="line">            <span class="keyword">return</span> basePay + overtimePay(hoursWorked, payRate);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>测试</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">System.out.println(<span class="string">&quot;时薪100的人在周五工作8小时的收入：&quot;</span> + PayrollDay.FRIDAY.pay(<span class="number">8.0</span>, <span class="number">100</span>));</span><br><span class="line">System.out.println(<span class="string">&quot;时薪100的人在周六工作8小时的收入：&quot;</span> + PayrollDay.SATURDAY.pay(<span class="number">8.0</span>, <span class="number">100</span>));</span><br></pre></td></tr></table></figure>
-
-<h3 id="枚举实现单例模式"><a href="#枚举实现单例模式" class="headerlink" title="枚举实现单例模式"></a>枚举实现单例模式</h3><p>单例模式是最常用的设计模式。</p>
-<p>单例模式在并发环境下存在线程安全问题。</p>
-<p>为了线程安全问题，传统做法有以下几种：</p>
-<ul>
-<li>饿汉式加载</li>
-<li>懒汉式 synchronize 和双重检查</li>
-<li>利用 java 的静态加载机制</li>
-</ul>
-<p>相比上述的方法，使用枚举也可以实现单例，而且还更加简单：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SingleEnumDemo</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">enum</span> <span class="title class_">SingleEn</span> &#123;</span><br><span class="line"></span><br><span class="line">        INSTANCE;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">private</span> String name;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">public</span> String <span class="title function_">getName</span><span class="params">()</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> name;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setName</span><span class="params">(String name)</span> &#123;</span><br><span class="line">            <span class="built_in">this</span>.name = name;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        SingleEn.INSTANCE.setName(<span class="string">&quot;zp&quot;</span>);</span><br><span class="line">        System.out.println(SingleEn.INSTANCE.getName());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="覆盖抛出异常的方法"><a href="#覆盖抛出异常的方法" class="headerlink" title="覆盖抛出异常的方法"></a>覆盖抛出异常的方法</h3><p>当子类重写父类带有 <code>throws</code> 声明的函数时，其 <code>throws</code> 声明的异常必须在父类异常的可控范围内；用于处理父类的 <code>throws</code> 方法的异常处理器，必须也适用于子类的这个带 <code>throws</code> 方法——这是为了支持多态。</p>
+<p>【示例】覆盖抛出异常示例</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ExceptionOverrideDemo</span> &#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">class</span> <span class="title class_">Father</span> &#123;</span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">start</span><span class="params">()</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">IOException</span>();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">class</span> <span class="title class_">Son</span> <span class="keyword">extends</span> <span class="title class_">Father</span> &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">start</span><span class="params">()</span> <span class="keyword">throws</span> SQLException &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">SQLException</span>();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Father</span> <span class="variable">obj1</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Father</span>();</span><br><span class="line">        <span class="type">Father</span> <span class="variable">obj2</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Son</span>();</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            obj1.start();</span><br><span class="line">            obj2.start();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <blockquote>
-<p>扩展阅读：<a target="_blank" rel="noopener" href="https://blog.csdn.net/javazejian/article/details/71333103#enumset%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86%E5%89%96%E6%9E%90">深入理解 Java 枚举类型(enum)</a></p>
-<p>这篇文章对于 Java 枚举的特性讲解很仔细，其中对于枚举实现单例和传统单例实现方式说的尤为细致。</p>
+<p>上面的示例编译时会报错，原因在于：</p>
+<p>因为 Son 类抛出异常的实质是 <code>SQLException</code>，而 <code>IOException</code> 无法处理它。那么这里的 try catch 就不能处理 Son 中的异常了。多态就不能实现了。</p>
 </blockquote>
-<h2 id="枚举工具类"><a href="#枚举工具类" class="headerlink" title="枚举工具类"></a>枚举工具类</h2><p>Java 中提供了两个方便操作 enum 的工具类——<code>EnumSet</code> 和 <code>EnumMap</code>。</p>
-<h3 id="EnumSet"><a href="#EnumSet" class="headerlink" title="EnumSet"></a>EnumSet</h3><p><code>EnumSet</code> 是枚举类型的高性能 <code>Set</code> 实现。它要求放入它的枚举常量必须属于同一枚举类型。</p>
-<p>主要接口：</p>
-<ul>
-<li><code>noneOf</code> - 创建一个具有指定元素类型的空 EnumSet</li>
-<li><code>allOf</code> - 创建一个指定元素类型并包含所有枚举值的 EnumSet</li>
-<li><code>range</code> - 创建一个包括枚举值中指定范围元素的 EnumSet</li>
-<li><code>complementOf</code> - 初始集合包括指定集合的补集</li>
-<li><code>of</code> - 创建一个包括参数中所有元素的 EnumSet</li>
-<li><code>copyOf</code> - 创建一个包含参数容器中的所有元素的 EnumSet</li>
+<h3 id="异常和线程"><a href="#异常和线程" class="headerlink" title="异常和线程"></a>异常和线程</h3><p>如果 Java 程序只有一个线程，那么没有被任何代码处理的异常会导致程序终止。如果 Java 程序是多线程的，那么没有被任何代码处理的异常仅仅会导致异常所在的线程结束。</p>
+<h2 id="最佳实践"><a href="#最佳实践" class="headerlink" title="最佳实践"></a>最佳实践</h2><ul>
+<li>对可恢复的情况使用检查性异常 <code>Exception</code>；对编程错误使用运行时异常<code>RuntimeException</code>。</li>
+<li>优先使用 Java 标准的异常。</li>
+<li>抛出与抽象相对应的异常。</li>
+<li>在细节消息中包含能捕获失败的信息。</li>
+<li>尽可能减少 try 代码块的大小。</li>
+<li>尽量缩小异常范围。例如，如果明知尝试捕获的是一个 <code>ArithmeticException</code>，就应该 <code>catch</code> <code>ArithmeticException</code>，而不是 <code>catch</code> 范围较大的 <code>RuntimeException</code>，甚至是 <code>Exception</code>。</li>
+<li>尽量不要在 <code>finally</code> 块抛出异常或者返回值。</li>
+<li>不要忽略异常，一旦捕获异常，就应该处理，而非丢弃。</li>
+<li>异常处理效率很低，所以不要用异常进行业务逻辑处理。</li>
+<li>各类异常必须要有单独的日志记录，将异常分级，分类管理，因为有的时候仅仅想给第三方运维看到逻辑异常，而不是更细节的信息。如何对异常进行分类：<ul>
+<li><strong>逻辑异常</strong> - 这类异常用于描述业务无法按照预期的情况处理下去，属于用户制造的意外。</li>
+<li><strong>代码错误</strong> - 这类异常用于描述开发的代码错误，例如 NPE，ILLARG，都属于程序员制造的 BUG。</li>
+<li><strong>专有异常</strong> - 多用于特定业务场景，用于描述指定作业出现意外情况无法预先处理。</li>
 </ul>
-<p>示例：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">EnumSetDemo</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;EnumSet展示&quot;</span>);</span><br><span class="line">        EnumSet&lt;ErrorCodeEn&gt; errSet = EnumSet.allOf(ErrorCodeEn.class);</span><br><span class="line">        <span class="keyword">for</span> (ErrorCodeEn e : errSet) &#123;</span><br><span class="line">            System.out.println(e.name() + <span class="string">&quot; : &quot;</span> + e.ordinal());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="EnumMap"><a href="#EnumMap" class="headerlink" title="EnumMap"></a>EnumMap</h3><p><code>EnumMap</code> 是专门为枚举类型量身定做的 <code>Map</code> 实现。虽然使用其它的 Map 实现（如 HashMap）也能完成枚举类型实例到值得映射，但是使用 EnumMap 会更加高效：它只能接收同一枚举类型的实例作为键值，并且由于枚举类型实例的数量相对固定并且有限，所以 EnumMap 使用数组来存放与枚举类型对应的值。这使得 EnumMap 的效率非常高。</p>
-<p>主要接口：</p>
-<ul>
-<li><code>size</code> - 返回键值对数</li>
-<li><code>containsValue</code> - 是否存在指定的 value</li>
-<li><code>containsKey</code> - 是否存在指定的 key</li>
-<li><code>get</code> - 根据指定 key 获取 value</li>
-<li><code>put</code> - 取出指定的键值对</li>
-<li><code>remove</code> - 删除指定 key</li>
-<li><code>putAll</code> - 批量取出键值对</li>
-<li><code>clear</code> - 清除数据</li>
-<li><code>keySet</code> - 获取 key 集合</li>
-<li><code>values</code> - 返回所有</li>
+</li>
 </ul>
-<p>示例：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">EnumMapDemo</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">enum</span> <span class="title class_">Signal</span> &#123;</span><br><span class="line">        GREEN, YELLOW, RED</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;EnumMap展示&quot;</span>);</span><br><span class="line">        EnumMap&lt;Signal, String&gt; errMap = <span class="keyword">new</span> <span class="title class_">EnumMap</span>(Signal.class);</span><br><span class="line">        errMap.put(Signal.RED, <span class="string">&quot;红灯&quot;</span>);</span><br><span class="line">        errMap.put(Signal.YELLOW, <span class="string">&quot;黄灯&quot;</span>);</span><br><span class="line">        errMap.put(Signal.GREEN, <span class="string">&quot;绿灯&quot;</span>);</span><br><span class="line">        <span class="keyword">for</span> (Iterator&lt;Map.Entry&lt;Signal, String&gt;&gt; iter = errMap.entrySet().iterator(); iter.hasNext();) &#123;</span><br><span class="line">            Map.Entry&lt;Signal, String&gt; entry = iter.next();</span><br><span class="line">            System.out.println(entry.getKey().name() + <span class="string">&quot; : &quot;</span> + entry.getValue());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <blockquote>
-<p>扩展阅读：<a target="_blank" rel="noopener" href="https://blog.csdn.net/javazejian/article/details/71333103#enumset%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86%E5%89%96%E6%9E%90">深入理解 Java 枚举类型(enum)</a></p>
-<p>这篇文章中对 EnumSet 和 EnumMap 原理做了较为详细的介绍。</p>
+<p>扩展阅读：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://book.douban.com/subject/3360807/">Effective java 中文版 之 第九章 异常</a></li>
+<li><a target="_blank" rel="noopener" href="https://my.oschina.net/c5ms/blog/1827907">优雅的处理你的 Java 异常</a></li>
+</ul>
 </blockquote>
-<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p><img src="https://raw.githubusercontent.com/dunwu/images/master/snap/1553002212154.png" alt="img"></p>
 <h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
 <li><a target="_blank" rel="noopener" href="https://book.douban.com/subject/2130190/">Java 编程思想</a></li>
 <li><a target="_blank" rel="noopener" href="https://book.douban.com/subject/3146174/">Java 核心技术（卷 1）</a></li>
-<li><a target="_blank" rel="noopener" href="https://book.douban.com/subject/3360807/">Effective java</a></li>
-<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/javazejian/article/details/71333103#enumset%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86%E5%89%96%E6%9E%90">深入理解 Java 枚举类型(enum)</a></li>
-<li><a target="_blank" rel="noopener" href="https://droidyue.com/blog/2016/11/29/dive-into-enum/">https://droidyue.com/blog/2016/11/29/dive-into-enum/</a></li>
+<li><a target="_blank" rel="noopener" href="https://book.douban.com/subject/3360807/">Effective java 中文版 之 第九章 异常</a></li>
+<li><a target="_blank" rel="noopener" href="https://my.oschina.net/c5ms/blog/1827907">优雅的处理你的 Java 异常</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.im/post/5b6d61e55188251b38129f9a#heading-17">https://juejin.im/post/5b6d61e55188251b38129f9a#heading-17</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/skywang12345/p/3544168.html">https://www.cnblogs.com/skywang12345/p/3544168.html</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.importnew.com/26613.html">http://www.importnew.com/26613.html</a></li>
 </ul>
 
       
@@ -850,6 +878,231 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://www.ligoudan.cn/pages/d71f2c/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/ligoudan.png">
+      <meta itemprop="name" content="李狗蛋">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LIGOUDAN">
+      <meta itemprop="description" content="天气不错哇，你看这大冰雹下得">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | LIGOUDAN">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/pages/d71f2c/" class="post-title-link" itemprop="url">Java 编程规范</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2019-05-06 15:02:02" itemprop="dateCreated datePublished" datetime="2019-05-06T15:02:02+08:00">2019-05-06</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-12-12 10:02:52" itemprop="dateModified" datetime="2024-12-12T10:02:52+08:00">2024-12-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Java/JavaSE/" itemprop="url" rel="index"><span itemprop="name">JavaSE</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Java/JavaSE/%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7/" itemprop="url" rel="index"><span itemprop="name">高级特性</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.5k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="Java-编程规范"><a href="#Java-编程规范" class="headerlink" title="Java 编程规范"></a>Java 编程规范</h1><blockquote>
+<p>编程规范就是 Java 开发的最佳实践。帮助开发人员少走弯路。</p>
+</blockquote>
+<h2 id="Effective-Java"><a href="#Effective-Java" class="headerlink" title="Effective Java"></a>Effective Java</h2><ul>
+<li>第 2 章 创建、销毁对象<ul>
+<li>第 1 条：考虑用静态工厂方法代替构造器</li>
+<li>第 2 条：遇到多个构造器参数时要考虑用构建器</li>
+<li>第 3 条：用私有构造器或者枚举类型强化 Singleton 属性</li>
+<li>第 4 条：通过私有构造器强化不可实例化的能力</li>
+<li>第 5 条：避免创建不必要的对象</li>
+<li>第 6 条：消除过期的对象引用</li>
+<li>第 7 条：避免使用终结方法</li>
+</ul>
+</li>
+<li>第 3 章 对于所有对象都通用的方法<ul>
+<li>第 8 条：覆盖 equals 时请遵守通用约定</li>
+<li>第 9 条：覆盖 equals 时总要覆盖 hashCode</li>
+<li>第 10 条：始终要覆盖 toString</li>
+<li>第 11 条：谨慎地覆盖 clone</li>
+<li>第 12 条：考虑实现 Comparable 接口</li>
+</ul>
+</li>
+<li>第 4 章 类和接口<ul>
+<li>第 13 条：使类和成员的可访问性最小化</li>
+<li>第 14 条：在公有类中使用访问方法而非公有域</li>
+<li>第 15 条：使可变性最小化</li>
+<li>第 16 条：复合优先于继承</li>
+<li>第 17 条：要么为继承而设计，并提供文档说明，要么就禁止继承</li>
+<li>第 18 条：接口优于抽象类</li>
+<li>第 19 条：接口只用于定义类型</li>
+<li>第 20 条：类层次优于标签类</li>
+<li>第 21 条：用函数对象表示策略</li>
+<li>第 22 条：优先考虑静态成员类</li>
+</ul>
+</li>
+<li>第 5 章 泛型<ul>
+<li>第 23 条：请不要在新代码中使用原生态类型</li>
+<li>第 24 条：消除非受检警告</li>
+<li>第 25 条：列表优先于数组</li>
+<li>第 26 条：优先考虑泛型</li>
+<li>第 27 条：优先考虑泛型方法</li>
+<li>第 28 条：利用有限制通配符来提升 API 的灵活性</li>
+<li>第 29 条：优先考虑类型安全的异构容器</li>
+</ul>
+</li>
+<li>第 6 章 枚举和注解<ul>
+<li>第 30 条：用 enum 代替 int 常量</li>
+<li>第 31 条：用实例域代替序数</li>
+<li>第 32 条：用 EnumSet 代替位域</li>
+<li>第 33 条：用 EnumMap 代替序数索引</li>
+<li>第 34 条：用接口模拟可伸缩的枚举</li>
+<li>第 35 条：注解优先于命名模式</li>
+<li>第 36 条：坚持使用 Override 注解</li>
+<li>第 37 条：用标记接口定义类型</li>
+</ul>
+</li>
+<li>第 7 章 方法<ul>
+<li>第 38 条：检查参数的有效性</li>
+<li>第 39 条：必要时进行保护性拷贝</li>
+<li>第 40 条：谨慎设计方法签名</li>
+<li>第 41 条：慎用重载</li>
+<li>第 42 条：慎用可变参数</li>
+<li>第 43 条：返回零长度的数组或者集合，而不是：null</li>
+<li>第 44 条：为所有导出的 API 元素编写文档注释</li>
+</ul>
+</li>
+<li>第 8 章 通用程序设计<ul>
+<li>第 45 条：将局部变量的作用域最小化</li>
+<li>第 46 条：for-each 循环优先于传统的 for 循环</li>
+<li>第 47 条：了解和使用类库</li>
+<li>第 48 条：如果需要精确的答案，请避免使用 float 和 double</li>
+<li>第 49 条：基本类型优先于装箱基本类型</li>
+<li>第 50 条：如果其他类型更适合，则尽量避免使用字符串</li>
+<li>第 51 条：当心字符串连接的性能</li>
+<li>第 52 条：通过接口引用对象</li>
+<li>第 53 条：接口优先于反射机制</li>
+<li>第 54 条：谨慎地使用本地方法</li>
+<li>第 55 条：谨慎地进行优化</li>
+<li>第 56 条：遵守普遍接受的命名惯例</li>
+</ul>
+</li>
+<li>第 9 章 异常<ul>
+<li>第 57 条：只针对异常的情况才使用异常</li>
+<li>第 58 条：对可恢复的情况使用受检异常，对编程错误使用运行时异常</li>
+<li>第 59 条：避免不必要地使用受检的异常</li>
+<li>第 60 条：优先使用标准的异常</li>
+<li>第 61 条：抛出与抽象相对应的异常</li>
+<li>第 62 条：每个方法抛出的异常都要有文档</li>
+<li>第 63 条：在细节消息中包含能捕获失败的信息</li>
+<li>第 64 条：努力使失败保持原子性</li>
+<li>第 65 条：不要忽略异常</li>
+</ul>
+</li>
+<li>第 10 章 并发<ul>
+<li>第 66 条：同步访问共享的可变数据</li>
+<li>第 67 条：避免过度同步</li>
+<li>第 68 条：executor 和 task 优先干线程</li>
+<li>第 69 条：并发工具优先于 wait 和 notify</li>
+<li>第 70 条：线程安全性的文档化</li>
+<li>第 71 条：慎用延迟初始化</li>
+<li>第 72 条：不要依赖于线程调度器</li>
+<li>第 73 条：避免使用线程组</li>
+</ul>
+</li>
+<li>第 11 章 序列化<ul>
+<li>第 74 条：谨慎地实现 Serializable 接口</li>
+<li>第 75 条：考虑使用自定义的序列化形式</li>
+<li>第 76 条：保护性地编写 readObject 方法</li>
+<li>第 77 条：对于实例控制，枚举类型优先于 readResolve</li>
+<li>第 78 条：考虑用序列化代理代替序列化实例</li>
+</ul>
+</li>
+</ul>
+<h2 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://book.douban.com/subject/3360807/">Effective Java</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/alibaba/p3c/blob/master/%E9%98%BF%E9%87%8C%E5%B7%B4%E5%B7%B4Java%E5%BC%80%E5%8F%91%E6%89%8B%E5%86%8C%EF%BC%88%E8%AF%A6%E5%B0%BD%E7%89%88%EF%BC%89.pdf">阿里巴巴 Java 开发手册</a></li>
+<li><a target="_blank" rel="noopener" href="https://google.github.io/styleguide/javaguide.html">Google Java 编程指南</a></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="https://www.ligoudan.cn/pages/ad1cce/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1209,231 +1462,6 @@
 <li><a target="_blank" rel="noopener" href="http://www.oracle.com/technetwork/java/javase/8-compatibility-guide-2156366.html">Compatibility Guide for JDK 8</a></li>
 <li><a target="_blank" rel="noopener" href="https://yq.aliyun.com/articles/236">Compatibility Guide for JDK 8 中文翻译</a></li>
 <li><a target="_blank" rel="noopener" href="http://www.oracle.com/technetwork/java/faq-sun-packages-142232.html">Why Developers Should Not Write Programs That Call ‘sun’ Packages</a></li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.ligoudan.cn/pages/d71f2c/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/ligoudan.png">
-      <meta itemprop="name" content="李狗蛋">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="LIGOUDAN">
-      <meta itemprop="description" content="天气不错哇，你看这大冰雹下得">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | LIGOUDAN">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/pages/d71f2c/" class="post-title-link" itemprop="url">Java 编程规范</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2019-05-06 15:02:02" itemprop="dateCreated datePublished" datetime="2019-05-06T15:02:02+08:00">2019-05-06</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-12 10:02:52" itemprop="dateModified" datetime="2024-12-12T10:02:52+08:00">2024-12-12</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Java/JavaSE/" itemprop="url" rel="index"><span itemprop="name">JavaSE</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Java/JavaSE/%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7/" itemprop="url" rel="index"><span itemprop="name">高级特性</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>1.5k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="Java-编程规范"><a href="#Java-编程规范" class="headerlink" title="Java 编程规范"></a>Java 编程规范</h1><blockquote>
-<p>编程规范就是 Java 开发的最佳实践。帮助开发人员少走弯路。</p>
-</blockquote>
-<h2 id="Effective-Java"><a href="#Effective-Java" class="headerlink" title="Effective Java"></a>Effective Java</h2><ul>
-<li>第 2 章 创建、销毁对象<ul>
-<li>第 1 条：考虑用静态工厂方法代替构造器</li>
-<li>第 2 条：遇到多个构造器参数时要考虑用构建器</li>
-<li>第 3 条：用私有构造器或者枚举类型强化 Singleton 属性</li>
-<li>第 4 条：通过私有构造器强化不可实例化的能力</li>
-<li>第 5 条：避免创建不必要的对象</li>
-<li>第 6 条：消除过期的对象引用</li>
-<li>第 7 条：避免使用终结方法</li>
-</ul>
-</li>
-<li>第 3 章 对于所有对象都通用的方法<ul>
-<li>第 8 条：覆盖 equals 时请遵守通用约定</li>
-<li>第 9 条：覆盖 equals 时总要覆盖 hashCode</li>
-<li>第 10 条：始终要覆盖 toString</li>
-<li>第 11 条：谨慎地覆盖 clone</li>
-<li>第 12 条：考虑实现 Comparable 接口</li>
-</ul>
-</li>
-<li>第 4 章 类和接口<ul>
-<li>第 13 条：使类和成员的可访问性最小化</li>
-<li>第 14 条：在公有类中使用访问方法而非公有域</li>
-<li>第 15 条：使可变性最小化</li>
-<li>第 16 条：复合优先于继承</li>
-<li>第 17 条：要么为继承而设计，并提供文档说明，要么就禁止继承</li>
-<li>第 18 条：接口优于抽象类</li>
-<li>第 19 条：接口只用于定义类型</li>
-<li>第 20 条：类层次优于标签类</li>
-<li>第 21 条：用函数对象表示策略</li>
-<li>第 22 条：优先考虑静态成员类</li>
-</ul>
-</li>
-<li>第 5 章 泛型<ul>
-<li>第 23 条：请不要在新代码中使用原生态类型</li>
-<li>第 24 条：消除非受检警告</li>
-<li>第 25 条：列表优先于数组</li>
-<li>第 26 条：优先考虑泛型</li>
-<li>第 27 条：优先考虑泛型方法</li>
-<li>第 28 条：利用有限制通配符来提升 API 的灵活性</li>
-<li>第 29 条：优先考虑类型安全的异构容器</li>
-</ul>
-</li>
-<li>第 6 章 枚举和注解<ul>
-<li>第 30 条：用 enum 代替 int 常量</li>
-<li>第 31 条：用实例域代替序数</li>
-<li>第 32 条：用 EnumSet 代替位域</li>
-<li>第 33 条：用 EnumMap 代替序数索引</li>
-<li>第 34 条：用接口模拟可伸缩的枚举</li>
-<li>第 35 条：注解优先于命名模式</li>
-<li>第 36 条：坚持使用 Override 注解</li>
-<li>第 37 条：用标记接口定义类型</li>
-</ul>
-</li>
-<li>第 7 章 方法<ul>
-<li>第 38 条：检查参数的有效性</li>
-<li>第 39 条：必要时进行保护性拷贝</li>
-<li>第 40 条：谨慎设计方法签名</li>
-<li>第 41 条：慎用重载</li>
-<li>第 42 条：慎用可变参数</li>
-<li>第 43 条：返回零长度的数组或者集合，而不是：null</li>
-<li>第 44 条：为所有导出的 API 元素编写文档注释</li>
-</ul>
-</li>
-<li>第 8 章 通用程序设计<ul>
-<li>第 45 条：将局部变量的作用域最小化</li>
-<li>第 46 条：for-each 循环优先于传统的 for 循环</li>
-<li>第 47 条：了解和使用类库</li>
-<li>第 48 条：如果需要精确的答案，请避免使用 float 和 double</li>
-<li>第 49 条：基本类型优先于装箱基本类型</li>
-<li>第 50 条：如果其他类型更适合，则尽量避免使用字符串</li>
-<li>第 51 条：当心字符串连接的性能</li>
-<li>第 52 条：通过接口引用对象</li>
-<li>第 53 条：接口优先于反射机制</li>
-<li>第 54 条：谨慎地使用本地方法</li>
-<li>第 55 条：谨慎地进行优化</li>
-<li>第 56 条：遵守普遍接受的命名惯例</li>
-</ul>
-</li>
-<li>第 9 章 异常<ul>
-<li>第 57 条：只针对异常的情况才使用异常</li>
-<li>第 58 条：对可恢复的情况使用受检异常，对编程错误使用运行时异常</li>
-<li>第 59 条：避免不必要地使用受检的异常</li>
-<li>第 60 条：优先使用标准的异常</li>
-<li>第 61 条：抛出与抽象相对应的异常</li>
-<li>第 62 条：每个方法抛出的异常都要有文档</li>
-<li>第 63 条：在细节消息中包含能捕获失败的信息</li>
-<li>第 64 条：努力使失败保持原子性</li>
-<li>第 65 条：不要忽略异常</li>
-</ul>
-</li>
-<li>第 10 章 并发<ul>
-<li>第 66 条：同步访问共享的可变数据</li>
-<li>第 67 条：避免过度同步</li>
-<li>第 68 条：executor 和 task 优先干线程</li>
-<li>第 69 条：并发工具优先于 wait 和 notify</li>
-<li>第 70 条：线程安全性的文档化</li>
-<li>第 71 条：慎用延迟初始化</li>
-<li>第 72 条：不要依赖于线程调度器</li>
-<li>第 73 条：避免使用线程组</li>
-</ul>
-</li>
-<li>第 11 章 序列化<ul>
-<li>第 74 条：谨慎地实现 Serializable 接口</li>
-<li>第 75 条：考虑使用自定义的序列化形式</li>
-<li>第 76 条：保护性地编写 readObject 方法</li>
-<li>第 77 条：对于实例控制，枚举类型优先于 readResolve</li>
-<li>第 78 条：考虑用序列化代理代替序列化实例</li>
-</ul>
-</li>
-</ul>
-<h2 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://book.douban.com/subject/3360807/">Effective Java</a></li>
-<li><a target="_blank" rel="noopener" href="https://github.com/alibaba/p3c/blob/master/%E9%98%BF%E9%87%8C%E5%B7%B4%E5%B7%B4Java%E5%BC%80%E5%8F%91%E6%89%8B%E5%86%8C%EF%BC%88%E8%AF%A6%E5%B0%BD%E7%89%88%EF%BC%89.pdf">阿里巴巴 Java 开发手册</a></li>
-<li><a target="_blank" rel="noopener" href="https://google.github.io/styleguide/javaguide.html">Google Java 编程指南</a></li>
 </ul>
 
       
