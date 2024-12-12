@@ -537,6 +537,204 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://www.ligoudan.cn/pages/1d58f1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/ligoudan.png">
+      <meta itemprop="name" content="李狗蛋">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LIGOUDAN">
+      <meta itemprop="description" content="天气不错哇，你看这大冰雹下得">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | LIGOUDAN">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/pages/1d58f1/" class="post-title-link" itemprop="url">Maven 教程之 settings.xml 详解</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2019-05-14 14:57:33" itemprop="dateCreated datePublished" datetime="2019-05-14T14:57:33+08:00">2019-05-14</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-12-12 10:02:52" itemprop="dateModified" datetime="2024-12-12T10:02:52+08:00">2024-12-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Java/%E8%BD%AF%E4%BB%B6/" itemprop="url" rel="index"><span itemprop="name">软件</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Java/%E8%BD%AF%E4%BB%B6/%E6%9E%84%E5%BB%BA/" itemprop="url" rel="index"><span itemprop="name">构建</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Java/%E8%BD%AF%E4%BB%B6/%E6%9E%84%E5%BB%BA/Maven/" itemprop="url" rel="index"><span itemprop="name">Maven</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>12k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>11 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="Maven-教程之-settings-xml-详解"><a href="#Maven-教程之-settings-xml-详解" class="headerlink" title="Maven 教程之 settings.xml 详解"></a>Maven 教程之 settings.xml 详解</h1><h2 id="settings-xml-简介"><a href="#settings-xml-简介" class="headerlink" title="settings.xml 简介"></a>settings.xml 简介</h2><h3 id="settings-xml-有什么用"><a href="#settings-xml-有什么用" class="headerlink" title="settings.xml 有什么用"></a>settings.xml 有什么用</h3><p>从 settings.xml 的文件名就可以看出，它是用来设置 maven 参数的配置文件。settings.xml 中包含类似本地仓储位置、修改远程仓储服务器、认证信息等配置。</p>
+<ul>
+<li>settings.xml 是 maven 的<strong>全局配置文件</strong>。</li>
+<li>pom.xml 文件是本地<strong>项目配置文件</strong>。</li>
+</ul>
+<h3 id="settings-xml-文件位置"><a href="#settings-xml-文件位置" class="headerlink" title="settings.xml 文件位置"></a>settings.xml 文件位置</h3><p>settings.xml 文件一般存在于两个位置：</p>
+<ul>
+<li><strong>全局配置</strong> - <code>$&#123;maven.home&#125;/conf/settings.xml</code></li>
+<li><strong>用户配置</strong> - <code>$&#123;user.home&#125;/.m2/settings.xml</code></li>
+</ul>
+<blockquote>
+<p>🔔 注意：用户配置优先于全局配置。<code>$&#123;user.home&#125;</code> 和和所有其他系统属性只能在 3.0+版本上使用。请注意 windows 和 Linux 使用变量的区别。</p>
+</blockquote>
+<h3 id="配置优先级"><a href="#配置优先级" class="headerlink" title="配置优先级"></a>配置优先级</h3><blockquote>
+<p>重要：<strong>局部配置优先于全局配置</strong>。</p>
+</blockquote>
+<p>配置优先级从高到低：pom.xml &gt; user settings &gt; global settings</p>
+<p>如果这些文件同时存在，在应用配置时，会合并它们的内容，如果有重复的配置，优先级高的配置会覆盖优先级低的。</p>
+<h2 id="settings-xml-元素详解"><a href="#settings-xml-元素详解" class="headerlink" title="settings.xml 元素详解"></a>settings.xml 元素详解</h2><h3 id="顶级元素概览"><a href="#顶级元素概览" class="headerlink" title="顶级元素概览"></a>顶级元素概览</h3><p>下面列举了<code>settings.xml</code>中的顶级元素</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">settings</span> <span class="attr">xmlns</span>=<span class="string">&quot;http://maven.apache.org/SETTINGS/1.0.0&quot;</span></span></span><br><span class="line"><span class="tag">      <span class="attr">xmlns:xsi</span>=<span class="string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span></span></span><br><span class="line"><span class="tag">      <span class="attr">xsi:schemaLocation</span>=<span class="string">&quot;http://maven.apache.org/SETTINGS/1.0.0</span></span></span><br><span class="line"><span class="string"><span class="tag">                          https://maven.apache.org/xsd/settings-1.0.0.xsd&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">localRepository</span>/&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">interactiveMode</span>/&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">usePluginRegistry</span>/&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">offline</span>/&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">pluginGroups</span>/&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">servers</span>/&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">mirrors</span>/&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">proxies</span>/&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">profiles</span>/&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">activeProfiles</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">settings</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="LocalRepository"><a href="#LocalRepository" class="headerlink" title="LocalRepository"></a>LocalRepository</h3><p><strong>作用</strong>：该值表示构建系统本地仓库的路径。</p>
+<p>其默认值：~&#x2F;.m2&#x2F;repository。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">localRepository</span>&gt;</span>$&#123;user.home&#125;/.m2/repository<span class="tag">&lt;/<span class="name">localRepository</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="InteractiveMode"><a href="#InteractiveMode" class="headerlink" title="InteractiveMode"></a>InteractiveMode</h3><p><strong>作用</strong>：表示 maven 是否需要和用户交互以获得输入。</p>
+<p>如果 maven 需要和用户交互以获得输入，则设置成 true，反之则应为 false。默认为 true。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">interactiveMode</span>&gt;</span>true<span class="tag">&lt;/<span class="name">interactiveMode</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="UsePluginRegistry"><a href="#UsePluginRegistry" class="headerlink" title="UsePluginRegistry"></a>UsePluginRegistry</h3><p><strong>作用</strong>：maven 是否需要使用 plugin-registry.xml 文件来管理插件版本。</p>
+<p>如果需要让 maven 使用文件~&#x2F;.m2&#x2F;plugin-registry.xml 来管理插件版本，则设为 true。默认为 false。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">usePluginRegistry</span>&gt;</span>false<span class="tag">&lt;/<span class="name">usePluginRegistry</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Offline"><a href="#Offline" class="headerlink" title="Offline"></a>Offline</h3><p><strong>作用</strong>：表示 maven 是否需要在离线模式下运行。</p>
+<p>如果构建系统需要在离线模式下运行，则为 true，默认为 false。</p>
+<p>当由于网络设置原因或者安全因素，构建服务器不能连接远程仓库的时候，该配置就十分有用。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">offline</span>&gt;</span>false<span class="tag">&lt;/<span class="name">offline</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="PluginGroups"><a href="#PluginGroups" class="headerlink" title="PluginGroups"></a>PluginGroups</h3><p><strong>作用</strong>：当插件的组织 id（groupId）没有显式提供时，供搜寻插件组织 Id（groupId）的列表。</p>
+<p>该元素包含一个 pluginGroup 元素列表，每个子元素包含了一个组织 Id（groupId）。</p>
+<p>当我们使用某个插件，并且没有在命令行为其提供组织 Id（groupId）的时候，Maven 就会使用该列表。默认情况下该列表包含了 <code>org.apache.maven.plugins</code> 和 <code>org.codehaus.mojo</code>。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">settings</span> <span class="attr">xmlns</span>=<span class="string">&quot;http://maven.apache.org/SETTINGS/1.0.0&quot;</span> <span class="attr">xmlns:xsi</span>=<span class="string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span></span></span><br><span class="line"><span class="tag">  <span class="attr">xsi:schemaLocation</span>=<span class="string">&quot;http://maven.apache.org/SETTINGS/1.0.0</span></span></span><br><span class="line"><span class="string"><span class="tag">                      https://maven.apache.org/xsd/settings-1.0.0.xsd&quot;</span>&gt;</span></span><br><span class="line">  ...</span><br><span class="line">  <span class="tag">&lt;<span class="name">pluginGroups</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--plugin的组织Id（groupId） --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">pluginGroup</span>&gt;</span>org.codehaus.mojo<span class="tag">&lt;/<span class="name">pluginGroup</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">pluginGroups</span>&gt;</span></span><br><span class="line">  ...</span><br><span class="line"><span class="tag">&lt;/<span class="name">settings</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Servers"><a href="#Servers" class="headerlink" title="Servers"></a>Servers</h3><p><strong>作用</strong>：一般，仓库的下载和部署是在 pom.xml 文件中的 <code>repositories</code> 和 <code>distributionManagement</code> 元素中定义的。然而，一般类似用户名、密码（<strong>有些仓库访问是需要安全认证的</strong>）等信息不应该在 pom.xml 文件中配置，这些信息可以配置在 <code>settings.xml</code> 中。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">settings</span> <span class="attr">xmlns</span>=<span class="string">&quot;http://maven.apache.org/SETTINGS/1.0.0&quot;</span> <span class="attr">xmlns:xsi</span>=<span class="string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span></span></span><br><span class="line"><span class="tag">  <span class="attr">xsi:schemaLocation</span>=<span class="string">&quot;http://maven.apache.org/SETTINGS/1.0.0</span></span></span><br><span class="line"><span class="string"><span class="tag">                      https://maven.apache.org/xsd/settings-1.0.0.xsd&quot;</span>&gt;</span></span><br><span class="line">  ...</span><br><span class="line">  <span class="comment">&lt;!--配置服务端的一些设置。一些设置如安全证书不应该和pom.xml一起分发。这种类型的信息应该存在于构建服务器上的settings.xml文件中。 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">servers</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--服务器元素包含配置服务器时需要的信息 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">server</span>&gt;</span></span><br><span class="line">      <span class="comment">&lt;!--这是server的id（注意不是用户登陆的id），该id与distributionManagement中repository元素的id相匹配。 --&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">id</span>&gt;</span>server001<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">      <span class="comment">&lt;!--鉴权用户名。鉴权用户名和鉴权密码表示服务器认证所需要的登录名和密码。 --&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">username</span>&gt;</span>my_login<span class="tag">&lt;/<span class="name">username</span>&gt;</span></span><br><span class="line">      <span class="comment">&lt;!--鉴权密码 。鉴权用户名和鉴权密码表示服务器认证所需要的登录名和密码。密码加密功能已被添加到2.1.0 +。详情请访问密码加密页面 --&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">password</span>&gt;</span>my_password<span class="tag">&lt;/<span class="name">password</span>&gt;</span></span><br><span class="line">      <span class="comment">&lt;!--鉴权时使用的私钥位置。和前两个元素类似，私钥位置和私钥密码指定了一个私钥的路径（默认是$&#123;user.home&#125;/.ssh/id_dsa）以及如果需要的话，一个密语。将来passphrase和password元素可能会被提取到外部，但目前它们必须在settings.xml文件以纯文本的形式声明。 --&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">privateKey</span>&gt;</span>$&#123;usr.home&#125;/.ssh/id_dsa<span class="tag">&lt;/<span class="name">privateKey</span>&gt;</span></span><br><span class="line">      <span class="comment">&lt;!--鉴权时使用的私钥密码。 --&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">passphrase</span>&gt;</span>some_passphrase<span class="tag">&lt;/<span class="name">passphrase</span>&gt;</span></span><br><span class="line">      <span class="comment">&lt;!--文件被创建时的权限。如果在部署的时候会创建一个仓库文件或者目录，这时候就可以使用权限（permission）。这两个元素合法的值是一个三位数字，其对应了unix文件系统的权限，如664，或者775。 --&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">filePermissions</span>&gt;</span>664<span class="tag">&lt;/<span class="name">filePermissions</span>&gt;</span></span><br><span class="line">      <span class="comment">&lt;!--目录被创建时的权限。 --&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">directoryPermissions</span>&gt;</span>775<span class="tag">&lt;/<span class="name">directoryPermissions</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">server</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">servers</span>&gt;</span></span><br><span class="line">  ...</span><br><span class="line"><span class="tag">&lt;/<span class="name">settings</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Mirrors"><a href="#Mirrors" class="headerlink" title="Mirrors"></a>Mirrors</h3><p><strong>作用</strong>：为仓库列表配置的下载镜像列表。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">settings</span> <span class="attr">xmlns</span>=<span class="string">&quot;http://maven.apache.org/SETTINGS/1.0.0&quot;</span> <span class="attr">xmlns:xsi</span>=<span class="string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span></span></span><br><span class="line"><span class="tag">  <span class="attr">xsi:schemaLocation</span>=<span class="string">&quot;http://maven.apache.org/SETTINGS/1.0.0</span></span></span><br><span class="line"><span class="string"><span class="tag">                      https://maven.apache.org/xsd/settings-1.0.0.xsd&quot;</span>&gt;</span></span><br><span class="line">  ...</span><br><span class="line">  <span class="tag">&lt;<span class="name">mirrors</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 给定仓库的下载镜像。 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">mirror</span>&gt;</span></span><br><span class="line">      <span class="comment">&lt;!-- 该镜像的唯一标识符。id用来区分不同的mirror元素。 --&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">id</span>&gt;</span>planetmirror.com<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">      <span class="comment">&lt;!-- 镜像名称 --&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">name</span>&gt;</span>PlanetMirror Australia<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">      <span class="comment">&lt;!-- 该镜像的URL。构建系统会优先考虑使用该URL，而非使用默认的服务器URL。 --&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">url</span>&gt;</span>http://downloads.planetmirror.com/pub/maven2<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">      <span class="comment">&lt;!-- 被镜像的服务器的id。例如，如果我们要设置了一个Maven中央仓库（http://repo.maven.apache.org/maven2/）的镜像，就需要将该元素设置成central。这必须和中央仓库的id central完全一致。 --&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">mirrorOf</span>&gt;</span>central<span class="tag">&lt;/<span class="name">mirrorOf</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">mirror</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">mirrors</span>&gt;</span></span><br><span class="line">  ...</span><br><span class="line"><span class="tag">&lt;/<span class="name">settings</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Proxies"><a href="#Proxies" class="headerlink" title="Proxies"></a>Proxies</h3><p><strong>作用</strong>：用来配置不同的代理。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">settings</span> <span class="attr">xmlns</span>=<span class="string">&quot;http://maven.apache.org/SETTINGS/1.0.0&quot;</span> <span class="attr">xmlns:xsi</span>=<span class="string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span></span></span><br><span class="line"><span class="tag">  <span class="attr">xsi:schemaLocation</span>=<span class="string">&quot;http://maven.apache.org/SETTINGS/1.0.0</span></span></span><br><span class="line"><span class="string"><span class="tag">                      https://maven.apache.org/xsd/settings-1.0.0.xsd&quot;</span>&gt;</span></span><br><span class="line">  ...</span><br><span class="line">  <span class="tag">&lt;<span class="name">proxies</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--代理元素包含配置代理时需要的信息 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">proxy</span>&gt;</span></span><br><span class="line">      <span class="comment">&lt;!--代理的唯一定义符，用来区分不同的代理元素。 --&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">id</span>&gt;</span>myproxy<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">      <span class="comment">&lt;!--该代理是否是激活的那个。true则激活代理。当我们声明了一组代理，而某个时候只需要激活一个代理的时候，该元素就可以派上用处。 --&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">active</span>&gt;</span>true<span class="tag">&lt;/<span class="name">active</span>&gt;</span></span><br><span class="line">      <span class="comment">&lt;!--代理的协议。 协议://主机名:端口，分隔成离散的元素以方便配置。 --&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">protocol</span>&gt;</span>http<span class="tag">&lt;/<span class="name">protocol</span>&gt;</span></span><br><span class="line">      <span class="comment">&lt;!--代理的主机名。协议://主机名:端口，分隔成离散的元素以方便配置。 --&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">host</span>&gt;</span>proxy.somewhere.com<span class="tag">&lt;/<span class="name">host</span>&gt;</span></span><br><span class="line">      <span class="comment">&lt;!--代理的端口。协议://主机名:端口，分隔成离散的元素以方便配置。 --&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">port</span>&gt;</span>8080<span class="tag">&lt;/<span class="name">port</span>&gt;</span></span><br><span class="line">      <span class="comment">&lt;!--代理的用户名，用户名和密码表示代理服务器认证的登录名和密码。 --&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">username</span>&gt;</span>proxyuser<span class="tag">&lt;/<span class="name">username</span>&gt;</span></span><br><span class="line">      <span class="comment">&lt;!--代理的密码，用户名和密码表示代理服务器认证的登录名和密码。 --&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">password</span>&gt;</span>somepassword<span class="tag">&lt;/<span class="name">password</span>&gt;</span></span><br><span class="line">      <span class="comment">&lt;!--不该被代理的主机名列表。该列表的分隔符由代理服务器指定；例子中使用了竖线分隔符，使用逗号分隔也很常见。 --&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">nonProxyHosts</span>&gt;</span>*.google.com|ibiblio.org<span class="tag">&lt;/<span class="name">nonProxyHosts</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">proxy</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">proxies</span>&gt;</span></span><br><span class="line">  ...</span><br><span class="line"><span class="tag">&lt;/<span class="name">settings</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Profiles"><a href="#Profiles" class="headerlink" title="Profiles"></a>Profiles</h3><p><strong>作用</strong>：根据环境参数来调整构建配置的列表。</p>
+<p><code>settings.xml</code> 中的 <code>profile</code> 元素是 <code>pom.xml</code> 中 <code>profile</code> 元素的<strong>裁剪版本</strong>。</p>
+<p>它包含了<code>id</code>、<code>activation</code>、<code>repositories</code>、<code>pluginRepositories</code> 和 <code>properties</code> 元素。这里的 profile 元素只包含这五个子元素是因为这里只关心构建系统这个整体（这正是 settings.xml 文件的角色定位），而非单独的项目对象模型设置。如果一个 <code>settings.xml</code> 中的 <code>profile</code> 被激活，它的值会覆盖任何其它定义在 <code>pom.xml</code> 中带有相同 id 的 <code>profile</code>。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">settings</span> <span class="attr">xmlns</span>=<span class="string">&quot;http://maven.apache.org/SETTINGS/1.0.0&quot;</span> <span class="attr">xmlns:xsi</span>=<span class="string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span></span></span><br><span class="line"><span class="tag">  <span class="attr">xsi:schemaLocation</span>=<span class="string">&quot;http://maven.apache.org/SETTINGS/1.0.0</span></span></span><br><span class="line"><span class="string"><span class="tag">                      https://maven.apache.org/xsd/settings-1.0.0.xsd&quot;</span>&gt;</span></span><br><span class="line">  ...</span><br><span class="line">  <span class="tag">&lt;<span class="name">profiles</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">profile</span>&gt;</span></span><br><span class="line">      <span class="comment">&lt;!-- profile的唯一标识 --&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">id</span>&gt;</span>test<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">      <span class="comment">&lt;!-- 自动触发profile的条件逻辑 --&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">activation</span> /&gt;</span></span><br><span class="line">      <span class="comment">&lt;!-- 扩展属性列表 --&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">properties</span> /&gt;</span></span><br><span class="line">      <span class="comment">&lt;!-- 远程仓库列表 --&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">repositories</span> /&gt;</span></span><br><span class="line">      <span class="comment">&lt;!-- 插件仓库列表 --&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">pluginRepositories</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">profile</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">profiles</span>&gt;</span></span><br><span class="line">  ...</span><br><span class="line"><span class="tag">&lt;/<span class="name">settings</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="Activation"><a href="#Activation" class="headerlink" title="Activation"></a>Activation</h4><p><strong>作用</strong>：自动触发 <code>profile</code> 的条件逻辑。</p>
+<p>如 <code>pom.xml</code> 中的 <code>profile</code> 一样，<code>profile</code> 的作用在于它能够在某些特定的环境中自动使用某些特定的值；这些环境通过 <code>activation</code> 元素指定。<br><code>activation</code> 元素并不是激活 <code>profile</code> 的唯一方式。<code>settings.xml</code> 文件中的 <code>activeProfile</code> 元素可以包含 <code>profile</code> 的 <code>id</code>。<code>profile</code> 也可以通过在命令行，使用 <code>-P</code> 标记和逗号分隔的列表来显式的激活（如，<code>-P test</code>）。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">activation</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!--profile默认是否激活的标识 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">activeByDefault</span>&gt;</span>false<span class="tag">&lt;/<span class="name">activeByDefault</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!--当匹配的jdk被检测到，profile被激活。例如，1.4激活JDK1.4，1.4.0_2，而!1.4激活所有版本不是以1.4开头的JDK。 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">jdk</span>&gt;</span>1.5<span class="tag">&lt;/<span class="name">jdk</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!--当匹配的操作系统属性被检测到，profile被激活。os元素可以定义一些操作系统相关的属性。 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">os</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--激活profile的操作系统的名字 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>Windows XP<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--激活profile的操作系统所属家族(如 &#x27;windows&#x27;) --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">family</span>&gt;</span>Windows<span class="tag">&lt;/<span class="name">family</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--激活profile的操作系统体系结构 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">arch</span>&gt;</span>x86<span class="tag">&lt;/<span class="name">arch</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--激活profile的操作系统版本 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>5.1.2600<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">os</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!--如果Maven检测到某一个属性（其值可以在POM中通过$&#123;name&#125;引用），其拥有对应的name = 值，Profile就会被激活。如果值字段是空的，那么存在属性名称字段就会激活profile，否则按区分大小写方式匹配属性值字段 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--激活profile的属性的名称 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>mavenVersion<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--激活profile的属性的值 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">value</span>&gt;</span>2.0.3<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!--提供一个文件名，通过检测该文件的存在或不存在来激活profile。missing检查文件是否存在，如果不存在则激活profile。另一方面，exists则会检查文件是否存在，如果存在则激活profile。 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">file</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--如果指定的文件存在，则激活profile。 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">exists</span>&gt;</span>$&#123;basedir&#125;/file2.properties<span class="tag">&lt;/<span class="name">exists</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--如果指定的文件不存在，则激活profile。 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">missing</span>&gt;</span>$&#123;basedir&#125;/file1.properties<span class="tag">&lt;/<span class="name">missing</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">file</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">activation</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注：在 maven 工程的 pom.xml 所在目录下执行 <code>mvn help:active-profiles</code> 命令可以查看中央仓储的 profile 是否在工程中生效。</p>
+</blockquote>
+<h4 id="properties"><a href="#properties" class="headerlink" title="properties"></a>properties</h4><p><strong>作用</strong>：对应<code>profile</code>的扩展属性列表。</p>
+<p>maven 属性和 ant 中的属性一样，可以用来存放一些值。这些值可以在 <code>pom.xml</code> 中的任何地方使用标记${X}来使用，这里 X 是指属性的名称。属性有五种不同的形式，并且都能在 settings.xml 文件中访问。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--</span></span><br><span class="line"><span class="comment">  1. env.X: 在一个变量前加上&quot;env.&quot;的前缀，会返回一个shell环境变量。例如,&quot;env.PATH&quot;指代了$path环境变量（在Windows上是%PATH%）。</span></span><br><span class="line"><span class="comment">  2. project.x：指代了POM中对应的元素值。例如: &lt;project&gt;&lt;version&gt;1.0&lt;/version&gt;&lt;/project&gt;通过$&#123;project.version&#125;获得version的值。</span></span><br><span class="line"><span class="comment">  3. settings.x: 指代了settings.xml中对应元素的值。例如：&lt;settings&gt;&lt;offline&gt;false&lt;/offline&gt;&lt;/settings&gt;通过 $&#123;settings.offline&#125;获得offline的值。</span></span><br><span class="line"><span class="comment">  4. Java System Properties: 所有可通过java.lang.System.getProperties()访问的属性都能在POM中使用该形式访问，例如 $&#123;java.home&#125;。</span></span><br><span class="line"><span class="comment">  5. x: 在&lt;properties/&gt;元素中，或者外部文件中设置，以$&#123;someVar&#125;的形式使用。</span></span><br><span class="line"><span class="comment"> --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">properties</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">user.install</span>&gt;</span>$&#123;user.home&#125;/our-project<span class="tag">&lt;/<span class="name">user.install</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注：如果该 profile 被激活，则可以在<code>pom.xml</code>中使用${user.install}。</p>
+</blockquote>
+<h4 id="Repositories"><a href="#Repositories" class="headerlink" title="Repositories"></a>Repositories</h4><p><strong>作用</strong>：远程仓库列表，它是 maven 用来填充构建系统本地仓库所使用的一组远程仓库。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">repositories</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!--包含需要连接到远程仓库的信息 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">repository</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--远程仓库唯一标识 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">id</span>&gt;</span>codehausSnapshots<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--远程仓库名称 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>Codehaus Snapshots<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--如何处理远程仓库里发布版本的下载 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">releases</span>&gt;</span></span><br><span class="line">      <span class="comment">&lt;!--true或者false表示该仓库是否为下载某种类型构件（发布版，快照版）开启。 --&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">enabled</span>&gt;</span>false<span class="tag">&lt;/<span class="name">enabled</span>&gt;</span></span><br><span class="line">      <span class="comment">&lt;!--该元素指定更新发生的频率。Maven会比较本地POM和远程POM的时间戳。这里的选项是：always（一直），daily（默认，每日），interval：X（这里X是以分钟为单位的时间间隔），或者never（从不）。 --&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">updatePolicy</span>&gt;</span>always<span class="tag">&lt;/<span class="name">updatePolicy</span>&gt;</span></span><br><span class="line">      <span class="comment">&lt;!--当Maven验证构件校验文件失败时该怎么做-ignore（忽略），fail（失败），或者warn（警告）。 --&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">checksumPolicy</span>&gt;</span>warn<span class="tag">&lt;/<span class="name">checksumPolicy</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">releases</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--如何处理远程仓库里快照版本的下载。有了releases和snapshots这两组配置，POM就可以在每个单独的仓库中，为每种类型的构件采取不同的策略。例如，可能有人会决定只为开发目的开启对快照版本下载的支持。参见repositories/repository/releases元素 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">snapshots</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">enabled</span> /&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">updatePolicy</span> /&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">checksumPolicy</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">snapshots</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--远程仓库URL，按protocol://hostname/path形式 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">url</span>&gt;</span>http://snapshots.maven.codehaus.org/maven2<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--用于定位和排序构件的仓库布局类型-可以是default（默认）或者legacy（遗留）。Maven 2为其仓库提供了一个默认的布局；然而，Maven 1.x有一种不同的布局。我们可以使用该元素指定布局是default（默认）还是legacy（遗留）。 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">layout</span>&gt;</span>default<span class="tag">&lt;/<span class="name">layout</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">repository</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">repositories</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="pluginRepositories"><a href="#pluginRepositories" class="headerlink" title="pluginRepositories"></a>pluginRepositories</h4><p><strong>作用</strong>：发现插件的远程仓库列表。</p>
+<p>和 <code>repository</code> 类似，只是 <code>repository</code> 是管理 jar 包依赖的仓库，<code>pluginRepositories</code> 则是管理插件的仓库。<br>maven 插件是一种特殊类型的构件。由于这个原因，插件仓库独立于其它仓库。<code>pluginRepositories</code> 元素的结构和 <code>repositories</code> 元素的结构类似。每个 <code>pluginRepository</code> 元素指定一个 Maven 可以用来寻找新插件的远程地址。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">pluginRepositories</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 包含需要连接到远程插件仓库的信息.参见profiles/profile/repositories/repository元素的说明 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">pluginRepository</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">releases</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">enabled</span> /&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">updatePolicy</span> /&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">checksumPolicy</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">releases</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">snapshots</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">enabled</span> /&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">updatePolicy</span> /&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">checksumPolicy</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">snapshots</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">id</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">url</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">layout</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">pluginRepository</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">pluginRepositories</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="ActiveProfiles"><a href="#ActiveProfiles" class="headerlink" title="ActiveProfiles"></a>ActiveProfiles</h3><p><strong>作用</strong>：手动激活 profiles 的列表，按照<code>profile</code>被应用的顺序定义<code>activeProfile</code>。</p>
+<p>该元素包含了一组 <code>activeProfile</code> 元素，每个 <code>activeProfile</code> 都含有一个 profile id。任何在 <code>activeProfile</code> 中定义的 profile id，不论环境设置如何，其对应的 <code>profile</code> 都会被激活。如果没有匹配的 <code>profile</code>，则什么都不会发生。</p>
+<p>例如，env-test 是一个 activeProfile，则在 pom.xml（或者 profile.xml）中对应 id 的 profile 会被激活。如果运行过程中找不到这样一个 profile，Maven 则会像往常一样运行。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">settings</span> <span class="attr">xmlns</span>=<span class="string">&quot;http://maven.apache.org/SETTINGS/1.0.0&quot;</span> <span class="attr">xmlns:xsi</span>=<span class="string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span></span></span><br><span class="line"><span class="tag">  <span class="attr">xsi:schemaLocation</span>=<span class="string">&quot;http://maven.apache.org/SETTINGS/1.0.0</span></span></span><br><span class="line"><span class="string"><span class="tag">                      https://maven.apache.org/xsd/settings-1.0.0.xsd&quot;</span>&gt;</span></span><br><span class="line">  ...</span><br><span class="line">  <span class="tag">&lt;<span class="name">activeProfiles</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 要激活的profile id --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">activeProfile</span>&gt;</span>env-test<span class="tag">&lt;/<span class="name">activeProfile</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">activeProfiles</span>&gt;</span></span><br><span class="line">  ...</span><br><span class="line"><span class="tag">&lt;/<span class="name">settings</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>至此，maven settings.xml 中的标签都讲解完毕，希望对大家有所帮助。</p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://maven.apache.org/settings.html">maven 官方文档之 settings</a></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="https://www.ligoudan.cn/pages/d893c2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -802,204 +1000,6 @@
 
 <h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
 <li><a target="_blank" rel="noopener" href="https://maven.apache.org/pom.html">maven 官方文档之 pom</a></li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.ligoudan.cn/pages/1d58f1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/ligoudan.png">
-      <meta itemprop="name" content="李狗蛋">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="LIGOUDAN">
-      <meta itemprop="description" content="天气不错哇，你看这大冰雹下得">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | LIGOUDAN">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/pages/1d58f1/" class="post-title-link" itemprop="url">Maven 教程之 settings.xml 详解</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2019-05-14 14:57:33" itemprop="dateCreated datePublished" datetime="2019-05-14T14:57:33+08:00">2019-05-14</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-12 10:02:52" itemprop="dateModified" datetime="2024-12-12T10:02:52+08:00">2024-12-12</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Java/%E8%BD%AF%E4%BB%B6/" itemprop="url" rel="index"><span itemprop="name">软件</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Java/%E8%BD%AF%E4%BB%B6/%E6%9E%84%E5%BB%BA/" itemprop="url" rel="index"><span itemprop="name">构建</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Java/%E8%BD%AF%E4%BB%B6/%E6%9E%84%E5%BB%BA/Maven/" itemprop="url" rel="index"><span itemprop="name">Maven</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>12k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>11 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="Maven-教程之-settings-xml-详解"><a href="#Maven-教程之-settings-xml-详解" class="headerlink" title="Maven 教程之 settings.xml 详解"></a>Maven 教程之 settings.xml 详解</h1><h2 id="settings-xml-简介"><a href="#settings-xml-简介" class="headerlink" title="settings.xml 简介"></a>settings.xml 简介</h2><h3 id="settings-xml-有什么用"><a href="#settings-xml-有什么用" class="headerlink" title="settings.xml 有什么用"></a>settings.xml 有什么用</h3><p>从 settings.xml 的文件名就可以看出，它是用来设置 maven 参数的配置文件。settings.xml 中包含类似本地仓储位置、修改远程仓储服务器、认证信息等配置。</p>
-<ul>
-<li>settings.xml 是 maven 的<strong>全局配置文件</strong>。</li>
-<li>pom.xml 文件是本地<strong>项目配置文件</strong>。</li>
-</ul>
-<h3 id="settings-xml-文件位置"><a href="#settings-xml-文件位置" class="headerlink" title="settings.xml 文件位置"></a>settings.xml 文件位置</h3><p>settings.xml 文件一般存在于两个位置：</p>
-<ul>
-<li><strong>全局配置</strong> - <code>$&#123;maven.home&#125;/conf/settings.xml</code></li>
-<li><strong>用户配置</strong> - <code>$&#123;user.home&#125;/.m2/settings.xml</code></li>
-</ul>
-<blockquote>
-<p>🔔 注意：用户配置优先于全局配置。<code>$&#123;user.home&#125;</code> 和和所有其他系统属性只能在 3.0+版本上使用。请注意 windows 和 Linux 使用变量的区别。</p>
-</blockquote>
-<h3 id="配置优先级"><a href="#配置优先级" class="headerlink" title="配置优先级"></a>配置优先级</h3><blockquote>
-<p>重要：<strong>局部配置优先于全局配置</strong>。</p>
-</blockquote>
-<p>配置优先级从高到低：pom.xml &gt; user settings &gt; global settings</p>
-<p>如果这些文件同时存在，在应用配置时，会合并它们的内容，如果有重复的配置，优先级高的配置会覆盖优先级低的。</p>
-<h2 id="settings-xml-元素详解"><a href="#settings-xml-元素详解" class="headerlink" title="settings.xml 元素详解"></a>settings.xml 元素详解</h2><h3 id="顶级元素概览"><a href="#顶级元素概览" class="headerlink" title="顶级元素概览"></a>顶级元素概览</h3><p>下面列举了<code>settings.xml</code>中的顶级元素</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">settings</span> <span class="attr">xmlns</span>=<span class="string">&quot;http://maven.apache.org/SETTINGS/1.0.0&quot;</span></span></span><br><span class="line"><span class="tag">      <span class="attr">xmlns:xsi</span>=<span class="string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span></span></span><br><span class="line"><span class="tag">      <span class="attr">xsi:schemaLocation</span>=<span class="string">&quot;http://maven.apache.org/SETTINGS/1.0.0</span></span></span><br><span class="line"><span class="string"><span class="tag">                          https://maven.apache.org/xsd/settings-1.0.0.xsd&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">localRepository</span>/&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">interactiveMode</span>/&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">usePluginRegistry</span>/&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">offline</span>/&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">pluginGroups</span>/&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">servers</span>/&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">mirrors</span>/&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">proxies</span>/&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">profiles</span>/&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">activeProfiles</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">settings</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="LocalRepository"><a href="#LocalRepository" class="headerlink" title="LocalRepository"></a>LocalRepository</h3><p><strong>作用</strong>：该值表示构建系统本地仓库的路径。</p>
-<p>其默认值：~&#x2F;.m2&#x2F;repository。</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">localRepository</span>&gt;</span>$&#123;user.home&#125;/.m2/repository<span class="tag">&lt;/<span class="name">localRepository</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="InteractiveMode"><a href="#InteractiveMode" class="headerlink" title="InteractiveMode"></a>InteractiveMode</h3><p><strong>作用</strong>：表示 maven 是否需要和用户交互以获得输入。</p>
-<p>如果 maven 需要和用户交互以获得输入，则设置成 true，反之则应为 false。默认为 true。</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">interactiveMode</span>&gt;</span>true<span class="tag">&lt;/<span class="name">interactiveMode</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="UsePluginRegistry"><a href="#UsePluginRegistry" class="headerlink" title="UsePluginRegistry"></a>UsePluginRegistry</h3><p><strong>作用</strong>：maven 是否需要使用 plugin-registry.xml 文件来管理插件版本。</p>
-<p>如果需要让 maven 使用文件~&#x2F;.m2&#x2F;plugin-registry.xml 来管理插件版本，则设为 true。默认为 false。</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">usePluginRegistry</span>&gt;</span>false<span class="tag">&lt;/<span class="name">usePluginRegistry</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="Offline"><a href="#Offline" class="headerlink" title="Offline"></a>Offline</h3><p><strong>作用</strong>：表示 maven 是否需要在离线模式下运行。</p>
-<p>如果构建系统需要在离线模式下运行，则为 true，默认为 false。</p>
-<p>当由于网络设置原因或者安全因素，构建服务器不能连接远程仓库的时候，该配置就十分有用。</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">offline</span>&gt;</span>false<span class="tag">&lt;/<span class="name">offline</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="PluginGroups"><a href="#PluginGroups" class="headerlink" title="PluginGroups"></a>PluginGroups</h3><p><strong>作用</strong>：当插件的组织 id（groupId）没有显式提供时，供搜寻插件组织 Id（groupId）的列表。</p>
-<p>该元素包含一个 pluginGroup 元素列表，每个子元素包含了一个组织 Id（groupId）。</p>
-<p>当我们使用某个插件，并且没有在命令行为其提供组织 Id（groupId）的时候，Maven 就会使用该列表。默认情况下该列表包含了 <code>org.apache.maven.plugins</code> 和 <code>org.codehaus.mojo</code>。</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">settings</span> <span class="attr">xmlns</span>=<span class="string">&quot;http://maven.apache.org/SETTINGS/1.0.0&quot;</span> <span class="attr">xmlns:xsi</span>=<span class="string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span></span></span><br><span class="line"><span class="tag">  <span class="attr">xsi:schemaLocation</span>=<span class="string">&quot;http://maven.apache.org/SETTINGS/1.0.0</span></span></span><br><span class="line"><span class="string"><span class="tag">                      https://maven.apache.org/xsd/settings-1.0.0.xsd&quot;</span>&gt;</span></span><br><span class="line">  ...</span><br><span class="line">  <span class="tag">&lt;<span class="name">pluginGroups</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--plugin的组织Id（groupId） --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">pluginGroup</span>&gt;</span>org.codehaus.mojo<span class="tag">&lt;/<span class="name">pluginGroup</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">pluginGroups</span>&gt;</span></span><br><span class="line">  ...</span><br><span class="line"><span class="tag">&lt;/<span class="name">settings</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="Servers"><a href="#Servers" class="headerlink" title="Servers"></a>Servers</h3><p><strong>作用</strong>：一般，仓库的下载和部署是在 pom.xml 文件中的 <code>repositories</code> 和 <code>distributionManagement</code> 元素中定义的。然而，一般类似用户名、密码（<strong>有些仓库访问是需要安全认证的</strong>）等信息不应该在 pom.xml 文件中配置，这些信息可以配置在 <code>settings.xml</code> 中。</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">settings</span> <span class="attr">xmlns</span>=<span class="string">&quot;http://maven.apache.org/SETTINGS/1.0.0&quot;</span> <span class="attr">xmlns:xsi</span>=<span class="string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span></span></span><br><span class="line"><span class="tag">  <span class="attr">xsi:schemaLocation</span>=<span class="string">&quot;http://maven.apache.org/SETTINGS/1.0.0</span></span></span><br><span class="line"><span class="string"><span class="tag">                      https://maven.apache.org/xsd/settings-1.0.0.xsd&quot;</span>&gt;</span></span><br><span class="line">  ...</span><br><span class="line">  <span class="comment">&lt;!--配置服务端的一些设置。一些设置如安全证书不应该和pom.xml一起分发。这种类型的信息应该存在于构建服务器上的settings.xml文件中。 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">servers</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--服务器元素包含配置服务器时需要的信息 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">server</span>&gt;</span></span><br><span class="line">      <span class="comment">&lt;!--这是server的id（注意不是用户登陆的id），该id与distributionManagement中repository元素的id相匹配。 --&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">id</span>&gt;</span>server001<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">      <span class="comment">&lt;!--鉴权用户名。鉴权用户名和鉴权密码表示服务器认证所需要的登录名和密码。 --&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">username</span>&gt;</span>my_login<span class="tag">&lt;/<span class="name">username</span>&gt;</span></span><br><span class="line">      <span class="comment">&lt;!--鉴权密码 。鉴权用户名和鉴权密码表示服务器认证所需要的登录名和密码。密码加密功能已被添加到2.1.0 +。详情请访问密码加密页面 --&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">password</span>&gt;</span>my_password<span class="tag">&lt;/<span class="name">password</span>&gt;</span></span><br><span class="line">      <span class="comment">&lt;!--鉴权时使用的私钥位置。和前两个元素类似，私钥位置和私钥密码指定了一个私钥的路径（默认是$&#123;user.home&#125;/.ssh/id_dsa）以及如果需要的话，一个密语。将来passphrase和password元素可能会被提取到外部，但目前它们必须在settings.xml文件以纯文本的形式声明。 --&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">privateKey</span>&gt;</span>$&#123;usr.home&#125;/.ssh/id_dsa<span class="tag">&lt;/<span class="name">privateKey</span>&gt;</span></span><br><span class="line">      <span class="comment">&lt;!--鉴权时使用的私钥密码。 --&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">passphrase</span>&gt;</span>some_passphrase<span class="tag">&lt;/<span class="name">passphrase</span>&gt;</span></span><br><span class="line">      <span class="comment">&lt;!--文件被创建时的权限。如果在部署的时候会创建一个仓库文件或者目录，这时候就可以使用权限（permission）。这两个元素合法的值是一个三位数字，其对应了unix文件系统的权限，如664，或者775。 --&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">filePermissions</span>&gt;</span>664<span class="tag">&lt;/<span class="name">filePermissions</span>&gt;</span></span><br><span class="line">      <span class="comment">&lt;!--目录被创建时的权限。 --&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">directoryPermissions</span>&gt;</span>775<span class="tag">&lt;/<span class="name">directoryPermissions</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">server</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">servers</span>&gt;</span></span><br><span class="line">  ...</span><br><span class="line"><span class="tag">&lt;/<span class="name">settings</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="Mirrors"><a href="#Mirrors" class="headerlink" title="Mirrors"></a>Mirrors</h3><p><strong>作用</strong>：为仓库列表配置的下载镜像列表。</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">settings</span> <span class="attr">xmlns</span>=<span class="string">&quot;http://maven.apache.org/SETTINGS/1.0.0&quot;</span> <span class="attr">xmlns:xsi</span>=<span class="string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span></span></span><br><span class="line"><span class="tag">  <span class="attr">xsi:schemaLocation</span>=<span class="string">&quot;http://maven.apache.org/SETTINGS/1.0.0</span></span></span><br><span class="line"><span class="string"><span class="tag">                      https://maven.apache.org/xsd/settings-1.0.0.xsd&quot;</span>&gt;</span></span><br><span class="line">  ...</span><br><span class="line">  <span class="tag">&lt;<span class="name">mirrors</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 给定仓库的下载镜像。 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">mirror</span>&gt;</span></span><br><span class="line">      <span class="comment">&lt;!-- 该镜像的唯一标识符。id用来区分不同的mirror元素。 --&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">id</span>&gt;</span>planetmirror.com<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">      <span class="comment">&lt;!-- 镜像名称 --&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">name</span>&gt;</span>PlanetMirror Australia<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">      <span class="comment">&lt;!-- 该镜像的URL。构建系统会优先考虑使用该URL，而非使用默认的服务器URL。 --&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">url</span>&gt;</span>http://downloads.planetmirror.com/pub/maven2<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">      <span class="comment">&lt;!-- 被镜像的服务器的id。例如，如果我们要设置了一个Maven中央仓库（http://repo.maven.apache.org/maven2/）的镜像，就需要将该元素设置成central。这必须和中央仓库的id central完全一致。 --&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">mirrorOf</span>&gt;</span>central<span class="tag">&lt;/<span class="name">mirrorOf</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">mirror</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">mirrors</span>&gt;</span></span><br><span class="line">  ...</span><br><span class="line"><span class="tag">&lt;/<span class="name">settings</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="Proxies"><a href="#Proxies" class="headerlink" title="Proxies"></a>Proxies</h3><p><strong>作用</strong>：用来配置不同的代理。</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">settings</span> <span class="attr">xmlns</span>=<span class="string">&quot;http://maven.apache.org/SETTINGS/1.0.0&quot;</span> <span class="attr">xmlns:xsi</span>=<span class="string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span></span></span><br><span class="line"><span class="tag">  <span class="attr">xsi:schemaLocation</span>=<span class="string">&quot;http://maven.apache.org/SETTINGS/1.0.0</span></span></span><br><span class="line"><span class="string"><span class="tag">                      https://maven.apache.org/xsd/settings-1.0.0.xsd&quot;</span>&gt;</span></span><br><span class="line">  ...</span><br><span class="line">  <span class="tag">&lt;<span class="name">proxies</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--代理元素包含配置代理时需要的信息 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">proxy</span>&gt;</span></span><br><span class="line">      <span class="comment">&lt;!--代理的唯一定义符，用来区分不同的代理元素。 --&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">id</span>&gt;</span>myproxy<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">      <span class="comment">&lt;!--该代理是否是激活的那个。true则激活代理。当我们声明了一组代理，而某个时候只需要激活一个代理的时候，该元素就可以派上用处。 --&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">active</span>&gt;</span>true<span class="tag">&lt;/<span class="name">active</span>&gt;</span></span><br><span class="line">      <span class="comment">&lt;!--代理的协议。 协议://主机名:端口，分隔成离散的元素以方便配置。 --&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">protocol</span>&gt;</span>http<span class="tag">&lt;/<span class="name">protocol</span>&gt;</span></span><br><span class="line">      <span class="comment">&lt;!--代理的主机名。协议://主机名:端口，分隔成离散的元素以方便配置。 --&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">host</span>&gt;</span>proxy.somewhere.com<span class="tag">&lt;/<span class="name">host</span>&gt;</span></span><br><span class="line">      <span class="comment">&lt;!--代理的端口。协议://主机名:端口，分隔成离散的元素以方便配置。 --&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">port</span>&gt;</span>8080<span class="tag">&lt;/<span class="name">port</span>&gt;</span></span><br><span class="line">      <span class="comment">&lt;!--代理的用户名，用户名和密码表示代理服务器认证的登录名和密码。 --&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">username</span>&gt;</span>proxyuser<span class="tag">&lt;/<span class="name">username</span>&gt;</span></span><br><span class="line">      <span class="comment">&lt;!--代理的密码，用户名和密码表示代理服务器认证的登录名和密码。 --&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">password</span>&gt;</span>somepassword<span class="tag">&lt;/<span class="name">password</span>&gt;</span></span><br><span class="line">      <span class="comment">&lt;!--不该被代理的主机名列表。该列表的分隔符由代理服务器指定；例子中使用了竖线分隔符，使用逗号分隔也很常见。 --&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">nonProxyHosts</span>&gt;</span>*.google.com|ibiblio.org<span class="tag">&lt;/<span class="name">nonProxyHosts</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">proxy</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">proxies</span>&gt;</span></span><br><span class="line">  ...</span><br><span class="line"><span class="tag">&lt;/<span class="name">settings</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="Profiles"><a href="#Profiles" class="headerlink" title="Profiles"></a>Profiles</h3><p><strong>作用</strong>：根据环境参数来调整构建配置的列表。</p>
-<p><code>settings.xml</code> 中的 <code>profile</code> 元素是 <code>pom.xml</code> 中 <code>profile</code> 元素的<strong>裁剪版本</strong>。</p>
-<p>它包含了<code>id</code>、<code>activation</code>、<code>repositories</code>、<code>pluginRepositories</code> 和 <code>properties</code> 元素。这里的 profile 元素只包含这五个子元素是因为这里只关心构建系统这个整体（这正是 settings.xml 文件的角色定位），而非单独的项目对象模型设置。如果一个 <code>settings.xml</code> 中的 <code>profile</code> 被激活，它的值会覆盖任何其它定义在 <code>pom.xml</code> 中带有相同 id 的 <code>profile</code>。</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">settings</span> <span class="attr">xmlns</span>=<span class="string">&quot;http://maven.apache.org/SETTINGS/1.0.0&quot;</span> <span class="attr">xmlns:xsi</span>=<span class="string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span></span></span><br><span class="line"><span class="tag">  <span class="attr">xsi:schemaLocation</span>=<span class="string">&quot;http://maven.apache.org/SETTINGS/1.0.0</span></span></span><br><span class="line"><span class="string"><span class="tag">                      https://maven.apache.org/xsd/settings-1.0.0.xsd&quot;</span>&gt;</span></span><br><span class="line">  ...</span><br><span class="line">  <span class="tag">&lt;<span class="name">profiles</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">profile</span>&gt;</span></span><br><span class="line">      <span class="comment">&lt;!-- profile的唯一标识 --&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">id</span>&gt;</span>test<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">      <span class="comment">&lt;!-- 自动触发profile的条件逻辑 --&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">activation</span> /&gt;</span></span><br><span class="line">      <span class="comment">&lt;!-- 扩展属性列表 --&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">properties</span> /&gt;</span></span><br><span class="line">      <span class="comment">&lt;!-- 远程仓库列表 --&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">repositories</span> /&gt;</span></span><br><span class="line">      <span class="comment">&lt;!-- 插件仓库列表 --&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">pluginRepositories</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">profile</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">profiles</span>&gt;</span></span><br><span class="line">  ...</span><br><span class="line"><span class="tag">&lt;/<span class="name">settings</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="Activation"><a href="#Activation" class="headerlink" title="Activation"></a>Activation</h4><p><strong>作用</strong>：自动触发 <code>profile</code> 的条件逻辑。</p>
-<p>如 <code>pom.xml</code> 中的 <code>profile</code> 一样，<code>profile</code> 的作用在于它能够在某些特定的环境中自动使用某些特定的值；这些环境通过 <code>activation</code> 元素指定。<br><code>activation</code> 元素并不是激活 <code>profile</code> 的唯一方式。<code>settings.xml</code> 文件中的 <code>activeProfile</code> 元素可以包含 <code>profile</code> 的 <code>id</code>。<code>profile</code> 也可以通过在命令行，使用 <code>-P</code> 标记和逗号分隔的列表来显式的激活（如，<code>-P test</code>）。</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">activation</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!--profile默认是否激活的标识 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">activeByDefault</span>&gt;</span>false<span class="tag">&lt;/<span class="name">activeByDefault</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!--当匹配的jdk被检测到，profile被激活。例如，1.4激活JDK1.4，1.4.0_2，而!1.4激活所有版本不是以1.4开头的JDK。 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">jdk</span>&gt;</span>1.5<span class="tag">&lt;/<span class="name">jdk</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!--当匹配的操作系统属性被检测到，profile被激活。os元素可以定义一些操作系统相关的属性。 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">os</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--激活profile的操作系统的名字 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>Windows XP<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--激活profile的操作系统所属家族(如 &#x27;windows&#x27;) --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">family</span>&gt;</span>Windows<span class="tag">&lt;/<span class="name">family</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--激活profile的操作系统体系结构 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">arch</span>&gt;</span>x86<span class="tag">&lt;/<span class="name">arch</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--激活profile的操作系统版本 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>5.1.2600<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">os</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!--如果Maven检测到某一个属性（其值可以在POM中通过$&#123;name&#125;引用），其拥有对应的name = 值，Profile就会被激活。如果值字段是空的，那么存在属性名称字段就会激活profile，否则按区分大小写方式匹配属性值字段 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--激活profile的属性的名称 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>mavenVersion<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--激活profile的属性的值 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">value</span>&gt;</span>2.0.3<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!--提供一个文件名，通过检测该文件的存在或不存在来激活profile。missing检查文件是否存在，如果不存在则激活profile。另一方面，exists则会检查文件是否存在，如果存在则激活profile。 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">file</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--如果指定的文件存在，则激活profile。 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">exists</span>&gt;</span>$&#123;basedir&#125;/file2.properties<span class="tag">&lt;/<span class="name">exists</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--如果指定的文件不存在，则激活profile。 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">missing</span>&gt;</span>$&#123;basedir&#125;/file1.properties<span class="tag">&lt;/<span class="name">missing</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">file</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">activation</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>注：在 maven 工程的 pom.xml 所在目录下执行 <code>mvn help:active-profiles</code> 命令可以查看中央仓储的 profile 是否在工程中生效。</p>
-</blockquote>
-<h4 id="properties"><a href="#properties" class="headerlink" title="properties"></a>properties</h4><p><strong>作用</strong>：对应<code>profile</code>的扩展属性列表。</p>
-<p>maven 属性和 ant 中的属性一样，可以用来存放一些值。这些值可以在 <code>pom.xml</code> 中的任何地方使用标记${X}来使用，这里 X 是指属性的名称。属性有五种不同的形式，并且都能在 settings.xml 文件中访问。</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--</span></span><br><span class="line"><span class="comment">  1. env.X: 在一个变量前加上&quot;env.&quot;的前缀，会返回一个shell环境变量。例如,&quot;env.PATH&quot;指代了$path环境变量（在Windows上是%PATH%）。</span></span><br><span class="line"><span class="comment">  2. project.x：指代了POM中对应的元素值。例如: &lt;project&gt;&lt;version&gt;1.0&lt;/version&gt;&lt;/project&gt;通过$&#123;project.version&#125;获得version的值。</span></span><br><span class="line"><span class="comment">  3. settings.x: 指代了settings.xml中对应元素的值。例如：&lt;settings&gt;&lt;offline&gt;false&lt;/offline&gt;&lt;/settings&gt;通过 $&#123;settings.offline&#125;获得offline的值。</span></span><br><span class="line"><span class="comment">  4. Java System Properties: 所有可通过java.lang.System.getProperties()访问的属性都能在POM中使用该形式访问，例如 $&#123;java.home&#125;。</span></span><br><span class="line"><span class="comment">  5. x: 在&lt;properties/&gt;元素中，或者外部文件中设置，以$&#123;someVar&#125;的形式使用。</span></span><br><span class="line"><span class="comment"> --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">properties</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">user.install</span>&gt;</span>$&#123;user.home&#125;/our-project<span class="tag">&lt;/<span class="name">user.install</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>注：如果该 profile 被激活，则可以在<code>pom.xml</code>中使用${user.install}。</p>
-</blockquote>
-<h4 id="Repositories"><a href="#Repositories" class="headerlink" title="Repositories"></a>Repositories</h4><p><strong>作用</strong>：远程仓库列表，它是 maven 用来填充构建系统本地仓库所使用的一组远程仓库。</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">repositories</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!--包含需要连接到远程仓库的信息 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">repository</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--远程仓库唯一标识 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">id</span>&gt;</span>codehausSnapshots<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--远程仓库名称 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>Codehaus Snapshots<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--如何处理远程仓库里发布版本的下载 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">releases</span>&gt;</span></span><br><span class="line">      <span class="comment">&lt;!--true或者false表示该仓库是否为下载某种类型构件（发布版，快照版）开启。 --&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">enabled</span>&gt;</span>false<span class="tag">&lt;/<span class="name">enabled</span>&gt;</span></span><br><span class="line">      <span class="comment">&lt;!--该元素指定更新发生的频率。Maven会比较本地POM和远程POM的时间戳。这里的选项是：always（一直），daily（默认，每日），interval：X（这里X是以分钟为单位的时间间隔），或者never（从不）。 --&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">updatePolicy</span>&gt;</span>always<span class="tag">&lt;/<span class="name">updatePolicy</span>&gt;</span></span><br><span class="line">      <span class="comment">&lt;!--当Maven验证构件校验文件失败时该怎么做-ignore（忽略），fail（失败），或者warn（警告）。 --&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">checksumPolicy</span>&gt;</span>warn<span class="tag">&lt;/<span class="name">checksumPolicy</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">releases</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--如何处理远程仓库里快照版本的下载。有了releases和snapshots这两组配置，POM就可以在每个单独的仓库中，为每种类型的构件采取不同的策略。例如，可能有人会决定只为开发目的开启对快照版本下载的支持。参见repositories/repository/releases元素 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">snapshots</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">enabled</span> /&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">updatePolicy</span> /&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">checksumPolicy</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">snapshots</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--远程仓库URL，按protocol://hostname/path形式 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">url</span>&gt;</span>http://snapshots.maven.codehaus.org/maven2<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--用于定位和排序构件的仓库布局类型-可以是default（默认）或者legacy（遗留）。Maven 2为其仓库提供了一个默认的布局；然而，Maven 1.x有一种不同的布局。我们可以使用该元素指定布局是default（默认）还是legacy（遗留）。 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">layout</span>&gt;</span>default<span class="tag">&lt;/<span class="name">layout</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">repository</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">repositories</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="pluginRepositories"><a href="#pluginRepositories" class="headerlink" title="pluginRepositories"></a>pluginRepositories</h4><p><strong>作用</strong>：发现插件的远程仓库列表。</p>
-<p>和 <code>repository</code> 类似，只是 <code>repository</code> 是管理 jar 包依赖的仓库，<code>pluginRepositories</code> 则是管理插件的仓库。<br>maven 插件是一种特殊类型的构件。由于这个原因，插件仓库独立于其它仓库。<code>pluginRepositories</code> 元素的结构和 <code>repositories</code> 元素的结构类似。每个 <code>pluginRepository</code> 元素指定一个 Maven 可以用来寻找新插件的远程地址。</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">pluginRepositories</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 包含需要连接到远程插件仓库的信息.参见profiles/profile/repositories/repository元素的说明 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">pluginRepository</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">releases</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">enabled</span> /&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">updatePolicy</span> /&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">checksumPolicy</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">releases</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">snapshots</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">enabled</span> /&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">updatePolicy</span> /&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">checksumPolicy</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">snapshots</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">id</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">url</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">layout</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">pluginRepository</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">pluginRepositories</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="ActiveProfiles"><a href="#ActiveProfiles" class="headerlink" title="ActiveProfiles"></a>ActiveProfiles</h3><p><strong>作用</strong>：手动激活 profiles 的列表，按照<code>profile</code>被应用的顺序定义<code>activeProfile</code>。</p>
-<p>该元素包含了一组 <code>activeProfile</code> 元素，每个 <code>activeProfile</code> 都含有一个 profile id。任何在 <code>activeProfile</code> 中定义的 profile id，不论环境设置如何，其对应的 <code>profile</code> 都会被激活。如果没有匹配的 <code>profile</code>，则什么都不会发生。</p>
-<p>例如，env-test 是一个 activeProfile，则在 pom.xml（或者 profile.xml）中对应 id 的 profile 会被激活。如果运行过程中找不到这样一个 profile，Maven 则会像往常一样运行。</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">settings</span> <span class="attr">xmlns</span>=<span class="string">&quot;http://maven.apache.org/SETTINGS/1.0.0&quot;</span> <span class="attr">xmlns:xsi</span>=<span class="string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span></span></span><br><span class="line"><span class="tag">  <span class="attr">xsi:schemaLocation</span>=<span class="string">&quot;http://maven.apache.org/SETTINGS/1.0.0</span></span></span><br><span class="line"><span class="string"><span class="tag">                      https://maven.apache.org/xsd/settings-1.0.0.xsd&quot;</span>&gt;</span></span><br><span class="line">  ...</span><br><span class="line">  <span class="tag">&lt;<span class="name">activeProfiles</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 要激活的profile id --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">activeProfile</span>&gt;</span>env-test<span class="tag">&lt;/<span class="name">activeProfile</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">activeProfiles</span>&gt;</span></span><br><span class="line">  ...</span><br><span class="line"><span class="tag">&lt;/<span class="name">settings</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>至此，maven settings.xml 中的标签都讲解完毕，希望对大家有所帮助。</p>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://maven.apache.org/settings.html">maven 官方文档之 settings</a></li>
 </ul>
 
       
@@ -1836,6 +1836,206 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://www.ligoudan.cn/pages/6f05e2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/ligoudan.png">
+      <meta itemprop="name" content="李狗蛋">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LIGOUDAN">
+      <meta itemprop="description" content="天气不错哇，你看这大冰雹下得">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | LIGOUDAN">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/pages/6f05e2/" class="post-title-link" itemprop="url">Windows 常用技巧总结</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2019-05-07 20:35:00" itemprop="dateCreated datePublished" datetime="2019-05-07T20:35:00+08:00">2019-05-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-12-12 10:02:53" itemprop="dateModified" datetime="2024-12-12T10:02:53+08:00">2024-12-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index"><span itemprop="name">操作系统</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%BA%94%E7%94%A8/" itemprop="url" rel="index"><span itemprop="name">操作系统应用</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>2.1k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>2 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="Windows-常用技巧总结"><a href="#Windows-常用技巧总结" class="headerlink" title="Windows 常用技巧总结"></a>Windows 常用技巧总结</h1><h2 id="软件"><a href="#软件" class="headerlink" title="软件"></a>软件</h2><blockquote>
+<p>扩展阅读：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/Awesome-Windows/Awesome/blob/master/README-cn.md">Awesome Windows</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/stackia/best-windows-apps">best-windows-apps</a></li>
+</ul>
+</blockquote>
+<h3 id="视频音频"><a href="#视频音频" class="headerlink" title="视频音频"></a>视频音频</h3><ul>
+<li><a target="_blank" rel="noopener" href="http://getmusicbee.com/">Musicbee</a> - 类似 iTunes，但比 iTunes 更好用。</li>
+<li><a target="_blank" rel="noopener" href="http://www.screentogif.com/">ScreenToGif</a> - 它允许你录制屏幕的一部分区域并保存为 gif 或视频。</li>
+<li><a target="_blank" rel="noopener" href="http://potplayer.daum.net/">PotPlayer</a> - 多媒体播放器，具有广泛的编解码器集合，它还为用户提供大量配置选项。</li>
+<li><a target="_blank" rel="noopener" href="http://www.splayer.org/">射手影音播放器</a> - 来自射手网，小巧开源，首创自动匹配字幕功能。</li>
+</ul>
+<h3 id="压缩"><a href="#压缩" class="headerlink" title="压缩"></a>压缩</h3><ul>
+<li><a target="_blank" rel="noopener" href="http://www.7-zip.org/">7-Zip</a> - 用于处理压缩包的开源 Windows 实用程序。完美支持 7z，ZIP，GZIP，BZIP2 和 TAR 的全部特性，其他格式也可解压缩。</li>
+<li><a target="_blank" rel="noopener" href="http://www.rarlab.com/">WinRAR</a> - 强大的归档管理器。 它可以备份您的数据并减小电子邮件附件的大小，解压缩 RAR，ZIP 和其他文件。</li>
+</ul>
+<h3 id="文件管理"><a href="#文件管理" class="headerlink" title="文件管理"></a>文件管理</h3><ul>
+<li><a target="_blank" rel="noopener" href="http://en.ejie.me/">Clover</a> - 为资源管理器加上多标签功能。</li>
+<li><a target="_blank" rel="noopener" href="http://www.ghisler.com/">Total Commander</a> - 老牌、功能异常强大的文件管理增强软件。</li>
+<li><a target="_blank" rel="noopener" href="http://www.softwareok.com/?seite=Freeware/Q-Dir">Q-Dir</a> - 轻量级的文件管理器，各种布局视图切换灵活，默认四个小窗口组成一个大窗口，操作快捷。软件虽小，粉丝忠诚。</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/Wox-launcher/Wox">WoX</a> - 新一代文件定位工具，堪称 Windows 上的 Alfred。</li>
+<li><a target="_blank" rel="noopener" href="http://www.voidtools.com/">Everything</a> - 最快的文件&#x2F;文件夹搜索工具， 通过名称搜索。</li>
+<li><a target="_blank" rel="noopener" href="http://www.listary.com/">Listary</a> - 非常优秀的 Windows 文件浏览和搜索增强工具。</li>
+<li>Beyond Compare - 好用又万能的文件对比工具。</li>
+<li><a target="_blank" rel="noopener" href="https://www.piriform.com/ccleaner/download">CCleaner</a> - 如果你有系统洁癖，那一定要选择一款干净、良心、老牌的清洁软件。</li>
+<li><a target="_blank" rel="noopener" href="https://chocolatey.org/">chocolatey</a> - 包管理器</li>
+<li><a target="_blank" rel="noopener" href="https://ninite.com/">Ninite</a> - 最简单，最快速的更新或安装软件的方式。</li>
+<li><a target="_blank" rel="noopener" href="http://www.piriform.com/RECUVA">Recuva</a> - 来自 piriform 梨子公司产品，免费的数据恢复工具。</li>
+<li><a target="_blank" rel="noopener" href="http://www.launchy.net/">Launchy</a>：自由的跨平台工具，帮助你忘记开始菜单、桌面图标甚至文件管理器。</li>
+</ul>
+<h3 id="开发"><a href="#开发" class="headerlink" title="开发"></a>开发</h3><ul>
+<li><a target="_blank" rel="noopener" href="http://www.telerik.com/fiddler">Fiddler</a> - web 调试代理工具。</li>
+<li><a target="_blank" rel="noopener" href="https://www.getpostman.com/postman">Postman</a> - 适合 API 开发的完整工具链，最常用的 REST 客户端。</li>
+<li><a target="_blank" rel="noopener" href="https://www.sourcetreeapp.com/">SourceTree</a> - 一个免费的 Git &amp; Mercurial 客户端。</li>
+<li><a target="_blank" rel="noopener" href="https://tortoisesvn.net/">TortoiseSVN</a> - Subversion(SVN)的图形客户端</li>
+<li><a target="_blank" rel="noopener" href="https://www.wireshark.org/">Wireshark</a> - 一个网络协议分析工具。</li>
+<li>Switchhosts</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/cmderdev/cmder">Cmder</a> - 控制台模拟器包。扩展阅读：<a target="_blank" rel="noopener" href="https://www.jeffjade.com/2016/01/13/2016-01-13-windows-software-cmder/">Win 下必备神器之 Cmder</a></li>
+<li><a target="_blank" rel="noopener" href="http://babun.github.io/">Babun</a> - 基于 Cygwin，用于替代 Windows shell。</li>
+</ul>
+<h3 id="编辑器"><a href="#编辑器" class="headerlink" title="编辑器"></a>编辑器</h3><ul>
+<li><a target="_blank" rel="noopener" href="http://www.jetbrains.com/">JetBrain IDE 系列</a> - 真香！</li>
+<li><a target="_blank" rel="noopener" href="https://code.visualstudio.com/">Visual Studio Code</a> - 用于构建和调试现代 Web 和云应用程序。</li>
+<li><a target="_blank" rel="noopener" href="https://eclipse.org/downloads/">Eclipse</a> - 一款功能强大的 IDE。</li>
+<li><a target="_blank" rel="noopener" href="https://www.visualstudio.com/vs/">Visual Studio</a> - 微软官方的 IDE，通过插件可支持大量编程语言。</li>
+<li><a target="_blank" rel="noopener" href="https://netbeans.org/">NetBeans IDE</a> - 免费开源的 IDE。</li>
+<li><a target="_blank" rel="noopener" href="https://www.typora.io/">Typora</a> - 个人觉得最好用的 Markdown 编辑器。</li>
+<li><a target="_blank" rel="noopener" href="https://www.zybuluo.com/cmd/">Cmd Markdown</a> - 跨平台优秀 Markdown 编辑器，本文即用其所写。</li>
+<li><a target="_blank" rel="noopener" href="https://notepad-plus-plus.org/">Notepad++</a> - 一款支持多种编程语言的源码编辑器。</li>
+<li><a target="_blank" rel="noopener" href="http://www.flos-freeware.ch/notepad2.html">Notepad2</a> - 用于替代默认文本编辑器的轻量快速的编辑器，拥有众多有用的功能。</li>
+<li><a target="_blank" rel="noopener" href="http://www.sublimetext.com/3">Sublime Text 3</a> - 高级文本编辑器。</li>
+<li><a target="_blank" rel="noopener" href="https://atom.io/">Atom</a> - 面向 21 世纪的极客文本编辑器。</li>
+</ul>
+<h3 id="文档"><a href="#文档" class="headerlink" title="文档"></a>文档</h3><ul>
+<li><a target="_blank" rel="noopener" href="http://www.office.com/">Microsoft Office</a> - 微软办公软件。</li>
+<li><a target="_blank" rel="noopener" href="https://www.wps.com/office-free">WPS Office</a> - 金山免费办公软件。</li>
+<li><a target="_blank" rel="noopener" href="http://calibre-ebook.com/">Calibre</a> - 用于电子书管理和转换的强大软件。</li>
+<li><a target="_blank" rel="noopener" href="http://www.foxitsoftware.cn/products/reader/">福昕阅读器</a> - 在全球拥有大量用户，最优秀的国产软件之一。Ribbon 界面，支持手写签名、插入印章等。</li>
+</ul>
+<h3 id="效率提升"><a href="#效率提升" class="headerlink" title="效率提升"></a>效率提升</h3><p><strong>【笔记】</strong></p>
+<ul>
+<li><a target="_blank" rel="noopener" href="http://www.xmind.net/">XMind</a> - 优秀的思维导图。</li>
+<li><a target="_blank" rel="noopener" href="https://www.onenote.com/">OneNote</a> - Windows 下综合评价非常高的笔记应用。</li>
+<li><a target="_blank" rel="noopener" href="http://www.yinxiang.com/">印象笔记</a> - 老牌跨平台笔记工具，国际版 Evernote。一家立志于做百年公司的企业，安全、可靠。</li>
+<li><a target="_blank" rel="noopener" href="http://www.wiz.cn/index.html">为知笔记</a> - 越来越好的笔记应用，记录、查阅一切有价值的信息，同样跨平台支持。</li>
+<li><a target="_blank" rel="noopener" href="http://note.youdao.com/">有道云笔记</a> - 网易旗下笔记工具，同样跨主流平台支持，文字、手写、录音、拍照多种记录方式，支持任意附件格式。</li>
+<li><a target="_blank" rel="noopener" href="https://getsharex.com/">ShareX</a> - 你要的所有与截图、录屏相关的功能，这里都有了。</li>
+</ul>
+<p>【快捷键】</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://autohotkey.com/">AutoHotkey</a> - Windows 平台的终极自动化脚本语言。</li>
+</ul>
+<blockquote>
+<p>技巧：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.jeffjade.com/2016/03/11/2016-03-11-autohotkey/">https://www.jeffjade.com/2016/03/11/2016-03-11-autohotkey/</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.autohotkey.com/boards/viewtopic.php?f=29&t=4296">https://www.autohotkey.com/boards/viewtopic.php?f=29&amp;t=4296</a></li>
+</ul>
+</blockquote>
+<h3 id="办公"><a href="#办公" class="headerlink" title="办公"></a>办公</h3><ul>
+<li><a target="_blank" rel="noopener" href="http://cidian.youdao.com/index.html">有道词典</a> - 最好用的免费全能翻译软件。</li>
+<li><a target="_blank" rel="noopener" href="http://office.microsoft.com/zh-cn/outlook/">Outlook</a> - 大名鼎鼎的 Microsoft Office 组件之一，除了电子邮件，还包含了日历、任务管理、联系人、记事本等功能。</li>
+<li><a target="_blank" rel="noopener" href="http://www.gmail.com/">Gmail</a> - 功能上可以称为业界标杆，用户数量世界第一，或许你真的找不到比它更好的邮件系统。</li>
+<li><a target="_blank" rel="noopener" href="https://www.google.com/intl/zh-CN/chrome/browser/">Chrome</a> - 最好的浏览器。</li>
+<li><a target="_blank" rel="noopener" href="http://www.teamviewer.com/Zhcn/index.aspx">Teamviewer</a> - 专业、功能强大的远程控制软件。使用简单，对个人用户免费。</li>
+</ul>
+<h3 id="个性化"><a href="#个性化" class="headerlink" title="个性化"></a>个性化</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/TranslucentTB/TranslucentTB">TranslucentTB</a> - 透明化你的 Windows 任务栏。</li>
+<li><a target="_blank" rel="noopener" href="http://qttabbar.wikidot.com/">QTTabBar</a> - 通过多标签和额外的文件夹视图扩展资源管理器的功能。</li>
+<li><a target="_blank" rel="noopener" href="https://www.stardock.com/products/fences/">Fences</a> - 管理桌面快捷方式。</li>
+</ul>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/Awesome-Windows/Awesome/blob/master/README-cn.md">https://github.com/Awesome-Windows/Awesome/blob/master/README-cn.md</a></li>
+<li><a target="_blank" rel="noopener" href="https://love.appinn.com/">https://love.appinn.com/</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/stackia/best-windows-apps">https://github.com/stackia/best-windows-apps</a></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="https://www.ligoudan.cn/pages/1b79b0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2183,206 +2383,6 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.ligoudan.cn/pages/6f05e2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/ligoudan.png">
-      <meta itemprop="name" content="李狗蛋">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="LIGOUDAN">
-      <meta itemprop="description" content="天气不错哇，你看这大冰雹下得">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | LIGOUDAN">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/pages/6f05e2/" class="post-title-link" itemprop="url">Windows 常用技巧总结</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2019-05-07 20:35:00" itemprop="dateCreated datePublished" datetime="2019-05-07T20:35:00+08:00">2019-05-07</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-12 10:02:53" itemprop="dateModified" datetime="2024-12-12T10:02:53+08:00">2024-12-12</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index"><span itemprop="name">操作系统</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%BA%94%E7%94%A8/" itemprop="url" rel="index"><span itemprop="name">操作系统应用</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>2.1k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>2 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="Windows-常用技巧总结"><a href="#Windows-常用技巧总结" class="headerlink" title="Windows 常用技巧总结"></a>Windows 常用技巧总结</h1><h2 id="软件"><a href="#软件" class="headerlink" title="软件"></a>软件</h2><blockquote>
-<p>扩展阅读：</p>
-<ul>
-<li><a target="_blank" rel="noopener" href="https://github.com/Awesome-Windows/Awesome/blob/master/README-cn.md">Awesome Windows</a></li>
-<li><a target="_blank" rel="noopener" href="https://github.com/stackia/best-windows-apps">best-windows-apps</a></li>
-</ul>
-</blockquote>
-<h3 id="视频音频"><a href="#视频音频" class="headerlink" title="视频音频"></a>视频音频</h3><ul>
-<li><a target="_blank" rel="noopener" href="http://getmusicbee.com/">Musicbee</a> - 类似 iTunes，但比 iTunes 更好用。</li>
-<li><a target="_blank" rel="noopener" href="http://www.screentogif.com/">ScreenToGif</a> - 它允许你录制屏幕的一部分区域并保存为 gif 或视频。</li>
-<li><a target="_blank" rel="noopener" href="http://potplayer.daum.net/">PotPlayer</a> - 多媒体播放器，具有广泛的编解码器集合，它还为用户提供大量配置选项。</li>
-<li><a target="_blank" rel="noopener" href="http://www.splayer.org/">射手影音播放器</a> - 来自射手网，小巧开源，首创自动匹配字幕功能。</li>
-</ul>
-<h3 id="压缩"><a href="#压缩" class="headerlink" title="压缩"></a>压缩</h3><ul>
-<li><a target="_blank" rel="noopener" href="http://www.7-zip.org/">7-Zip</a> - 用于处理压缩包的开源 Windows 实用程序。完美支持 7z，ZIP，GZIP，BZIP2 和 TAR 的全部特性，其他格式也可解压缩。</li>
-<li><a target="_blank" rel="noopener" href="http://www.rarlab.com/">WinRAR</a> - 强大的归档管理器。 它可以备份您的数据并减小电子邮件附件的大小，解压缩 RAR，ZIP 和其他文件。</li>
-</ul>
-<h3 id="文件管理"><a href="#文件管理" class="headerlink" title="文件管理"></a>文件管理</h3><ul>
-<li><a target="_blank" rel="noopener" href="http://en.ejie.me/">Clover</a> - 为资源管理器加上多标签功能。</li>
-<li><a target="_blank" rel="noopener" href="http://www.ghisler.com/">Total Commander</a> - 老牌、功能异常强大的文件管理增强软件。</li>
-<li><a target="_blank" rel="noopener" href="http://www.softwareok.com/?seite=Freeware/Q-Dir">Q-Dir</a> - 轻量级的文件管理器，各种布局视图切换灵活，默认四个小窗口组成一个大窗口，操作快捷。软件虽小，粉丝忠诚。</li>
-<li><a target="_blank" rel="noopener" href="https://github.com/Wox-launcher/Wox">WoX</a> - 新一代文件定位工具，堪称 Windows 上的 Alfred。</li>
-<li><a target="_blank" rel="noopener" href="http://www.voidtools.com/">Everything</a> - 最快的文件&#x2F;文件夹搜索工具， 通过名称搜索。</li>
-<li><a target="_blank" rel="noopener" href="http://www.listary.com/">Listary</a> - 非常优秀的 Windows 文件浏览和搜索增强工具。</li>
-<li>Beyond Compare - 好用又万能的文件对比工具。</li>
-<li><a target="_blank" rel="noopener" href="https://www.piriform.com/ccleaner/download">CCleaner</a> - 如果你有系统洁癖，那一定要选择一款干净、良心、老牌的清洁软件。</li>
-<li><a target="_blank" rel="noopener" href="https://chocolatey.org/">chocolatey</a> - 包管理器</li>
-<li><a target="_blank" rel="noopener" href="https://ninite.com/">Ninite</a> - 最简单，最快速的更新或安装软件的方式。</li>
-<li><a target="_blank" rel="noopener" href="http://www.piriform.com/RECUVA">Recuva</a> - 来自 piriform 梨子公司产品，免费的数据恢复工具。</li>
-<li><a target="_blank" rel="noopener" href="http://www.launchy.net/">Launchy</a>：自由的跨平台工具，帮助你忘记开始菜单、桌面图标甚至文件管理器。</li>
-</ul>
-<h3 id="开发"><a href="#开发" class="headerlink" title="开发"></a>开发</h3><ul>
-<li><a target="_blank" rel="noopener" href="http://www.telerik.com/fiddler">Fiddler</a> - web 调试代理工具。</li>
-<li><a target="_blank" rel="noopener" href="https://www.getpostman.com/postman">Postman</a> - 适合 API 开发的完整工具链，最常用的 REST 客户端。</li>
-<li><a target="_blank" rel="noopener" href="https://www.sourcetreeapp.com/">SourceTree</a> - 一个免费的 Git &amp; Mercurial 客户端。</li>
-<li><a target="_blank" rel="noopener" href="https://tortoisesvn.net/">TortoiseSVN</a> - Subversion(SVN)的图形客户端</li>
-<li><a target="_blank" rel="noopener" href="https://www.wireshark.org/">Wireshark</a> - 一个网络协议分析工具。</li>
-<li>Switchhosts</li>
-<li><a target="_blank" rel="noopener" href="https://github.com/cmderdev/cmder">Cmder</a> - 控制台模拟器包。扩展阅读：<a target="_blank" rel="noopener" href="https://www.jeffjade.com/2016/01/13/2016-01-13-windows-software-cmder/">Win 下必备神器之 Cmder</a></li>
-<li><a target="_blank" rel="noopener" href="http://babun.github.io/">Babun</a> - 基于 Cygwin，用于替代 Windows shell。</li>
-</ul>
-<h3 id="编辑器"><a href="#编辑器" class="headerlink" title="编辑器"></a>编辑器</h3><ul>
-<li><a target="_blank" rel="noopener" href="http://www.jetbrains.com/">JetBrain IDE 系列</a> - 真香！</li>
-<li><a target="_blank" rel="noopener" href="https://code.visualstudio.com/">Visual Studio Code</a> - 用于构建和调试现代 Web 和云应用程序。</li>
-<li><a target="_blank" rel="noopener" href="https://eclipse.org/downloads/">Eclipse</a> - 一款功能强大的 IDE。</li>
-<li><a target="_blank" rel="noopener" href="https://www.visualstudio.com/vs/">Visual Studio</a> - 微软官方的 IDE，通过插件可支持大量编程语言。</li>
-<li><a target="_blank" rel="noopener" href="https://netbeans.org/">NetBeans IDE</a> - 免费开源的 IDE。</li>
-<li><a target="_blank" rel="noopener" href="https://www.typora.io/">Typora</a> - 个人觉得最好用的 Markdown 编辑器。</li>
-<li><a target="_blank" rel="noopener" href="https://www.zybuluo.com/cmd/">Cmd Markdown</a> - 跨平台优秀 Markdown 编辑器，本文即用其所写。</li>
-<li><a target="_blank" rel="noopener" href="https://notepad-plus-plus.org/">Notepad++</a> - 一款支持多种编程语言的源码编辑器。</li>
-<li><a target="_blank" rel="noopener" href="http://www.flos-freeware.ch/notepad2.html">Notepad2</a> - 用于替代默认文本编辑器的轻量快速的编辑器，拥有众多有用的功能。</li>
-<li><a target="_blank" rel="noopener" href="http://www.sublimetext.com/3">Sublime Text 3</a> - 高级文本编辑器。</li>
-<li><a target="_blank" rel="noopener" href="https://atom.io/">Atom</a> - 面向 21 世纪的极客文本编辑器。</li>
-</ul>
-<h3 id="文档"><a href="#文档" class="headerlink" title="文档"></a>文档</h3><ul>
-<li><a target="_blank" rel="noopener" href="http://www.office.com/">Microsoft Office</a> - 微软办公软件。</li>
-<li><a target="_blank" rel="noopener" href="https://www.wps.com/office-free">WPS Office</a> - 金山免费办公软件。</li>
-<li><a target="_blank" rel="noopener" href="http://calibre-ebook.com/">Calibre</a> - 用于电子书管理和转换的强大软件。</li>
-<li><a target="_blank" rel="noopener" href="http://www.foxitsoftware.cn/products/reader/">福昕阅读器</a> - 在全球拥有大量用户，最优秀的国产软件之一。Ribbon 界面，支持手写签名、插入印章等。</li>
-</ul>
-<h3 id="效率提升"><a href="#效率提升" class="headerlink" title="效率提升"></a>效率提升</h3><p><strong>【笔记】</strong></p>
-<ul>
-<li><a target="_blank" rel="noopener" href="http://www.xmind.net/">XMind</a> - 优秀的思维导图。</li>
-<li><a target="_blank" rel="noopener" href="https://www.onenote.com/">OneNote</a> - Windows 下综合评价非常高的笔记应用。</li>
-<li><a target="_blank" rel="noopener" href="http://www.yinxiang.com/">印象笔记</a> - 老牌跨平台笔记工具，国际版 Evernote。一家立志于做百年公司的企业，安全、可靠。</li>
-<li><a target="_blank" rel="noopener" href="http://www.wiz.cn/index.html">为知笔记</a> - 越来越好的笔记应用，记录、查阅一切有价值的信息，同样跨平台支持。</li>
-<li><a target="_blank" rel="noopener" href="http://note.youdao.com/">有道云笔记</a> - 网易旗下笔记工具，同样跨主流平台支持，文字、手写、录音、拍照多种记录方式，支持任意附件格式。</li>
-<li><a target="_blank" rel="noopener" href="https://getsharex.com/">ShareX</a> - 你要的所有与截图、录屏相关的功能，这里都有了。</li>
-</ul>
-<p>【快捷键】</p>
-<ul>
-<li><a target="_blank" rel="noopener" href="https://autohotkey.com/">AutoHotkey</a> - Windows 平台的终极自动化脚本语言。</li>
-</ul>
-<blockquote>
-<p>技巧：</p>
-<ul>
-<li><a target="_blank" rel="noopener" href="https://www.jeffjade.com/2016/03/11/2016-03-11-autohotkey/">https://www.jeffjade.com/2016/03/11/2016-03-11-autohotkey/</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.autohotkey.com/boards/viewtopic.php?f=29&t=4296">https://www.autohotkey.com/boards/viewtopic.php?f=29&amp;t=4296</a></li>
-</ul>
-</blockquote>
-<h3 id="办公"><a href="#办公" class="headerlink" title="办公"></a>办公</h3><ul>
-<li><a target="_blank" rel="noopener" href="http://cidian.youdao.com/index.html">有道词典</a> - 最好用的免费全能翻译软件。</li>
-<li><a target="_blank" rel="noopener" href="http://office.microsoft.com/zh-cn/outlook/">Outlook</a> - 大名鼎鼎的 Microsoft Office 组件之一，除了电子邮件，还包含了日历、任务管理、联系人、记事本等功能。</li>
-<li><a target="_blank" rel="noopener" href="http://www.gmail.com/">Gmail</a> - 功能上可以称为业界标杆，用户数量世界第一，或许你真的找不到比它更好的邮件系统。</li>
-<li><a target="_blank" rel="noopener" href="https://www.google.com/intl/zh-CN/chrome/browser/">Chrome</a> - 最好的浏览器。</li>
-<li><a target="_blank" rel="noopener" href="http://www.teamviewer.com/Zhcn/index.aspx">Teamviewer</a> - 专业、功能强大的远程控制软件。使用简单，对个人用户免费。</li>
-</ul>
-<h3 id="个性化"><a href="#个性化" class="headerlink" title="个性化"></a>个性化</h3><ul>
-<li><a target="_blank" rel="noopener" href="https://github.com/TranslucentTB/TranslucentTB">TranslucentTB</a> - 透明化你的 Windows 任务栏。</li>
-<li><a target="_blank" rel="noopener" href="http://qttabbar.wikidot.com/">QTTabBar</a> - 通过多标签和额外的文件夹视图扩展资源管理器的功能。</li>
-<li><a target="_blank" rel="noopener" href="https://www.stardock.com/products/fences/">Fences</a> - 管理桌面快捷方式。</li>
-</ul>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://github.com/Awesome-Windows/Awesome/blob/master/README-cn.md">https://github.com/Awesome-Windows/Awesome/blob/master/README-cn.md</a></li>
-<li><a target="_blank" rel="noopener" href="https://love.appinn.com/">https://love.appinn.com/</a></li>
-<li><a target="_blank" rel="noopener" href="https://github.com/stackia/best-windows-apps">https://github.com/stackia/best-windows-apps</a></li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="https://www.ligoudan.cn/pages/9ab9da/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2648,6 +2648,8 @@
   <footer class="footer">
     <div class="footer-inner">
 
+  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">粤ICP备2021160229号 </a>
+  </div>
   <div class="copyright">
     &copy; 2015 – 
     <span itemprop="copyrightYear">2024</span>
