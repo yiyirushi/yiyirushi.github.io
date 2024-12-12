@@ -2772,152 +2772,6 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.ligoudan.cn/pages/92add2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/ligoudan.png">
-      <meta itemprop="name" content="李狗蛋">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="LIGOUDAN">
-      <meta itemprop="description" content="天气不错哇，你看这大冰雹下得">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | LIGOUDAN">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/pages/92add2/" class="post-title-link" itemprop="url">spring-boot-async</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2019-11-18 14:55:01" itemprop="dateCreated datePublished" datetime="2019-11-18T14:55:01+08:00">2019-11-18</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-12-12 10:02:52" itemprop="dateModified" datetime="2024-12-12T10:02:52+08:00">2024-12-12</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Java/%E6%A1%86%E6%9E%B6/" itemprop="url" rel="index"><span itemprop="name">框架</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Java/%E6%A1%86%E6%9E%B6/Spring/" itemprop="url" rel="index"><span itemprop="name">Spring</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Java/%E6%A1%86%E6%9E%B6/Spring/SpringIO/" itemprop="url" rel="index"><span itemprop="name">SpringIO</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>2.3k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>2 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="SpringBoot-教程之处理异步请求"><a href="#SpringBoot-教程之处理异步请求" class="headerlink" title="SpringBoot 教程之处理异步请求"></a>SpringBoot 教程之处理异步请求</h1><h2 id="EnableAsync-注解"><a href="#EnableAsync-注解" class="headerlink" title="@EnableAsync 注解"></a><code>@EnableAsync</code> 注解</h2><p>要使用 <code>@Async</code>，首先需要使用 <code>@EnableAsync</code> 注解开启 Spring Boot 中的异步特性。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@EnableAsync</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">AppConfig</span> &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>更详细的配置说明，可以参考：<a target="_blank" rel="noopener" href="https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/scheduling/annotation/AsyncConfigurer.html"><code>AsyncConfigurer</code></a></p>
-<h2 id="Async-注解"><a href="#Async-注解" class="headerlink" title="@Async 注解"></a><code>@Async</code> 注解</h2><h3 id="支持的用法"><a href="#支持的用法" class="headerlink" title="支持的用法"></a>支持的用法</h3><p>（1）<strong>无入参无返回值方法</strong></p>
-<p>您可以用 <code>@Async</code> 注解修饰方法，这表明这个方法是异步方式调用。换句话说，程序在调用此方法时会立即返回，而方法的实际执行发生在已提交给 Spring <code>TaskExecutor</code> 的任务中。在最简单的情况下，您可以将注解应用于返回 void 的方法，如以下示例所示：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Async</span></span><br><span class="line"><span class="keyword">void</span> <span class="title function_">doSomething</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="comment">// this will be executed asynchronously</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>（2）<strong>有入参无返回值方法</strong></p>
-<p>与使用 <code>@Scheduled</code> 注释注释的方法不同，这些方法可以指定参数，因为它们在运行时由调用者以“正常”方式调用，而不是由容器管理的调度任务调用。例如，以下代码是 <code>@Async</code> 注解的合法应用：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Async</span></span><br><span class="line"><span class="keyword">void</span> <span class="title function_">doSomething</span><span class="params">(String s)</span> &#123;</span><br><span class="line">    <span class="comment">// this will be executed asynchronously</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>（3）<strong>有入参有返回值方法</strong></p>
-<p>甚至可以异步调用返回值的方法。但是，这些方法需要具有 <code>Future</code> 类型的返回值。这仍然提供了异步执行的好处，以便调用者可以在调用 <code>Future</code> 上的 <code>get()</code> 之前执行其他任务。以下示例显示如何在返回值的方法上使用<code>@Async</code>：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Async</span></span><br><span class="line">Future&lt;String&gt; <span class="title function_">returnSomething</span><span class="params">(<span class="type">int</span> i)</span> &#123;</span><br><span class="line">    <span class="comment">// this will be executed asynchronously</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="不支持的用法"><a href="#不支持的用法" class="headerlink" title="不支持的用法"></a>不支持的用法</h3><p><code>@Async</code> 不能与生命周期回调一起使用，例如 <code>@PostConstruct</code>。</p>
-<p>要异步初始化 Spring bean，必须使用单独的初始化 Spring bean，然后在目标上调用 <code>@Async</code> 带注释的方法，如以下示例所示：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SampleBeanImpl</span> <span class="keyword">implements</span> <span class="title class_">SampleBean</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Async</span></span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">doSomething</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SampleBeanInitializer</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> SampleBean bean;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">SampleBeanInitializer</span><span class="params">(SampleBean bean)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.bean = bean;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@PostConstruct</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">initialize</span><span class="params">()</span> &#123;</span><br><span class="line">        bean.doSomething();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="明确指定执行器"><a href="#明确指定执行器" class="headerlink" title="明确指定执行器"></a>明确指定执行器</h2><p>默认情况下，在方法上指定 <code>@Async</code> 时，使用的执行器是在启用异步支持时配置的执行器，即如果使用 XML 或 <code>AsyncConfigurer</code> 实现（如果有），则为 <code>annotation-driven</code> 元素。但是，如果需要指示在执行给定方法时应使用默认值以外的执行器，则可以使用 <code>@Async</code> 注解的 value 属性。以下示例显示了如何执行此操作：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Async(&quot;otherExecutor&quot;)</span></span><br><span class="line"><span class="keyword">void</span> <span class="title function_">doSomething</span><span class="params">(String s)</span> &#123;</span><br><span class="line">    <span class="comment">// this will be executed asynchronously by &quot;otherExecutor&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>在这种情况下，“otherExecutor”可以是 Spring 容器中任何 Executor bean 的名称，也可以是与任何 Executor 关联的限定符的名称（例如，使用 <code>&lt;qualifier&gt;</code> 元素或 Spring 的 <code>@Qualifier</code> 注释指定） ）。</p>
-<h2 id="管理-Async-的异常"><a href="#管理-Async-的异常" class="headerlink" title="管理 @Async 的异常"></a>管理 <code>@Async</code> 的异常</h2><p>当 <code>@Async</code> 方法的返回值类型为 <code>Future</code> 型时，很容易管理在方法执行期间抛出的异常，因为在调用 <code>get</code> 结果时会抛出此异常。但是，对于返回值类型为 void 型的方法，异常不会被捕获且无法传输。您可以提供 <code>AsyncUncaughtExceptionHandler</code> 来处理此类异常。以下示例显示了如何执行此操作：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MyAsyncUncaughtExceptionHandler</span> <span class="keyword">implements</span> <span class="title class_">AsyncUncaughtExceptionHandler</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">handleUncaughtException</span><span class="params">(Throwable ex, Method method, Object... params)</span> &#123;</span><br><span class="line">        <span class="comment">// handle exception</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>默认情况下，仅记录异常。您可以使用 <code>AsyncConfigurer</code> 或 <code>&lt;task：annotation-driven /&gt;</code> XML 元素定义自定义 <code>AsyncUncaughtExceptionHandler</code>。</p>
-<h2 id="示例源码"><a href="#示例源码" class="headerlink" title="示例源码"></a>示例源码</h2><blockquote>
-<p>示例源码：<a target="_blank" rel="noopener" href="https://github.com/dunwu/spring-boot-tutorial/tree/master/codes/spring-boot-async">spring-boot-async</a></p>
-</blockquote>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#boot-features-external-config">Spring Boot 官方文档之 boot-features-external-config</a></li>
-<li><a target="_blank" rel="noopener" href="https://docs.spring.io/spring/docs/current/spring-framework-reference/integration.html#scheduling-annotation-support">Spring Boot 官方文档之 scheduling-annotation-support</a></li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="https://www.ligoudan.cn/pages/cb598e/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -3057,6 +2911,152 @@
 <h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
 <li><a target="_blank" rel="noopener" href="https://docs.spring.io/spring/docs/current/spring-framework-reference/core.html#beans-definition-profiles">Spring 官方文档之 Bean Definition Profiles</a></li>
 <li><a target="_blank" rel="noopener" href="https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#boot-features-profiles">Spring Boot 官方文档之 boot-features-profiles</a></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://www.ligoudan.cn/pages/92add2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/ligoudan.png">
+      <meta itemprop="name" content="李狗蛋">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LIGOUDAN">
+      <meta itemprop="description" content="天气不错哇，你看这大冰雹下得">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | LIGOUDAN">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/pages/92add2/" class="post-title-link" itemprop="url">spring-boot-async</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2019-11-18 14:55:01" itemprop="dateCreated datePublished" datetime="2019-11-18T14:55:01+08:00">2019-11-18</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-12-12 10:02:52" itemprop="dateModified" datetime="2024-12-12T10:02:52+08:00">2024-12-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Java/%E6%A1%86%E6%9E%B6/" itemprop="url" rel="index"><span itemprop="name">框架</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Java/%E6%A1%86%E6%9E%B6/Spring/" itemprop="url" rel="index"><span itemprop="name">Spring</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Java/%E6%A1%86%E6%9E%B6/Spring/SpringIO/" itemprop="url" rel="index"><span itemprop="name">SpringIO</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>2.3k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>2 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="SpringBoot-教程之处理异步请求"><a href="#SpringBoot-教程之处理异步请求" class="headerlink" title="SpringBoot 教程之处理异步请求"></a>SpringBoot 教程之处理异步请求</h1><h2 id="EnableAsync-注解"><a href="#EnableAsync-注解" class="headerlink" title="@EnableAsync 注解"></a><code>@EnableAsync</code> 注解</h2><p>要使用 <code>@Async</code>，首先需要使用 <code>@EnableAsync</code> 注解开启 Spring Boot 中的异步特性。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@EnableAsync</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">AppConfig</span> &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>更详细的配置说明，可以参考：<a target="_blank" rel="noopener" href="https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/scheduling/annotation/AsyncConfigurer.html"><code>AsyncConfigurer</code></a></p>
+<h2 id="Async-注解"><a href="#Async-注解" class="headerlink" title="@Async 注解"></a><code>@Async</code> 注解</h2><h3 id="支持的用法"><a href="#支持的用法" class="headerlink" title="支持的用法"></a>支持的用法</h3><p>（1）<strong>无入参无返回值方法</strong></p>
+<p>您可以用 <code>@Async</code> 注解修饰方法，这表明这个方法是异步方式调用。换句话说，程序在调用此方法时会立即返回，而方法的实际执行发生在已提交给 Spring <code>TaskExecutor</code> 的任务中。在最简单的情况下，您可以将注解应用于返回 void 的方法，如以下示例所示：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Async</span></span><br><span class="line"><span class="keyword">void</span> <span class="title function_">doSomething</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="comment">// this will be executed asynchronously</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>（2）<strong>有入参无返回值方法</strong></p>
+<p>与使用 <code>@Scheduled</code> 注释注释的方法不同，这些方法可以指定参数，因为它们在运行时由调用者以“正常”方式调用，而不是由容器管理的调度任务调用。例如，以下代码是 <code>@Async</code> 注解的合法应用：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Async</span></span><br><span class="line"><span class="keyword">void</span> <span class="title function_">doSomething</span><span class="params">(String s)</span> &#123;</span><br><span class="line">    <span class="comment">// this will be executed asynchronously</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>（3）<strong>有入参有返回值方法</strong></p>
+<p>甚至可以异步调用返回值的方法。但是，这些方法需要具有 <code>Future</code> 类型的返回值。这仍然提供了异步执行的好处，以便调用者可以在调用 <code>Future</code> 上的 <code>get()</code> 之前执行其他任务。以下示例显示如何在返回值的方法上使用<code>@Async</code>：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Async</span></span><br><span class="line">Future&lt;String&gt; <span class="title function_">returnSomething</span><span class="params">(<span class="type">int</span> i)</span> &#123;</span><br><span class="line">    <span class="comment">// this will be executed asynchronously</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="不支持的用法"><a href="#不支持的用法" class="headerlink" title="不支持的用法"></a>不支持的用法</h3><p><code>@Async</code> 不能与生命周期回调一起使用，例如 <code>@PostConstruct</code>。</p>
+<p>要异步初始化 Spring bean，必须使用单独的初始化 Spring bean，然后在目标上调用 <code>@Async</code> 带注释的方法，如以下示例所示：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SampleBeanImpl</span> <span class="keyword">implements</span> <span class="title class_">SampleBean</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Async</span></span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">doSomething</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SampleBeanInitializer</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> SampleBean bean;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">SampleBeanInitializer</span><span class="params">(SampleBean bean)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.bean = bean;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@PostConstruct</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">initialize</span><span class="params">()</span> &#123;</span><br><span class="line">        bean.doSomething();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="明确指定执行器"><a href="#明确指定执行器" class="headerlink" title="明确指定执行器"></a>明确指定执行器</h2><p>默认情况下，在方法上指定 <code>@Async</code> 时，使用的执行器是在启用异步支持时配置的执行器，即如果使用 XML 或 <code>AsyncConfigurer</code> 实现（如果有），则为 <code>annotation-driven</code> 元素。但是，如果需要指示在执行给定方法时应使用默认值以外的执行器，则可以使用 <code>@Async</code> 注解的 value 属性。以下示例显示了如何执行此操作：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Async(&quot;otherExecutor&quot;)</span></span><br><span class="line"><span class="keyword">void</span> <span class="title function_">doSomething</span><span class="params">(String s)</span> &#123;</span><br><span class="line">    <span class="comment">// this will be executed asynchronously by &quot;otherExecutor&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在这种情况下，“otherExecutor”可以是 Spring 容器中任何 Executor bean 的名称，也可以是与任何 Executor 关联的限定符的名称（例如，使用 <code>&lt;qualifier&gt;</code> 元素或 Spring 的 <code>@Qualifier</code> 注释指定） ）。</p>
+<h2 id="管理-Async-的异常"><a href="#管理-Async-的异常" class="headerlink" title="管理 @Async 的异常"></a>管理 <code>@Async</code> 的异常</h2><p>当 <code>@Async</code> 方法的返回值类型为 <code>Future</code> 型时，很容易管理在方法执行期间抛出的异常，因为在调用 <code>get</code> 结果时会抛出此异常。但是，对于返回值类型为 void 型的方法，异常不会被捕获且无法传输。您可以提供 <code>AsyncUncaughtExceptionHandler</code> 来处理此类异常。以下示例显示了如何执行此操作：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MyAsyncUncaughtExceptionHandler</span> <span class="keyword">implements</span> <span class="title class_">AsyncUncaughtExceptionHandler</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">handleUncaughtException</span><span class="params">(Throwable ex, Method method, Object... params)</span> &#123;</span><br><span class="line">        <span class="comment">// handle exception</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>默认情况下，仅记录异常。您可以使用 <code>AsyncConfigurer</code> 或 <code>&lt;task：annotation-driven /&gt;</code> XML 元素定义自定义 <code>AsyncUncaughtExceptionHandler</code>。</p>
+<h2 id="示例源码"><a href="#示例源码" class="headerlink" title="示例源码"></a>示例源码</h2><blockquote>
+<p>示例源码：<a target="_blank" rel="noopener" href="https://github.com/dunwu/spring-boot-tutorial/tree/master/codes/spring-boot-async">spring-boot-async</a></p>
+</blockquote>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#boot-features-external-config">Spring Boot 官方文档之 boot-features-external-config</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.spring.io/spring/docs/current/spring-framework-reference/integration.html#scheduling-annotation-support">Spring Boot 官方文档之 scheduling-annotation-support</a></li>
 </ul>
 
       

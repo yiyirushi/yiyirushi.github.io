@@ -205,7 +205,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.ligoudan.cn/pages/553160/">
+    <link itemprop="mainEntityOfPage" href="https://www.ligoudan.cn/pages/002159/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/uploads/ligoudan.png">
@@ -223,7 +223,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/pages/553160/" class="post-title-link" itemprop="url">Elastic 快速入门</a>
+          <a href="/pages/002159/" class="post-title-link" itemprop="url">Elastic 技术栈之 Kibana</a>
         </h2>
 
         <div class="post-meta-container">
@@ -268,14 +268,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>7.1k</span>
+      <span>4k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>6 分钟</span>
+      <span>4 分钟</span>
     </span>
 </div>
 
@@ -286,270 +286,179 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="Elastic-快速入门"><a href="#Elastic-快速入门" class="headerlink" title="Elastic 快速入门"></a>Elastic 快速入门</h1><blockquote>
-<p>开源协议：<a target="_blank" rel="noopener" href="https://github.com/elastic/elasticsearch/tree/7.4/licenses/APACHE-LICENSE-2.0.txt">Apache 2.0</a></p>
-</blockquote>
-<h2 id="1-简介"><a href="#1-简介" class="headerlink" title="1. 简介"></a>1. 简介</h2><h3 id="1-1-Elastic-Stack-是什么"><a href="#1-1-Elastic-Stack-是什么" class="headerlink" title="1.1. Elastic Stack 是什么"></a>1.1. Elastic Stack 是什么</h3><p><strong>Elastic Stack</strong> 即 <strong>ELK Stack</strong>。</p>
-<p>ELK 是指 Elastic 公司旗下三款产品 <a target="_blank" rel="noopener" href="https://www.elastic.co/cn/products/elasticsearch">ElasticSearch</a> 、<a target="_blank" rel="noopener" href="https://www.elastic.co/cn/products/logstash">Logstash</a> 、<a target="_blank" rel="noopener" href="https://www.elastic.co/cn/products/kibana">Kibana</a> 的首字母组合。</p>
+          <h1 id="Elastic-技术栈之-Kibana"><a href="#Elastic-技术栈之-Kibana" class="headerlink" title="Elastic 技术栈之 Kibana"></a>Elastic 技术栈之 Kibana</h1><h2 id="Discover"><a href="#Discover" class="headerlink" title="Discover"></a>Discover</h2><p>单击侧面导航栏中的 <code>Discover</code> ，可以显示 <code>Kibana</code> 的数据查询功能功能。</p>
+<p><img src="https://www.elastic.co/guide/en/kibana/current/images/tutorial-discover.png" alt="img"></p>
+<p>在搜索栏中，您可以输入 Elasticsearch 查询条件来搜索您的数据。您可以在 <code>Discover</code> 页面中浏览结果并在 <code>Visualize</code> 页面中创建已保存搜索条件的可视化。</p>
+<p>当前索引模式显示在查询栏下方。索引模式确定提交查询时搜索哪些索引。要搜索一组不同的索引，请从下拉菜单中选择不同的模式。要添加索引模式（index pattern），请转至 <code>Management/Kibana/Index Patterns</code> 并单击 <code>Add New</code>。</p>
+<p>您可以使用字段名称和您感兴趣的值构建搜索。对于数字字段，可以使用比较运算符，如大于（&gt;），小于（&lt;）或等于（&#x3D;）。您可以将元素与逻辑运算符 <code>AND</code>，<code>OR</code> 和 <code>NOT</code> 链接，全部使用大写。</p>
+<p>默认情况下，每个匹配文档都显示所有字段。要选择要显示的文档字段，请将鼠标悬停在“可用字段”列表上，然后单击要包含的每个字段旁边的添加按钮。例如，如果只添加 account_number，则显示将更改为包含五个帐号的简单列表：</p>
+<p><img src="https://www.elastic.co/guide/en/kibana/6.1/images/tutorial-discover-3.png" alt="img"></p>
+<h3 id="查询语义"><a href="#查询语义" class="headerlink" title="查询语义"></a>查询语义</h3><p>kibana 的搜索栏遵循 <a target="_blank" rel="noopener" href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-query-string-query.html#query-string-syntax">query-string-syntax</a> 文档中所说明的查询语义。</p>
+<p>这里说明一些最基本的查询语义。</p>
+<p>查询字符串会被解析为一系列的术语和运算符。一个术语可以是一个单词（如：quick、brown）或用双引号包围的短语（如”quick brown”）。</p>
+<p>查询操作允许您自定义搜索 - 下面介绍了可用的选项。</p>
+<h4 id="字段名称"><a href="#字段名称" class="headerlink" title="字段名称"></a>字段名称</h4><p>正如查询字符串查询中所述，将在搜索条件中搜索 default_field，但可以在查询语法中指定其他字段：</p>
+<p>例如：</p>
 <ul>
-<li>Elasticsearch 是一个搜索和分析引擎。</li>
-<li>Logstash 是服务器端数据处理管道，能够同时从多个来源采集数据，转换数据，然后将数据发送到诸如 Elasticsearch 等“存储库”中。</li>
-<li>Kibana 则可以让用户在 Elasticsearch 中使用图形和图表对数据进行可视化。</li>
+<li>查询 <code>status</code> 字段中包含 <code>active</code> 关键字</li>
 </ul>
-<p>而 Elastic Stack 是 ELK Stack 的更新换代产品，最新产品引入了轻量型的单一功能数据采集器，并把它们叫做 <a target="_blank" rel="noopener" href="https://www.elastic.co/cn/products/beats">Beats</a>。</p>
-<h3 id="1-2-为什么使用-Elastic-Stack"><a href="#1-2-为什么使用-Elastic-Stack" class="headerlink" title="1.2. 为什么使用 Elastic Stack"></a>1.2. 为什么使用 Elastic Stack</h3><p>对于有一定规模的公司来说，通常会很多个应用，并部署在大量的服务器上。运维和开发人员常常需要通过查看日志来定位问题。如果应用是集群化部署，试想如果登录一台台服务器去查看日志，是多么费时费力。</p>
-<p>而通过 ELK 这套解决方案，可以同时实现日志收集、日志搜索和日志分析的功能。</p>
-<h3 id="1-3-Elastic-Stack-架构"><a href="#1-3-Elastic-Stack-架构" class="headerlink" title="1.3. Elastic Stack 架构"></a>1.3. Elastic Stack 架构</h3><p><img src="https://www.elastic.co/guide/en/logstash/current/static/images/deploy3.png" alt="img"></p>
-<blockquote>
-<p><strong>说明</strong></p>
-<p>以上是 Elastic Stack 的一个架构图。从图中可以清楚的看到数据流向。</p>
-<ul>
-<li><p><a target="_blank" rel="noopener" href="https://www.elastic.co/products/beats">Beats</a> 是单一用途的数据传输平台，它可以将多台机器的数据发送到 Logstash 或 ElasticSearch。但 Beats 并不是不可或缺的一环，所以本文中暂不介绍。</p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://www.elastic.co/products/logstash">Logstash</a> 是一个动态数据收集管道。支持以 TCP&#x2F;UDP&#x2F;HTTP 多种方式收集数据（也可以接受 Beats 传输来的数据），并对数据做进一步丰富或提取字段处理。</p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://www.elastic.co/products/elasticsearch">ElasticSearch</a> 是一个基于 JSON 的分布式的搜索和分析引擎。作为 ELK 的核心，它集中存储数据。</p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://www.elastic.co/products/kibana">Kibana</a> 是 ELK 的用户界面。它将收集的数据进行可视化展示（各种报表、图形化数据），并提供配置、管理 ELK 的界面。</p>
-</li>
-</ul>
-</blockquote>
-<h2 id="2-ElasticSearch"><a href="#2-ElasticSearch" class="headerlink" title="2. ElasticSearch"></a>2. ElasticSearch</h2><blockquote>
-<p><a target="_blank" rel="noopener" href="https://github.com/elastic/elasticsearch">Elasticsearch</a> 是一个分布式、RESTful 风格的搜索和数据分析引擎，能够解决不断涌现出的各种用例。 作为 Elastic Stack 的核心，它集中存储您的数据，帮助您发现意料之中以及意料之外的情况。</p>
-</blockquote>
-<h3 id="2-1-ElasticSearch-简介"><a href="#2-1-ElasticSearch-简介" class="headerlink" title="2.1. ElasticSearch 简介"></a>2.1. ElasticSearch 简介</h3><p><a target="_blank" rel="noopener" href="https://github.com/elastic/elasticsearch">Elasticsearch</a> 基于搜索库 <a target="_blank" rel="noopener" href="https://github.com/apache/lucene-solr">Lucene</a> 开发。ElasticSearch 隐藏了 Lucene 的复杂性，提供了简单易用的 REST API &#x2F; Java API 接口（另外还有其他语言的 API 接口）。</p>
-<p>ElasticSearch 可以视为一个文档存储，它<strong>将复杂数据结构序列化为 JSON 存储</strong>。</p>
-<p><strong>ElasticSearch 是近乎于实时的全文搜素</strong>，这是指：</p>
-<ul>
-<li>从写入数据到数据可以被搜索，存在较小的延迟（大概是 1s）</li>
-<li>基于 ES 执行搜索和分析可以达到秒级</li>
-</ul>
-<h4 id="2-1-1-核心概念"><a href="#2-1-1-核心概念" class="headerlink" title="2.1.1. 核心概念"></a>2.1.1. 核心概念</h4><ul>
-<li><strong><code>索引（Index）</code></strong> 可以认为是文档（document）的优化集合。</li>
-<li>每个 <strong><code>文档（document）</code></strong> 都是字段（field）的集合。</li>
-<li><strong><code>字段（field）</code></strong> 是包含数据的键值对。</li>
-<li>默认情况下，Elasticsearch 对每个字段中的所有数据建立索引，并且每个索引字段都具有专用的优化数据结构。</li>
-<li>每个索引里可以有一个或者多个类型（type）。<code>类型（type）</code> 是 index 的一个逻辑分类，</li>
-<li>当单台机器不足以存储大量数据时，Elasticsearch 可以将一个索引中的数据切分为多个 <strong><code>分片（shard）</code></strong> 。 <strong><code>分片（shard）</code></strong> 分布在多台服务器上存储。有了 shard 就可以横向扩展，存储更多数据，让搜索和分析等操作分布到多台服务器上去执行，提升吞吐量和性能。每个 shard 都是一个 lucene index。</li>
-<li>任何一个服务器随时可能故障或宕机，此时 shard 可能就会丢失，因此可以为每个 shard 创建多个 **<code>副本（replica）</code>**。replica 可以在 shard 故障时提供备用服务，保证数据不丢失，多个 replica 还可以提升搜索操作的吞吐量和性能。primary shard（建立索引时一次设置，不能修改，默认 5 个），replica shard（随时修改数量，默认 1 个），默认每个索引 10 个 shard，5 个 primary shard，5 个 replica shard，最小的高可用配置，是 2 台服务器。</li>
-</ul>
-<h3 id="2-2-ElasticSearch-原理"><a href="#2-2-ElasticSearch-原理" class="headerlink" title="2.2. ElasticSearch 原理"></a>2.2. ElasticSearch 原理</h3><h4 id="2-2-1-ES-写数据过程"><a href="#2-2-1-ES-写数据过程" class="headerlink" title="2.2.1. ES 写数据过程"></a>2.2.1. ES 写数据过程</h4><ul>
-<li>客户端选择一个 node 发送请求过去，这个 node 就是 <code>coordinating node</code>（协调节点）。</li>
-<li><code>coordinating node</code> 对 document 进行<strong>路由</strong>，将请求转发给对应的 node（有 primary shard）。</li>
-<li>实际的 node 上的 <code>primary shard</code> 处理请求，然后将数据同步到 <code>replica node</code>。</li>
-<li><code>coordinating node</code> 如果发现 <code>primary node</code> 和所有 <code>replica node</code> 都搞定之后，就返回响应结果给客户端。</li>
-</ul>
-<p><img src="https://github.com/doocs/advanced-java/raw/master/images/es-write.png" alt="es-write"></p>
-<h4 id="2-2-2-es-读数据过程"><a href="#2-2-2-es-读数据过程" class="headerlink" title="2.2.2. es 读数据过程"></a>2.2.2. es 读数据过程</h4><p>可以通过 <code>doc id</code> 来查询，会根据 <code>doc id</code> 进行 hash，判断出来当时把 <code>doc id</code> 分配到了哪个 shard 上面去，从那个 shard 去查询。</p>
-<ul>
-<li>客户端发送请求到<strong>任意</strong>一个 node，成为 <code>coordinate node</code>。</li>
-<li><code>coordinate node</code> 对 <code>doc id</code> 进行哈希路由，将请求转发到对应的 node，此时会使用 <code>round-robin</code> <strong>随机轮询算法</strong>，在 <code>primary shard</code> 以及其所有 replica 中随机选择一个，让读请求负载均衡。</li>
-<li>接收请求的 node 返回 document 给 <code>coordinate node</code>。</li>
-<li><code>coordinate node</code> 返回 document 给客户端。</li>
-</ul>
-<h4 id="2-2-3-写数据底层原理"><a href="#2-2-3-写数据底层原理" class="headerlink" title="2.2.3. 写数据底层原理"></a>2.2.3. 写数据底层原理</h4><p><img src="https://github.com/doocs/advanced-java/raw/master/images/es-write-detail.png" alt="es-write-detail"></p>
-<p>先写入内存 buffer，在 buffer 里的时候数据是搜索不到的；同时将数据写入 translog 日志文件。</p>
-<p>如果 buffer 快满了，或者到一定时间，就会将内存 buffer 数据 <code>refresh</code> 到一个新的 <code>segment file</code> 中，但是此时数据不是直接进入 <code>segment file</code> 磁盘文件，而是先进入 <code>os cache</code> 。这个过程就是 <code>refresh</code>。</p>
-<p>每隔 1 秒钟，es 将 buffer 中的数据写入一个<strong>新的</strong> <code>segment file</code>，每秒钟会产生一个<strong>新的磁盘文件</strong> <code>segment file</code>，这个 <code>segment file</code> 中就存储最近 1 秒内 buffer 中写入的数据。</p>
-<p>但是如果 buffer 里面此时没有数据，那当然不会执行 refresh 操作，如果 buffer 里面有数据，默认 1 秒钟执行一次 refresh 操作，刷入一个新的 segment file 中。</p>
-<p>操作系统里面，磁盘文件其实都有一个东西，叫做 <code>os cache</code>，即操作系统缓存，就是说数据写入磁盘文件之前，会先进入 <code>os cache</code>，先进入操作系统级别的一个内存缓存中去。只要 <code>buffer</code> 中的数据被 refresh 操作刷入 <code>os cache</code>中，这个数据就可以被搜索到了。</p>
-<p>为什么叫 es 是<strong>准实时</strong>的？ <code>NRT</code>，全称 <code>near real-time</code>。默认是每隔 1 秒 refresh 一次的，所以 es 是准实时的，因为写入的数据 1 秒之后才能被看到。可以通过 es 的 <code>restful api</code> 或者 <code>java api</code>，<strong>手动</strong>执行一次 refresh 操作，就是手动将 buffer 中的数据刷入 <code>os cache</code>中，让数据立马就可以被搜索到。只要数据被输入 <code>os cache</code> 中，buffer 就会被清空了，因为不需要保留 buffer 了，数据在 translog 里面已经持久化到磁盘去一份了。</p>
-<p>重复上面的步骤，新的数据不断进入 buffer 和 translog，不断将 <code>buffer</code> 数据写入一个又一个新的 <code>segment file</code> 中去，每次 <code>refresh</code> 完 buffer 清空，translog 保留。随着这个过程推进，translog 会变得越来越大。当 translog 达到一定长度的时候，就会触发 <code>commit</code> 操作。</p>
-<p>commit 操作发生第一步，就是将 buffer 中现有数据 <code>refresh</code> 到 <code>os cache</code> 中去，清空 buffer。然后，将一个 <code>commit point</code> 写入磁盘文件，里面标识着这个 <code>commit point</code> 对应的所有 <code>segment file</code>，同时强行将 <code>os cache</code> 中目前所有的数据都 <code>fsync</code> 到磁盘文件中去。最后<strong>清空</strong> 现有 translog 日志文件，重启一个 translog，此时 commit 操作完成。</p>
-<p>这个 commit 操作叫做 <code>flush</code>。默认 30 分钟自动执行一次 <code>flush</code>，但如果 translog 过大，也会触发 <code>flush</code>。flush 操作就对应着 commit 的全过程，我们可以通过 es api，手动执行 flush 操作，手动将 os cache 中的数据 fsync 强刷到磁盘上去。</p>
-<p>translog 日志文件的作用是什么？你执行 commit 操作之前，数据要么是停留在 buffer 中，要么是停留在 os cache 中，无论是 buffer 还是 os cache 都是内存，一旦这台机器死了，内存中的数据就全丢了。所以需要将数据对应的操作写入一个专门的日志文件 <code>translog</code> 中，一旦此时机器宕机，再次重启的时候，es 会自动读取 translog 日志文件中的数据，恢复到内存 buffer 和 os cache 中去。</p>
-<p>translog 其实也是先写入 os cache 的，默认每隔 5 秒刷一次到磁盘中去，所以默认情况下，可能有 5 秒的数据会仅仅停留在 buffer 或者 translog 文件的 os cache 中，如果此时机器挂了，会<strong>丢失</strong> 5 秒钟的数据。但是这样性能比较好，最多丢 5 秒的数据。也可以将 translog 设置成每次写操作必须是直接 <code>fsync</code> 到磁盘，但是性能会差很多。</p>
-<p>实际上你在这里，如果面试官没有问你 es 丢数据的问题，你可以在这里给面试官炫一把，你说，其实 es 第一是准实时的，数据写入 1 秒后可以搜索到；可能会丢失数据的。有 5 秒的数据，停留在 buffer、translog os cache、segment file os cache 中，而不在磁盘上，此时如果宕机，会导致 5 秒的<strong>数据丢失</strong>。</p>
-<p><strong>总结一下</strong>，数据先写入内存 buffer，然后每隔 1s，将数据 refresh 到 os cache，到了 os cache 数据就能被搜索到（所以我们才说 es 从写入到能被搜索到，中间有 1s 的延迟）。每隔 5s，将数据写入 translog 文件（这样如果机器宕机，内存数据全没，最多会有 5s 的数据丢失），translog 大到一定程度，或者默认每隔 30mins，会触发 commit 操作，将缓冲区的数据都 flush 到 segment file 磁盘文件中。</p>
-<blockquote>
-<p>数据写入 segment file 之后，同时就建立好了倒排索引。</p>
-</blockquote>
-<h4 id="2-2-4-删除-更新数据底层原理"><a href="#2-2-4-删除-更新数据底层原理" class="headerlink" title="2.2.4. 删除&#x2F;更新数据底层原理"></a>2.2.4. 删除&#x2F;更新数据底层原理</h4><p>如果是删除操作，commit 的时候会生成一个 <code>.del</code> 文件，里面将某个 doc 标识为 <code>deleted</code> 状态，那么搜索的时候根据 <code>.del</code> 文件就知道这个 doc 是否被删除了。</p>
-<p>如果是更新操作，就是将原来的 doc 标识为 <code>deleted</code> 状态，然后新写入一条数据。</p>
-<p>buffer 每 refresh 一次，就会产生一个 <code>segment file</code>，所以默认情况下是 1 秒钟一个 <code>segment file</code>，这样下来 <code>segment file</code> 会越来越多，此时会定期执行 merge。每次 merge 的时候，会将多个 <code>segment file</code> 合并成一个，同时这里会将标识为 <code>deleted</code> 的 doc 给<strong>物理删除掉</strong>，然后将新的 <code>segment file</code> 写入磁盘，这里会写一个 <code>commit point</code>，标识所有新的 <code>segment file</code>，然后打开 <code>segment file</code> 供搜索使用，同时删除旧的 <code>segment file</code>。</p>
-<h4 id="2-2-5-底层-lucene"><a href="#2-2-5-底层-lucene" class="headerlink" title="2.2.5. 底层 lucene"></a>2.2.5. 底层 lucene</h4><p>简单来说，lucene 就是一个 jar 包，里面包含了封装好的各种建立倒排索引的算法代码。我们用 Java 开发的时候，引入 lucene jar，然后基于 lucene 的 api 去开发就可以了。</p>
-<p>通过 lucene，我们可以将已有的数据建立索引，lucene 会在本地磁盘上面，给我们组织索引的数据结构。</p>
-<h4 id="2-2-6-倒排索引"><a href="#2-2-6-倒排索引" class="headerlink" title="2.2.6. 倒排索引"></a>2.2.6. 倒排索引</h4><p>在搜索引擎中，每个文档都有一个对应的文档 ID，文档内容被表示为一系列关键词的集合。例如，文档 1 经过分词，提取了 20 个关键词，每个关键词都会记录它在文档中出现的次数和出现位置。</p>
-<p>那么，倒排索引就是<strong>关键词到文档</strong> ID 的映射，每个关键词都对应着一系列的文件，这些文件中都出现了关键词。</p>
-<p>举个栗子。</p>
-<p>有以下文档：</p>
-<table>
-<thead>
-<tr>
-<th>DocId</th>
-<th>Doc</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>1</td>
-<td>谷歌地图之父跳槽 Facebook</td>
-</tr>
-<tr>
-<td>2</td>
-<td>谷歌地图之父加盟 Facebook</td>
-</tr>
-<tr>
-<td>3</td>
-<td>谷歌地图创始人拉斯离开谷歌加盟 Facebook</td>
-</tr>
-<tr>
-<td>4</td>
-<td>谷歌地图之父跳槽 Facebook 与 Wave 项目取消有关</td>
-</tr>
-<tr>
-<td>5</td>
-<td>谷歌地图之父拉斯加盟社交网站 Facebook</td>
-</tr>
-</tbody></table>
-<p>对文档进行分词之后，得到以下<strong>倒排索引</strong>。</p>
-<table>
-<thead>
-<tr>
-<th>WordId</th>
-<th>Word</th>
-<th>DocIds</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>1</td>
-<td>谷歌</td>
-<td>1,2,3,4,5</td>
-</tr>
-<tr>
-<td>2</td>
-<td>地图</td>
-<td>1,2,3,4,5</td>
-</tr>
-<tr>
-<td>3</td>
-<td>之父</td>
-<td>1,2,4,5</td>
-</tr>
-<tr>
-<td>4</td>
-<td>跳槽</td>
-<td>1,4</td>
-</tr>
-<tr>
-<td>5</td>
-<td>Facebook</td>
-<td>1,2,3,4,5</td>
-</tr>
-<tr>
-<td>6</td>
-<td>加盟</td>
-<td>2,3,5</td>
-</tr>
-<tr>
-<td>7</td>
-<td>创始人</td>
-<td>3</td>
-</tr>
-<tr>
-<td>8</td>
-<td>拉斯</td>
-<td>3,5</td>
-</tr>
-<tr>
-<td>9</td>
-<td>离开</td>
-<td>3</td>
-</tr>
-<tr>
-<td>10</td>
-<td>与</td>
-<td>4</td>
-</tr>
-<tr>
-<td>..</td>
-<td>..</td>
-<td>..</td>
-</tr>
-</tbody></table>
-<p>另外，实用的倒排索引还可以记录更多的信息，比如文档频率信息，表示在文档集合中有多少个文档包含某个单词。</p>
-<p>那么，有了倒排索引，搜索引擎可以很方便地响应用户的查询。比如用户输入查询 <code>Facebook</code>，搜索系统查找倒排索引，从中读出包含这个单词的文档，这些文档就是提供给用户的搜索结果。</p>
-<p>要注意倒排索引的两个重要细节：</p>
-<ul>
-<li>倒排索引中的所有词项对应一个或多个文档；</li>
-<li>倒排索引中的词项<strong>根据字典顺序升序排列</strong></li>
-</ul>
-<blockquote>
-<p>上面只是一个简单的栗子，并没有严格按照字典顺序升序排列。</p>
-</blockquote>
-<h2 id="3-Logstash"><a href="#3-Logstash" class="headerlink" title="3. Logstash"></a>3. Logstash</h2><blockquote>
-<p><a target="_blank" rel="noopener" href="https://github.com/elastic/logstash">Logstash</a> 是开源的服务器端数据处理管道，能够同时从多个来源采集数据，转换数据，然后将数据发送到您最喜欢的“存储库”中。</p>
-</blockquote>
-<h3 id="3-1-Logstash-简介"><a href="#3-1-Logstash-简介" class="headerlink" title="3.1. Logstash 简介"></a>3.1. Logstash 简介</h3><p>Logstash 可以传输和处理你的日志、事务或其他数据。</p>
-<p>Logstash 是 Elasticsearch 的最佳数据管道。</p>
-<p>Logstash 是插件式管理模式，在输入、过滤、输出以及编码过程中都可以使用插件进行定制。Logstash 社区有超过 200 种可用插件。</p>
-<h3 id="3-2-Logstash-原理"><a href="#3-2-Logstash-原理" class="headerlink" title="3.2. Logstash 原理"></a>3.2. Logstash 原理</h3><p>Logstash 有两个必要元素：<code>input</code> 和 <code>output</code> ，一个可选元素：<code>filter</code>。</p>
-<p>这三个元素，分别代表 Logstash 事件处理的三个阶段：输入 &gt; 过滤器 &gt; 输出。</p>
-<p><img src="https://www.elastic.co/guide/en/logstash/current/static/images/basic_logstash_pipeline.png" alt="img"></p>
-<ul>
-<li><strong>input</strong> - 负责从数据源采集数据。</li>
-<li><strong><code>filter</code></strong> - 将数据修改为你指定的格式或内容。</li>
-<li><strong><code>output</code></strong> - 将数据传输到目的地。</li>
-</ul>
-<p>在实际应用场景中，通常输入、输出、过滤器不止一个。Logstash 的这三个元素都使用插件式管理方式，用户可以根据应用需要，灵活的选用各阶段需要的插件，并组合使用。</p>
-<h2 id="4-Beats"><a href="#4-Beats" class="headerlink" title="4. Beats"></a>4. Beats</h2><blockquote>
-<p><strong><a target="_blank" rel="noopener" href="https://github.com/elastic/beats">Beats</a> 是安装在服务器上的数据中转代理</strong>。</p>
-<p>Beats 可以将数据直接传输到 Elasticsearch 或传输到 Logstash 。</p>
-</blockquote>
-<p><img src="https://www.elastic.co/guide/en/beats/libbeat/current/images/beats-platform.png" alt="img"></p>
-<p>Beats 有多种类型，可以根据实际应用需要选择合适的类型。</p>
-<p>常用的类型有：</p>
-<ul>
-<li><strong>Packetbeat：</strong>网络数据包分析器，提供有关您的应用程序服务器之间交换的事务的信息。</li>
-<li><strong>Filebeat：</strong>从您的服务器发送日志文件。</li>
-<li><strong>Metricbeat：</strong>是一个服务器监视代理程序，它定期从服务器上运行的操作系统和服务收集指标。</li>
-<li><strong>Winlogbeat：</strong>提供 Windows 事件日志。</li>
-</ul>
-<h3 id="4-1-Filebeat-简介"><a href="#4-1-Filebeat-简介" class="headerlink" title="4.1. Filebeat 简介"></a>4.1. Filebeat 简介</h3><blockquote>
-<p>_由于本人仅接触过 Filebeat，所以本文只介绍 Beats 组件中的 Filebeat_。</p>
-</blockquote>
-<p>相比 Logstash，FileBeat 更加轻量化。</p>
-<p>在任何环境下，应用程序都有停机的可能性。 Filebeat 读取并转发日志行，如果中断，则会记住所有事件恢复联机状态时所在位置。</p>
-<p>Filebeat 带有内部模块（auditd，Apache，Nginx，System 和 MySQL），可通过一个指定命令来简化通用日志格式的收集，解析和可视化。</p>
-<p>FileBeat 不会让你的管道超负荷。FileBeat 如果是向 Logstash 传输数据，当 Logstash 忙于处理数据，会通知 FileBeat 放慢读取速度。一旦拥塞得到解决，FileBeat 将恢复到原来的速度并继续传播。</p>
-<p><img src="https://www.elastic.co/guide/en/beats/filebeat/current/images/filebeat.png" alt="img"></p>
-<h3 id="4-2-Filebeat-原理"><a href="#4-2-Filebeat-原理" class="headerlink" title="4.2. Filebeat 原理"></a>4.2. Filebeat 原理</h3><p>Filebeat 有两个主要组件：</p>
-<ul>
-<li><code>harvester</code>：负责读取一个文件的内容。它会逐行读取文件内容，并将内容发送到输出目的地。</li>
-<li><code>prospector</code>：负责管理 harvester 并找到所有需要读取的文件源。比如类型是日志，prospector 就会遍历制定路径下的所有匹配要求的文件。</li>
-</ul>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">filebeat.prospectors:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">type:</span> <span class="string">log</span></span><br><span class="line">    <span class="attr">paths:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">/var/log/*.log</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">/var/path2/*.log</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">status:</span>active</span><br></pre></td></tr></table></figure>
 
-<p>Filebeat 保持每个文件的状态，并经常刷新注册表文件中的磁盘状态。状态用于记住 harvester 正在读取的最后偏移量，并确保发送所有日志行。</p>
-<p>Filebeat 将每个事件的传递状态存储在注册表文件中。所以它能保证事件至少传递一次到配置的输出，没有数据丢失。</p>
-<h2 id="5-运维"><a href="#5-运维" class="headerlink" title="5. 运维"></a>5. 运维</h2><ul>
-<li><a href="../01.Elasticsearch/20.Elasticsearch%E8%BF%90%E7%BB%B4.md">ElasticSearch 运维</a></li>
-<li><a href="07.Logstash%E8%BF%90%E7%BB%B4.md">Logstash 运维</a></li>
-<li><a href="05.Kibana%E8%BF%90%E7%BB%B4.md">Kibana 运维</a></li>
-<li><a href="03.Filebeat%E8%BF%90%E7%BB%B4.md">Beats 运维</a></li>
+<ul>
+<li><code>title</code> 字段包含 <code>quick</code> 或 <code>brown</code> 关键字。如果您省略 <code>OR</code> 运算符，则将使用默认运算符</li>
 </ul>
-<h2 id="6-参考资料"><a href="#6-参考资料" class="headerlink" title="6. 参考资料"></a>6. 参考资料</h2><ul>
-<li><strong>官方资源</strong><ul>
-<li><a target="_blank" rel="noopener" href="https://www.elastic.co/cn/products/elasticsearch">Elasticsearch 官网</a></li>
-<li><a target="_blank" rel="noopener" href="https://github.com/elastic/elasticsearch">Elasticsearch Github</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.elastic.co/guide/en/elasticsearch/reference/current/index.html">Elasticsearch 官方文档</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.elastic.co/cn/products/logstash">Logstash 官网</a></li>
-<li><a target="_blank" rel="noopener" href="https://github.com/elastic/logstash">Logstash Github</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.elastic.co/guide/en/logstash/current/index.html">Logstash 官方文档</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.elastic.co/cn/products/kibana">Kibana 官网</a></li>
-<li><a target="_blank" rel="noopener" href="https://github.com/elastic/kibana">Kibana Github</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.elastic.co/guide/en/kibana/current/index.html">Kibana 官方文档</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.elastic.co/cn/products/beats">Beats 官网</a></li>
-<li><a target="_blank" rel="noopener" href="https://github.com/elastic/beats">Beats Github</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.elastic.co/guide/en/beats/libbeat/current/index.html">Beats 官方文档</a></li>
+<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">title:</span>(quick <span class="keyword">OR</span> brown)</span><br><span class="line"><span class="symbol">title:</span>(quick brown)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>author 字段查找精确的短语 “john smith”，即精确查找。</li>
 </ul>
-</li>
-<li><strong>文章</strong><ul>
-<li><a target="_blank" rel="noopener" href="https://www.elastic.co/cn/what-is/elk-stack">什么是 ELK Stack？</a></li>
-<li><a target="_blank" rel="noopener" href="https://github.com/doocs/advanced-java/blob/master/docs/high-concurrency/es-introduction.md">https://github.com/doocs/advanced-java/blob/master/docs/high-concurrency/es-introduction.md</a></li>
-<li><a target="_blank" rel="noopener" href="https://github.com/doocs/advanced-java/blob/master/docs/high-concurrency/es-write-query-search.md">es-write-query-search</a></li>
+<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">author:</span><span class="string">&quot;John Smith&quot;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>任意字段 <code>book.title</code>，<code>book.content</code> 或 <code>book.date</code> 都包含 <code>quick</code> 或 <code>brown</code>（注意我们需要如何使用 <code>\*</code> 表示通配符）</li>
 </ul>
-</li>
+<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">book.\*:(quick brown)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>title 字段包含任意非 null 值</li>
 </ul>
+<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="emphasis">_exists_</span>:title</span><br></pre></td></tr></table></figure>
+
+<h4 id="通配符"><a href="#通配符" class="headerlink" title="通配符"></a>通配符</h4><p>ELK 提供了 ? 和 * 两个通配符。</p>
+<ul>
+<li><code>?</code> 表示任意单个字符；</li>
+<li><code>*</code> 表示任意零个或多个字符。</li>
+</ul>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">qu</span>?ck <span class="keyword">bro</span>*</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>注意：通配符查询会使用大量的内存并且执行性能较为糟糕，所以请慎用。</strong> &gt; <strong>提示</strong>：纯通配符 <code>*</code> 被写入 <a target="_blank" rel="noopener" href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-exists-query.html">exsits</a> 查询，从而提高了查询效率。因此，通配符 <code>field：*</code> 将匹配包含空值的文档，如：<code>&#123;“field”：“”&#125;</code>，但是如果字段丢失或显示将值置为 null 则不匹配，如：<code>“field”：null&#125;</code> &gt; <strong>提示</strong>：在一个单词的开头（例如：<code>*ing</code>）使用通配符这种方式的查询量特别大，因为索引中的所有术语都需要检查，以防万一匹配。通过将 <code>allow_leading_wildcard</code> 设置为 <code>false</code>，可以禁用。</p>
+</blockquote>
+<h4 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h4><p>可以通过 <code>/</code> 将正则表达式包裹在查询字符串中进行查询</p>
+<p>例：</p>
+<figure class="highlight excel"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">na</span><span class="symbol">me:</span>/joh?<span class="built_in">n</span>(<span class="comment">ath[oa]n</span>)/</span><br></pre></td></tr></table></figure>
+
+<p>支持的正则表达式语义可以参考：<a target="_blank" rel="noopener" href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-regexp-query.html#regexp-syntax">Regular expression syntax</a></p>
+<h4 id="模糊查询"><a href="#模糊查询" class="headerlink" title="模糊查询"></a>模糊查询</h4><p>我们可以使用 <code>~</code> 运算符来进行模糊查询。</p>
+<p>例：</p>
+<p>假设我们实际想查询</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">quick brown forks</span></span><br></pre></td></tr></table></figure>
+
+<p>但是，由于拼写错误，我们的查询关键字变成如下情况，依然可以查到想要的结果。</p>
+<figure class="highlight livescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">quikc<span class="string">\~</span> brwn<span class="string">\~</span> foks<span class="string">\~</span></span><br></pre></td></tr></table></figure>
+
+<p>这种模糊查询使用 Damerau-Levenshtein 距离来查找所有匹配最多两个更改的项。所谓的更改是指单个字符的插入，删除或替换，或者两个相邻字符的换位。</p>
+<p>默认编辑距离为 <code>2</code>，但编辑距离为 <code>1</code> 应足以捕捉所有人类拼写错误的 80％。它可以被指定为：</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">quikc</span>\~<span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="近似检索"><a href="#近似检索" class="headerlink" title="近似检索"></a>近似检索</h4><p>尽管短语查询（例如，<code>john smith</code>）期望所有的词条都是完全相同的顺序，但是近似查询允许指定的单词进一步分开或以不同的顺序排列。与模糊查询可以为单词中的字符指定最大编辑距离一样，近似搜索也允许我们指定短语中单词的最大编辑距离：</p>
+<p>例</p>
+<figure class="highlight livescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;fox quick&quot;</span><span class="string">\~5</span></span><br></pre></td></tr></table></figure>
+
+<p>字段中的文本越接近查询字符串中指定的原始顺序，该文档就越被认为是相关的。当与上面的示例查询相比时，短语 <code>&quot;quick fox&quot;</code> 将被认为比 <code>&quot;quick brown fox&quot;</code> 更近似查询条件。</p>
+<h4 id="范围"><a href="#范围" class="headerlink" title="范围"></a>范围</h4><p>可以为日期，数字或字符串字段指定范围。闭区间范围用方括号 <code>[min TO max]</code> 和开区间范围用花括号 <code>&#123;min TO max&#125;</code> 来指定。</p>
+<p>我们不妨来看一些示例。</p>
+<ul>
+<li>2012 年的所有日子</li>
+</ul>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">date</span>:[<span class="number">2012</span>-<span class="number">01</span>-<span class="number">01</span> TO <span class="number">2012</span>-<span class="number">12</span>-<span class="number">31</span>]</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>数字 1 到 5</li>
+</ul>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">count</span>:[<span class="number">1</span> TO <span class="number">5</span>]</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>在 <code>alpha</code> 和 <code>omega</code> 之间的标签，不包括 <code>alpha</code> 和 <code>omega</code></li>
+</ul>
+<figure class="highlight subunit"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">tags:</span>&#123;alpha TO omega&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>10 以上的数字</li>
+</ul>
+<figure class="highlight sqf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">count</span>:[<span class="number">10</span> <span class="keyword">TO</span> *]</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>2012 年以前的所有日期</li>
+</ul>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">date</span>:&#123;* TO <span class="number">2012</span>-<span class="number">01</span>-<span class="number">01</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<p>此外，开区间和闭区间也可以组合使用</p>
+<ul>
+<li>数组 1 到 5，但不包括 5</li>
+</ul>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">count</span>:[<span class="number">1</span> TO <span class="number">5</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<p>一边无界的范围也可以使用以下语法：</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">age</span>:&gt;<span class="number">10</span></span><br><span class="line"><span class="attribute">age</span>:&gt;=<span class="number">10</span></span><br><span class="line"><span class="attribute">age</span>:&lt;<span class="number">10</span></span><br><span class="line"><span class="attribute">age</span>:&lt;=<span class="number">10</span></span><br></pre></td></tr></table></figure>
+
+<p>当然，你也可以使用 AND 运算符来得到连个查询结果的交集</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">age</span>:(&gt;=<span class="number">10</span> AND &lt;<span class="number">20</span>)</span><br><span class="line"><span class="attribute">age</span>:(+&gt;=<span class="number">10</span> +&lt;<span class="number">20</span>)</span><br></pre></td></tr></table></figure>
+
+<h4 id="Boosting"><a href="#Boosting" class="headerlink" title="Boosting"></a>Boosting</h4><p>使用操作符 <code>^</code> 使一个术语比另一个术语更相关。例如，如果我们想查找所有有关狐狸的文档，但我们对狐狸特别感兴趣：</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">quick</span>^<span class="number">2</span> fox</span><br></pre></td></tr></table></figure>
+
+<p>默认提升值是 1，但可以是任何正浮点数。 0 到 1 之间的提升减少了相关性。</p>
+<p>增强也可以应用于短语或组：</p>
+<figure class="highlight gcode"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;john smith&quot;</span>^<span class="number">2</span>   <span class="comment">(foo bar)</span>^<span class="number">4</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="布尔操作"><a href="#布尔操作" class="headerlink" title="布尔操作"></a>布尔操作</h4><p>默认情况下，只要一个词匹配，所有词都是可选的。搜索 <code>foo bar baz</code> 将查找包含 <code>foo</code> 或 <code>bar</code> 或 <code>baz</code> 中的一个或多个的任何文档。我们已经讨论了上面的<code>default_operator</code>，它允许你强制要求所有的项，但也有布尔运算符可以在查询字符串本身中使用，以提供更多的控制。</p>
+<p>首选的操作符是 <code>+</code>（此术语必须存在）和 <code>-</code> （此术语不得存在）。所有其他条款是可选的。例如，这个查询：</p>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">quick <span class="keyword">brown </span>+fox -news</span><br></pre></td></tr></table></figure>
+
+<p>这条查询意味着：</p>
+<ul>
+<li>fox 必须存在</li>
+<li>news 必须不存在</li>
+<li>quick 和 brown 是可有可无的</li>
+</ul>
+<p>熟悉的运算符 <code>AND</code>，<code>OR</code> 和 <code>NOT</code>（也写成 <code>&amp;&amp;</code>，<code>||</code> 和 <code>!</code>）也被支持。然而，这些操作符有一定的优先级：<code>NOT</code> 优先于 <code>AND</code>，<code>AND</code> 优先于 <code>OR</code>。虽然 <code>+</code> 和 <code>-</code> 仅影响运算符右侧的术语，但 <code>AND</code> 和 <code>OR</code> 会影响左侧和右侧的术语。</p>
+<h4 id="分组"><a href="#分组" class="headerlink" title="分组"></a>分组</h4><p>多个术语或子句可以用圆括号组合在一起，形成子查询</p>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(quick <span class="keyword">OR </span><span class="keyword">brown) </span><span class="keyword">AND </span>fox</span><br></pre></td></tr></table></figure>
+
+<p>可以使用组来定位特定的字段，或者增强子查询的结果：</p>
+<figure class="highlight excel"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">stat<span class="symbol">us:</span>(active <span class="built_in">OR</span> pending) tit<span class="symbol">le:</span>(full <span class="built_in">text</span> <span class="built_in">search</span>)^<span class="number">2</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="保留字"><a href="#保留字" class="headerlink" title="保留字"></a>保留字</h4><p>如果你需要使用任何在你的查询本身中作为操作符的字符（而不是作为操作符），那么你应该用一个反斜杠来转义它们。例如，要搜索（1 + 1）&#x3D; 2，您需要将查询写为 <code>\(1\+1\)\=2</code></p>
+<p>保留字符是：<code>+ - = &amp;&amp; || &gt; &lt; ! ( ) &#123; &#125; [ ] ^ &quot; ~ * ? : \ /</code></p>
+<p>无法正确地转义这些特殊字符可能会导致语法错误，从而阻止您的查询运行。</p>
+<h4 id="空查询"><a href="#空查询" class="headerlink" title="空查询"></a>空查询</h4><p>如果查询字符串为空或仅包含空格，则查询将生成一个空的结果集。</p>
+<h2 id="Visualize"><a href="#Visualize" class="headerlink" title="Visualize"></a>Visualize</h2><p>要想使用可视化的方式展示您的数据，请单击侧面导航栏中的 <code>Visualize</code>。</p>
+<p>Visualize 工具使您能够以多种方式（如饼图、柱状图、曲线图、分布图等）查看数据。要开始使用，请点击蓝色的 <code>Create a visualization</code> 或 <code>+</code> 按钮。</p>
+<p><img src="https://www.elastic.co/guide/en/kibana/6.1/images/tutorial-visualize-landing.png" alt="https://www.elastic.co/guide/en/kibana/6.1/images/tutorial-visualize-landing.png"></p>
+<p>有许多可视化类型可供选择。</p>
+<p><img src="https://www.elastic.co/guide/en/kibana/6.1/images/tutorial-visualize-wizard-step-1.png" alt="https://www.elastic.co/guide/en/kibana/6.1/images/tutorial-visualize-wizard-step-1.png"></p>
+<p>下面，我们来看创建几个图标示例：</p>
+<h3 id="Pie"><a href="#Pie" class="headerlink" title="Pie"></a>Pie</h3><p>您可以从保存的搜索中构建可视化文件，也可以输入新的搜索条件。要输入新的搜索条件，首先需要选择一个索引模式来指定要搜索的索引。</p>
+<p>默认搜索匹配所有文档。最初，一个“切片”包含整个饼图：</p>
+<p><img src="https://www.elastic.co/guide/en/kibana/6.1/images/tutorial-visualize-pie-1.png" alt="https://www.elastic.co/guide/en/kibana/6.1/images/tutorial-visualize-pie-1.png"></p>
+<p>要指定在图表中展示哪些数据，请使用 Elasticsearch 存储桶聚合。分组汇总只是将与您的搜索条件相匹配的文档分类到不同的分类中，也称为分组。</p>
+<p>为每个范围定义一个存储桶：</p>
+<ol>
+<li>单击 <code>Split Slices</code>。</li>
+<li>在 <code>Aggregation</code> 列表中选择 <code>Terms</code>。_注意：这里的 Terms 是 Elk 采集数据时定义好的字段或标签_。</li>
+<li>在 <code>Field</code> 列表中选择 <code>level.keyword</code>。</li>
+<li>点击 <img src="https://www.elastic.co/guide/en/kibana/6.1/images/apply-changes-button.png" alt="images/apply-changes-button.png"> 按钮来更新图表。</li>
+</ol>
+<p><img src="https://upload-images.jianshu.io/upload_images/3101171-7fb2042dc6d59520.png" alt="image.png"></p>
+<p>完成后，如果想要保存这个图表，可以点击页面最上方一栏中的 <code>Save</code> 按钮。</p>
+<h3 id="Vertical-Bar"><a href="#Vertical-Bar" class="headerlink" title="Vertical Bar"></a>Vertical Bar</h3><p>我们在展示一下如何创建柱状图。</p>
+<ol>
+<li>点击蓝色的 <code>Create a visualization</code> 或 <code>+</code> 按钮。选择 <code>Vertical Bar</code></li>
+<li>选择索引模式。由于您尚未定义任何 bucket ，因此您会看到一个大栏，显示与默认通配符查询匹配的文档总数。</li>
+<li>指定 Y 轴所代表的字段</li>
+<li>指定 X 轴所代表的字段</li>
+<li>点击 <img src="https://www.elastic.co/guide/en/kibana/6.1/images/apply-changes-button.png" alt="images/apply-changes-button.png"> 按钮来更新图表。</li>
+</ol>
+<p><img src="https://upload-images.jianshu.io/upload_images/3101171-5aa7627284c19a56.png" alt="image.png"></p>
+<p>完成后，如果想要保存这个图表，可以点击页面最上方一栏中的 <code>Save</code> 按钮。</p>
+<h2 id="Dashboard"><a href="#Dashboard" class="headerlink" title="Dashboard"></a>Dashboard</h2><p><code>Dashboard</code> 可以整合和共享 <code>Visualize</code> 集合。</p>
+<ol>
+<li>点击侧面导航栏中的 Dashboard。</li>
+<li>点击添加显示保存的可视化列表。</li>
+<li>点击之前保存的 <code>Visualize</code>，然后点击列表底部的小向上箭头关闭可视化列表。</li>
+<li>将鼠标悬停在可视化对象上会显示允许您编辑，移动，删除和调整可视化对象大小的容器控件。</li>
+</ol>
 
       
     </div>
