@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>NEW</title>
+    <url>//pages/new/</url>
+    <content><![CDATA[<p><img src="/pages/new/01.png" alt="Image Description"></p>
+]]></content>
+  </entry>
+  <entry>
     <title>前后端交互约定_规范</title>
     <url>//pages/%E5%89%8D%E5%90%8E%E7%AB%AF%E4%BA%A4%E4%BA%92%E7%BA%A6%E5%AE%9A%E3%80%81%E8%A7%84%E8%8C%83/</url>
     <content><![CDATA[<h1 id="前后端交互约定、规范"><a href="#前后端交互约定、规范" class="headerlink" title="前后端交互约定、规范"></a>前后端交互约定、规范</h1><h3 id="一、结合目前公司情况的痛点总结"><a href="#一、结合目前公司情况的痛点总结" class="headerlink" title="一、结合目前公司情况的痛点总结"></a>一、结合目前公司情况的痛点总结</h3><ol>
@@ -583,11 +589,5 @@
       <tags>
         <tag>规范</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>NEW</title>
-    <url>//pages/new/</url>
-    <content><![CDATA[<p><img src="/pages/new/01.png" alt="Image Description"></p>
-]]></content>
   </entry>
 </search>

@@ -1339,7 +1339,7 @@ pre code {
     vertical-align: middle;
   }
   .links-of-author a::before {
-    background: #ff2194;
+    background: #555cfc;
     display: inline-block;
     margin-right: 3px;
     transform: translateY(-2px);
@@ -2962,4 +2962,12 @@ header.header {
   .sidebar {
     display: none;
   }
+}
+body .darkmode-toggle {
+  width: 26px;
+  height: 26px;
+}
+body .darkmode-layer--button {
+  width: 26px;
+  height: 26px;
 }
