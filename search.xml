@@ -140,12 +140,6 @@
       </tags>
   </entry>
   <entry>
-    <title>NEW</title>
-    <url>//pages/new/</url>
-    <content><![CDATA[<p><img src="/pages/new/01.png" alt="Image Description"></p>
-]]></content>
-  </entry>
-  <entry>
     <title>前端代码规范</title>
     <url>//pages/%E5%89%8D%E7%AB%AF%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83/</url>
     <content><![CDATA[<h1 id="一．编程规约"><a href="#一．编程规约" class="headerlink" title="一．编程规约"></a>一．编程规约</h1><h2 id="一-命名规范"><a href="#一-命名规范" class="headerlink" title="(一) 命名规范"></a>(一) 命名规范</h2><h3 id="1-1-1-项目命名"><a href="#1-1-1-项目命名" class="headerlink" title="1.1.1 项目命名"></a>1.1.1 项目命名</h3><p>全部采用小写方式，以中线分隔。</p>
@@ -589,5 +583,11 @@
       <tags>
         <tag>规范</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>NEW</title>
+    <url>//pages/new/</url>
+    <content><![CDATA[<p><img src="/pages/new/01.png" alt="Image Description"></p>
+]]></content>
   </entry>
 </search>
