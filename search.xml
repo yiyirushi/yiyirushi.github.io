@@ -590,4 +590,390 @@
         <tag>规范</tag>
       </tags>
   </entry>
+  <entry>
+    <title>前端工程化建设大纲</title>
+    <url>//pages/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96%E5%BB%BA%E8%AE%BE%E5%A4%A7%E7%BA%B2/</url>
+    <content><![CDATA[<h1 id="前端建设"><a href="#前端建设" class="headerlink" title="前端建设"></a>前端建设</h1><ul>
+<li>1、前端规范 Standrad</li>
+<li>2、前端文档 Document</li>
+<li>3、前端项目模板 Templates</li>
+<li>4、前端脚手架 CLI</li>
+<li>5、前端组件库 UI Design</li>
+<li>6、前端工具库 Hooks Utils</li>
+<li>7、前端工具自动化 Tools</li>
+<li>8、接口数据聚合 BFF</li>
+<li>9、前端自动化构建部署 CI CD</li>
+<li>10、前端全链路监控or数据埋点系统</li>
+<li>11、前端可视化平台</li>
+<li>12、前端性能优化</li>
+<li>13、低代码平台</li>
+<li>14、前端ssr推进</li>
+<li>15、前端响应式or自适应</li>
+<li>16、微前端</li>
+</ul>
+<span id="more"></span>
+
+
+
+<h2 id="1、前端规范-Standrad"><a href="#1、前端规范-Standrad" class="headerlink" title="1、前端规范 Standrad"></a>1、前端规范 Standrad</h2><ul>
+<li>前端规范<ul>
+<li>命名规范<ul>
+<li>文件&#x2F;文件夹命名规范</li>
+<li>编码命名规范</li>
+</ul>
+</li>
+<li>目录构建规范<ul>
+<li>VUE目录规范</li>
+<li>NUXT目录规范</li>
+<li>其他</li>
+</ul>
+</li>
+<li>编程规范<ul>
+<li>Html CSS Javascript Typescript Vue 等</li>
+<li>工具自动化<ul>
+<li>EsLint</li>
+<li>prettier</li>
+<li>StyleLint</li>
+</ul>
+</li>
+<li>注意，优先使用自动化工具</li>
+</ul>
+</li>
+<li>Git规范<ul>
+<li>Git分支命名规范</li>
+<li>Git分支保留规范</li>
+<li>Git Commit规范</li>
+<li>EsLint 校验</li>
+<li>StyleLint校验</li>
+<li>繁简体校验</li>
+</ul>
+</li>
+<li>CR规范（Code Review ）<ul>
+<li>CR审核人</li>
+<li>CR基本规范</li>
+<li>CR内容定义</li>
+</ul>
+</li>
+<li>BFF研发规范<ul>
+<li>前后端协作规范</li>
+</ul>
+</li>
+<li>设计规范<ul>
+<li>通用组件规范</li>
+<li>通用样式规范</li>
+<li>常见交互规范</li>
+</ul>
+</li>
+<li>测试规范<ul>
+<li>主要争对组件库，工具库的单元测试</li>
+</ul>
+</li>
+<li>其他规范<ul>
+<li>技术栈规范<ul>
+<li>编程语言 Javascript TypeScript</li>
+<li>UI框架及其配套生态</li>
+<li>项目构建工作流webPack Vite</li>
+<li>包管理器 npm yarn pnpm</li>
+</ul>
+</li>
+<li>浏览器支持规范</li>
+<li>IDE编辑器规范</li>
+<li>本地开发环境规范<ul>
+<li>Node版本管理（nvm）</li>
+<li>Npm源管理（nrm）</li>
+</ul>
+</li>
+<li>私服规范</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="2、文档"><a href="#2、文档" class="headerlink" title="2、文档"></a>2、文档</h2><p>前端文档</p>
+<ul>
+<li>新人文档<ul>
+<li>公司介绍</li>
+<li>业务介绍</li>
+<li>团队介绍</li>
+<li>流程介绍</li>
+<li>等等其他…</li>
+</ul>
+</li>
+<li>技术文档</li>
+<li>业务文档</li>
+<li>项目文档<ul>
+<li>新项目文档</li>
+<li>旧项目文档</li>
+</ul>
+</li>
+<li>计划文档<ul>
+<li>月计划</li>
+<li>季度计划</li>
+<li>年度计划</li>
+</ul>
+</li>
+<li>技术分享交流会文档</li>
+</ul>
+<h2 id="3、项目模板"><a href="#3、项目模板" class="headerlink" title="3、项目模板"></a>3、项目模板</h2><ul>
+<li>项目模板<ul>
+<li>Vue项目模板<ul>
+<li>Vue2项目模板</li>
+<li>Vue3项目模板</li>
+</ul>
+</li>
+<li>小程序项目模板</li>
+<li>Nuxt项目模板</li>
+<li>微前端项目模板</li>
+<li>BFF项目模板 </li>
+<li>管理后台项目模板</li>
+<li>Node.js项目模板</li>
+<li>其他模板</li>
+</ul>
+</li>
+</ul>
+<h2 id="4、脚手架（CLI）"><a href="#4、脚手架（CLI）" class="headerlink" title="4、脚手架（CLI）"></a>4、脚手架（CLI）</h2><ul>
+<li>前端脚手架<ul>
+<li>快速创建项目</li>
+<li>代码规范</li>
+<li>mock数据</li>
+<li>集合微前端</li>
+<li>commit hook</li>
+<li>自动化部署</li>
+<li>集合工具函数、hooks等</li>
+<li>插件</li>
+<li>demo模板快速上手</li>
+<li>持续建设中…</li>
+</ul>
+</li>
+</ul>
+<h2 id="5、组件库"><a href="#5、组件库" class="headerlink" title="5、组件库"></a>5、组件库</h2><ul>
+<li>组件库<ul>
+<li>icon图标</li>
+<li>Button按钮</li>
+<li>Input输入框</li>
+<li>CheckBox复选框</li>
+<li>Radio单选框</li>
+<li>Select选择器</li>
+<li>Breadcrumb面包屑</li>
+<li>Dropdown下拉菜单</li>
+<li>Message消息提示</li>
+<li>Toast提示</li>
+<li>Modal对话框</li>
+<li>Loading加载</li>
+<li>持续开发中…</li>
+</ul>
+</li>
+</ul>
+<h2 id="6、响应式设计-or-自适应设计"><a href="#6、响应式设计-or-自适应设计" class="headerlink" title="6、响应式设计 or 自适应设计"></a>6、响应式设计 or 自适应设计</h2><ul>
+<li>屏幕兼容方案<ul>
+<li>响应式设计<ul>
+<li>同一个页面改变布局</li>
+<li>一套代码提升研发效率</li>
+<li>不同分辨率设备灵活性强</li>
+<li>快速适配多端</li>
+</ul>
+</li>
+<li>自适应设计<ul>
+<li>性能相对好</li>
+<li>开发多个页面，直接切换页面</li>
+<li>设计与体验较好</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="7、前端工具库（类-Hooks-Utils）"><a href="#7、前端工具库（类-Hooks-Utils）" class="headerlink" title="7、前端工具库（类 Hooks &#x2F; Utils）"></a>7、前端工具库（类 Hooks &#x2F; Utils）</h2><ul>
+<li>工具库<ul>
+<li>Query参数解析</li>
+<li>Device设备解析</li>
+<li>环境区分</li>
+<li>Local Storage封装</li>
+<li>Day日期时间封装</li>
+<li>Thousands千分位格式化</li>
+<li>Debounce防抖</li>
+<li>Throttle节流</li>
+<li>Array数组去重</li>
+<li>Array数组扁平化</li>
+<li>Array排序</li>
+<li>Array过滤</li>
+<li>Array转Tree</li>
+<li>类型判断</li>
+<li>持续开发中…</li>
+</ul>
+</li>
+</ul>
+<h2 id="8、工具自动化（Tools）"><a href="#8、工具自动化（Tools）" class="headerlink" title="8、工具自动化（Tools）"></a>8、工具自动化（Tools）</h2><ul>
+<li>自动化工具<ul>
+<li>Eslint&#x2F;Prettier自动化</li>
+<li>StyleLint自动化</li>
+<li>Git commit自动化</li>
+<li>其他自动化（建设中）</li>
+</ul>
+</li>
+</ul>
+<h2 id="9、接口数据聚合（BFF）"><a href="#9、接口数据聚合（BFF）" class="headerlink" title="9、接口数据聚合（BFF）"></a>9、接口数据聚合（BFF）</h2><ul>
+<li><p>聚合 API，释放后端；</p>
+</li>
+<li><p>解耦合各个业务；</p>
+</li>
+<li><p>后端微服务引入；</p>
+</li>
+<li><p>易维护和修改 API；</p>
+</li>
+<li><p>更好的安全性；</p>
+</li>
+<li><p>更好的前端错误处理；</p>
+</li>
+<li><p>Backend For Froneted</p>
+<ul>
+<li>概念<ul>
+<li>服务于前端的后端，也可以理解为面向前端的后端模式</li>
+<li>实际上只是一直逻辑分层，并部署一种技术，一般是node server（nestJs）</li>
+</ul>
+</li>
+<li>应用<ul>
+<li>第三方入口</li>
+<li>应用缓存</li>
+<li>访问控制</li>
+</ul>
+</li>
+<li>优缺点<ul>
+<li>优点<ul>
+<li>业务更清晰</li>
+<li>给后端更清晰的服务边界</li>
+<li>开发可以自mock数据，更适配前端框架</li>
+<li>前后端彻底分离，就算后端迁移微服务，对前端无影响</li>
+</ul>
+</li>
+<li>缺点<ul>
+<li>中间层转发可能有延迟</li>
+<li>增加部分的开发成本</li>
+<li>必须随时准备好后端的异常请求</li>
+<li>必须保证端到端的测试</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>解决问题<ul>
+<li>多端应用会区别处理</li>
+<li>前端更聚焦所需要的数据，不需要关注提供数据的服务</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="10、SSR"><a href="#10、SSR" class="headerlink" title="10、SSR"></a>10、SSR</h2><ul>
+<li>前后端分离；</li>
+<li>首屏加载速度快；</li>
+<li>利于 SEO；</li>
+</ul>
+<h2 id="11、自动化构建部署（CI-CD）"><a href="#11、自动化构建部署（CI-CD）" class="headerlink" title="11、自动化构建部署（CI&#x2F;CD）"></a>11、自动化构建部署（CI&#x2F;CD）</h2><ul>
+<li>CI&#x2F;CD<ul>
+<li>git自动触发</li>
+<li>灵活配置</li>
+<li>格式检查</li>
+<li>文件资源压缩</li>
+<li>重名文件替换&#x2F;备份问题</li>
+<li>缓存问题</li>
+<li>用户无感知刷新</li>
+<li>安全性保证</li>
+<li>分布式部署</li>
+<li>快速回滚</li>
+<li>其他（建设中…）</li>
+</ul>
+</li>
+</ul>
+<h2 id="12、前端监控-数据埋点系统"><a href="#12、前端监控-数据埋点系统" class="headerlink" title="12、前端监控&#x2F;数据埋点系统"></a>12、前端监控&#x2F;数据埋点系统</h2><p><strong>前端监控&#x2F;数据埋点的目的是：</strong></p>
+<ul>
+<li>实现精准的点对点营销；</li>
+<li>可以做相关的分类统计；</li>
+<li>为用户画像的构建提供数据支持；</li>
+<li>指导产品研发以及优化用户体验；</li>
+</ul>
+<p><strong>前端监控&#x2F;数据埋点有哪些数据？</strong></p>
+<ul>
+<li><code>行为数据</code>：时间、地点、人物、交互、交互的内容；</li>
+<li><code>质量数据</code>：浏览器加载情况、错误异常等；</li>
+<li><code>环境数据</code>：浏览器相关的元数据以及地理、运营商等；</li>
+<li><code>运营数据</code>：PV、UV、转化率、留存率（很直观的数据）；</li>
+</ul>
+<h2 id="13、前端可视化平台"><a href="#13、前端可视化平台" class="headerlink" title="13、前端可视化平台"></a>13、前端可视化平台</h2><ul>
+<li>可视化平台<ul>
+<li>数据监控&#x2F;埋点</li>
+<li>日志系统</li>
+<li>仓库系统</li>
+<li>项目搭建系统</li>
+<li>性能检测系统</li>
+<li>权限系统</li>
+<li>运维系统</li>
+<li>环境系统</li>
+<li>博客系统</li>
+<li>其他…</li>
+</ul>
+</li>
+</ul>
+<h2 id="14、性能优化"><a href="#14、性能优化" class="headerlink" title="14、性能优化"></a>14、性能优化</h2><ul>
+<li>性能优化<ul>
+<li>编码规范层<ul>
+<li>CSS放在头部</li>
+<li>CSS选择器优化</li>
+<li>JS变量问题</li>
+<li>JS事件委托</li>
+<li>Web Worker</li>
+<li>字体图标</li>
+<li>其他…</li>
+</ul>
+</li>
+<li>网络资源层<ul>
+<li>减少HTTP请求</li>
+<li>使用HTTP2</li>
+<li>CDN使用</li>
+<li>缓存使用</li>
+<li>gzip</li>
+<li>其他…</li>
+</ul>
+</li>
+<li>渲染层<ul>
+<li>懒加载</li>
+<li>CSS重绘重排问题</li>
+<li>雪碧图</li>
+<li>GPU渲染</li>
+<li>SSR使用</li>
+<li>其他…</li>
+</ul>
+</li>
+<li>打包构建层<ul>
+<li>tree shaking</li>
+<li>split chunks</li>
+<li>拆包</li>
+<li>其他…</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="15、前端低代码平台搭建"><a href="#15、前端低代码平台搭建" class="headerlink" title="15、前端低代码平台搭建"></a>15、前端低代码平台搭建</h2><p>&#x2F;</p>
+<ul>
+<li><strong>降低开发成本；</strong></li>
+<li><strong>所见即所得；</strong></li>
+<li><strong>一站式研发；</strong></li>
+<li><strong>技术收敛；</strong></li>
+<li><strong>专业门槛低；</strong></li>
+<li><strong>对新人友好，上手快；</strong></li>
+</ul>
+<h2 id="16、微前端（Micro-App）"><a href="#16、微前端（Micro-App）" class="headerlink" title="16、微前端（Micro App）"></a>16、微前端（Micro App）</h2><ul>
+<li>技术上的灵活选择；</li>
+<li>更快的且独立的部署；</li>
+<li>团队代码的相互隔离；</li>
+<li>并行开发和团队的自治；</li>
+<li>项目的增量升级；</li>
+</ul>
+]]></content>
+      <categories>
+        <category>前端</category>
+      </categories>
+      <tags>
+        <tag>规范</tag>
+      </tags>
+  </entry>
 </search>
